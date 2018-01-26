@@ -1,75 +1,172 @@
 ---
-title: "wholePlotTrajectories_manuscript"
+title: "POST-DISTURBANCE DIVERSITY TRAJECTORIES IN A NEOTROPICAL FOREST"
 output: html_document
+fig_caption: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(shape)
+
+treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
+names(treatments)<-c("Control","T1","T2","T3")
+load("FunctionalComposition_forGraph");load("TaxoComposition_forGraphs")
+load("ReplacementTraj_ForGraphs");load("FunctionalTraj_ForGraphs")
+ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
+Colors<-c("Greens","Blues","Oranges","Reds")
+
 ```
 
 
-# POST-DISTURBANCE DIVERSITY TRAJECTORIES IN A NEOTROPICAL FOREST
-\
-\
-\
-
-
-## Summary
+# Summary
 \
 \
 \
 \
 
 
-## Introduction
+# Introduction
 \
 \
 \
 \
 
 
-## Material and Methods
+# Material and Methods
 \
 \
 
 
-### Study site
+## Study site
 \
 \
 
 
-### Inventories protocol and dataset correction
-
-\
-\
-
-
-### Composition and diversity metrics
+## Inventories protocol and dataset correction
 
 \
 \
 
 
+## Composition and diversity metrics
 
-##Results
+\
+\
+
+
+
+#Results
 
 Over time, 104423 trees and 697 botanical species were recorded. The disturbance proved to significantly impact for more than 30 years the functional and taxonomic composition and diversity of the stands. 
 
-### Taxonomic and functional composition
+## Taxonomic and functional composition
 
-*Composition trajectories* _ Trajectories of taxonomic and functional composition after disturbance were examined through the ordination of successive inventories from 1989 (5 years after disturbance) in a two-dimensional space based on NMDS analysis. Classifications were based on either abundance-based Bray-Curtis (Fig. 1) or incidence-based Jaccard dissimilarity (data not shown).
+*Composition trajectories* _ Trajectories of taxonomic and functional composition after disturbance were examined through the ordination of successive inventories from 1989 (5 years after disturbance) in a two-dimensional space based on NMDS analysis. Classifications were based on either abundance-based Bray-Curtis \autoref{Fig1} or incidence-based Jaccard dissimilarity (data not shown).
 
-Both taxonomic and functional composition were substantially affected by disturbance and positively correlated with its intensity. *The distance from the initial condition was significantly time-dependent (P<0.01).* The taxonomic composition remained significantly different from the 1989 inventory until 30 years for all disturbed plots (Fig. 2a). The distancing was positively correlated woth disturbance intensity. From 20 years after disturbance though the distancing reduced, suggesting the beginning of a return toward the reference 1989 inventory (Fig. 1a & 2a). The functional composition distancing from 1989 was also positively correlated with disturbance intensity and similarly stabilized and reduced for 5 of T1, T2 and T3 plots from 20 years after disturbance (Fig. 2a). *The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
+Both taxonomic and functional composition were substantially affected by disturbance and positively correlated with its intensity. *The distance from the initial condition was significantly time-dependent (P<0.01).* The taxonomic composition remained significantly different from the 1989 inventory until 30 years for all disturbed plots \autoref{Fig1}. The distancing was positively correlated woth disturbance intensity. From 20 years after disturbance though the distancing reduced, suggesting the beginning of a return toward the reference 1989 inventory \autoref{Fig1},\autoref{Fig2}. The functional composition distancing from 1989 was also positively correlated with disturbance intensity and similarly stabilized and reduced for 5 of T1, T2 and T3 plots from 20 years after disturbance \autoref{Fig2}. *The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
 
-```{r pressure, echo=FALSE,fig.cap="Fig. 2"}
-treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
-names(treatments)<-c("Control","T1","T2","T3")
-load("FunctionalComposition_forGraph")
-ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
-
+```{r Fig1, echo=FALSE,fig.cap="**Fig. 1 _ **Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
 par(mfrow=c(1,2))
 
-Matrep<-lapply(Matrep,function(Rep){
+
+matT<-as.data.frame(MatrepTaxo[[1]])
+ matT$plot<-substr(rownames(matT),start=1,stop=regexpr("_",rownames(matT))-1)
+ matT$year<-substr(rownames(matT),start=regexpr("_",rownames(matT))+1,
+                   stop=nchar(rownames(matT)))
+  colnames(matT)<-c("X","Y","plot","year")
+  plot(matT$X,matT$Y,type="n",xlab="",ylab="",cex.axis=0.7)
+  invisible(lapply(1:length(treatments),function(tr){
+    plots<-treatments[[tr]]
+    invisible(lapply(plots,function(pl){
+      toplot<-matT[which(matT$plot==pl),]
+      points(toplot[1,"X"],toplot[1,"Y"],col=ColorsTr[[tr]],pch=16,cex=1.7)
+      points(toplot[nrow(toplot),"X"],toplot[nrow(toplot),"Y"],col=ColorsTr[[tr]],pch=1,cex=1.7,lwd=2)
+      
+      lines(toplot$X,toplot$Y,col=ColorsTr[[tr]],lty=2)
+      invisible(lapply(round(seq(2,nrow(toplot),length.out=5)),function(step){
+        Arrows(x0=toplot[step,"X"],y0=toplot[step,"Y"],
+               x1=toplot[step-1,"X"],y1=toplot[step-1,"Y"],
+               col=ColorsTr[tr],code=1,lwd=2,arr.length=0.2,arr.type="simple")}))
+    }))
+  }))
+  
+mtext("NMDS 1",side=1,line=2,cex=0.8)
+mtext("Euclidean distance from 1989 inventory",side=2,padj=0,line=3,cex=0.9)
+mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
+mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
+
+mat<-as.data.frame(MatrepFun[[3]])
+mat$plot<-substr(rownames(mat),start=1,stop=regexpr("_",rownames(mat))-1)
+mat$year<-substr(rownames(mat),start=regexpr("_",rownames(mat))+1,
+                   stop=nchar(rownames(mat)))
+colnames(mat)<-c("X","Y","plot","year")
+plot(mat$X,mat$Y,type="n",xlab="",ylab="",cex.axis=0.7)
+invisible(lapply(1:length(treatments),function(tr){
+  plots<-treatments[[tr]]
+    invisible(lapply(plots,function(pl){
+      toplot<-mat[which(mat$plot==pl),]
+      points(toplot[1,"X"],toplot[1,"Y"],col=ColorsTr[[tr]],pch=16,cex=1.7)
+      points(toplot[nrow(toplot),"X"],toplot[nrow(toplot),"Y"],col=ColorsTr[[tr]],pch=1,cex=1.7,lwd=2)
+      
+  lines(toplot$X,toplot$Y,col=ColorsTr[[tr]],lty=2)
+  invisible(lapply(round(seq(2,nrow(toplot),length.out=5)),function(step){
+      Arrows(x0=toplot[step,"X"],y0=toplot[step,"Y"],
+            x1=toplot[step-1,"X"],y1=toplot[step-1,"Y"],
+            col=ColorsTr[tr],code=1,lwd=2,arr.length=0.2,arr.type="simple")}))
+  }))
+}))
+mtext("(b) Functional composition",side=3,adj=0,line=0.5)
+mtext("NMDS 1",side=1,line=2,cex=0.8)
+mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
+
+
+```
+
+
+
+```{r Fig2, echo=FALSE,fig.cap="**Fig. 2 _ ** Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of **(a)** taxonomic composition at genus level and **(b)** functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes. "}
+par(mfrow=c(1,2))
+
+MatrepT<-lapply(MatrepTaxo,function(Rep){
+  Rep<-as.data.frame(Rep)
+  Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
+  Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
+                   stop=nchar(rownames(Rep)))
+  return(Rep)
+})
+
+DistT<-lapply(1:12,function(pl){
+  ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+  ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
+  ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
+  ret<-do.call(rbind,lapply(ret,function(rep){
+    ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
+      return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
+    names(ret2)<-rep[,"year"]
+    return(ret2)}))
+  ret<-do.call(rbind,lapply(c(0.025,0.5,0.975),function(quant){
+    return(apply(ret,2,function(col){return(quantile(col,probs=quant))}))}))
+  rownames(ret)<-c(0.025,0.5,0.975)
+  return(ret)})
+names(DistT)<-1:12
+DistT<-lapply(DistT,function(pl){
+  colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
+
+plot(colnames(DistT[[1]]),DistT[[1]][1,],type="n",xlab="",ylab="",
+     ylim=c(min(unlist(DistT)),max(unlist(DistT))),cex.axis=0.7)
+invisible(lapply(1:length(treatments),function(tr){
+  toplot<-DistT[treatments[[tr]]]
+  invisible(lapply(toplot,function(pl){
+    lines(colnames(pl),pl["0.5",],col=ColorsTr[[tr]],lwd=2)
+    polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
+            col=rgb(0,0,0,alpha=0.1),border=NA)
+  }))}))
+mtext("Euclidean distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
+mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
+
+
+MatrepFun<-lapply(MatrepFun,function(Rep){
   Rep<-as.data.frame(Rep)
   Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
   Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
@@ -78,7 +175,7 @@ Matrep<-lapply(Matrep,function(Rep){
 })
 
 Dist<-lapply(1:12,function(pl){
-  ret<-lapply(Matrep,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+  ret<-lapply(MatrepFun,function(rep){return(rep[which(rep[,"plot"]==pl),])})
   ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%ret[[1]][,"year"]),])})
   ret<-do.call(rbind,lapply(ret,function(rep){
     ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
@@ -102,17 +199,78 @@ invisible(lapply(1:length(treatments),function(tr){
     polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
             col=rgb(0,0,0,alpha=0.1),border=NA)
   }))}))
-mtext("Euclidean distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
-mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
-
+mtext("(b) Functional composition",side=3,adj=0,line=0.5)
+mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 
 ```
 
+*Traits community weighted means* _ To complete the functional analysis the trajectories of the community weighted means (CWM) measured for the 6 functional traits at plot level \autoref{Fig3}.
+**To be coming**
 
-
-
-```{r cars}
-summary(cars)
+```{r Fig3, echo=FALSE,fig.cap="**Fig. 3 ** _ Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Disturbance impact on diversity
+
+*Taxonomic diversity* _ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined in relation to the 1994 inventories \autoref{Fig4}. *For the three indices the OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and a covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01).*
+
+```{r Fig4, echo=FALSE,fig.cap="**Fig. 4 ** _ Trajectories of the difference to reference inventory, 10 years after disturbance, until 30 years after disturbance for plots **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversity. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The average value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+par(mfrow=c(1,3),oma=c(1,1,1,1),no.readonly=TRUE)
+for(q in 1:3){     
+  Toplot<-lapply(Complete,function(tr){return(tr[,,,q])})
+  Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+  Toplot<-lapply(Toplot,function(tr){
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
+    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),dim(tr)[3]),
+               dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975)))
+    return(ret)})
+  Toplot<-lapply(Toplot,function(tr){return(tr[,which(!is.na(Toplot[[2]][1,,"0.5"])),])})
+  
+  plot(as.numeric(colnames(Toplot[[1]]))-1984,Toplot[[1]][1,,1],type="n",xaxt="n",
+       xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+  axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+  mtext(paste("(",c("a","b","c")[q],") ",c("Richness","Shannon","Simpson")[q],sep=""),
+        line=1,side=3,adj=0)
+  
+  invisible(lapply(1:4,function(t){  
+    toplot<-Toplot[[t]]
+  
+     invisible(lapply(1:3,function(i){
+      absc<-as.numeric(colnames(Toplot[[t]]))-1984
+      lines(absc,Toplot[[t]][i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(absc,rev(absc)),c(Toplot[[t]][i,,"0.025"],rev(Toplot[[t]][i,,"0.975"])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+     }))
+  }))
+}
+mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
+mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=-1,outer=TRUE)
+
+```
+
+The trajectories of the Richness, Shannon and Simpson differences to reference inventories in 1994 were rather even for 30 years after disturbance for the control plots whereas disturbed plots showed significant increase depending on the disturbance intensity \autoref{Fig4}. The richness stabilized for all disturbed plots from 20 years after disturbance \autoref{Fig4}. The Shannon and Simpson diversity also stabilized 20 years after disturbance for T1 and T2 plots \autoref{Fig4} whereas for 2 out of 3 plots T3 the Shannon and Simpson diversity continued increasing until 30 years after disturbance, illustrating a significant increase in communities’ evenness.
+
+*Functional  diversity* _ The trajectories of plot 7 from the T1 disturbance treatment was discarded because of too high taxonomic uncertainty preventing correct analysis. While the control plots showed an even trajectory until 30 years after disturbance, all disturbed plots displayed an increase of the functional diversity positively correlated to the disturbance intensity \autoref{Fig5}. The functional diversity observed 30 years after disturbance remained higher for all disturbed plots compared to control ones, without clear distinction following the disturbance intensity. The slope of the initial diversity increase and the maximum diversity were both positively correlated with the disturbance intensity. *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
+
+```{r Fig5, echo=FALSE,fig.cap="**Fig. 5 ** _ Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+plot(as.numeric(colnames(Toplot[[1]])),Toplot[[1]][1,,"0.5"],type="n",xaxt="n",
+       xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+mtext("Rao diversity",3,adj=0,line=1) 
+mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=2)
+mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=3)
+ 
+ Toplot[[2]]<-Toplot[[2]][c(1,3),,]
+  
+invisible(lapply(1:length(Toplot),function(t){  
+    
+    toplot<-Toplot[[t]]
+    
+      invisible(lapply(1:nrow(toplot),function(i){
+      lines(colnames(toplot),toplot[i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(colnames(toplot),rev(colnames(toplot))),c(toplot[i,,"0.975"],rev(toplot[i,,"0.025"])),
+       col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
+}))
+```
+
