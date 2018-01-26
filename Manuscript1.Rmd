@@ -38,29 +38,29 @@ Colors<-c("Greens","Blues","Oranges","Reds")
 \
 
 
-## Study site
+### Study site
 \
 \
 
 
-## Inventories protocol and dataset correction
-
-\
-\
-
-
-## Composition and diversity metrics
+### Inventories protocol and dataset correction
 
 \
 \
 
 
+### Composition and diversity metrics
 
-#Results
+\
+\
+
+
+
+# Results
 
 Over time, 104423 trees and 697 botanical species were recorded. The disturbance proved to significantly impact for more than 30 years the functional and taxonomic composition and diversity of the stands. 
 
-## Taxonomic and functional composition
+### Taxonomic and functional composition
 
 *Composition trajectories* _ Trajectories of taxonomic and functional composition after disturbance were examined through the ordination of successive inventories from 1989 (5 years after disturbance) in a two-dimensional space based on NMDS analysis. Classifications were based on either abundance-based Bray-Curtis \autoref{Fig1} or incidence-based Jaccard dissimilarity (data not shown).
 
@@ -210,7 +210,7 @@ mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 ```{r Fig3, echo=FALSE,fig.cap="**Fig. 3 ** _ Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 ```
 
-## Disturbance impact on diversity
+### Disturbance impact on diversity
 
 *Taxonomic diversity* _ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined in relation to the 1994 inventories \autoref{Fig4}. *For the three indices the OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and a covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01).*
 
@@ -253,18 +253,16 @@ The trajectories of the Richness, Shannon and Simpson differences to reference i
 *Functional  diversity* _ The trajectories of plot 7 from the T1 disturbance treatment was discarded because of too high taxonomic uncertainty preventing correct analysis. While the control plots showed an even trajectory until 30 years after disturbance, all disturbed plots displayed an increase of the functional diversity positively correlated to the disturbance intensity \autoref{Fig5}. The functional diversity observed 30 years after disturbance remained higher for all disturbed plots compared to control ones, without clear distinction following the disturbance intensity. The slope of the initial diversity increase and the maximum diversity were both positively correlated with the disturbance intensity. *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
 
 ```{r Fig5, echo=FALSE,fig.cap="**Fig. 5 ** _ Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
-plot(as.numeric(colnames(Toplot[[1]])),Toplot[[1]][1,,"0.5"],type="n",xaxt="n",
-       xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
-axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+plot(as.numeric(colnames(Toplot_FunTraj[[1]])),Toplot_FunTraj[[1]][1,,"0.5"],type="n",xaxt="n",
+       xlab="",ylab="",ylim=c(min(unlist(Toplot_FunTraj),na.rm=T),max(unlist(Toplot_FunTraj),na.rm=T)),cex.axis=0.7)
+axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
 mtext("Rao diversity",3,adj=0,line=1) 
 mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=2)
 mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=3)
  
- Toplot[[2]]<-Toplot[[2]][c(1,3),,]
-  
-invisible(lapply(1:length(Toplot),function(t){  
+invisible(lapply(1:length(Toplot_FunTraj),function(t){  
     
-    toplot<-Toplot[[t]]
+    toplot<-Toplot_FunTraj[[t]]
     
       invisible(lapply(1:nrow(toplot),function(i){
       lines(colnames(toplot),toplot[i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
@@ -274,3 +272,15 @@ invisible(lapply(1:length(Toplot),function(t){
 }))
 ```
 
+# Discussion
+-	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years 
+-	Important differences among plots of same treatments: possible impact of initial diversity composition, local abiotic parameters (topography, soils, surrounding stands).   Impacts depend on the disturbance intensity, but further parameters may be involved. 
+-	The shift in functional composition differs from the null model: biotic and abiotic filters are at stake but only tangible from 10/15 years after logging. Discussion with Cannon, 1998: they found no different process than rarefaction for 8 years after logging, but the time might have been too short-> divergence due to recruitment and not rarefaction after random species disappearance. Same conclusions otherwise.
+-	Disturbance involves new filters for species settling in the stands, probably according to their functional strategy. Disturbance generates a functional shift of communities toward acquisitive strategies. Ecosystems function rely on abundant species: changes in stands functioning is then expected.  (Flores, 2006  for differential sapling success after disturbance).
+-	If the recovery is not achieved 30 years after disturbance, it is on the way to. Only one plot displayed a still increasing Simpson diversity, and all plots showed a stabilization or a decrease of the composition distancing from 1989 inventories.
+-	To go further we should focus on recruitment which would also highlight the mechanisms underlying these shifts and dynamics and explicit the environmental filter.
+
+
+# Appendix I _ Scheme of the taxonomic uncertainty handle
+
+![**Fig. A1 _ ** Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing).](BayesianSheme.png)
