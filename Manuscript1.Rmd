@@ -1,9 +1,11 @@
 ---
 title: "Post-Disturbance Diversity Trajectories in a Neotropical Forest"
 author:
-  - name: Prénom Nom
+  - name: Ariane MIRABEL
     authsuperscript: 1*
-  - name: Deuxième Auteur
+  - name: Eric Marcon
+    authsuperscript: 1
+  - name: Bruno Hérault
     authsuperscript: 2
 affiliation:
   - affsuperscript: 1
@@ -19,7 +21,7 @@ affiliation:
       Zip code,
       Country.
 corrauthor:
-    email: prenom.nom@ecofog.gf
+    email: ariane.mirabel@ecofog.gf
     url: http://www.ecofog.gf/spip.php?article47
 abstract: >   #Pour avoir plusieurs lignes qui suivent. Commencer à 2 caractères
   Résumé de l'article.
@@ -41,7 +43,9 @@ output:
 #     keep_tex: TRUE
 #  bookdown::word_document2
 # output_dir pour articles?
+#organiser le code, avec les script et DB adéquats. Mettre un code dans les figures pour indiquer le code d'où elle provient. ../ pour référer à des sous dossiers
 ---
+
 
 <!-- Options de knitr et de R (librairies, ...) --> 
 
@@ -68,34 +72,68 @@ Colors<-c("Greens","Blues","Oranges","Reds")
 ```
 
 # Introduction
-\
-\
-\
-\
+The large areas covered with tropical forests worldwide hold crucial commercial, social and cultural value. 
+They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support nutrients, water and carbon cycles and ensure cultural and human well-being. 
+The demand for forests products and the shrink of unmanaged areas increased the human pressure on forests and currently threaten the maintenance of their structure, composition and function. 
+The increasing demand for forests products, land-use changes and other human disturbances along with substantial climatic changes make a crucial issue of understanding the response of forests dynamics to such disturbance regimes [@Gibson2011a; @Morales-Hidalgo2015]. 
+This has been addressed from the point of view of biomass production and carbon storage which resilience proved subjected to identified cyclic dynamics and therefore gives hope for the maintenance of forest ecosystem and their services. 
+The response of trees biological diversity however has been sparsely studied, although this diversity is a major determinant of forests productivity, stability and functioning as it ensures interspecific complementarity, enhances the use of resources and the store of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
+Maintain the integrity of forests functioning thus requires highlighting the impacts and underlying mechanisms of disturbance on trees diversity and question the extent of their resilience. 
+Disturbance alter the biotic and abiotic parameters of the ecosystem in modifying the light availability, the heat and water fluxes, the plants productivity, etc. 
+Although those changes proved impacting the proportion and identity of species, negligible or even positive impacts were highlighted when considering the community as a whole, in accordance with the intermediate disturbance hypothesis (IDH). 
+The IDH that predicts a maximized species diversity at intermediate level of disturbance, however, mainly rely on the study of species richness which gives limited or even misleading information on forests recovery and functioning.
+To have a detailed understanding of forests response to disturbance it is essential to identify the subsequent impact on species identity per se, which underlies any diversity change, as well as on richness, equitability and functional profile of the whole community.
+Such combination of composition and diversity in browsing all facets of stands assemblage would highlight their resilience to perturbation, and its determinant and underlying ecological processes.
+Disturbance survey would first assess species turnover and communities convergence through stands taxonomic composition and unveil environmental filters through functional composition that is based on the biological attributes of plants. 
+The set of functional traits chosen for this functional analysis considers functional traits representative of species functional strategy, fitness, and ecology as it is the case for traits of the leaf or stem economics.
+Composition analysis would be continued with diversity analysis assessing for the whole community the richness and evenness of the taxonomic and functional abundance distribution.   
+Here we examined the long-term trajectory, in the sense of the evolution along time, of tropical forests taxonomic and functional composition and diversity. 
+We studied the regular inventories over 30 years of twelve Amazonian forest plots, either untouched or disturbed with three disturbance intensity . 
+The inventories were combined with one of the largest functional trait database for tropical trees. We aimed to (i) explicit the impact of disturbance on the long-term trajectory of tropical forest communities composition and diversity, (ii) question the long-term convergence of the composition of communities and (iii) determine their resilience or not, after disturbance.
 
 
 # Material and Methods
-\
-\
 
-
-### Study site
-\
-\
-
+### Study site 
+Paracou station in French Guiana (5°18'N and 52°53'W) encompasses a lowland tropical rain forest, corresponds to a tropical wet climate with mean annual precipitation averaging 2980 mm.y-1 (30-y period) with a 3-months dry season (< 100 mm.months-1) from mid-August to mid-November, and a one-month dry season in (wagner AFM 2011). 
+Elevation ranges between 5 and 50 m and mean annual temperature is 26°C. Soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
+The experiment corresponds to a network of twelve 6.25ha plots where three logging, thinning and fuelwood treatments on an intensity gradient. Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. The logging correspond to averages of 10 trees remove per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). Treatments T2 and T3 included besides logging of 10trees/ha the thinning by poison girdling. 
 
 ### Inventories protocol and dataset correction
+The study site corresponds to a tropical rain forest with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae. 
+In the twelve experimental plots all trees above 10 cm DBH are mapped and measured annually since 1984. 
+During the inventories trees are first identified with a vernacular name, assigned by the field team, and then with a scientific name, assigned by a botanist during regular botanical campaigns. 
+In 1984, specific vernacular names were given to 62 commercial or common species whereas two identifiers separating palm trees and trees were given to all other species. 
+Botanical campaigns to identify all trees at the species level started in 2003 and continued every 5 to 6 years. 
+In total, from 1984 to 2016, 848 species were identified in the whole dispositive. 
+The variability of botanical identification practices along time and among plots raised some methodological issues. 
+The first vernacular name attributed to trees, when not associated to a trustworthy botanical name thereafter, generate some taxonomic uncertainty. 
+To account for this taxonomic uncertainty in the composition and diversity metrics we used a Bayesian framework estimating the expectancy and variance of composition and diversity metrics. 
+The frameworks is based on a set of complete inventories extrapolated from the initial one through the replacement of vernacular name by botanical species. These replacement were made through a multinomial distribution M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name v and the species recorded in the inventory [*s~1~, s~2~, …, s~N~*]. 
+See appendix 1 and @Aubry-Kientz2013 Plos one  for the detailed methodology.
 
-\
-\
+The functional metrics used a set of 6 functional traits values representing leaf and wood economics.
+The trait database encompassed leaves thickness, toughness, total chlorophyll content, dry mass and specific leaf area (leaf area per unit dry mass; *SLA*),  and wood density and bark thickness. 
+Species trait values were assessed in sampling at each iteration one of the individuals measured for traits collection as part of the BRIDGE project (http://www.ecofog.gf/Bridge/index.htm), which allowed to account for intraspecific variability. 
+This project was carried out in nine permanent plots in French Guiana, including two in Paracou. 
+Individuals missing trait values were filled using multivariate imputation by chained equation (mice), restricted to the samples pertaining to the next higher taxonomic level to account for the phylogenetic signal of the traits. 
+The dataset comprised 257 botanical species. Whenever an inventoried species was not in the dataset a set of traits values was sampled among species of the same next higher taxonomic level. 
+All composition and diversity metrics correspond to the expectancy obtained after 50 iterations of the taxonomic uncertainty propagation framework and the missing trait values filling process. 
+Because of taxonomic uncertainty issues the taxonomic composition and diversity analysis were conducted at the genus level, knowing that diversity patterns remain consistent in this case.
 
 
 ### Composition and diversity metrics
 
-\
-\
+The analysis of taxonomic and functional composition of plots assemblages was visualized in a two-dimensional ordination space based on non-metric dimensional scaling of their floristic or functional composition. 
+Their evolution along time relative to initial condition was reported using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) similarity measures. 
+To determine whether plots composition converged to their initial condition we computed the distance to initial condition of the sampled years in the two-dimensional space. Additionally, the functional composition was analyzed through the trajectory along time of the community weighted means (CWM) for the 6 functional traits chosen. 
+To determine whether communities’ assembly deviated from the expectation of a random process we compared the observed similarity patterns to those generated by 50 repetitions of stochastic null models. 
+The null model for taxonomic composition randomly shuffled individuals among plots while preserving the overall species abundance and plots’ tree density. 
+The null model for functional composition produced random traits assemblages by permuting the set of functional traits values among species. 
 
-
+Plots taxonomic diversity corresponded to species Richness and the Hill number translation of Shannon and Simpson indices. These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q). 
+This order q grasps the balance between richness and evenness in the community as it determines the emphasis on common species in the diversity metric, with common species weighting more than rare ones when q increases. 
+The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on the 6 functional traits specific values.
 
 # Results
 
