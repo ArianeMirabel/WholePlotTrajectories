@@ -40,6 +40,7 @@ output:
 #     base_format: EcoFoG::article
 #     keep_tex: TRUE
 #  bookdown::word_document2
+# output_dir pour articles?
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
