@@ -30,17 +30,17 @@ It is a list of plot-specific matrices, following previous investigation suggest
 - *DataLifeTraits.csv*: csv file for the Hmax and seed mass class.
 
 - *TaxoComposition_ForGraphs*: Coordinates of inventories and plots in the 2 dimensions space from taxonomic composition NMDS. 
-Lists the coordinates along the various iteration: for now on, only 5 repetitions (becaus run locally).
+Lists the coordinates along the various iteration: for now on, only 5 repetitions (becaus run locally). **Figure 1 & 2 (a)**.
 
 - *FunctionalComposition_forGraphs*: Coordinates of inventories and plots in the 2 dimensions space from functional composition NMDS. 
-Lists the coordinates along the 50 iteration. Comes from the script: *FunctionalNMDS.R*
+Lists the coordinates along the 50 iteration. Comes from the script: *FunctionalNMDS.R*. **Figure 1 & 2 (b)**.
 
--*ReplacementTraj_ForGraphs*: List by treatment of plots Richness, Shannon and Simpson diversity along inventoried year. 
+- *ReplacementTraj_ForGraphs*: List by treatment of plots Richness, Shannon and Simpson diversity along inventoried year. 
 It gives the 0.025, 0.5 and 0.975 quantiles from 50 repetitions.
-Comes from the script: *ReplacementTraj_ForGraphs.R*
+Comes from the script: *ReplacementTraj_ForGraphs.R*. **Figure 3**.
 
--*FunctionalTraj_ForGraphs*: List by treatment of plots Rao diversity along inventoried year. 
-It gives the 0.025, 0.5 and 0.975 quantiles from *only 5 for now* repetitions.
+- *FunctionalTraj_ForGraphs*: List by treatment of plots Rao diversity along inventoried year. 
+It gives the 0.025, 0.5 and 0.975 quantiles from *only 5 for now* repetitions. **Figure 4**.
 
 
 ## Scripts file
