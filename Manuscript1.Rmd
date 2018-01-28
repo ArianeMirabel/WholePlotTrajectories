@@ -50,7 +50,7 @@ output:
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=TRUE, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '50%',fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -60,8 +60,8 @@ Library <- function(Packages) {
   invisible(sapply(Packages, InstallAndLoad))
 }
 # Ajouter les packages nécessaires ici
-source("DrawingTools.R")
-
+source("Scripts/DrawingTools.R")
+source("Scripts/GithubPages.R")
 ```
 
 # Introduction
@@ -144,7 +144,7 @@ The distancing was positively correlated woth disturbance intensity. From 20 yea
 The functional composition distancing from 1989 was also positively correlated with disturbance intensity and similarly stabilized and reduced for 5 of T1, T2 and T3 plots from 20 years after disturbance \autoref{Fig2}. 
 *The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
 
-```{r Fig1, echo=FALSE,fig.cap="Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
+```{r Fig1, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
 load("DB/FunctionalComposition_forGraph");
 load("DB/TaxoComposition_forGraphs")
 
@@ -155,7 +155,7 @@ FunCompo(MatrepFun)
 
 
 
-```{r Fig2, echo=FALSE,fig.cap="Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of **(a)** taxonomic composition at genus level and **(b)** functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes. "}
+```{r Fig2, out.width = '100%', fig.asp = 1.2/2, echo=FALSE,fig.cap="Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of **(a)** taxonomic composition at genus level and **(b)** functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes. "}
 
 TaxoDist(MatrepTaxo)
 FunDist(MatrepFun)
@@ -173,7 +173,7 @@ FunDist(MatrepFun)
 *Taxonomic diversity* _ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined in relation to the 1994 inventories \autoref{Fig4}. 
 *For the three indices the OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and a covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01).*
 
-```{r Fig4, echo=FALSE,fig.cap="Trajectories of the difference to reference inventory, 10 years after disturbance, until 30 years after disturbance for plots **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversity. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The average value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig4, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to reference inventory, 10 years after disturbance, until 30 years after disturbance for plots **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversity. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The average value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 load("DB/ReplacementTraj_ForGraphs")
 
 TaxoTraj(CompleteTaxo)
@@ -190,7 +190,7 @@ The functional diversity observed 30 years after disturbance remained higher for
 The slope of the initial diversity increase and the maximum diversity were both positively correlated with the disturbance intensity. 
 *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
 
-```{r Fig5, echo=FALSE,fig.cap="Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig5, fig.asp=1/1, echo=FALSE,fig.cap="Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 load("DB/FunctionalTraj_ForGraphs")
 
 FunTraj(CompleteFun)

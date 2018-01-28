@@ -53,3 +53,4 @@ It gives the 0.025, 0.5 and 0.975 quantiles from *only 5 for now* repetitions.
 
 - *DivTaxo_trajectories.R*: Taxonomic Richness, Shannon and Simpson diversity trajectories per plot along inventoried years.
 
+- *DrawingTools.R*: To alleviate the *Manuscript* file I defined separately the functions to draw the plots from dataset.
