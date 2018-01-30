@@ -90,12 +90,13 @@ The inventories were combined with one of the largest functional trait database 
 Paracou station in French Guiana (5°18'N and 52°53'W) is located in a lowland tropical rain forest corresponding to a tropical wet climate with mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) with a 3-months dry season (< 100 mm.months^-1^) from mid-August to mid-November, and a one-month dry season in March @Wagner2011. 
 Elevation ranges between 5 and 50 m and mean annual temperature is 26°C. 
 Soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
-The experiment corresponds to a network of twelve 6.25ha plots where three logging, thinning and fuelwood treatments on an intensity gradient. 
+The experiment corresponds to a network of twelve 6.25ha plots where three logging, thinning and fuelwood treatments on an intensity gradient.
 Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. 
 The logging correspond to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
 Treatments T2 and T3 included besides logging of 10trees/ha the thinning by poison girdling \ref{@Blanc2009}. 
 
 Table 1: Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+
 ----------------------------------------------------------------------------------------------------------------------
                       ***Timber***            ***Thinning***               ***Fuelwood***               *%AGB lost*
 -------------     --------------------     -------------------------     ------------------------     ---------------
