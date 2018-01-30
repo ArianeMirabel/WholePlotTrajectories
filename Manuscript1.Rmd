@@ -170,7 +170,7 @@ The functional composition distancing from the reference inventory was also posi
 *The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
 
 ```{r Fig1, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
-load("DB/FunctionalComposition_forGraph");
+load("DB/FunctionalComposition_forGraph")
 load("DB/TaxoComposition_forGraphs")
 
 TaxoCompo(MatrepTaxo)
@@ -230,6 +230,12 @@ FunTraj(CompleteFun)
 -	To go further we should focus on recruitment which would also highlight the mechanisms underlying these shifts and dynamics and explicit the environmental filter.
 
 
-# Appendix I _ Scheme of the taxonomic uncertainty handle
+`r if (knitr:::is_html_output()) '# References {-}'`
 
-![**Fig. A1 _ ** Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing).](BayesianSheme.png)
+---
+bibliography: ["references.bib"]
+biblio-style: "apalike"
+link-citations: true
+---
+
+

@@ -1,0 +1,8 @@
+---
+title: "Appendix I _ Scheme of the taxonomic uncertainty handle"
+author: "Ariane"
+date: "30 janvier 2018"
+output: html_document
+---
+
+![**Fig. A1 _ ** Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing).](BayesianSheme.png)
