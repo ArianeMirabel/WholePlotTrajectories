@@ -169,9 +169,9 @@ mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=-1,outer=TRUE)}
 FunTraj<-function(CompFun){plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
      xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
 axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
-mtext("Rao diversity",3,adj=0,line=1) 
-mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=2)
-mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=3)
+mtext("Rao diversity",3,adj=0,line=1,cex=1.5) 
+mtext("Years since disturbance",side=1,adj=1,line=2)
+mtext("Equivalent diversity",side=2,padj=1,line=3)
 
 invisible(lapply(1:length(CompFun),function(t){  
   
