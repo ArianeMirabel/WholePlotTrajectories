@@ -87,60 +87,85 @@ The inventories were combined with one of the largest functional trait database 
 # Material and Methods
 
 ### Study site 
-Paracou station in French Guiana (5°18'N and 52°53'W) encompasses a lowland tropical rain forest, corresponds to a tropical wet climate with mean annual precipitation averaging 2980 mm.y-1 (30-y period) with a 3-months dry season (< 100 mm.months-1) from mid-August to mid-November, and a one-month dry season in (wagner AFM 2011). 
-Elevation ranges between 5 and 50 m and mean annual temperature is 26°C. Soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
-The experiment corresponds to a network of twelve 6.25ha plots where three logging, thinning and fuelwood treatments on an intensity gradient. Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. The logging correspond to averages of 10 trees remove per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). Treatments T2 and T3 included besides logging of 10trees/ha the thinning by poison girdling. 
+Paracou station in French Guiana (5°18'N and 52°53'W) is located in a lowland tropical rain forest corresponding to a tropical wet climate with mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) with a 3-months dry season (< 100 mm.months^-1^) from mid-August to mid-November, and a one-month dry season in March @Wagner2011. 
+Elevation ranges between 5 and 50 m and mean annual temperature is 26°C. 
+Soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
+The experiment corresponds to a network of twelve 6.25ha plots where three logging, thinning and fuelwood treatments on an intensity gradient. 
+Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. 
+The logging correspond to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
+Treatments T2 and T3 included besides logging of 10trees/ha the thinning by poison girdling \ref{@Blanc2009}. 
+
+Table 1: Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+----------------------------------------------------------------------------------------------------------------------
+                      ***Timber***            ***Thinning***               ***Fuelwood***               *%AGB lost*
+-------------     --------------------     -------------------------     ------------------------     ---------------
+***Control***                                                                                              0
+
+***T1***            DBH ≥ 50 cm,
+                    commercial species,                                                                [12%-33%]
+                    ~ 10 trees/ha
+
+***T2***            DBH ≥ 50 cm,            DBH ≥ 40 cm,
+                    commercial species,    non-valuable species,                                        [33%-56%]
+                    ~ 10 trees/ha          ~ 30 trees/ha
+
+***T2***            DBH ≥ 50 cm,            DBH ≥ 50 cm,                   40 cm ≤ DBH ≤ 50 cm
+                    commercial species,    non-valuable species,           non-valuable species,        [33%-56%]
+                    ~ 10 trees/ha          ~ 15 trees/ha                   ~ 15 trees/ha
+----------------------------------------------------------------------------------------------------------------------
+
 
 ### Inventories protocol and dataset correction
 The study site corresponds to a tropical rain forest with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae. 
-In the twelve experimental plots all trees above 10 cm DBH are mapped and measured annually since 1984. 
-During the inventories trees are first identified with a vernacular name, assigned by the field team, and then with a scientific name, assigned by a botanist during regular botanical campaigns. 
+In the twelve experimental plots of the experiment, all trees above 10 cm DBH are mapped and measured annually since 1984. 
+During the inventories, trees are first identified with a vernacular name, assigned by the field team, and then with a scientific name, assigned by a botanist during regular botanical campaigns. 
 In 1984, specific vernacular names were given to 62 commercial or common species whereas two identifiers separating palm trees and trees were given to all other species. 
-Botanical campaigns to identify all trees at the species level started in 2003 and continued every 5 to 6 years. 
-In total, from 1984 to 2016, 848 species were identified in the whole dispositive. 
-The variability of botanical identification practices along time and among plots raised some methodological issues. 
-The first vernacular name attributed to trees, when not associated to a trustworthy botanical name thereafter, generate some taxonomic uncertainty. 
-To account for this taxonomic uncertainty in the composition and diversity metrics we used a Bayesian framework estimating the expectancy and variance of composition and diversity metrics. 
-The frameworks is based on a set of complete inventories extrapolated from the initial one through the replacement of vernacular name by botanical species. These replacement were made through a multinomial distribution M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name v and the species recorded in the inventory [*s~1~, s~2~, …, s~N~*]. 
-See appendix 1 and @Aubry-Kientz2013 Plos one  for the detailed methodology.
+The botanical campaigns to identify all trees at the species level started in 2003 and continued every 5 to 6 years.
+This inventory protocol rasied some mehodological issues given the variability of botanical identification practices along time and among plots. 
+Because vernacular name attributed to trees usually correspond to a variety of botanical species, some taxonomic uncertainty remains whenever a trustworthy botanical name cannot be given thereafter. 
+This taxonomic uncertainty was accounted for in the composition and diversity metrics throught a Bayesian framework estimating the expectancy and variance of composition and diversity metrics. 
+The uncertainty propagation is done by the extrapolation of complete inventories at genus level from real incomplete inventories, on the basis vernacular names replacement. The replacement of vernacular names uses a multinomial distribution M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory.
+See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
-The functional metrics used a set of 6 functional traits values representing leaf and wood economics.
-The trait database encompassed leaves thickness, toughness, total chlorophyll content, dry mass and specific leaf area (leaf area per unit dry mass; *SLA*),  and wood density and bark thickness. 
-Species trait values were assessed in sampling at each iteration one of the individuals measured for traits collection as part of the BRIDGE project (http://www.ecofog.gf/Bridge/index.htm), which allowed to account for intraspecific variability. 
-This project was carried out in nine permanent plots in French Guiana, including two in Paracou. 
-Individuals missing trait values were filled using multivariate imputation by chained equation (mice), restricted to the samples pertaining to the next higher taxonomic level to account for the phylogenetic signal of the traits. 
-The dataset comprised 257 botanical species. Whenever an inventoried species was not in the dataset a set of traits values was sampled among species of the same next higher taxonomic level. 
+The functional metrics used a set of 6 functional traits values representing traits of the leaf and wood economics and life history traits.
+The trait database encompassed 4 traits of the leaves: leaves thickness (*L_thick*), toughness (*L_tough*), total chlorophyll content (*LCC*) and specific leaf area (leaf area per unit dry mass; *SLA*), 2 traits of the stem: wood specific gravity (*SWG*) and bark thickness (*B_thick)* and two life-history traits: maximum specific height (*Hmax*) and the seed mass (*Smass*). 
+Traits database came from the BRIDGE project (http://www.ecofog.gf/Bridge/index.html) where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou.
+To account for intraspecific traits variability, trait values at species level were assessed in sampling one of the measured individuals for iteration rather than averaging at species level. 
+Missing trait values were filled using multivariate imputation by chained equation (mice), restricted to the samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of the functional traits. 
+The dataset comprised 257 botanical species. Whenever a species inventoried was not in the dataset, it was attributed a set of traits values randomly sampled among species of the same next higher taxonomic level. 
 All composition and diversity metrics correspond to the expectancy obtained after 50 iterations of the taxonomic uncertainty propagation framework and the missing trait values filling process. 
-Because of taxonomic uncertainty issues the taxonomic composition and diversity analysis were conducted at the genus level, knowing that diversity patterns remain consistent in this case.
 
 
 ### Composition and diversity metrics
 
-The analysis of taxonomic and functional composition of plots assemblages was visualized in a two-dimensional ordination space based on non-metric dimensional scaling of their floristic or functional composition. 
-Their evolution along time relative to initial condition was reported using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) similarity measures. 
-To determine whether plots composition converged to their initial condition we computed the distance to initial condition of the sampled years in the two-dimensional space. Additionally, the functional composition was analyzed through the trajectory along time of the community weighted means (CWM) for the 6 functional traits chosen. 
+The analysis of taxonomic and functional composition of plots along time was visualized in a two-dimensional ordination space based on non-metric dimensional scaling of succesive floristic or functional inventories. 
+Plots evolution along time was reportedcomparatively to the inventories in 1989, 5 years after disturbance, which correspond to first inventory with a sufficient degree of uncertainty (<30% of undetermined trees). The distancing relative to the reference 1989 inventory was reported using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) similarity measures. 
+The euclidean distance in the two-dimensional ordination space was used to visualize the distancing to reference inventory along time.
+The functional composition was besides completed by trajectory along time of the community weighted means (CWM) for the 8 leaf, stem and life history traits. 
 To determine whether communities’ assembly deviated from the expectation of a random process we compared the observed similarity patterns to those generated by 50 repetitions of stochastic null models. 
 The null model for taxonomic composition randomly shuffled individuals among plots while preserving the overall species abundance and plots’ tree density. 
 The null model for functional composition produced random traits assemblages by permuting the set of functional traits values among species. 
 
-Plots taxonomic diversity corresponded to species Richness and the Hill number translation of Shannon and Simpson indices. These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q). 
-This order q grasps the balance between richness and evenness in the community as it determines the emphasis on common species in the diversity metric, with common species weighting more than rare ones when q increases. 
+Plots taxonomic diversity corresponded to species Richness and the Hill number translation of Shannon and Simpson indices. 
+These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q). 
+This order q grasps the balance between richness and evenness in the community as it determines the weight of common species in the diversity metric, with an growing emphasis on dominant species as q increases. 
 The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on the 6 functional traits specific values.
 
 # Results
 
-Over time, 104423 trees and 697 botanical species were recorded. 
+Over time, 104423 trees and 696 botanical species were recorded. 
 The disturbance proved to significantly impact for more than 30 years the functional and taxonomic composition and diversity of the stands. 
-
+ 
 ### Taxonomic and functional composition
 
 *Composition trajectories* _ Trajectories of taxonomic and functional composition after disturbance were examined through the ordination of successive inventories from 1989 (5 years after disturbance) in a two-dimensional space based on NMDS analysis. 
 Classifications were based on either abundance-based Bray-Curtis \autoref{Fig1} or incidence-based Jaccard dissimilarity (data not shown).
 
-Both taxonomic and functional composition were substantially affected by disturbance and positively correlated with its intensity. 
-*The distance from the initial condition was significantly time-dependent (P<0.01).* The taxonomic composition remained significantly different from the 1989 inventory until 30 years for all disturbed plots \autoref{Fig1}. 
-The distancing was positively correlated woth disturbance intensity. From 20 years after disturbance though the distancing reduced, suggesting the beginning of a return toward the reference 1989 inventory \autoref{Fig1},\autoref{Fig2}. 
-The functional composition distancing from 1989 was also positively correlated with disturbance intensity and similarly stabilized and reduced for 5 of T1, T2 and T3 plots from 20 years after disturbance \autoref{Fig2}. 
+Both taxonomic and functional composition were substantially affected by disturbance and positively correlated with its intensity.
+*The distance from the initial condition was significantly time-dependent (P<0.01).* 
+The taxonomic composition remained significantly different from the 1989 reference inventory until 30 years for all disturbed plots \autoref{Fig1}. 
+From 20 years after disturbance, though, the distancing decreased which suggested a return toward the reference 1989 inventory and its resilience to disturbance \autoref{Fig1},\autoref{Fig2}. 
+The functional composition distancing from the reference inventory was also positively correlated with disturbance intensity and similarly stabilized or reduced (for 5 of T1, T2 and T3 plots) from 20 years after disturbance \autoref{Fig2}. 
 *The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
 
 ```{r Fig1, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
@@ -161,7 +186,7 @@ FunDist(MatrepFun)
 
 ```
 
-*Traits community weighted means* _ To complete the functional analysis the trajectories of the community weighted means (CWM) measured for the 6 functional traits at plot level \autoref{Fig3}.
+*Traits community weighted means* _ The trajectories of the community weighted means (CWM) of the 8 functional traits were measured at plot level \autoref{Fig3}.
 **To be coming**
 
 ```{r Fig3, echo=FALSE,fig.cap="Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
@@ -179,15 +204,15 @@ TaxoTraj(CompleteTaxo)
 
 ```
 
-The trajectories of the Richness, Shannon and Simpson differences to reference inventories in 1994 were rather even for 30 years after disturbance for the control plots whereas disturbed plots showed significant increase depending on the disturbance intensity \autoref{Fig4}. 
+The evolution along time of the difference of Richness, Shannon and Simpson diversity compared to reference inventories in 1989 remained even for 30 years after disturbance for the control plots whereas disturbed plots showed significant increase, positively correlated with the disturbance intensity \autoref{Fig4}. 
+The richness stabilized for all disturbed plots from 20 years after disturbance \autoref{Fig4}. 
+The Shannon and Simpson diversity also stabilized 20 years after disturbance for T1 and T2 plots \autoref{Fig4} whereas for 2 out of 3 plots T3 the Shannon and Simpson diversity continued increasing until 30 years after disturbance, illustrating a significant increase in communities’ evenness.
 
-The richness stabilized for all disturbed plots from 20 years after disturbance \autoref{Fig4}. The Shannon and Simpson diversity also stabilized 20 years after disturbance for T1 and T2 plots \autoref{Fig4} whereas for 2 out of 3 plots T3 the Shannon and Simpson diversity continued increasing until 30 years after disturbance, illustrating a significant increase in communities’ evenness.
-
-*Functional  diversity* _ The trajectories of plot 7 from the T1 disturbance treatment was discarded because of too high taxonomic uncertainty preventing correct analysis. 
-While the control plots showed an even trajectory until 30 years after disturbance, all disturbed plots displayed an increase of the functional diversity positively correlated to the disturbance intensity \autoref{Fig5}. 
-The functional diversity observed 30 years after disturbance remained higher for all disturbed plots compared to control ones, without clear distinction following the disturbance intensity. 
+*Functional  diversity* _ The evolution along time of the Rao functinal diversity compared to reference inventories in 1989 remained even all along the survey for the control plots. 
+All disturbed plots however showed an increase of the functional diversity that was positively correlated to the disturbance intensity \autoref{Fig5}. 30 after disturbance the diversity of disturbed plots remained significantly higher than this of control plots, thus whenever the initial disturbance intensity.
 The slope of the initial diversity increase and the maximum diversity were both positively correlated with the disturbance intensity. 
 *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
+The trajectories of plot 7 from the T1 disturbance treatment was discarded because of too high taxonomic uncertainty preventing correct analysis.  
 
 ```{r Fig5, fig.asp=1/1, echo=FALSE,fig.cap="Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 load("DB/FunctionalTraj_ForGraphs")
