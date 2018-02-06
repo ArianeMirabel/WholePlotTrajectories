@@ -1,5 +1,5 @@
 ---
-title: "Post-Disturbance Diversity Trajectories in a Neotropical Forest"
+title: "Post-Disturbance Tree Community Trajectories in a Neotropical Forest"
 author:
   - name: Ariane MIRABEL
     authsuperscript: 1*
@@ -69,8 +69,7 @@ source("Scripts/DrawingTools.R")
 
 # Introduction
 The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
-They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support nutrients, water and carbon cycles and ensure cultural and human well-being. 
-The demand for forests products and the shrink of unmanaged areas increased the human pressure on forests and currently threaten the maintenance of their structure, composition and function. 
+They provide not only wood but also multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support carbon, water and many nutrient cycles and ensure cultural and human well-being. The increasing demand for forests products and the resulting shrink of unmanaged areas increase the pressure on the remaining intact forest landscapes as well as threaten the maintenance of their structure, composition and functionning in the long term. 
 The increasing demand for forests products, land-use changes and other human disturbances along with substantial climatic changes make a crucial issue of understanding the response of forests dynamics to such disturbance regimes [@Gibson2011a; @Morales-Hidalgo2015]. 
 This has been addressed from the point of view of biomass production and carbon storage which resilience proved subjected to identified cyclic dynamics and therefore gives hope for the maintenance of forest ecosystem and their services. 
 The response of trees biological diversity however has been sparsely studied, although this diversity is a major determinant of forests productivity, stability and functioning as it ensures interspecific complementarity, enhances the use of resources and the store of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
