@@ -6,7 +6,7 @@ author:
   - name: Eric Marcon
     authsuperscript: 1
   - name: Bruno Hérault
-    authsuperscript: 2
+    authsuperscript: 2 3
 affiliation:
   - affsuperscript: 1
     dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles, Université de Guyane.
@@ -15,11 +15,15 @@ affiliation:
       97310 Kourou,
       France.
   - affsuperscript: 2
-    dptuniv: Department of Ecology, University of Edimburgh
+    dptuniv: Cirad, Univ montpellier, UR Forests & Societies.
     address: >
-      Street address,
-      Zip code,
-      Country.
+      Montpellier,
+      France.
+  - affsuperscript: 3
+    dptuniv: INPHB, Institut National Polytechnique Félix Houphouet-Boigny
+    address: >
+      Yamoussoukro,
+      Ivory Coast.
 corrauthor:
     email: ariane.mirabel@ecofog.gf
     url: http://www.ecofog.gf/spip.php?article47
