@@ -60,7 +60,7 @@ Library <- function(Packages) {
 }
 # Ajouter les packages nécessaires ici
 source("Scripts/DrawingTools.R")
-source("Scripts/GithubPages.R")
+#source("Scripts/GithubPages.R")
 ```
 
 # Introduction
