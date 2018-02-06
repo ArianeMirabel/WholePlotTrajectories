@@ -64,7 +64,7 @@ source("Scripts/DrawingTools.R")
 ```
 
 # Introduction
-The large areas covered with tropical forests worldwide hold crucial commercial, social and cultural value. 
+The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support nutrients, water and carbon cycles and ensure cultural and human well-being. 
 The demand for forests products and the shrink of unmanaged areas increased the human pressure on forests and currently threaten the maintenance of their structure, composition and function. 
 The increasing demand for forests products, land-use changes and other human disturbances along with substantial climatic changes make a crucial issue of understanding the response of forests dynamics to such disturbance regimes [@Gibson2011a; @Morales-Hidalgo2015]. 
