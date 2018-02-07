@@ -1,5 +1,5 @@
 # Whole Plot Trajectories
 
-Mon deuxieme chapitre
+Second chapter
 
-[Lecture](https://arianemirabel.github.io/WholePlotTrajectories/introduction.html)
+[Lecture](https://arianemirabel.github.io/WholePlotTrajectories/)
