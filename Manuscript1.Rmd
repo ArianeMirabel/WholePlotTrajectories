@@ -228,7 +228,8 @@ FunTraj(CompleteFun)
 ```
 
 # Discussion
--	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years 
+-	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years. 
+< Question Hubbel vs. Molino: IDH or not, if the composition is affected the changes are oriented then the IDH is valid. >
 -	Important differences among plots of same treatments: possible impact of initial diversity composition, local abiotic parameters (topography, soils, surrounding stands).   Impacts depend on the disturbance intensity, but further parameters may be involved. 
 -	The shift in functional composition differs from the null model: biotic and abiotic filters are at stake but only tangible from 10/15 years after logging. Discussion with Cannon, 1998: they found no different process than rarefaction for 8 years after logging, but the time might have been too short-> divergence due to recruitment and not rarefaction after random species disappearance. Same conclusions otherwise.
 -	Disturbance involves new filters for species settling in the stands, probably according to their functional strategy. Disturbance generates a functional shift of communities toward acquisitive strategies. Ecosystems function rely on abundant species: changes in stands functioning is then expected.  (Flores, 2006  for differential sapling success after disturbance).
