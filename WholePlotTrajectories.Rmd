@@ -79,7 +79,7 @@ Disturbance is defined as rapid changes in the amount and allocation of resource
 Although those changes proved impacting the proportion and identity of species, negligible or even positive impacts were highlighted when considering the community as a whole, in accordance with the intermediate disturbance hypothesis (IDH). 
 The IDH that predicts a maximized species diversity at intermediate level of disturbance, however, mainly rely on the study of species richness which gives limited or even misleading information on forests recovery and functioning.
 The mechanisms under which disturbance shapes communities diversity and structure involve the foster of certain species either stachastically, through the recruitment and dispersal limitation [@Hubbell1999] or determinisitcally through the selection of suited ecological types.
-Such deterministic selection is though to be driven by the trade-off between rapid growth and resources acquisition, therefore "acquisitive strategies" and slow growth with scarce resources [].
+Such deterministic selection is though to be driven by the trade-off between rapid growth and resources acquisition, therefore "acquisitive strategies" and slow growth with scarce resources [@Sheil2003].
 A way to disentangle the mechanisms of disturbance dynamics would then to identify the shifts in communities functional types definde by the acquisitive or conservative functional traits and by the reproductive strategy through seed and early stage traits [@TerSteege2001;@Reich2014;@Herault2011].
 Relevant functional types would be defined with the combination of resource acquisition traits: in that respect leaf and stem traits proved relevant in a large litterature [@Chave2009b;@Wright2004],and life history traits revealing the growth and reproductive strategy [@Westoby1998;@Herault2011]
 To have a detailed understanding of forests response to disturbance it is essential to identify the subsequent impact on species identity per se, which underlies any diversity change, as well as on richness, equitability and functional characteristics of the whole community.
@@ -238,9 +238,13 @@ FunTraj(CompleteFun)
 
 -	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years. 
 > Question Hubbel vs. Molino: IDH or not, if the composition is affected the changes are oriented then the IDH is valid.
-> Recovery of the composition, as in storm regime [@Burslem2000] the recovery is probably due to the coexistence of species. It is consistent with the seed characteristics that have high mass and then short dispersion distance
+> Recovery of the composition, probably not much external arrivals (seed mass characteristics as in storm regime [@Burslem2000] the recovery is probably due to the coexistence of species. Sometimes recovery is only due to resprouting and regrowth of species in place [@Zimmerman1994]
+> Higher seed mass = more sensitive to fragmentation because of the dispersers ecology [@Cramer2007]
+> Hubbell: identical species abundance repartition so the recruitment is random. This is the natural regime: we also proved that.The disturbance changes the natural disturbance regime?
 
 -	Important differences among plots of same treatments: possible impact of initial diversity composition, local abiotic parameters (topography, soils, surrounding stands). Impacts depend on the disturbance intensity, but further parameters may be involved. 
+> Composition can change the environmental recovery: resprouting and seedling dynamics are highly dependant of taxonomic composition [@Paciorek2000]
+> The recovery dynamics largely depend on the past disturbance regime also [@Burselm2000]
 
 -	The shift in functional composition differs from the null model: biotic and abiotic filters are at stake but only tangible from 10/15 years after logging. 
 > Discussion with Cannon, 1998: they found no different process than rarefaction for 8 years after logging, but the time might have been too short -> divergence due to recruitment and not rarefaction after random species disappearance. Same conclusions otherwise.
