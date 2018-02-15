@@ -3,9 +3,9 @@ title: "Post-Disturbance Tree Community Trajectories in a Neotropical Forest"
 author:
   - name: Ariane MIRABEL
     authsuperscript: 1*
-  - name: Eric Marcon
+  - name: Eric MARCON
     authsuperscript: 1
-  - name: Bruno Hérault
+  - name: Bruno HERAULT
     authsuperscript: 2 3
 affiliation:
   - affsuperscript: 1
@@ -235,6 +235,10 @@ FunTraj(CompleteFun)
 ```
 
 # Discussion
+
+The long-term survey of tropical forest plots after disturbance demonstrated a significant impact on stands composition and abundance distribution lasting for more than 30 years.
+Disturbance induced environmental filters favoring acquisitive functional types and enhancing communities evenness.
+Plots response was highly variable and might depend on its initial conditions.
 
 -	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years. 
 > Question Hubbel vs. Molino: IDH or not, if the composition is affected the changes are oriented then the IDH is valid.
