@@ -184,3 +184,22 @@ invisible(lapply(1:length(CompFun),function(t){
             col=rgb(0,0,0,alpha=0.1),border=NA)
   }))
 }))}
+
+SeedMassProp<-function(SeedMass){
+  par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)
+  invisible(lapply(1:5,function(clas){
+    Smass_class<-lapply(SeedMass,function(pl){return(t(pl[clas,,]))})
+    plot(colnames(Smass_class[[1]]),Smass_class[[1]]["0.5",], ylim=c(min(unlist(Smass_class)),max(unlist(Smass_class))),
+         type="n",xlab="years",ylab="")
+    mtext(paste("class",clas),3,cex=1,line=1)
+    invisible(lapply(1:4,function(tr){
+      invisible(lapply(treatments[[tr]],function(plo){
+        lines(colnames(Smass_class[[plo]]),Smass_class[[plo]]["0.5",],col=ColorsTr[tr],lwd=2)
+        polygon(c(colnames(Smass_class[[plo]]),rev(colnames(Smass_class[[plo]]))),
+                c(Smass_class[[plo]]["0.05",],rev(Smass_class[[plo]]["0.975",])),
+                col=rgb(0,0,0,alpha=0.1),border=NA)}))
+    }))
+  }))
+mtext("Seed mass, class proportions",line=2,adj=0,outer=TRUE)
+mtext("Years since disturbance",side=1,line=1,adj=1,cex=0.9,outer=TRUE)
+}
