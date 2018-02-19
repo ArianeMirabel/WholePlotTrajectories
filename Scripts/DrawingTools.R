@@ -29,7 +29,6 @@ invisible(lapply(1:length(treatments),function(tr){
 }))
 
 mtext("NMDS 1",side=1,line=2,cex=0.8)
-mtext("Euclidean distance from 1989 inventory",side=2,padj=0,line=3,cex=0.9)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
 mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
 }
@@ -135,7 +134,7 @@ FunDist<-function(Data_FunComp){
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
-TaxoTraj<-function(CompTaxo){par(mfrow=c(1,3),oma=c(1,1,1,1),no.readonly=TRUE)
+TaxoTraj<-function(CompTaxo){par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
 for(q in 1:3){     
   Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
   Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
@@ -164,7 +163,7 @@ for(q in 1:3){
   }))
 }
 mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
-mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=-1,outer=TRUE)}
+mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
 
 FunTraj<-function(CompFun){
   plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
@@ -200,6 +199,6 @@ SeedMassProp<-function(SeedMass){
                 col=rgb(0,0,0,alpha=0.1),border=NA)}))
     }))
   }))
-mtext("Seed mass, class proportions",line=2,adj=0,outer=TRUE)
-mtext("Years since disturbance",side=1,line=1,adj=1,cex=0.9,outer=TRUE)
+mtext("Proportion of seed mass classes",line=2,adj=0,outer=TRUE,cex=0.9)
+mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
 }
