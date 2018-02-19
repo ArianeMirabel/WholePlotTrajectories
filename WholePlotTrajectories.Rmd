@@ -246,8 +246,9 @@ FunTraj(CompleteFun)
 
 # Discussion
 
-Our study underlined the significant but contrasting impact of disturbance on tropical forests taxonomic and functional diversity.
-Specifically we unveiled an important decoupling between taxonomic evenness and functional characteristic of the communities, and by extension ecosystem functioning.
+Our study underlined the significant impact of disturbance on tropical forests communities but a contrasting response of taxonomic and functional diversity.
+Specifically,  it unveiled the decoupling between trajectories of taxonomic evenness and their functional diversity and dominant characteristics.
+This decoupling confirms the independence for tropical forests between the processes grasped through the studied functional traits (primary productivity, water and nutrient cycling, etc.) and communities composition and evenness as it was suggested .  
 This highlighted the functional overlap between species in tropical forests,typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
 
 In line with the assumtions of the IDH our 30 years survey confirmed the significant increase of communities evenness and functional richness after disturbance.
