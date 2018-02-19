@@ -248,8 +248,9 @@ FunTraj(CompleteFun)
 
 Our study underlined the significant impact of disturbance on tropical forests communities but a contrasting response of taxonomic and functional diversity.
 Specifically,  it unveiled the decoupling between trajectories of taxonomic evenness and their functional diversity and dominant characteristics.
-This decoupling confirms the independence for tropical forests between the processes grasped through the studied functional traits (primary productivity, water and nutrient cycling, etc.) and communities composition and evenness as it was suggested .  
+This decoupling confirms the "vegetation quantity effect" suggesting that communities functional characteristics are determined by dominant species rather that subtle changes in biodiversity [@reftobefound]. This would result in a faster recovery of ecosystem processes rates than in communities ocmposition and diversity as it mas largely demonstrated for grasslands [@Tilman1997; @Mokany2008; @Mouillot2011 *in Lohbeck2015*] and recently proved for tropical forests [@Lohbeck2015].  
 This highlighted the functional overlap between species in tropical forests,typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
+Ecosystem processes graped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
 In line with the assumtions of the IDH our 30 years survey confirmed the significant increase of communities evenness and functional richness after disturbance.
 As it was demonstrated for the conditions 10 years after disturbance [@Molino2001] the directional changes in communities composition reflected environmental filtering after disturbance which would support the IDH as demonstrated in [@Molino2001] rather than pure stochastic dynamics as suggested in [@Hubbell1998].
@@ -266,8 +267,10 @@ This suggested some functional overlap in the pre-disturbance condition (*i.e* t
 Such overlap and maybe functional versatility was already observed in highly diverse ecosystems [@Bellwood2006] and sugegsted as one mechanisms for high diversity maintenance.
 Decoupled taxonomic and functional trajectories questions to what extent communities recovery is completed: ecosystem functioning might be quickly recoverd, and taxonomic composition following suit although along for much longer, but the resilience of the community itself might be altered as functional overlap themselves would be lost.
 Along with probably other environmental modifications (like soils nutrient cycling and compaction [@Olander2005]) with alteration of communities resilience makes us expect different trajectories after subsequent disturbance.
-As disturbance seemed to update communities toward more disturbance resistant ones [@Haddad2008] it is possible that eventually the disturbance regie observed has set another permanent condition, which would only be more diverse if good competitors, poor disturbance resitant survive.
-> (Flores, 2006  for differential sapling success after disturbance)
+As disturbance seemed to update communities toward more disturbance resistant ones [@Haddad2008] it is possible that eventually the disturbance regime observed has set another permanent condition, which would only be more diverse if good competitors, poor disturbance resitant survive.
+We assume that such post-disturbance forest community might have the same functioning, as suggested by the functional trajectories, but composition displays a poor recovery, especially regarding species contingent to undisturbed forests or different life forms as lianas or epiphytes that have not been monitored here [@Martin2013].
+Although forests functioning and processes seemed likely to recover after the range of disturbance studied, the hampered recovery of communities composition might jeopardize the conservation of some species, therefore threatening the global biodiversity [@Gardner2007].
+Additionally to threats on particular species conservation the consequences of biodiversity changes on hyper-diverse ecosystems might reveal dramatic, specifically in impairing ecosystems resilience and resistance to further disturbance [@Trenbath1999;@Elmqvist2003;@Diaz2006].
 
 -	Important differences among plots of same treatments: possible impact of initial diversity composition, local abiotic parameters (topography, soils, surrounding stands). Impacts depend on the disturbance intensity, but further parameters may be involved. 
 
