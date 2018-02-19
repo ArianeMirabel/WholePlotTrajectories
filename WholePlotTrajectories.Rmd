@@ -3,9 +3,9 @@ title: "Post-Disturbance Tree Community Trajectories in a Neotropical Forest"
 author:
   - name: Ariane MIRABEL
     authsuperscript: 1*
-  - name: Eric MARCON
+  - name: Eric Marcon
     authsuperscript: 1
-  - name: Bruno HERAULT
+  - name: Bruno Hérault
     authsuperscript: 2 3
 affiliation:
   - affsuperscript: 1
@@ -53,7 +53,7 @@ output:
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
+knitr::opts_chunk$set(cache=T, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -75,14 +75,16 @@ This has been addressed from the point of view of biomass production and carbon 
 The response of trees biological diversity however has been sparsely studied, although this diversity is a major determinant of forests productivity, stability and functioning as it ensures interspecific complementarity, enhances the use of resources and the store of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
 Maintain the integrity of forests functioning thus requires highlighting the impacts and underlying mechanisms of disturbance on trees diversity and question the extent of forests resilience. 
 
-Disturbance is defined as rapid changes in the amount and allocation of resources such as variation in the availability of light, the fluxes of heat and water, etc. It influences the environment and competition among species and combineds with environmental filters that select the pool of species fitting the environmental context to shape the composition and structure of communities in the long term: understanding ecosystems requires understanding their disturbance history [@White2001]. 
+Disturbance is defined as rapid changes in the amount and allocation of resources such as variation in the availability of light, the fluxes of heat and water, etc. 
+It influences the environment and competition among species and combineds with environmental filters that select the pool of species fitting the environmental context to shape the composition and structure of communities in the long term: understanding ecosystems requires understanding their disturbance history [@White2001]. 
 Although those changes proved impacting the proportion and identity of species, negligible or even positive impacts were highlighted when considering the community as a whole, in accordance with the intermediate disturbance hypothesis (IDH). 
 The IDH that predicts a maximized species diversity at intermediate level of disturbance, however, mainly rely on the study of species richness which gives limited or even misleading information on forests recovery and functioning.
-The mechanisms under which disturbance shapes communities diversity and structure involve the foster of certain species either stachastically, through the recruitment and dispersal limitation [@Hubbell1999] or determinisitcally through the selection of suited ecological types.
-Such deterministic selection is though to be driven by the trade-off between rapid growth and resources acquisition, therefore "acquisitive strategies" and slow growth with scarce resources [@Sheil2003].
+The mechanisms under which disturbance shapes communities diversity and structure involve the foster of certain species either stochastically, through the recruitment and dispersal limitation [@Hubbell1999] or determinisitcally through the selection of suited ecological types.
+Disturbance indeed in the context of old growth, stable forests where competitive exclusion favors best competitor species causes a shift toward disturbance resistant species with rapid growth and efficient resources acquisition [@Haddad2008].
+This is illustrated by a shift from slow growth with scarce resources and high competitive ability, "conservative strategies", to fast growth with prolific resourcesn, "acquisitive strategies".
 A way to disentangle the mechanisms of disturbance dynamics would then to identify the shifts in communities functional types definde by the acquisitive or conservative functional traits and by the reproductive strategy through seed and early stage traits [@TerSteege2001;@Reich2014;@Herault2011].
 Relevant functional types would be defined with the combination of resource acquisition traits: in that respect leaf and stem traits proved relevant in a large litterature [@Chave2009b;@Wright2004],and life history traits revealing the growth and reproductive strategy [@Westoby1998;@Herault2011]
-To have a detailed understanding of forests response to disturbance it is essential to identify the subsequent impact on species identity per se, which underlies any diversity change, as well as on richness, equitability and functional characteristics of the whole community.
+Beyond diversity indices it is essential to analyse changes in taxonomic composition so that the impact on species per se and their particular impact on ecosystem can be followed [@╔Lavorel2002;@Bellwood2006;@Baraloto2012a] along with the ecological rules shaping communities assembly and abundance distribution [@Magurran1988].
 
 
 Such combination of composition and diversity in browsing all facets of stands assemblage would highlight their resilience to perturbation, and its determinant and underlying ecological processes.
@@ -203,32 +205,40 @@ FunDist(MatrepFun)
 *Traits community weighted means* _ The trajectories of the community weighted means (CWM) of the 8 functional traits were measured at plot level \autoref{Fig3}.
 **To be coming**
 
-```{r Fig3, echo=FALSE,fig.cap="Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig3, echo=FALSE, fig.cap="Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+
+
 ```
 
+```{r Fig4, echo=FALSE, out.width='100%', fig.asp=2/5,fig.cap="Trajectories of seed mass classes proportions until 30 years after disturbance. Plot treatments are indicated with line colors in green for control, blue for T1, orange for T2 and red for T3. The proportion reported are the median values (solid line) and the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation. only species which seed mass values were reported are considered (*i.e* 414 out of 696 species recorded in total)."}
+load("DB/Smass_ClassProp")
+
+SeedMassProp(Smass)
+
+```
 ### Disturbance impact on diversity
 
-*Taxonomic diversity* _ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined in relation to the 1994 inventories \autoref{Fig4}. 
+*Taxonomic diversity* _ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined in relation to the 1994 inventories \autoref{Fig5}. 
 *For the three indices the OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and a covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01).*
 
-```{r Fig4, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to reference inventory, 10 years after disturbance, until 30 years after disturbance for plots **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversity. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The average value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig5, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to reference inventory, 10 years after disturbance, until 30 years after disturbance for plots **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversity. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The average value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 load("DB/ReplacementTraj_ForGraphs")
 
 TaxoTraj(CompleteTaxo)
 
 ```
 
-The evolution along time of the difference of Richness, Shannon and Simpson diversity compared to reference inventories in 1989 remained even for 30 years after disturbance for the control plots whereas disturbed plots showed significant increase, positively correlated with the disturbance intensity \autoref{Fig4}. 
-The richness stabilized for all disturbed plots from 20 years after disturbance \autoref{Fig4}. 
-The Shannon and Simpson diversity also stabilized 20 years after disturbance for T1 and T2 plots \autoref{Fig4} whereas for 2 out of 3 plots T3 the Shannon and Simpson diversity continued increasing until 30 years after disturbance, illustrating a significant increase in communities’ evenness.
+The evolution along time of the difference of Richness, Shannon and Simpson diversity compared to reference inventories in 1989 remained even for 30 years after disturbance for the control plots whereas disturbed plots showed significant increase, positively correlated with the disturbance intensity \autoref{Fig5}. 
+The richness stabilized for all disturbed plots from 20 years after disturbance \autoref{Fig5}. 
+The Shannon and Simpson diversity also stabilized 20 years after disturbance for T1 and T2 plots \autoref{Fig5} whereas for 2 out of 3 plots T3 the Shannon and Simpson diversity continued increasing until 30 years after disturbance, illustrating a significant increase in communities’ evenness.
 
 *Functional  diversity* _ The evolution along time of the Rao functinal diversity compared to reference inventories in 1989 remained even all along the survey for the control plots. 
-All disturbed plots however showed an increase of the functional diversity that was positively correlated to the disturbance intensity \autoref{Fig5}. 30 after disturbance the diversity of disturbed plots remained significantly higher than this of control plots, thus whenever the initial disturbance intensity.
+All disturbed plots however showed an increase of the functional diversity that was positively correlated to the disturbance intensity \autoref{Fig6}. 30 after disturbance the diversity of disturbed plots remained significantly higher than this of control plots, thus whenever the initial disturbance intensity.
 The slope of the initial diversity increase and the maximum diversity were both positively correlated with the disturbance intensity. 
 *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
 The trajectories of plot 7 from the T1 disturbance treatment was discarded because of too high taxonomic uncertainty preventing correct analysis.  
 
-```{r Fig5, fig.asp=1/1, echo=FALSE,fig.cap="Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig6, fig.asp=1/1, echo=FALSE,fig.cap="Trajectories of the plots Rao functional diversity from10 to 30 years after disturbance. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The value of the 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness) are drawn along with the 0.025 and 0.975 percentile observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
 load("DB/FunctionalTraj_ForGraphs")
 
 FunTraj(CompleteFun)
@@ -236,34 +246,32 @@ FunTraj(CompleteFun)
 
 # Discussion
 
-The long-term survey of tropical forest plots after disturbance demonstrated a significant impact on stands composition and abundance distribution lasting for more than 30 years.
-Disturbance induced environmental filters favoring acquisitive functional types and enhancing communities evenness.
-Plots response was highly variable and might depend on its initial conditions.
+Our study underlined the significant but contrasting impact of disturbance on tropical forests taxonomic and functional diversity.
+Specifically we unveiled an important decoupling between taxonomic evenness and functional characteristic of the communities, and by extension ecosystem functioning.
+This highlighted the functional overlap between species in tropical forests,typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
 
--	The disturbance significantly impact the functional and taxonomic composition and diversity of the stands for more than 30 years. 
-> Question Hubbel vs. Molino: IDH or not, if the composition is affected the changes are oriented then the IDH is valid.
-> Recovery of the composition, probably not much external arrivals (seed mass characteristics as in storm regime [@Burslem2000] the recovery is probably due to the coexistence of species. Sometimes recovery is only due to resprouting and regrowth of species in place [@Zimmerman1994]
-> Higher seed mass = more sensitive to fragmentation because of the dispersers ecology [@Cramer2007]
-> Hubbell: identical species abundance repartition so the recruitment is random. This is the natural regime: we also proved that.The disturbance changes the natural disturbance regime?
+In line with the assumtions of the IDH our 30 years survey confirmed the significant increase of communities evenness and functional richness after disturbance.
+As it was demonstrated for the conditions 10 years after disturbance [@Molino2001] the directional changes in communities composition reflected environmental filtering after disturbance which would support the IDH as demonstrated in [@Molino2001] rather than pure stochastic dynamics as suggested in [@Hubbell1998].
+The trajectories shaping a unimodal response to disturbance suggested the recovery of communities initial state as it was already suggested by the previous studies from the same site 10 years [@Molino2001] and 20 years [@Baraloto2012a] after disturbance.
+Only one plot displayed a still increasing Simpson diversity, and all plots showed a stabilization or a decrease of the composition distancing from 1989 inventories. 
+This recovery corroborate previous post-disturbance dynamics observed in a Bornean rainforest [@Cannon1998] where at large scale the richness was preserved although it was diminished locally or in Solomon islands where stands demonstrated a fast recovery and identical composition [@Burselm2000].
+
+Although recovery seemed on its way the trajectories revealed significant changes in the ecological rules shaping communities over the 30 years of survey.
+Disturbance is thought to shift exclusive competition favoring competitive species to environmental filtering selecting acquisitive and disturbance resistant species [@TerSteege2001;@Flores2006;@Haddad2008]
+The comparison of observed trajectories to a null model with random traits set shuffling showed an oriented functional shift after disturbance which suggest additional biotic and abiotic filters for the 10 to 15 years after disturbance.
+In particular this is demonstrated by the evolution of seed mass classes proportions revealing a clear increase in small seeded and then large dispersive species.
+Faster than for taxonomic composition and diversity though, functional characteristic returned to their initial values and the values observed for control plots.
+This suggested some functional overlap in the pre-disturbance condition (*i.e* the usual tropical forests conditions). 
+Such overlap and maybe functional versatility was already observed in highly diverse ecosystems [@Bellwood2006] and sugegsted as one mechanisms for high diversity maintenance.
+Decoupled taxonomic and functional trajectories questions to what extent communities recovery is completed: ecosystem functioning might be quickly recoverd, and taxonomic composition following suit although along for much longer, but the resilience of the community itself might be altered as functional overlap themselves would be lost.
+Along with probably other environmental modifications (like soils nutrient cycling and compaction [@Olander2005]) with alteration of communities resilience makes us expect different trajectories after subsequent disturbance.
+As disturbance seemed to update communities toward more disturbance resistant ones [@Haddad2008] it is possible that eventually the disturbance regie observed has set another permanent condition, which would only be more diverse if good competitors, poor disturbance resitant survive.
+> (Flores, 2006  for differential sapling success after disturbance)
 
 -	Important differences among plots of same treatments: possible impact of initial diversity composition, local abiotic parameters (topography, soils, surrounding stands). Impacts depend on the disturbance intensity, but further parameters may be involved. 
-> Composition can change the environmental recovery: resprouting and seedling dynamics are highly dependant of taxonomic composition [@Paciorek2000]
-> The recovery dynamics largely depend on the past disturbance regime also [@Burselm2000]
 
--	The shift in functional composition differs from the null model: biotic and abiotic filters are at stake but only tangible from 10/15 years after logging. 
-> Discussion with Cannon, 1998: they found no different process than rarefaction for 8 years after logging, but the time might have been too short -> divergence due to recruitment and not rarefaction after random species disappearance. Same conclusions otherwise.
-> hubbel stop the observation 13 years after disturbance, which is very short [@Hubbell1999;@Sheil2003], and according to our observatoin this is not the peak period yet
-
--	Disturbance involves new filters for species settling in the stands, probably according to their functional strategy. Disturbance generates a functional shift of communities toward acquisitive strategies. Ecosystems function rely on abundant species: changes in stands functioning is then expected.  
-> (Flores, 2006  for differential sapling success after disturbance)
-> typical pattern of the IDH [@Sheil2003] with an initial rise of the diversity followed by a decline through compoetitive domination. IDH is a regression to previous successional states and the more intense the logging the further we go back.The overall diversit increases because the IDH is patchy
-> Acquisitive like functional traits associated with higher diversity and disturbance dynamics [@TerSteege2001]. Increase in functional diversity correlated with shifts toward more disturbance-like functional traits.
-
--	If the recovery is not achieved 30 years after disturbance, it is on the way to. Only one plot displayed a still increasing Simpson diversity, and all plots showed a stabilization or a decrease of the composition distancing from 1989 inventories. however this is the impact of a single disturbance event: the repetition may have different impact (@Olander2005 demonstrated the impact of logging on soils nutrient and compaction)
-> the IDH involves a unimodal response to disturbance [@Sheil2003] and the functional strategy follows this pattern, however the composition still didn't recover,neither did the taxo diversity. Functioning recovering faster than taxo?
-
--	To go further we should focus on recruitment which would also highlight the mechanisms underlying these shifts and dynamics and explicit the environmental filter.
-> Discussion about the composition impact: do we regenerate SB and species from old-growth forest (see [@Sheil2003] for discussion).
+-	To go beyond whole community diversity and highlight the ecological mechanisms behind communities assembly and repond to the question of their resilience we should focus on recruitment.
+It would also refine the role of environmental filters shaping communities assembly.
 
 
 `r if (knitr:::is_html_output()) '# References {-}'`
@@ -273,5 +281,4 @@ bibliography: ["references.bib"]
 biblio-style: "apalike"
 link-citations: true
 ---
-
 

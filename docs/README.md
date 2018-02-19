@@ -2,4 +2,4 @@
 
 Second chapter
 
-[Lecture](https://arianemirabel.github.io/WholePlotTrajectories/introduction.html)
+[Lecture](https://arianemirabel.github.io/WholePlotTrajectories/)
