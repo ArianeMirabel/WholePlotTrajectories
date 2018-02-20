@@ -184,6 +184,27 @@ invisible(lapply(1:length(CompFun),function(t){
   }))
 }))}
 
+CWMdraw<-function(Cwm){
+  par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
+invisible(lapply(colnames(Cwm[[1]]),function(trait){
+  Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
+  plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
+  mtext(trait,3,cex=0.8,adj=0,line=0.5)
+  
+  invisible(lapply(1:4,function(tr){
+    toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
+    invisible(lapply(toplot,function(plo){
+      lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=2)
+      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+      
+    }))
+  }))
+}))
+mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
+mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
+}
+
 SeedMassProp<-function(SeedMass){
   par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)
   invisible(lapply(1:5,function(clas){

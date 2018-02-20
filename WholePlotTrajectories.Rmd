@@ -53,7 +53,7 @@ output:
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=T, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
+knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -68,26 +68,30 @@ source("Scripts/DrawingTools.R")
 ```
 
 # Introduction
-The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
-They provide not only wood but also multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support carbon, water and many nutrient cycles and ensure cultural and human well-being. The increasing demand for forests products and the resulting shrink of unmanaged areas increase the pressure on the remaining intact forest landscapes as well as threaten the maintenance of their structure, composition and functionning in the long term. 
-The increasing demand for forests products, land-use changes and other human disturbances along with substantial climatic changes make a crucial issue of understanding the response of forests dynamics to such disturbance regimes [@Gibson2011a; @Morales-Hidalgo2015]. 
-This has been addressed from the point of view of biomass production and carbon storage which resilience proved subjected to identified cyclic dynamics and therefore gives hope for the maintenance of forest ecosystem and their services. 
-The response of trees biological diversity however has been sparsely studied, although this diversity is a major determinant of forests productivity, stability and functioning as it ensures interspecific complementarity, enhances the use of resources and the store of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
-Maintain the integrity of forests functioning thus requires highlighting the impacts and underlying mechanisms of disturbance on trees diversity and question the extent of forests resilience. 
 
-Disturbance is defined as rapid changes in the amount and allocation of resources such as variation in the availability of light, the fluxes of heat and water, etc. 
-It influences the environment and competition among species and combineds with environmental filters that select the pool of species fitting the environmental context to shape the composition and structure of communities in the long term: understanding ecosystems requires understanding their disturbance history [@White2001]. 
-Although those changes proved impacting the proportion and identity of species, negligible or even positive impacts were highlighted when considering the community as a whole, in accordance with the intermediate disturbance hypothesis (IDH). 
-The IDH that predicts a maximized species diversity at intermediate level of disturbance, however, mainly rely on the study of species richness which gives limited or even misleading information on forests recovery and functioning.
-The mechanisms under which disturbance shapes communities diversity and structure involve the foster of certain species either stochastically, through the recruitment and dispersal limitation [@Hubbell1999] or determinisitcally through the selection of suited ecological types.
-Disturbance indeed in the context of old growth, stable forests where competitive exclusion favors best competitor species causes a shift toward disturbance resistant species with rapid growth and efficient resources acquisition [@Haddad2008].
-This is illustrated by a shift from slow growth with scarce resources and high competitive ability, "conservative strategies", to fast growth with prolific resourcesn, "acquisitive strategies".
-A way to disentangle the mechanisms of disturbance dynamics would then to identify the shifts in communities functional types definde by the acquisitive or conservative functional traits and by the reproductive strategy through seed and early stage traits [@TerSteege2001;@Reich2014;@Herault2011].
-Relevant functional types would be defined with the combination of resource acquisition traits: in that respect leaf and stem traits proved relevant in a large litterature [@Chave2009b;@Wright2004],and life history traits revealing the growth and reproductive strategy [@Westoby1998;@Herault2011]
-Beyond diversity indices it is essential to analyse changes in taxonomic composition so that the impact on species per se and their particular impact on ecosystem can be followed [@Lavorel2002;@Bellwood2006;@Baraloto2012a] along with the ecological rules shaping communities assembly and abundance distribution [@Magurran1988].
+The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
+They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support carbon, water and nutrient cycles, and ensure cultural and human well-being. 
+The increasing demand for forests products reducing unmanaged areas along with climatic changes heightened the pressure on remaining forests [@Gibson2011a; @Morales-Hidalgo2015]. 
+Communities structure, composition and functioning are thus at stake, as well as the dynamics that drive them in the long term [@Anderson-Teixeira2013;@Sist2015].
+
+Tropical forests are subject to a wide range of disturbance, defined as rapid changes in the amount and allocation of resources such as light, heat and water fluxes, etc.
+Those institute the intrinsinc dynamical state of forest communities in changing environmental conditions and interspecific relations which make the understanding of communities response to disturbance a cornerstone for ecology, modelling and management [@White2001;@Chazdon2003a].
+Disturbance recovery have been largely studied regarding structural parameters as aboveground biomass, tree height or stem density which display rapid and measurable changes related to ecosystems functioning [@Denslow2000;@Blanc2009;@Rutishauser2016].
+Species composition and diversity also are surely impacted by the environmental changes after disturbance and the subsequent modification of species selection and competition.
+The diversity and composition of communities are crucial for their functioning and dynamics as they determine their productivity, stability and functioning through interspecific complementarity which enhances the use of resources and the storing of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
+
+Although inescapable for the understanding of ecological rules shaping tropical forest communities, the long-term response of communities composition and diversity to disturbance remains unclear.
+Until now, short-term dynamics demonstrated negligible or even positive impacts on communities diversity in accordance with the intermediate disturbance hypothesis (IDH) [@Molino2001;@Kariuki2006a;@Berry2008a].
+The IDH predicting a maximized species diversity at intermediate level of disturbance, however, was mainly tested through species richness which gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
+Communities response should encompass taxonomic composition and evenness which only can assess conservation issues and ecological rules shaping abundance distribution[@Magurran1988;@Lavorel2002;@Bellwood2006].
+Beyond taxonomic metrics, communities recovery should also encompass functional diversity and composition metrics [@Moretti2009;@Baraloto2012a].
+Functional traits, the species biological attributes that relate to individuals fitness and ecosystem properties [@Violle2007b;@Scheiter2013], were largely adopted and integrated within a workable framework to assess forests dynamics and functioning [@Diaz2005;@Villeger2008a].
+Numerous studies revealed some major functional traits determining species ecology and performance that are thus relevant to reveal the ecological rules shaping species assembly: post-disturbance trajectories in tropical rainforests for example, are assumed to be driven by environmental filters that foster disturbance resistant species with rapid growth and efficient resources acquisition [@Molino2001;@Haddad2008].
+This would be reflected by a shift from "conservative" species displaying long-lived, dense tissues growing slowly but with scarce resources, to "acquisitive" species with fast-growing, light tissues allowing fast resources acquisition [@TerSteege2001;@Reich2014;@Herault2011].
+In this perspective a combination of resource acquisition traits (leaf area,density and chlorophyll content and stem specific gravity and bark thickness) and of life history traits revealing the growth and reproductive strategy (seed mass and maximum height) already proved relevant [@Chave2009b;@Wright2004;@Westoby1998].
 > See Garnier 2001a for the description of traits functional impact
 
-Since the functional traits chosen showed low intraspecific compared to interspecific variability [@Garnier2001a;@Westoby2006a] it its valid to assess the functional trajectories of communities through the functional values observed or the species assembly.
+>Since the functional traits chosen showed low intraspecific compared to interspecific variability >[@Garnier2001a;@Westoby2006a] it its valid to assess the functional trajectories of communities through the >functional values observed or the species assembly.
 
 Such combination of composition and diversity in browsing all facets of stands assemblage would highlight their resilience to perturbation, and its determinant and underlying ecological processes.
 Disturbance survey would first assess species turnover and communities convergence through stands taxonomic composition and unveil environmental filters through functional composition that is based on the biological attributes of plants. 
@@ -203,10 +207,11 @@ FunDist(MatrepFun)
 ```
 
 *Traits community weighted means* _ The trajectories of the community weighted means (CWM) of the 8 functional traits were measured at plot level \@ref(fig:Fig3).
-**To be coming**
 
-```{r Fig3, echo=FALSE, fig.cap="Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+```{r Fig3, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the CWM until 30 years after disturbance of 4 leaf traits (Leaf thickness, chlorophyll content, toughness and specific area) and the 2 stem traits (Wood density and barck thickness). The CWM were measured at plot level and averaged among plots of the same treatment (green for control, blue for T1,orange for T2 and red for T3). The average CWM per treatment are drawn (solid line) drawn along with the 0.025 and 0.975 percentile (gray envelope) observed for 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes."}
+load("DB/CWM")
 
+CWMdraw(CWM)
 
 ```
 
@@ -260,11 +265,11 @@ In line with the assumtions of the IDH the observed diversity trajectories confi
 The consistency of the IDH has been debated for the higly diverse tropical forests, some observing the importance of environmental filters to shape communities assembly and others arguing for a genuine stochastic recovery [@Hubbell1999;@Molino2001].
 Consistently to the trajectories drawn here, a previous study of the same experiment revealed the directional changes in communities composition reflecting environmental filtering after disturbance [@Molino2001].
 Disturbance regimes brought a unimodal response depending on disturbance intensity as suggested by the outcome of 10 years and 20 years post-disturbance analysis[@Molino2001;@Baraloto2012a].
-Consistently with dynamicspreviously observed in a Bornean rainforest [@Cannon1998] or in Solomon islands [@Burslem2000], the unimodal response of diversities to disturbance suggested the maintenance of diversity levels, although for one of the intensively disturbed plot the community evenness was still increasing \@ref(fig:Fig5). 
-What contrasted in our study though is that taxonomic composition did clearly recover \@ref(fig:Fig3), which may imply a long-term, if not irreversible, change in communities after disturbance.
+As observed after logging in a Boranean rainforest [@Cannon1998] or after cyclones in the Solomon islands [@Burslem2000], communities diversity showed a unimodal response to disturbance and a maintenance of diversity levels, except for one of the intensively disturbed community which evenness was still increasing \@ref(fig:Fig5). 
+Despite the recovery of communities diversity, though, taxonomic composition was clearly altered \@ref(fig:Fig3) implying a long-term, if not permenant, composition change after disturbance as observed in East African tropical forests [@Bonnell2011].
 
 
-Regarding the functionl trajectories and dominnant trait values of disturbed communities \@ref(fig:Fig3), disturbance appeared to favor acquisitive strategies, *i.e* species with high SLA, low wood density, small seeds, etc [@Westoby1998;@Wright2004;@Reich2014].
+Regarding the functionl trajectories and dominant trait values of disturbed communities \@ref(fig:Fig3), disturbance appeared to favor acquisitive strategies, *i.e* species with high SLA, low wood density, small seeds, etc [@Westoby1998;@Wright2004;@Reich2014].
 The comparison of observed trajectories to a null model with random traits set shuffling showed an oriented functional shift after disturbance which suggest additional biotic and abiotic filters for the 10 to 15 years after disturbance.
 This means a shift from exclusive competition favoring competitive species before disturbance to environmental filtering selecting acquisitive and disturbance resistant species.
 In particular, the evolution seed mass classes proportions \@ref(fig:Fig4) revealed a clear increase in small seeded, therefore large dispersive, species [@TerSteege2001;@Flores2006;@Haddad2008].
@@ -275,9 +280,10 @@ As functional traits are the most direct link between biodiversity and ecosystem
 Such decoupling suggested the consistency of functional overlap and maybe functional versatility, implying a variety of functioning from the same characteristic, in the pre-disturbance condition.
 Functional overlap has been observed in highly diverse ecosystems [@Bellwood2006] and suggested as one mechanisms for high diversity maintenance.
 Knowing the decoupling between taxonomic and functional trajectories, this functional overlap may not be recovering after disturbance and therefore radically modify communities resilience and resistance [@Trenbath1999;@Elmqvist2003;@Diaz2005]. 
-Given the observed lack of composition recovery, in favor of more disturbance resistant species [@Haddad2008], the likely decrease in functional overlap, and the probable changes in different life like lianas or epiphytes [@Martin2013] and environmental conditions like soils nutrient cycling and compaction [@Olander2005], the entirety of communities recovery after intense disturbance is questioned.
-In this case, post-disturbance communities might have the same functioning, as suggested by the observed functional recovery, but composition would be permanently altered in the case of most intense disturbance and species contingent to undisturbed forests in particular would be impaired.
-This threatens the global biodiversity along with the risk to loose cornerstone species and trigger unexpected consequences [@Diaz2005;@Gardner2007].
+Given the impaired functional overlap, the persitant compositional changes regarding disturbance resistant species [@Haddad2008] and probably lianas or epiphytes [@Martin2013], and the modification of environmental conditions like soils nutrient cycling and compaction [@Olander2005] the entirety of communities recovery after intense disturbance is deeply questioned [@Chazdon2003a].
+New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
+Although communities recovered the core of their initial functioning, composition seemed permanently altered after intense disturbance.
+Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk of cornerstone species loss and unexpected ecological consequences [@Diaz2005;@Gardner2007].
 
 To confirm this long-term communities changes and highlight the ecological rules shaping communities assembly, we suggest a focus on recruitment dynamics, that would follow the diversity and functional characteristic of recruited communities and, by extension, of the forest to be.
 
