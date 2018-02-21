@@ -75,22 +75,18 @@ The simultaneous increase of forests products demand and substantial climatic ch
 
 In tropical forests, a constant range of disturbances determines the ecological rules that shape the communities, through the reallocation of resources (as light, heat and water fluxes), changes in interspecific relations, etc.
 The response of communities to disturbance is then the cornerstone of tropical forests ecology, modelling and management [@White2001;@Chazdon2003a].
-Disturbance recovery have been largely studied regarding structural parameters as aboveground biomass, tree height or stem density which display rapid and measurable changes related to ecosystems functioning [@Denslow2000;@Blanc2009;@Rutishauser2016].
-Species composition and diversity also are surely impacted by the environmental changes after disturbance and the subsequent modification of species selection and competition.
-The diversity and composition of communities are crucial for their functioning and dynamics as they determine their productivity, stability and functioning through interspecific complementarity which enhances the use of resources and the storing of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
+Disturbance recovery have been largely studied through structural parameters as aboveground biomass, tree height or stem density that all reflect rapid and measurable changes of ecosystems functioning asses crucial issues about the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
+In this perspective tree species diversity is inevitable as it determines ecosystems productivity, stability and functioning through the interspecific complementarity that enhances resources use, nutrients storing, and hazards mitigation [@Tilman2014].
+Reveal diversity dynamics is besides all the more important that disturbance, modifying the environment and interspecific relations, suerly impacts trees composition and diversity.
 
-Although inescapable for the understanding of ecological rules shaping tropical forest communities, the long-term response of communities composition and diversity to disturbance remains unclear.
-Until now, short-term dynamics demonstrated negligible or even positive impacts on communities diversity in accordance with the intermediate disturbance hypothesis (IDH) [@Molino2001;@Kariuki2006a;@Berry2008a].
-The IDH predicting a maximized species diversity at intermediate level of disturbance, however, was mainly tested through species richness which gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
-Communities response should encompass taxonomic composition and evenness which only can assess conservation issues and ecological rules shaping abundance distribution[@Magurran1988;@Lavorel2002;@Bellwood2006].
-Beyond taxonomic metrics, communities recovery should also encompass functional diversity and composition metrics [@Moretti2009;@Baraloto2012a].
-Functional traits, the species biological attributes that relate to individuals fitness and ecosystem properties [@Violle2007b;@Scheiter2013], were largely adopted and integrated within a workable framework to assess forests dynamics and functioning [@Diaz2005;@Villeger2008a].
-Numerous studies revealed some major functional traits determining species ecology and performance that are thus relevant to reveal the ecological rules shaping species assembly: post-disturbance trajectories in tropical rainforests for example, are assumed to be driven by environmental filters that foster disturbance resistant species with rapid growth and efficient resources acquisition [@Molino2001;@Haddad2008].
-This would be reflected by a shift from "conservative" species displaying long-lived, dense tissues growing slowly but with scarce resources, to "acquisitive" species with fast-growing, light tissues allowing fast resources acquisition [@TerSteege2001;@Reich2014;@Herault2011].
-In this perspective a combination of resource acquisition traits (leaf area,density and chlorophyll content and stem specific gravity and bark thickness) and of life history traits revealing the growth and reproductive strategy (seed mass and maximum height) already proved relevant [@Wright2004;@Westoby2006a;@Chave2009b].
-> See Garnier 2001a for the description of traits functional impact
-
->Since the functional traits chosen showed low intraspecific compared to interspecific variability >[@Garnier2001a;@Westoby2006a] it its valid to assess the functional trajectories of communities through the >functional values observed or the species assembly.
+Until now, although, short-term dynamics demonstrated negligible or even positive impacts on communities diversity in accordance with the intermediate disturbance hypothesis (IDH) [@Molino2001;@Kariuki2006a;@Berry2008a] the long-term response of communities composition and diversity to disturbance remains unclear.
+The IDH predicting a maximized species diversity at intermediate level of disturbance have besides mainly been tested through species richness, which gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
+Studies of communities response to disturbance should encompass taxonomic composition and evenness, which only can assess some conservation issues and the ecological rules that determine communities abundance distribution [@Magurran1988;@Lavorel2002;@Bellwood2006].
+Beyond taxonomic metrics, communities recovery should also encompass functional diversity metrics [@Moretti2009;@Baraloto2012a] through functional traits, that are species biological attributes relating to individuals fitness and ecosystem properties [@Violle2007b;@Scheiter2013].
+Functional traits were largely adopted and integrated within a workable framework to assess forests dynamics and functioning [@Diaz2005;@Villeger2008a] and a vast litterature revealed some major functional traits determinant for species ecology and performance.
+These major traits proved relevant to assess the ecological rules shaping species assembly: post-disturbance trajectories in tropical rainforests, for example, are assumed to be driven by environmental filters fostering disturbance resistant species with rapid growth and efficient resources acquisition [@Molino2001;@Haddad2008].
+Communities dynamics would then be reflected by a shift from "conservative" species displaying long-lived, dense tissues growing slowly but with scarce resources, to "acquisitive" species with fast-growing, light tissues allowing fast resources acquisition [@TerSteege2001;@Reich2014;@Herault2011].
+In this perspective a combination of resource acquisition traits (leaf area,density and chlorophyll content and stem specific gravity and bark thickness) and life history traits of growth and reproduction (seed mass and maximum height) already proved relevant [@Wright2004;@Westoby2006a;@Chave2009b].
 
 Here we investigated over 30 years the response of 75ha of forests plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem biomass removed.
 We made use of a large functional traits database browsing major leaf, stem and seed traits and species maximum height to draw communities taxonomic and functional composition and diversity trajectories after disturbance.
@@ -132,19 +128,16 @@ Table : (\#tab:Tab1) Intervention table, summary of the disturbance intensity fo
 
 ### Inventories protocol and dataset correction
 
-The study site corresponds to a tropical rain forest with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae. 
-In the twelve experimental plots of the experiment, all trees above 10 cm DBH are mapped and measured annually since 1984. 
-During the inventories, trees are first identified with a vernacular name, assigned by the field team, and then with a scientific name, assigned by a botanist during regular botanical campaigns. 
-In 1984, specific vernacular names were given to 62 commercial or common species whereas two identifiers separating palm trees and trees were given to all other species. 
-The botanical campaigns to identify all trees at the species level started in 2003 and continued every 5 to 6 years.
-This inventory protocol rasied some mehodological issues given the variability of botanical identification practices along time and among plots. 
-Because vernacular name attributed to trees usually correspond to a variety of botanical species, some taxonomic uncertainty remains whenever a trustworthy botanical name cannot be given thereafter. 
-This taxonomic uncertainty was accounted for in the composition and diversity metrics throught a Bayesian framework estimating the expectancy and variance of composition and diversity metrics. 
-The uncertainty propagation is done by the extrapolation of complete inventories at genus level from real incomplete inventories, on the basis vernacular names replacement. The replacement of vernacular names uses a multinomial distribution M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory.
+The study site corresponds to a tropical rainforest with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae botanical families. 
+In the twelve experimental plots of the experiment, all trees above 10 cm DBH were mapped and measured annually since 1984. 
+During inventories, trees were first identified with a vernacular name assigned by the field team, and afterward with a scientific name assigned by a botanist during regular botanical campaigns. 
+In 1984, specific vernacular names were given to 62 commercial or common species whereas other less common species were identified under two identifiers only separating trees and palm trees. 
+The botanical campaigns carried every 5 to 6 years to identify all trees at the species level only started in 2003 and identification practices varied among plots and successive campaigns. 
+This raised methodological issues as vernacular names usually correspond to different botanical species, resulting in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics throught a Bayesian framework. 
+The uncertainty propagation was done by the replenishment of inventories completed at genus level from real incomplete ones on the basisof vernacular/botanical names association. Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) ) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory.
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
-The functional metrics used a set of 6 functional traits values representing traits of the leaf and wood economics and life history traits.
-The trait database encompassed 4 traits of the leaves: leaves thickness, toughness, total chlorophyll content and specific leaf area (leaf area per unit dry mass), 2 traits of the stem: wood specific gravity and bark thickness and two life-history traits: maximum specific height and the seed mass. 
+The functional diversity metrics used a dataset for 6 functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area, theleaf area per unit dry mass) and wood economics (wood specific gravity and bark thickness), and life history traits (maximum specific height and seed mass).
 Traits database came from the BRIDGE project (http://www.ecofog.gf/Bridge/index.html) where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou.
 To account for intraspecific traits variability, trait values at species level were assessed in sampling one of the measured individuals for iteration rather than averaging at species level. 
 Missing trait values were filled using multivariate imputation by chained equation (mice), restricted to the samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of the functional traits. 
@@ -253,7 +246,7 @@ The subsequent diversity trajectories confirmed the intermediate disturbance hyp
 Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
 The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
-In line with the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@reftobefound]. This would result in a faster recovery of ecosystem processes rates than composition and diversity as demonstrated for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].  
+In line with the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@Grime1998]. This would result in a faster recovery of ecosystem processes rates than composition and diversity as demonstrated for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].  
 This highlighted the functional overlap between species in tropical forests, typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
 Ecosystem processes grasped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
