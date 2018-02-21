@@ -134,7 +134,8 @@ FunDist<-function(Data_FunComp){
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
-TaxoTraj<-function(CompTaxo){par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
+TaxoTraj<-function(CompTaxo){
+  par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
 for(q in 1:3){     
   Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
   Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})

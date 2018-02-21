@@ -70,12 +70,11 @@ source("Scripts/DrawingTools.R")
 # Introduction
 
 The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
-They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate and support carbon, water and nutrient cycles, and ensure cultural and human well-being. 
-The increasing demand for forests products reducing unmanaged areas along with climatic changes heightened the pressure on remaining forests [@Gibson2011a; @Morales-Hidalgo2015]. 
-Communities structure, composition and functioning are thus at stake, as well as the dynamics that drive them in the long term [@Anderson-Teixeira2013;@Sist2015].
+They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate, support carbon, water and nutrient cycles, and ensure cultural and human well-being. 
+The simultaneous increase of forests products demand and substantial climatic changes heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threaten the maintenance of communities structure, composition and functioning and the dynamics shaping them [@Anderson-Teixeira2013;@Sist2015].
 
-Tropical forests are subject to a wide range of disturbance, defined as rapid changes in the amount and allocation of resources such as light, heat and water fluxes, etc.
-Those institute the intrinsinc dynamical state of forest communities in changing environmental conditions and interspecific relations which make the understanding of communities response to disturbance a cornerstone for ecology, modelling and management [@White2001;@Chazdon2003a].
+In tropical forests, a constant range of disturbances determines the ecological rules that shape the communities, through the reallocation of resources (as light, heat and water fluxes), changes in interspecific relations, etc.
+The response of communities to disturbance is then the cornerstone of tropical forests ecology, modelling and management [@White2001;@Chazdon2003a].
 Disturbance recovery have been largely studied regarding structural parameters as aboveground biomass, tree height or stem density which display rapid and measurable changes related to ecosystems functioning [@Denslow2000;@Blanc2009;@Rutishauser2016].
 Species composition and diversity also are surely impacted by the environmental changes after disturbance and the subsequent modification of species selection and competition.
 The diversity and composition of communities are crucial for their functioning and dynamics as they determine their productivity, stability and functioning through interspecific complementarity which enhances the use of resources and the storing of nutrients, and mitigates the prejudices of diseases and herbivory [@Tilman2014]. 
