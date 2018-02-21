@@ -88,18 +88,15 @@ Beyond taxonomic metrics, communities recovery should also encompass functional 
 Functional traits, the species biological attributes that relate to individuals fitness and ecosystem properties [@Violle2007b;@Scheiter2013], were largely adopted and integrated within a workable framework to assess forests dynamics and functioning [@Diaz2005;@Villeger2008a].
 Numerous studies revealed some major functional traits determining species ecology and performance that are thus relevant to reveal the ecological rules shaping species assembly: post-disturbance trajectories in tropical rainforests for example, are assumed to be driven by environmental filters that foster disturbance resistant species with rapid growth and efficient resources acquisition [@Molino2001;@Haddad2008].
 This would be reflected by a shift from "conservative" species displaying long-lived, dense tissues growing slowly but with scarce resources, to "acquisitive" species with fast-growing, light tissues allowing fast resources acquisition [@TerSteege2001;@Reich2014;@Herault2011].
-In this perspective a combination of resource acquisition traits (leaf area,density and chlorophyll content and stem specific gravity and bark thickness) and of life history traits revealing the growth and reproductive strategy (seed mass and maximum height) already proved relevant [@Chave2009b;@Wright2004;@Westoby1998].
+In this perspective a combination of resource acquisition traits (leaf area,density and chlorophyll content and stem specific gravity and bark thickness) and of life history traits revealing the growth and reproductive strategy (seed mass and maximum height) already proved relevant [@Wright2004;@Westoby2006a;@Chave2009b].
 > See Garnier 2001a for the description of traits functional impact
 
 >Since the functional traits chosen showed low intraspecific compared to interspecific variability >[@Garnier2001a;@Westoby2006a] it its valid to assess the functional trajectories of communities through the >functional values observed or the species assembly.
 
-Such combination of composition and diversity in browsing all facets of stands assemblage would highlight their resilience to perturbation, and its determinant and underlying ecological processes.
-Disturbance survey would first assess species turnover and communities convergence through stands taxonomic composition and unveil environmental filters through functional composition that is based on the biological attributes of plants. 
-The set of functional traits chosen for this functional analysis considers functional traits representative of species functional strategy, fitness, and ecology as it is the case for traits of the leaf or stem economics.
-Composition analysis would be continued with diversity analysis assessing for the whole community the richness and evenness of the taxonomic and functional abundance distribution.   
-Here we examined the long-term trajectory, in the sense of the evolution along time, of tropical forests taxonomic and functional composition and diversity. 
-We studied the regular inventories over 30 years of twelve Amazonian forest plots, either untouched or disturbed with three disturbance intensity . 
-The inventories were combined with one of the largest functional trait database for tropical trees. We aimed to (i) explicit the impact of disturbance on the long-term trajectory of tropical forest communities composition and diversity, (ii) question the long-term convergence of the composition of communities and (iii) determine their resilience or not, after disturbance.
+Here we investigated over 30 years the response of 75ha of forests plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem biomass removed.
+We made use of a large functional traits database browsing major leaf, stem and seed traits and species maximum height to draw communities taxonomic and functional composition and diversity trajectories after disturbance.
+Specifically, we (i) tested the validity of the IDH arguing for enhanced diversity after moderate disturbance and (ii) confirmed the changes in ecological rules shaping communities, from competitive exclusion between "conservative", slow-growing tree species to environmental filtering of "acquisitive", fasting-growing ones.
+Eventually we examined the different trajectories to (iii) resolve the resilience of tropical forests and question their future dynamics regarding their state 30 years after disturbance.
 
 
 # Material and Methods
@@ -257,9 +254,9 @@ The subsequent diversity trajectories confirmed the intermediate disturbance hyp
 Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
 The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
-In line with the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@reftobefound]. This would result in a faster recovery of ecosystem processes rates than in communities ocmposition and diversity as it mas largely demonstrated for grasslands [@Tilman1997; @Mouillot2011] and recently proved for tropical forests [@Lohbeck2015].  
-This highlighted the functional overlap between species in tropical forests,typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
-Ecosystem processes graped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
+In line with the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@reftobefound]. This would result in a faster recovery of ecosystem processes rates than composition and diversity as demonstrated for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].  
+This highlighted the functional overlap between species in tropical forests, typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
+Ecosystem processes grasped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
 In line with the assumtions of the IDH the observed diversity trajectories confirmed the increase of communities evenness and functional richness after disturbance.
 The consistency of the IDH has been debated for the higly diverse tropical forests, some observing the importance of environmental filters to shape communities assembly and others arguing for a genuine stochastic recovery [@Hubbell1999;@Molino2001].
@@ -276,7 +273,7 @@ In particular, the evolution seed mass classes proportions \@ref(fig:Fig4) revea
 
 The diversity and composition functional trajectories showed a decoupling between functional and taxonomic after the most intense disturbance (treatments T2 and T3).
 Plots functional characteristic returned to their initial values, similar to those of control plots, faster than their taxonomic counterparts \@ref(fig:Fig2;fig:Fig3;fig:Fig4).
-As functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2006] the recovery of communities functional characteristics would go along the recovery of ecosystems processes although taxonomic composition remain altered.
+As functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2005] the recovery of communities functional characteristics would go along the recovery of ecosystems processes although taxonomic composition remain altered [@Guariguata2001].
 Such decoupling suggested the consistency of functional overlap and maybe functional versatility, implying a variety of functioning from the same characteristic, in the pre-disturbance condition.
 Functional overlap has been observed in highly diverse ecosystems [@Bellwood2006] and suggested as one mechanisms for high diversity maintenance.
 Knowing the decoupling between taxonomic and functional trajectories, this functional overlap may not be recovering after disturbance and therefore radically modify communities resilience and resistance [@Trenbath1999;@Elmqvist2003;@Diaz2005]. 
