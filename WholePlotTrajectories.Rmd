@@ -53,7 +53,7 @@ output:
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
+knitr::opts_chunk$set(cache=T, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), out.width = '40%',fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -97,6 +97,7 @@ Eventually we examined the different trajectories to (iii) resolve the resilienc
 # Material and Methods
 
 ### Study site 
+
 Paracou station in French Guiana (5°18'N and 52°53'W) is located in a lowland tropical rain forest corresponding to a tropical wet climate with mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) with a 3-months dry season (< 100 mm.months^-1^) from mid-August to mid-November, and a one-month dry season in March [@Wagner2011]. 
 Elevation ranges between 5 and 50 m and mean annual temperature is 26°C. 
 Soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
@@ -134,23 +135,25 @@ During inventories, trees were first identified with a vernacular name assigned 
 In 1984, specific vernacular names were given to 62 commercial or common species whereas other less common species were identified under two identifiers only separating trees and palm trees. 
 The botanical campaigns carried every 5 to 6 years to identify all trees at the species level only started in 2003 and identification practices varied among plots and successive campaigns. 
 This raised methodological issues as vernacular names usually correspond to different botanical species, resulting in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics throught a Bayesian framework. 
-The uncertainty propagation was done by the replenishment of inventories completed at genus level from real incomplete ones on the basisof vernacular/botanical names association. Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) ) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory.
+The uncertainty propagation was done by the replenishment of inventories completed at genus level from real incomplete ones on the basisof vernacular/botanical names association. 
+Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) ) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory. 
+To avoid remaining identification caveats and consider complete inventories, the simulated inventories were then reported at genus.
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
-The functional diversity metrics used a dataset for 6 functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area, theleaf area per unit dry mass) and wood economics (wood specific gravity and bark thickness), and life history traits (maximum specific height and seed mass).
-Traits database came from the BRIDGE project (http://www.ecofog.gf/Bridge/index.html) where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou.
-To account for intraspecific traits variability, trait values at species level were assessed in sampling one of the measured individuals for iteration rather than averaging at species level. 
-Missing trait values were filled using multivariate imputation by chained equation (mice), restricted to the samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of the functional traits. 
-The dataset comprised 257 botanical species. Whenever a species inventoried was not in the dataset, it was attributed a set of traits values randomly sampled among species of the same next higher taxonomic level. 
-All composition and diversity metrics correspond to the expectancy obtained after 50 iterations of the taxonomic uncertainty propagation framework and the missing trait values filling process. 
+The functional diversity metrics used a dataset for 6 functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area, the leaf area per unit dry mass) and wood economics (wood specific gravity and bark thickness), and life history traits (maximum specific height and seed mass).
+Traits database came from the BRIDGE project (http://www.ecofog.gf/Bridge/index.html) where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou. 
+Missing trait values were filled using multivariate imputation by chained equation (mice) restricted to samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of the functional traits. 
+The dataset comprised 294 botanical species pertaining to 157 botanical genus. 
+Whenever a species inventoried was not in the dataset, it was attributed a set of traits values randomly sampled among species of the same next higher taxonomic level. 
+All composition and diversity metrics corresponded to the expectancy obtained after 50 iterations of the taxonomic uncertainty propagation framework and of the filling process of missing trait values. 
 
 
 ### Composition and diversity metrics
 
 The analysis of taxonomic and functional composition of plots along time was visualized in a two-dimensional ordination space based on non-metric dimensional scaling of succesive floristic or functional inventories. 
-Plots evolution along time was reportedcomparatively to the inventories in 1989, 5 years after disturbance, which correspond to first inventory with a sufficient degree of uncertainty (<30% of undetermined trees). The distancing relative to the reference 1989 inventory was reported using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) similarity measures. 
-The euclidean distance in the two-dimensional ordination space was used to visualize the distancing to reference inventory along time.
-The functional composition was besides completed by trajectory along time of the community weighted means (CWM) for the 8 leaf, stem and life history traits. 
+Plots trajectories along time was reported comparatively to the inventories in 1989, 5 years after disturbance, which corresponded to first inventory with a sufficient degree of uncertainty (<30% of undetermined trees). The inventories dissimilarity compared to the reference 1989 inventory was reported using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) similarity measures. 
+The trajectory of inventories along time was visualized with the euclidean distance in the two-dimensional ordination space to the 1989 inventory.
+The functional trajectories were also visualized with the community weighted means (CWM) of the leaf and stem and data life traits. 
 To determine whether communities’ assembly deviated from the expectation of a random process we compared the observed similarity patterns to those generated by 50 repetitions of stochastic null models. 
 The null model for taxonomic composition randomly shuffled individuals among plots while preserving the overall species abundance and plots’ tree density. 
 The null model for functional composition produced random traits assemblages by permuting the set of functional traits values among species. 
@@ -158,7 +161,7 @@ The null model for functional composition produced random traits assemblages by 
 Plots taxonomic diversity corresponded to species Richness and the Hill number translation of Shannon and Simpson indices. 
 These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q). 
 This order q grasps the balance between richness and evenness in the community as it determines the weight of common species in the diversity metric, with an growing emphasis on dominant species as q increases. 
-The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on the 6 functional traits specific values.
+The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on all functional and data life traits.
 
 # Results
 
