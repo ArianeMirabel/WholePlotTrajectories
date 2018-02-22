@@ -168,22 +168,22 @@ mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
 
 FunTraj<-function(CompFun){
   plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
-     xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
-axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
-mtext("Rao diversity",3,adj=0,line=1,cex=1.5) 
-mtext("Years since disturbance",side=1,adj=1,line=2)
-mtext("Equivalent diversity",side=2,padj=1,line=3)
-
-invisible(lapply(1:length(CompFun),function(t){  
+       xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
+  axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
+  mtext("Rao diversity",3,adj=0,line=1,cex=1.5) 
+  mtext("Years since disturbance",side=1,adj=1,line=2)
+  mtext("Equivalent diversity",side=2,padj=1,line=3)
   
-  toplot<-CompFun[[t]]
-  
-  invisible(lapply(1:nrow(toplot),function(i){
-    lines(colnames(toplot),toplot[i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
-    polygon(c(colnames(toplot),rev(colnames(toplot))),c(toplot[i,,"0.975"],rev(toplot[i,,"0.025"])),
-            col=rgb(0,0,0,alpha=0.1),border=NA)
-  }))
-}))}
+  invisible(lapply(1:length(CompFun),function(t){  
+    
+    toplot<-CompFun[[t]]
+    
+    invisible(lapply(1:nrow(toplot),function(i){
+      lines(colnames(toplot),toplot[i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(colnames(toplot),rev(colnames(toplot))),c(toplot[i,,"0.975"],rev(toplot[i,,"0.025"])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
+  }))}
 
 CWMdraw<-function(Cwm){
   par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
