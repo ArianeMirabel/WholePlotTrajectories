@@ -203,7 +203,7 @@ invisible(lapply(colnames(Cwm[[1]]),function(trait){
   }))
 }))
 mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
-mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
+mtext("Years since disturbance",side=1,line=1.2,adj=0.65,cex=0.9,outer=TRUE)
 }
 
 SeedMassProp<-function(SeedMass){
