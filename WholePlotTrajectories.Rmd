@@ -71,13 +71,13 @@ source("Scripts/DrawingTools.R")
 
 The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate local climate, support carbon, water and nutrient cycles, and ensure cultural and human well-being. 
-The simultaneous increase of forests products demand and substantial climatic changes heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threaten the maintenance of communities structure, composition and functioning and the dynamics shaping them [@Anderson-Teixeira2013;@Sist2015].
+The simultaneous increase of forests products demand and substantial climatic changes heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threaten the maintenance of communities structure, composition and functioning and the dynamics that shape them [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forests, a constant range of disturbances determines the ecological rules that shape the communities, through the reallocation of resources (as light, heat and water fluxes), changes in interspecific relations, etc.
+In tropical forests, a constant range of disturbance determines the ecological rules shaping the communities through the reallocation of resources (as light, heat and water fluxes), changes in interspecific relations, etc.
 The response of communities to disturbance is then the cornerstone of tropical forests ecology, modelling and management [@White2001;@Chazdon2003a].
-Disturbance recovery have been largely studied through structural parameters as aboveground biomass, tree height or stem density that all reflect rapid and measurable changes of ecosystems functioning asses crucial issues about the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
+Disturbance recovery have been largely studied through structural parameters as aboveground biomass, tree height or stem density, which all reflect rapid and measurable changes of ecosystems functioning asses crucial issues about the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
 In this perspective tree species diversity is inevitable as it determines ecosystems productivity, stability and functioning through the interspecific complementarity that enhances resources use, nutrients storing, and hazards mitigation [@Tilman2014].
-Reveal diversity dynamics is besides all the more important that disturbance, modifying the environment and interspecific relations, suerly impacts trees composition and diversity.
+Reveal diversity dynamics is besides all the more important that disturbance, modifies the environment and interspecific relations and surely impacts trees composition and diversity [@CazzollaGatti2014].
 
 Until now, although, short-term dynamics demonstrated negligible or even positive impacts on communities diversity in accordance with the intermediate disturbance hypothesis (IDH) [@Molino2001;@Kariuki2006a;@Berry2008a] the long-term response of communities composition and diversity to disturbance remains unclear.
 The IDH predicting a maximized species diversity at intermediate level of disturbance have besides mainly been tested through species richness, which gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
@@ -294,7 +294,7 @@ Knowing the decoupling between taxonomic and functional trajectories, this funct
 Given the impaired functional overlap, the persitant compositional changes regarding disturbance resistant species [@Haddad2008] and probably lianas or epiphytes [@Martin2013], and the modification of environmental conditions like soils nutrient cycling and compaction [@Olander2005] the entirety of communities recovery after intense disturbance is deeply questioned [@Chazdon2003a].
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
 Although communities recovered the core of their initial functioning, composition seemed permanently altered after intense disturbance.
-Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk of cornerstone species loss and unexpected ecological consequences [@Diaz2005;@Gardner2007].
+Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Diaz2005;@Gardner2007].
 
 To confirm this long-term communities changes and highlight the ecological rules shaping communities assembly, we suggest a focus on recruitment dynamics, that would follow the diversity and functional characteristic of recruited communities and, by extension, of the forest to be.
 
