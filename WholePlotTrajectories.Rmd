@@ -127,6 +127,17 @@ Table : (\#tab:Tab1) Intervention table, summary of the disturbance intensity fo
                      ~ 10 trees/ha             ~ 15 trees/ha              ~ 15 trees/ha                                     
 ------------------------------------------------------------------------------------------------------------------------
 
+```{r kable}
+textExp<- c(" ","Timber", "Thinning", "Fuelwood", "\\%AGB lost", 
+         "T1","DBH ≥ 50 cm,commercial species,~ 10 trees/ha"," "," ","[12\\%-33\\%]",
+         "T2","DBH ≥ 50 cm,commercial species,~ 10 trees/ha","DBH ≥ 40 cm,non-valuable species,~ 30 trees/ha",
+            " ","[33\\%-56\\%]",
+         "T3","DBH ≥ 50 cm,commercial species,~ 10 trees/ha","DBH ≥ 50 cm,non-valuable species,~ 15 trees/ha",
+         "40 cm ≤ DBH ≤ 50 cm,non-valuable species,~ 15 trees/ha","[35\\%-56\\%]",)
+knitr::kable(textExp, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou", booktabs = TRUE)
+```
+
+
 ### Inventories protocol and dataset correction
 
 The study site corresponds to a tropical rainforest with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae botanical families. 
@@ -136,18 +147,19 @@ In 1984, specific vernacular names were given to 62 commercial or common species
 The botanical campaigns carried every 5 to 6 years to identify all trees at the species level only started in 2003 and identification practices varied among plots and successive campaigns. 
 This raised methodological issues as vernacular names usually correspond to different botanical species, resulting in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics throught a Bayesian framework. 
 The uncertainty propagation was done by the replenishment of inventories completed at genus level from real incomplete ones on the basisof vernacular/botanical names association. 
-Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*α~1~, α~2~,…, α~N~*]) ) based on the observed association probability [*α~1~, α~2~,…, α~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory. 
+Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*\alpha~1~, \alpha~2~,…, \alpha~N~*]) ) based on the observed association probability [*\alpha~1~, \alpha~2~,…, \alpha~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory. 
 To avoid remaining identification caveats and consider complete inventories, the simulated inventories were then reported at genus.
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
 The functional diversity metrics used a dataset for 6 functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area, the leaf area per unit dry mass) and wood economics (wood specific gravity and bark thickness), and life history traits (maximum specific height and seed mass).
-Traits database came from the BRIDGE project (http://www.ecofog.gf/Bridge/index.html) where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou. 
-Missing trait values were filled using multivariate imputation by chained equation (mice) restricted to samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of the functional traits. 
+Traits database came from the BRIDGE project [^1] where traits values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou. 
+Missing trait values were filled using multivariate imputation by chained equation (mice) restricted to samples pertaining to the next higher taxonomic level, in order to account for the phylogenetic signal of functional traits. 
 The dataset comprised 294 botanical species pertaining to 157 botanical genus. 
 Whenever a species inventoried was not in the dataset, it was attributed a set of traits values randomly sampled among species of the same next higher taxonomic level. 
 As seed mass information correspond to a classification into mass classes, no data filling process was applied so analysis were performed considering the 414 botanical species of the seed mass dataset.
 All composition and diversity metrics corresponded to the expectancy obtained after 50 iterations of the taxonomic uncertainty propagation framework and of the filling process of missing trait values. 
 
+[^1] http://www.ecofog.gf/Bridge/ 
 
 ### Composition and diversity metrics
 
@@ -163,7 +175,7 @@ The null model for taxonomic composition randomly shuffled individuals among plo
 The null model for functional composition produced random traits assemblages by permuting the set of functional traits values among species. 
 
 The taxonomic diversity was assessed through Richness and the Hill number translation of Shannon and Simpson indices [@Hill1973]. 
-To tackle the unequal number of recruited trees among treatments the indices bias corrected estimator were used, following [@chao2015estimating;@Marcon2015b].
+To tackle the unequal number of recruited trees among treatments the indices bias corrected estimator were used, following [@Chao2015;@Marcon2015b].
 These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q), which proved well suited for diversity studies [@Patil1982;@Tothmeresz1995]. 
 The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on all functional and life traits.
 
@@ -185,8 +197,8 @@ For taxonomic composition, the maximum dissimilarity to 1984 inventory compositi
 For functional composition, the maximum dissimilarity to 1984 inventory composition was reach from 15 to 20 years after disturbance for the T2 and T3 plots while T1 and control plots continued to increase \@ref(fig:Fig2.b). 
 The functional composition distancing from the reference inventory was also positively correlated with disturbance intensity and similarly stabilized or reduced (for 5 of T1, T2 and T3 plots) from 20 years after disturbance \@ref(fig:Fig2). 
 
-*The distance from the initial condition was significantly time-dependent (P<0.01).* 
-*The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).*
+>The distance from the initial condition was significantly time-dependent (P<0.01).
+>The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) which revealed that the trajectories of disturbed plots along time headed toward acquisitive functional strategies (from high SWG to high SLA and chlorophyll content).
 
 ```{r Fig1, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of **(a)** flora composition and **(b)** functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3)."}
 load("DB/FunctionalComposition_forGraph")
@@ -274,9 +286,9 @@ This highlighted the functional overlap between species in tropical forests, typ
 Ecosystem processes grasped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
 In line with the assumtions of the IDH the observed diversity trajectories confirmed the increase of communities evenness and functional richness after disturbance.
-The consistency of the IDH has been debated for the higly diverse tropical forests, some observing the importance of environmental filters to shape communities assembly and others arguing for a genuine stochastic recovery [@Hubbell1999;@Molino2001].
-Consistently to the trajectories drawn here, a previous study of the same experiment revealed the directional changes in communities composition reflecting environmental filtering after disturbance [@Molino2001].
-Disturbance regimes brought a unimodal response depending on disturbance intensity as suggested by the outcome of 10 years and 20 years post-disturbance analysis[@Molino2001;@Baraloto2012a].
+The consistency of the IDH has been debated for the higly diverse tropical forests, some observing the importance of environmental filters to shape communities assembly and others arguing for a genuine stochastic recovery.
+Consistently to the trajectories drawn here, a previous study of the same experiment revealed the directional changes in communities composition reflecting environmental filtering after disturbance.
+Disturbance regimes brought a unimodal response depending on disturbance intensity as suggested by the outcome of 10 years and 20 years post-disturbance analysis[@Hubbell1999;@Molino2001;@Baraloto2012a].
 As observed after logging in a Boranean rainforest [@Cannon1998] or after cyclones in the Solomon islands [@Burslem2000], communities diversity showed a unimodal response to disturbance and a maintenance of diversity levels, except for one of the intensively disturbed community which evenness was still increasing \@ref(fig:Fig5). 
 Despite the recovery of communities diversity, though, taxonomic composition was clearly altered \@ref(fig:Fig3) implying a long-term, if not permenant, composition change after disturbance as observed in East African tropical forests [@Bonnell2011].
 
@@ -294,7 +306,7 @@ Knowing the decoupling between taxonomic and functional trajectories, this funct
 Given the impaired functional overlap, the persitant compositional changes regarding disturbance resistant species [@Haddad2008] and probably lianas or epiphytes [@Martin2013], and the modification of environmental conditions like soils nutrient cycling and compaction [@Olander2005] the entirety of communities recovery after intense disturbance is deeply questioned [@Chazdon2003a].
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
 Although communities recovered the core of their initial functioning, composition seemed permanently altered after intense disturbance.
-Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Diaz2005;@Gardner2007].
+Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Jones1994;@Diaz2005;@Gardner2007].
 
 To confirm this long-term communities changes and highlight the ecological rules shaping communities assembly, we suggest a focus on recruitment dynamics, that would follow the diversity and functional characteristic of recruited communities and, by extension, of the forest to be.
 
