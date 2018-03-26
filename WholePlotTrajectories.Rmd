@@ -142,7 +142,7 @@ The botanical campaigns carried every 5 to 6 years to identify all trees at the 
 This raised methodological issues as vernacular names usually correspond to different botanical species, resulting in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics throught a Bayesian framework. 
 The uncertainty propagation was done by the replenishment of inventories completed at genus level from real incomplete ones on the basisof vernacular/botanical names association. 
 
-Vernacular names were replaced through multinomial trials (M~v~([*s~1~, s~2~, …, s~N~*] ,[*\alpha~1~, \alpha~2~,…, \alpha~N~*]) ) based on the observed association probability [*\alpha~1~, \alpha~2~,…, \alpha~N~*] between each vernacular name *v* and the species [*s~1~, s~2~, …, s~N~*] recorded in the inventory. 
+Vernacular names were replaced through multinomial trials $M_v\Big(\big[s_1, s_2, …, s_N\big],\big[\alpha_1, \alpha_2,…, \alpha_3\big]\Big)$ based on the observed association probability $\big[\alpha_1, \alpha_2,…, \alpha_3\big]$ between each vernacular name *v* and the species $\big[s_1, s_2, …, s_N\big]$ recorded in the inventory. 
 
 To avoid remaining identification caveats and consider complete inventories, the simulated inventories were then reported at genus.
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
