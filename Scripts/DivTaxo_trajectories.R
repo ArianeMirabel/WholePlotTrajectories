@@ -41,7 +41,7 @@ CompleteTaxo<-lapply(1:4,function(t){
         colnames(Div_plot)<-"names"
         Div_plot<-as.character(merge(Div_plot,RefBota,by.x="names",by.y="row.names",all.x=T)[,"Genre"])
          
-        return(expq(bcTsallis(as.AbdVector(tapply(Div_plot,Div_plot,length)),q=Q,Correction = "Best"),q=Q))
+        return(expq(bcTsallis(as.AbdVector(tapply(Div_plot,Div_plot,length)),q=Q,Correction = "None"),q=Q))
        })
         
         names(Div)<-names(yearPlot)

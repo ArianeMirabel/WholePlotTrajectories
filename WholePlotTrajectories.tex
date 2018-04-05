@@ -115,7 +115,7 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\JournalInfo{Hal 00679993} % Journal information
+\JournalInfo{Hal xxx} % Journal information
 \Archive{DOI xxxx} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{Post-Disturbance Tree Community Trajectories in a Neotropical Forest} % Article title
@@ -172,6 +172,14 @@ Résumé de l'article.
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
+
+\begin{verbatim}
+## Warning: package 'kableExtra' was built under R version 3.3.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'shape' was built under R version 3.3.3
+\end{verbatim}
 
 \section{Introduction}\label{introduction}
 
@@ -292,7 +300,7 @@ T3 & DBH $\geq$ 50 cm, commercial species, ~ 10 trees/ha & DBH $\geq$ 50 cm, non
 \end{longtabu}
 
 \subsection{Inventories protocol and dataset
-correction}\label{inventories-protocol-and-dataset-correction}
+collection}\label{inventories-protocol-and-dataset-collection}
 
 The study site corresponds to a tropical rainforest with a dominance of
 Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae botanical
@@ -312,42 +320,45 @@ taxonomic uncertainties that had to be propagated to composition and
 diversity metrics throught a Bayesian framework. The uncertainty
 propagation was done by the replenishment of inventories completed at
 genus level from real incomplete ones on the basisof
-vernacular/botanical names association. Vernacular names were replaced
-through multinomial trials
-(M\textsubscript{v}({[}\emph{s\textsubscript{1}, s\textsubscript{2},
-\ldots{}, s\textsubscript{N}}{]} ,{[}\emph{\(\alpha\)\textsubscript{1},
-\(\alpha\)\textsubscript{2},\ldots{}, \(\alpha\)\textsubscript{N}}{]}) )
+vernacular/botanical names association.
+
+Vernacular names were replaced through multinomial trials
+\(M_v\Big(\big[s_1, s_2, …, s_N\big],\big[\alpha_1, \alpha_2,…, \alpha_3\big]\Big)\)
 based on the observed association probability
-{[}\emph{\(\alpha\)\textsubscript{1},
-\(\alpha\)\textsubscript{2},\ldots{}, \(\alpha\)\textsubscript{N}}{]}
-between each vernacular name \emph{v} and the species
-{[}\emph{s\textsubscript{1}, s\textsubscript{2}, \ldots{},
-s\textsubscript{N}}{]} recorded in the inventory. To avoid remaining
-identification caveats and consider complete inventories, the simulated
-inventories were then reported at genus. See appendix 1 and
-\citet{Aubry-Kientz2013} for the detailed methodology.
+\(\big[\alpha_1, \alpha_2,…, \alpha_3\big]\) between each vernacular
+name \emph{v} and the species \(\big[s_1, s_2, …, s_N\big]\) recorded in
+the inventory.
+
+To avoid remaining identification caveats and consider complete
+inventories, the simulated inventories were then reported at genus. See
+appendix 1 and \citet{Aubry-Kientz2013} for the detailed methodology.
 
 The functional diversity metrics used a dataset for 6 functional traits
 representing leaf economics (leaves thickness, toughness, total
 chlorophyll content and specific leaf area, the leaf area per unit dry
 mass) and wood economics (wood specific gravity and bark thickness), and
-life history traits (maximum specific height and seed mass). The trait
-database came from the BRIDGE project \footnote{http://www.ecofog.gf/Bridge/index.html}
-where traits values were assessed from a selection of individuals
-located in nine permanent plots in French Guiana, including two in
-Paracou. Missing trait values were filled using multivariate imputation
-by chained equation (mice) restricted to samples pertaining to the next
-higher taxonomic level, in order to account for the phylogenetic signal
-of the functional traits. The dataset comprised 294 botanical species
-pertaining to 157 botanical genera. Whenever a species inventoried was
-not in the dataset, it was attributed a set of traits values randomly
-sampled among species of the same next higher taxonomic level. As seed
-mass information corresponds to a classification into mass classes, no
-data filling process was applied so analysis were performed considering
-the 414 botanical species of the seed mass dataset. All composition and
-diversity metrics corresponded to the average obtained after 50
-iterations of the taxonomic uncertainty propagation framework and of the
-filling process of missing trait values.
+life history traits (maximum specific height and seed mass).
+
+The trait database came from the BRIDGE project {[}\^{}1{]} where traits
+values were assessed from a selection of individuals located in nine
+permanent plots in French Guiana, including two in Paracou. Missing
+trait values were filled using multivariate imputation by chained
+equation (mice) restricted to samples pertaining to the next higher
+taxonomic level, in order to account for the phylogenetic signal of the
+functional traits. The dataset comprised 294 botanical species
+pertaining to 157 botanical genera.
+
+Whenever a species inventoried was not in the dataset, it was attributed
+a set of traits values randomly sampled among species of the same next
+higher taxonomic level. As seed mass information corresponds to a
+classification into mass classes, no data filling process was applied so
+analysis were performed considering the 414 botanical species of the
+seed mass dataset. All composition and diversity metrics corresponded to
+the average obtained after 50 iterations of the taxonomic uncertainty
+propagation framework and of the filling process of missing trait
+values.
+
+{[}\^{}1{]} http://www.ecofog.gf/Bridge/
 
 \subsection{Composition and diversity
 metrics}\label{composition-and-diversity-metrics}
@@ -385,13 +396,13 @@ The taxonomic diversity was assessed through Richness and the Hill
 number translation of Shannon and Simpson indices \citep{Hill1973}. To
 tackle the unequal number of recruited trees among treatments the
 indices bias corrected estimator were used, following
-\citep{chao2015estimating, Marcon2015b}. These three indices belong to
-the set of HCDT or generalized entropy, respectively corresponding to
-the 0, 1 and 2 order of diversity (q), which proved well suited for
-diversity studies \citep{Patil1982, Tothmeresz1995}. The functional
-diversity was reported using the Rao index of quadratic entropy which
-combines species abundance distribution and average pairwise
-dissimilarity based on all functional and life traits.
+\citep{Chao2015, Marcon2015b}. These three indices belong to the set of
+HCDT or generalized entropy, respectively corresponding to the 0, 1 and
+2 order of diversity (q), which proved well suited for diversity studies
+\citep{Patil1982, Tothmeresz1995}. The functional diversity was reported
+using the Rao index of quadratic entropy which combines species
+abundance distribution and average pairwise dissimilarity based on all
+functional and life traits.
 
 \section{Results}\label{results}
 
@@ -431,13 +442,15 @@ correlated with disturbance intensity and similarly stabilized or
 reduced (for 5 of T1, T2 and T3 plots) from 20 years after disturbance
 (Figure \ref{fig:Fig2}).
 
-\emph{The distance from the initial condition was significantly
-time-dependent (P\textless{}0.01).} \emph{The coordinates of the
-functional traits were measured in the two-dimensional ordination space
-that mapped plots evolution along time (graphs not showed) which
-revealed that the trajectories of disturbed plots along time headed
-toward acquisitive functional strategies (from high SWG to high SLA and
-chlorophyll content).}
+\begin{quote}
+The distance from the initial condition was significantly time-dependent
+(P\textless{}0.01). The coordinates of the functional traits were
+measured in the two-dimensional ordination space that mapped plots
+evolution along time (graphs not showed) which revealed that the
+trajectories of disturbed plots along time headed toward acquisitive
+functional strategies (from high SWG to high SLA and chlorophyll
+content).
+\end{quote}
 
 \begin{figure*}
 
@@ -589,24 +602,25 @@ resilience and future dynamics.
 
 In line with the assumtions of the IDH the observed diversity
 trajectories confirmed the increase of communities evenness and
-functional richness after disturbance. The consistency of the IDH has
-been debated for the higly diverse tropical forests, some observing the
-importance of environmental filters to shape communities assembly and
-others arguing for a genuine stochastic recovery
-\citep{Hubbell1999, Molino2001}. Consistently to the trajectories drawn
-here, a previous study of the same experiment revealed the directional
-changes in communities composition reflecting environmental filtering
-after disturbance \citep{Molino2001}. Disturbance regimes brought a
-unimodal response depending on disturbance intensity as suggested by the
-outcome of 10 years and 20 years post-disturbance
-analysis\citep{Molino2001, Baraloto2012a}. As observed after logging in
-a Boranean rainforest \citep{Cannon1998} or after cyclones in the
-Solomon islands \citep{Burslem2000}, communities diversity showed a
-unimodal response to disturbance and a maintenance of diversity levels,
-except for one of the intensively disturbed community which evenness was
-still increasing (Figure \ref{fig:Fig5}). Despite the recovery of
-communities diversity, though, taxonomic composition was clearly altered
-(Figure \ref{fig:Fig3}) implying a long-term, if not permenant,
+functional richness after disturbance.
+\textless{}\textless{}\textless{}\textless{}\textless{}\textless{}\textless{}
+HEAD The consistency of the IDH has been debated for the higly diverse
+tropical forests, some observing the importance of environmental filters
+to shape communities assembly and others arguing for a genuine
+stochastic recovery. Consistently to the trajectories drawn here, a
+previous study of the same experiment revealed the directional changes
+in communities composition reflecting environmental filtering after
+disturbance. Disturbance regimes brought a unimodal response depending
+on disturbance intensity as suggested by the outcome of 10 years and 20
+years post-disturbance
+analysis\citep{Hubbell1999, Molino2001, Baraloto2012a}. As observed
+after logging in a Boranean rainforest \citep{Cannon1998} or after
+cyclones in the Solomon islands \citep{Burslem2000}, communities
+diversity showed a unimodal response to disturbance and a maintenance of
+diversity levels, except for one of the intensively disturbed community
+which evenness was still increasing \ref{fig:Fig5}. Despite the recovery
+of communities diversity, though, taxonomic composition was clearly
+altered \ref{fig:Fig3} implying a long-term, if not permenant,
 composition change after disturbance as observed in East African
 tropical forests \citep{Bonnell2011}.
 
@@ -655,7 +669,8 @@ the core of their initial functioning, composition seemed permanently
 altered after intense disturbance. Specificaly, this would impair
 species contingent to undisturbed forests, threatening their
 maintenance, and run the risk to loose cornerstone species and trigger
-unexpected ecological consequences \citep{Diaz2005, Gardner2007}.
+unexpected ecological consequences
+\citep{Jones1994, Diaz2005, Gardner2007}.
 
 To confirm this long-term communities changes and highlight the
 ecological rules shaping communities assembly, we suggest a focus on
@@ -675,13 +690,7 @@ but further parameters may be involved.
 %----------------------------------------------------------------------------------------
 
 \bibliographystyle{mee}
-\makeatletter
-% The filename has .bib extension the must be eliminated
-\filename@parse{references.bib}
-% parse stores the file name in base. Extension starts at the first dot, so don't use dots in file names.
-\bibliography{\filename@base}
-\makeatother
-
+\bibliography{references.bib}
 
 %----------------------------------------------------------------------------------------
 
