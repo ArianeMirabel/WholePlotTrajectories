@@ -36,10 +36,11 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
-  \hyphenation{sa-plings}
-  \usepackage{longtable,tabu}
+  \usepackage{tabu}
+  \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
+  \hyphenation{bio-di-ver-si-ty sap-lings}
 bibliography: references.bib
-lang: english # french
+lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
@@ -58,7 +59,7 @@ knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FA
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {install.packages(Package)}
+    if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
     require(Package, character.only = TRUE)
   }
   invisible(sapply(Packages, InstallAndLoad))
@@ -113,21 +114,21 @@ Treatments T2 and T3 besides included the thinning of trees by poison girdling [
 Intervention <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
-           "DBH $\\geq$ 50 cm, commercial species, ~ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, ~ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, ~ 10 trees/ha"),
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
   Thinning=c("", 
              "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, ~ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, ~ 15 trees/ha  "),
+             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
   Fuelwood=c("", 
              "", 
              "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, ~ 15 trees/ha"),
+             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
   AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = TRUE, booktabs = TRUE, escape = FALSE) %>%
+knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
