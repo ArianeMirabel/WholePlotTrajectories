@@ -52,8 +52,6 @@ output:
 ---
 
 
-<!-- Options de knitr et de R (librairies, ...) --> 
-
 ```{r Options, echo=FALSE, message=FALSE}
 knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
 # Installation des packages si nécessaire et chargement
@@ -267,7 +265,7 @@ For all undisturbed plots the Rao diversity remained comparable to the values in
 Although a first increase of plots functional diversity that was all the more important than initial disturbance was intense, 30 after disturbance the diversity was similar among disturbed plots and significantly higher than this of control plots.
 *The OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and the covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01)*.
 
-```{r Fig6, echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes."}
+```{r Fig6, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes."}
 load("DB/FunctionalTraj_ForGraphs")
 
 FunTraj(CompleteFun)
@@ -286,7 +284,6 @@ This highlighted the functional overlap between species in tropical forests, typ
 Ecosystem processes grasped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
 In line with the assumtions of the IDH the observed diversity trajectories confirmed the increase of communities evenness and functional richness after disturbance.
-<<<<<<< HEAD
 The consistency of the IDH has been debated for the higly diverse tropical forests, some observing the importance of environmental filters to shape communities assembly and others arguing for a genuine stochastic recovery.
 Consistently to the trajectories drawn here, a previous study of the same experiment revealed the directional changes in communities composition reflecting environmental filtering after disturbance.
 Disturbance regimes brought a unimodal response depending on disturbance intensity as suggested by the outcome of 10 years and 20 years post-disturbance analysis[@Hubbell1999;@Molino2001;@Baraloto2012a].
