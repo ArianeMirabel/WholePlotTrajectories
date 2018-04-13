@@ -29,8 +29,8 @@ InventorySp<-InventorySp[which(!duplicated(InventorySp)),]
 
 dates<-sort(names(LivingStand_all))[-1]
 
-Nrep<-3
-CWM<-lapply(1:12,function(p){
+Nrep<-2
+CWM_genus<-lapply(1:12,function(p){
   matplot<-lapply(1:Nrep,function(rep){
     Trajnmds<-lapply(dates,function(y){
       temp<-LivingStand_all[[which(names(LivingStand_all)==y)]]
@@ -39,10 +39,10 @@ CWM<-lapply(1:12,function(p){
         temp<-temp[[which(names(temp)==p)]]
         temp<-temp[!duplicated(temp),]
         #temprep<-temp[which(temp[,"name"]!="Indet."),"name"]
-        temprep<-Replacement(temp,Alpha=alpha_construct(temp))
-        #temprep<-as.data.frame(Replacement(temp,Alpha=alpha_construct(temp)));colnames(temprep)<-"name"
-        #temp<-temp[,c("Genre","name")];temp<-as.data.frame(temp[which(!duplicated(temp)),],col.names="name")
-        #temprep<-merge(temprep,temp,by="name",all.x=T);temprep<-as.character(temprep[,"Genre"])
+        #temprep<-Replacement(temp,Alpha=alpha_construct(temp))
+        temprep<-as.data.frame(Replacement(temp,Alpha=alpha_construct(temp)));colnames(temprep)<-"name"
+        temp<-temp[,c("Genre","name")];temp<-as.data.frame(temp[which(!duplicated(temp)),],col.names="name")
+        temprep<-merge(temprep,temp,by="name",all.x=T);temprep<-as.character(temprep[,"Genre"])
         return(as.ProbaVector(tapply(temprep,temprep,length)))}})
     
     names(Trajnmds)<-dates
@@ -63,19 +63,49 @@ CWM<-lapply(1:12,function(p){
       return(ret[3])}))
     colnames(Trajnmds)<-namesOk
     
-    traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
-    traits_filled<-aggregate(traits_filled[,TraitsName],list(traits_filled$name),median)
+    #traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+    traits_filled<-aggregate(Traits_filled[,TraitsName],list(traits_filled$Genus),median)
     rownames(traits_filled)<-traits_filled[,1];traits_filled<-traits_filled[,TraitsName]
     
     tra<-traits_filled[which(rownames(traits_filled)%in%rownames(Trajnmds)),];tra<-tra[order(rownames(tra)),]
     Trajnmds<-Trajnmds[which(rownames(Trajnmds)%in%rownames(tra)),];Trajnmds<-Trajnmds[order(rownames(Trajnmds)),]
     return(t(apply(Trajnmds,2,function(Inv){Inv<-colSums(apply(tra,2,function(col){col<-col*Inv}))})))
     })
-  
+  if(length(unique(unlist(lapply(matplot,function(rep){return(nrow(rep))}))))!=1){
+    print(paste(p,y))
+    }
   return(array(unlist(matplot),dim=c(nrow(matplot[[1]]),ncol(matplot[[1]]),Nrep),
       dimnames=list(rownames(matplot[[1]]),colnames(matplot[[1]]),1:Nrep)))
 })
 names(CWM_genus)<-1:12
+
+CWM_genus<-lapply(CWM_genus,function(pl){
+  ret<-lapply(c(0.025,0.5,0.975),function(quant){apply(pl,c(1,2),function(x){return(quantile(x,probs=quant))})})
+  return(array(unlist(ret),dim=c(nrow(pl),ncol(pl),3),dimnames=list(rownames(pl),colnames(pl),c(0.025,0.5,0.975))))
+})
+
+windows()
+CWMdraw<-function(Cwm){
+  par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
+  invisible(lapply(colnames(Cwm[[1]]),function(trait){
+    Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
+    plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
+    mtext(trait,3,cex=0.8,adj=0,line=0.5)
+    
+    invisible(lapply(1:4,function(tr){
+      toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
+      invisible(lapply(toplot,function(plo){
+        lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=2)
+        polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
+                col=rgb(0,0,0,alpha=0.1),border=NA)
+        
+      }))
+    }))
+  }))
+  mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
+  mtext("Years since disturbance",side=1,line=1.2,adj=0.65,cex=0.9,outer=TRUE)
+}
+
 
 save(CWM_genus,file="DB/CWM_genus")
 
