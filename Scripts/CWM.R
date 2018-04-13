@@ -30,7 +30,7 @@ InventorySp<-InventorySp[which(!duplicated(InventorySp)),]
 dates<-sort(names(LivingStand_all))[-1]
 
 Nrep<-2
-CWM_genus<-lapply(1:12,function(p){
+CWM<-lapply(1:12,function(p){
   matplot<-lapply(1:Nrep,function(rep){
     Trajnmds<-lapply(dates,function(y){
       temp<-LivingStand_all[[which(names(LivingStand_all)==y)]]
@@ -39,10 +39,10 @@ CWM_genus<-lapply(1:12,function(p){
         temp<-temp[[which(names(temp)==p)]]
         temp<-temp[!duplicated(temp),]
         #temprep<-temp[which(temp[,"name"]!="Indet."),"name"]
-        #temprep<-Replacement(temp,Alpha=alpha_construct(temp))
-        temprep<-as.data.frame(Replacement(temp,Alpha=alpha_construct(temp)));colnames(temprep)<-"name"
-        temp<-temp[,c("Genre","name")];temp<-as.data.frame(temp[which(!duplicated(temp)),],col.names="name")
-        temprep<-merge(temprep,temp,by="name",all.x=T);temprep<-as.character(temprep[,"Genre"])
+        temprep<-Replacement(temp,Alpha=alpha_construct(temp))
+        #temprep<-as.data.frame(Replacement(temp,Alpha=alpha_construct(temp)));colnames(temprep)<-"name"
+        #temp<-temp[,c("Genre","name")];temp<-as.data.frame(temp[which(!duplicated(temp)),],col.names="name")
+        #temprep<-merge(temprep,temp,by="name",all.x=T);temprep<-as.character(temprep[,"Genre"])
         return(as.ProbaVector(tapply(temprep,temprep,length)))}})
     
     names(Trajnmds)<-dates
@@ -64,7 +64,7 @@ CWM_genus<-lapply(1:12,function(p){
     colnames(Trajnmds)<-namesOk
     
     #traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
-    traits_filled<-aggregate(Traits_filled[,TraitsName],list(traits_filled$Genus),median)
+    traits_filled<-aggregate(Traits_filled[,TraitsName],list(traits_filled$name),median)
     rownames(traits_filled)<-traits_filled[,1];traits_filled<-traits_filled[,TraitsName]
     
     tra<-traits_filled[which(rownames(traits_filled)%in%rownames(Trajnmds)),];tra<-tra[order(rownames(tra)),]
@@ -77,9 +77,9 @@ CWM_genus<-lapply(1:12,function(p){
   return(array(unlist(matplot),dim=c(nrow(matplot[[1]]),ncol(matplot[[1]]),Nrep),
       dimnames=list(rownames(matplot[[1]]),colnames(matplot[[1]]),1:Nrep)))
 })
-names(CWM_genus)<-1:12
+names(CWM)<-1:12
 
-CWM_genus<-lapply(CWM_genus,function(pl){
+CWM<-lapply(CWM,function(pl){
   ret<-lapply(c(0.025,0.5,0.975),function(quant){apply(pl,c(1,2),function(x){return(quantile(x,probs=quant))})})
   return(array(unlist(ret),dim=c(nrow(pl),ncol(pl),3),dimnames=list(rownames(pl),colnames(pl),c(0.025,0.5,0.975))))
 })
