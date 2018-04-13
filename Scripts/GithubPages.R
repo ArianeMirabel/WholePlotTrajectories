@@ -23,8 +23,8 @@ if (length(html_filesDir) > 0) {
 #libs
 libsDirs <- list.dirs(path="libs", full.names=TRUE, recursive=TRUE)
 if (length(libsDirs) > 0) {
-  sapply(paste("docs/", libsDirs, sep = ""), dir.create)
-  libsFiles <- list.files("libs", full.names = TRUE, recursive=TRUE)
+  sapply(paste("docs/", libsDirs, sep = ""), function(dir){if(!dir.exists(dir)){dir.create(dir)}})
+  libsFiles <- list.files(path=libsDirs, full.names = TRUE, recursive=TRUE)
   file.copy(from=libsFiles, to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE)
 }
 

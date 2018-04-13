@@ -279,7 +279,9 @@ The subsequent diversity trajectories confirmed the intermediate disturbance hyp
 Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
 The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
-In line with the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@Grime1998]. This would result in a faster recovery of ecosystem processes rates than composition and diversity as demonstrated for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001]. 
+After disturbance, communities functional characteristics followed a similar but delayed trajectory as this of taxonomic characteristics which difference to initial state remained higher after 30 years.
+A faster recovery of communities processes and functioning than of composition and diversity has demonstrated for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
+This divergence  the "vegetation quantity effect" suggesting that communities functional characteristics depends on dominant species rather that subtle changes in biodiversity [@Grime1998]. 
 This highlighted the functional overlap between species in tropical forests, typical of their huge biodiversity, and intricately questioned the different facets of communities resilience.
 Ecosystem processes grasped through the set of functional traits retained here however do not assess communities resilience and future dynamics.
 
