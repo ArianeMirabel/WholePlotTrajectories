@@ -195,7 +195,7 @@ invisible(lapply(colnames(Cwm[[1]]),function(trait){
   invisible(lapply(1:4,function(tr){
     toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
     invisible(lapply(toplot,function(plo){
-      lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=2)
+      lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=1.5)
       polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
               col=rgb(0,0,0,alpha=0.1),border=NA)
       

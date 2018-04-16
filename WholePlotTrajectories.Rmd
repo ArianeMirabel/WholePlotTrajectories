@@ -248,7 +248,7 @@ Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined 
 *For the three indices the OLS regression confirmed the time-dependency of the diversity variations (P<0.01) and a covariance analysis confirmed the significant effect of the disturbance treatment (P<0.01).*
 
 ```{r Fig5, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to reference inventory over 30 years after disturbance of plots communities **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
-load("DB/ReplacementTraj_ForGraphs")
+load("DB/ReplacementTraj_ForGraphsN")
 
 TaxoTraj(CompleteTaxo)
 
@@ -278,16 +278,26 @@ The subsequent diversity trajectories confirmed the intermediate disturbance hyp
 Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
 The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
-## Validation of the IDH
+## A validation of the intermediate disturbance hypothesis
 
-The enhanced communities evenness and functional richness after disturbance confirmed the IDH for all treatment intensity.
+The monitoring 30 years of disturbed forest communities confirmed the limited direct impact of low disturbance on species richness as it was found for impact survey of selective logging (@Cannon1998;@Baraloto2010).
+Only the most disturbed plots had not fully achieved the ongoing recovery of genus richness, although all had already reached equivalent levels as those of some control plots.
+Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease (@deAvila2015;@Hu2018).
+
+The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth with a sharp increase until 15 years after disturbance.
+Such increased evenness is explained by a much more homogeneous species distribution after disturbance.
+Along with the IDH, disturbance then enhanced the growth and survival of previously infrequent species, reorganizing the typical high dominance structure of hyperdiverse mature forests.
+This increase in taxonomic diversity was accompanied by an increased taxonomic dissimilarity to initial state along time, translating a a taxonomic turnover benefiting to pioneers and light demanding species, as illustrated by the communities functional shifts towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998;@Wright2004;@Reich2014].
+In line with the IDH, the post-disturbance changes in abiotic environment and competitive pressure then well favored pioneers outcompeting other species when abiotic resources are abundant but otherwise excluded in mature forests by long-lived, resistant and shade tolerant species.
+The trajectories of proportions among seed mass classes besides revealed the enhanced growth of small seeded, large dispersive, species and therefore the importance of species reproductive strategy which further supported the role of species dispersion and demographic strategy for the post-disturbance dynamics, as suggested by the IDH [@TerSteege2001;@Flores2006;@Haddad2008].
+
+## On the recovery of disturbed communities
+
 The divergence from the initial state however was very variable among plots, specifically after intense disturbance, which meant a strong dependency of plots recovery to initial composition or to abiotic conditions.
 All plots, though, followed the same unimodal trajectory which confirmed both the resilience of forests taxonomic and functional composition and the convergence of communities towards initial states [@Hubbell1999;@Molino2001;@Baraloto2012a].
 Functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2005] the recovery of communities functional characteristics would go along the recovery of ecosystems processes although taxonomic composition remain altered [@Guariguata2001].
-Disturbance proved to favor species with acquisitive strategies, displaying efficient resource acquisition (high SLA) but short-lived tissues (low wood density, leaf toughness and thickness) and with a dispresive strategy (low seed mass) [@Westoby1998;@Wright2004;@Reich2014].
 #The comparison of observed trajectories to a null model with random traits set shuffling showed an oriented functional shift after disturbance which suggest additional biotic and abiotic filters for the 10 to 15 years after disturbance.
 #This means a shift from exclusive competition favoring competitive species before disturbance to environmental filtering selecting acquisitive and disturbance resistant species.
-In particular, the evolution seed mass classes proportions revealed a clear increase in small seeded, therefore large dispersive, species [@TerSteege2001;@Flores2006;@Haddad2008].
 
 ## Functional redundancy of disturbed ecosystems
 

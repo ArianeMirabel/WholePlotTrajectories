@@ -1,12 +1,12 @@
 load("DB/Paracou_R_Subdivided_ok")
-source("Vernacular_handle.R")
+source("Scripts/Vernacular_handle.R")
 
 # Treatments definition
 T0<-c(1,6,11);T1<-c(2,7,9);T2<-c(3,5,10);T3<-c(4,8,12)
 treatments<-list(T0,T1,T2,T3);names(treatments)<-c("T0","T1","T2","T3")
 
 # Years with identified problems of inventories
-Pby<-c("1996","1998","2000","2002","2004","2006","2008","2010","2012","2014")
+Pby<-c("1996","1998","2000","2002","2004","2006","2008","2010","2012","2014","2016","2017")
 dates<-sort(names(LivingStand_all)[which(!names(LivingStand_all)%in%Pby)])
 
 # Alpha matrix for vernacular names association
@@ -15,11 +15,16 @@ alphas_plot<-AlphaPlots(LivingStand_all)
 # Reference for botany (Genus/species association)
 load("DB/BotanyGenus")
 
+# Moving average function
+smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
+  range<-max(1,step-larg):min(ncol(mat),step+larg)
+  rowSums(mat[,range])/length(range)})))}
+
 #trajectories drawn by treatment
 CompleteTaxo<-lapply(1:4,function(t){
   
   treat<-treatments[[t]]
-  Nrep<-2   # Number of iteration: replacement of vernacular names
+  Nrep<-50   # Number of iteration: replacement of vernacular names
   print(t)
   
   Trajectories<-lapply(0:2,function(Q){
@@ -56,8 +61,10 @@ CompleteTaxo<-lapply(1:4,function(t){
     
     rownames(Plot_trajectory)<-treat
     colnames(Plot_trajectory)<-dates
+    Plot_trajectory<-Plot_trajectory[,which(!apply(Plot_trajectory,2,anyNA))]
     
-    return(Plot_trajectory)})
+    return(smooth(Plot_trajectory,2)) # moving average, path=2
+})
           
   Repet<-array(unlist(Repet),dim=c(length(treat),length(dates),Nrep),dimnames=list(treat,dates,1:Nrep))
    
