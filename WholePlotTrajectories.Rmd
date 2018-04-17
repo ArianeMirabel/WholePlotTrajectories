@@ -52,8 +52,8 @@ output:
 ---
 
 
-```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=F, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
+```{r Options, echo=FALSE, message=FALSE, warning=F}
+knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -278,9 +278,9 @@ The long-term disturbance trajectories observed highlighted the unachieved but c
 
 ## A validation of the intermediate disturbance hypothesis
 
-The monitoring 30 years of disturbed forest communities confirmed the limited direct impact of low disturbance on species richness as it was found for impact survey of selective logging (@Cannon1998;@Baraloto2012).
+The monitoring 30 years of disturbed forest communities confirmed the limited direct impact of low disturbance on species richness as it was found for impact survey of selective logging [@Cannon1998;@Baraloto2012].
 Only the most disturbed plots had not fully achieved the ongoing recovery of genus richness, although all had already reached equivalent levels as those of some control plots.
-Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease (@deAvila2015;@Hu2018).
+Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease [@deAvila2015;@Hu2018].
 
 The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth with a sharp increase until 15 years after disturbance.
 Such increased evenness is explained by a much more homogeneous species distribution after disturbance.
