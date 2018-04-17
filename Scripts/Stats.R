@@ -1,4 +1,7 @@
-load("DB/Turnover_toInit")
+load("DB/ReplacementTraj_ForGraphs")
+
+CompleteTaxo
+
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
 treats<-treats[order(treats[,1]),]
 colnames(treats)<-c("plot","treat"); rownames(treats)<-treats[,"plot"]

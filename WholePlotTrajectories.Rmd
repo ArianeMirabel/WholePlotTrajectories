@@ -282,7 +282,7 @@ The monitoring 30 years of disturbed forest communities confirmed the limited di
 Only the most disturbed plots had not fully achieved the ongoing recovery of genus richness, although all had already reached equivalent levels as those of some control plots.
 Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease [@deAvila2015;@Hu2018].
 
-The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth with a sharp increase until 15 years after disturbance.
+The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth sharply increasing until 15 years after disturbance.
 Such increased evenness is explained by a much more homogeneous species distribution after disturbance.
 Communities composition after disturbance is either due to the old, pre-disturbance survivors or to the recruited trees.
 The composition of old survivors proved to mirror the initial community [@Herault2018], the observed composition turnover would stem from an enhanced the growth and survival of previously infrequent species which, along with the IDH, reorganizes the typical high dominance structure of hyperdiverse mature forests.
@@ -292,28 +292,29 @@ The trajectories of proportions among seed mass classes besides revealed the enh
 
 ## On the recovery of disturbed communities
 
-Plots functional diversity had recovered initial values for almost all plots 30 years after disturbance. 
-It followed a hump-back trajectory that was mirror by all leaf, stem and life history traits, to the exception of leaf chlorophyll content.
-This recovery of communities functional characteristics would go along the recovery of ecosystems processes [@Guariguata2001], as functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2005].
-Similar hump-back trajectories were followed by communities taxonomic and functional composition which argued for the convergence of communities composition maintaining the initial difference after the recovery cycle [@Hubbell1999;@Molino2001;@Baraloto2012a].
-Besides, desipte a homogeneous trend among plots, the trajectories proved quite variable among plots, specifically after intense disturbance.
-This meant a strong dependency of plots recovery time and trajectory to initial composition or abiotic conditions.
+The functional diversity followed a hump-back trajectory which maximum was positively correlated to the disturbance intensity ($\rho_{spearman}=$) and after 30 years, all disturbed plots had recovered diversities close to their initial values. 
+Similar hump-back trajectories were followed by all leaf and stem functional traits and life history traits, to the exception of leaf chlorophyll content.
+Although the return to initial values was still ongoing the recovery of functional diversity and average communities trait values was undeniable.
+This translated the recovery of ecosystems processes [@Guariguata2001], as functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2005].
+Same recovery trajectories were followed by taxonomic and functional composition which argued for communities convergence and the maintenance of plots initial difference [@Hubbell1999;@Molino2001;@Baraloto2012a].
+These compositon difference, and probably also some abiotic parameters, besides strongly determined the maximum and time path of the trajectories which, despite an homogeneous trend  were quite variable among plots.
 
-#The comparison of observed trajectories to a null model with random traits set shuffling showed an oriented functional shift after disturbance which suggest additional biotic and abiotic filters for the 10 to 15 years after disturbance.
-#This means a shift from exclusive competition favoring competitive species before disturbance to environmental filtering selecting acquisitive and disturbance resistant species.
 
 ## Functional redundancy of disturbed ecosystems
 
-Composition trajectories, though, translated marked differences in communities composition as the functional diversity had already recovered.
-Such delay between functional and taxonomic dynamics, already observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
-Assuming the "vegetation quantity effect", suggesting that communities functional characteristics are defined  by dominant species rather that subtle changes in biodiversity [@Grime1998], this delay meant a faster recovery of dominant species while this of infrequent ones would be much longer.
-These infrequent species missing to plots taxonomic recovery would consequently be functionally redundant with those already in place.
-The functional overlap between species, typical of the huge biodiversity of tropical forests [@Bellwood2006], is then not trivially recovered after disturbance and as a determinant of forests resilience this questions forests resilience to multiple disturbance [@Trenbath1999;@Elmqvist2003;@Diaz2005].
+Despite the consistent recovery of initial diversity and composition there was a time lag between the communities taxonomic and functional characteristics.
+Taxonomic composition had longer time path and while communities had recovered their functional diveristy, their taxonomic composition and evenness remained higher than before disturbance.
+This delay between functional and taxonomic dynamics was already observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
+Communities functional diversity rely, according to the "vegetation quantity effect" [@Grime1998], on the functional strategy of dominant species.
+Communities functional trajectory is then first driven by the increase of dominant species diversity and evenness following disturbance and then by the emergence of recruitment of species progressively resembling the old pre-disturbance community which decreased the diversity.
+Dominant species then restored the functional diversity and the dominant functional type of the community although the functional and taxonomic composition remained altered and the infrequent species of initial communities are still missing to plots recovery.
+The functional traits trajectories suggest that those species would match the dominant functional type therefore increasing communities functional redundancy.
+The functional overlap between species is typical of the huge biodiversity of tropical forests [@Bellwood2006], and proved far from recovery 03 years after disturbance.
+It is though a determinant of forests resilience and should be accounted for [@Trenbath1999;@Elmqvist2003;@Diaz2005].
 
-Besides such impact on functional redundancy along with persitant compositional changes regarding disturbance resistant species [@Haddad2008] and probably lianas or epiphytes [@Martin2013], and the modification of environmental conditions like soils nutrient cycling and compaction [@Olander2005] forest resilience remains under question [@Chazdon2003a].
+Long-term alteration of functional redundancy besides came along with persistent compositional changes which most probably impact disturbance resistant species [@Haddad2008] and probably lianas or epiphytes [@Martin2013], and the modification of environmental conditions like soils nutrient cycling and compaction [@Olander2005] forest resilience remains under question [@Chazdon2003a].
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
 Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Jones1994;@Diaz2005;@Gardner2007].
 
-To confirm this long-term communities changes and highlight the ecological rules shaping communities assembly, we suggest a focus on recruitment dynamics, that would follow the diversity and functional characteristic of recruited communities and, by extension, of the forest to be.
 
 `r if (knitr:::is_html_output()) '# References {-}'`
