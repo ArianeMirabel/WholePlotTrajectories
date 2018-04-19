@@ -191,7 +191,7 @@ CWMdraw<-function(Cwm){
 invisible(lapply(colnames(Cwm[[1]]),function(trait){
   Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
   plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
-  mtext(trait,3,cex=0.8,adj=0,line=0.5)
+  #mtext(trait,3,cex=0.8,adj=0,line=0.5)
   
   invisible(lapply(1:4,function(tr){
     toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
@@ -206,6 +206,25 @@ invisible(lapply(colnames(Cwm[[1]]),function(trait){
 mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
 mtext("Years since disturbance",side=1,line=1.2,adj=0.65,cex=0.9,outer=TRUE)
 }
+
+legendCWM<-function(){
+  mtext("Leaf thickness\n",at=0.13,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste(mu, "m",sep = "")),at=0.08,line=-3,outer=TRUE,cex=0.9)
+  mtext("Leaf cholophyll content\n",at=0.4,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste("g.",mm^-2,sep = "")),at=0.34,line=-3,outer=TRUE,cex=0.9)
+  mtext("Leaf toughness\n",at=0.64,line=-2.5,outer=TRUE,cex=0.9)
+  mtext("N",at=0.56,line=-3,outer=TRUE,cex=0.9)
+  mtext("SLA\n",at=0.88,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste(mm^2,".",mg^-1,sep = "")),at=0.84,line=-3,outer=TRUE,cex=0.9)
+  
+  mtext("WD\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
+  mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-18,outer=TRUE,cex=0.9)
+  mtext("Bark thickness\n",at=0.4,line=-17.8,outer=TRUE,cex=0.9)
+  mtext("mm",at=0.32,line=-18,outer=TRUE,cex=0.9)
+  mtext("Hmax\n",at=0.64,line=-17.8,outer=TRUE,cex=0.9)
+  mtext("m",at=0.56,line=-18,outer=TRUE,cex=0.9)
+}
+
 
 SeedMassProp<-function(SeedMass){
   par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)

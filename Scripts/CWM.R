@@ -17,7 +17,7 @@ T3<-c(4,8,12)
 treatments<-list(T0,T1,T2,T3)
 names(treatments)<-c("Control","T1","T2","T3")
 
-TraitsName<-c("Hmax","L_thickness","L_chloro","L_toughness","SLA","WD","Bark_thick")
+TraitsName<-c("L_thickness","L_chloro","L_toughness","SLA","WD","Bark_thick","Hmax")
 
 ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")#"chartreuse3",
 

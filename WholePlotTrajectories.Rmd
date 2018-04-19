@@ -51,6 +51,25 @@ output:
   bookdown::word_document2: default
 ---
 
+(ref:Bolda) **(a)**
+
+(ref:Boldb) **(b)**
+
+(ref:Boldc) **(c)**
+
+(ref:capThickness) *L_thickness*
+
+(ref:capChloro) *L_chloro*
+
+(ref:capThoughness) *L_toughness*
+
+(ref:capSLA) *SLA*
+
+(ref:capWD) *WD*
+
+(ref:capBarkThick) *Bark-thick*
+
+(ref:capHmax) *Hmax*
 
 ```{r Options, echo=FALSE, message=FALSE, warning=F}
 knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
@@ -197,13 +216,6 @@ The functional composition distancing from the reference inventory was also posi
 
 The coordinates of the functional traits were measured in the two-dimensional ordination space that mapped plots evolution along time (graphs not showed) revealed a trajectory of disturbed plots toward acquisitive functional strategies (from high WD to high SLA and chlorophyll content).
 
-(ref:Bolda) **(a)**
-
-(ref:Boldb) **(b)**
-
-(ref:Boldc) **(c)**
-
-
 ```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).", fig.env="figure*"}
 load("DB/FunctionalComposition_forGraph")
 load("DB/TaxoComposition_forGraphs")
@@ -233,24 +245,11 @@ All functional traits and seed mass proportions displayed a unimodal trajectorie
 The weighted means of communities specific maximum height at adult stage (*Hmax*), leaf toughness (*L_toughness*) and wood specific gravity (*WD*) remained significantly lower than their initial value and than these of the control plots (Figure \@ref(fig:CWM)).
 The weighted means of bark thickness (*Bark_thick*) similarly remained substantilly higher than initially for all disturbed plots while the specfic leaf area (*SLA*) had almost recovered its initial value and this of the undisturbed plots at the end of the experiment.
 
-(ref:capThickness) *L_thickness*
-
-(ref:capChloro) *L_chloro*
-
-(ref:capThoughness) *L_toughness*
-
-(ref:capSLA) *SLA*
-
-(ref:capWD) *WD*
-
-(ref:capBarkThick) *Bark-thick*
-
-(ref:capHmax) *Hmax*
-
 ```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
 load("DB/CWM")
 
 CWMdraw(CWM)
+legendCWM()
 
 ```
 
