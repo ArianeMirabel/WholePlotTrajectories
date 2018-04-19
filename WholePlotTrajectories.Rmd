@@ -44,10 +44,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -266,14 +266,17 @@ TaxoTraj(CompleteTaxo)
 
 ```
 
-While for undisturbed plots the Richness, Shannon and Simpson diversity remained comparable to the values in 1989, the trajectories of all disturbed plots showed significant increase positively correlated with the disturbance intensity ($\rho_{spearman}^{Shannon}=0.87$, and $\rho_{spearman}^{Simpson}=0.88$) (Figure \@ref(fig:DivTaxo)). 
-The Richness was less affected by the initial disturbance except for the higher intensity (T3 plots) (Figure \@ref(fig:DivTaxo)). 
-The Shannon and Simpson diversities however first significantly increased, illustrating an increasing evenness, before reaching a maximum around 15 years after disturbance for all plots except one from T1 treatment and one from T2 treatment (Figure \@ref(fig:DivTaxo)).
+For undisturbed plots the Richness, Shannon and Simpson diversity remained comparable to the initial values 5 years after disturbance.
+After disturbance, the richness increased after low disturbance intensity, with a maximum increase of 14 botanical genuses (for plot 3 after treatment 2), but followed a unimodal decrease with a return to initial values after intense disturbance.
+The taxonomic evenness (Shannon and Simpson diversities), however, significantly increased after all disturbance regime.
+The evenness followed a unimodal trajectory with a just beginning return towards initial values and a maximum reached around 20 years and positively correlated to the disturbance intensity ($\rho_{spearman}^{Shannon}=0.92$, and $\rho_{spearman}^{Simpson}=0.97$).
+Only two T3 plots, plots 8 and 12, remained increasing 30 years after disturbance \@ref(fig:DivTaxo)), suggesting a similar be much delayed unimodal trajectory.
 
 ### Functional diversity
 
-For all undisturbed plots the Rao diversity remained comparable to the values in 1989, the trajectories of all disturbed plots showed significant increase positively correlated with the disturbance intensity (Figure \@ref(fig:DivFun)). 
-Although a first increase of plots functional diversity that was all the more important than initial disturbance was intense, 30 after disturbance the diversity was similar among disturbed plots and significantly higher than this of control plots.
+For all undisturbed plots the Rao diversity remained comparable to the initial values, 5 years after disturbance (1989 inventories).
+The trajectories of all disturbed plots followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}$) (Figure \@ref(fig:DivFun)). 
+Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial avule and to those of control plots.
 
 ```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes."}
 load("DB/FunctionalTraj_ForGraphs")
@@ -283,11 +286,6 @@ FunTraj(CompleteFun)
 ```
 
 # Discussion
-
-Our study showed the significant impact of disturbance on tropical forests communities.
-The subsequent diversity trajectories confirmed the intermediate disturbance hypothesis debated for tropical forests through their correlation with disturbance intensity.
-Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
-The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
 ## A validation of the intermediate disturbance hypothesis
 
@@ -329,5 +327,11 @@ Long-term alteration of functional redundancy besides came along with persistent
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
 Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Jones1994;@Diaz2005;@Gardner2007].
 
+# Conclusions
+
+Our study showed the significant impact of disturbance on tropical forests communities.
+The subsequent diversity trajectories confirmed the intermediate disturbance hypothesis debated for tropical forests through their correlation with disturbance intensity.
+Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
+The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
 `r if (knitr:::is_html_output()) '# References {-}'`
