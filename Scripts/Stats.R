@@ -52,6 +52,68 @@ MaxRich<-apply(do.call(rbind,lapply(Toplot,function(tr){return(tr[,,"0.5"])})),1
 MaxRich[order(MaxRich,decreasing = T)][1:2]
 
 
+######################r
+### The plot 7 funcitonal diversity
+
+tab<-do.call(rbind,lapply(1:12,function(pl){
+  P<-lapply(LivingStand_all,function(yr){if(any(names(yr)==pl)){return(yr[[which(names(yr)==pl)]])}})
+P<-P[which(!names(P)%in%Pby)]
+#lapply(P,nrow)
+
+Rao<-do.call(rbind,lapply(P,function(yr){
+  
+  yr<-Replacement(yr,Alpha=alphas_plot[[which(names(alphas_plot)==pl)]])
+      
+      #traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+      #Traits_filled<-aggregate(Traits_filled[,TraitsName],list(Traits_filled$name),median)
+      #rownames(Traits_filled)<-Traits_filled[,1];Traits_filled<-Traits_filled[,TraitsName]
+      tra<-Traits_filled[which(rownames(Traits_filled)%in%yr),];tra<-tra[order(rownames(tra)),]
+      
+      return(apply(tra,2,sd))
+      
+      yr<-yr[which(yr%in%rownames(tra))]
+      #return(length(which(!yr%in%rownames(tra))))
+      
+      #dissim<-as.matrix(daisy(tra,metric="gower"))
+      #dissim <- 1 - dissim/max(dissim)
+      
+      #return(expq(Hqz(as.AbdVector(tapply(yr,yr,length)), q=2, Z=dissim,Correction="None"),q=2))
+    }))
+Rao<-apply(Rao,2,mean)
+}))
+rownames(tab)<-1:12
+
+PCA<-dudi.pca(tab,scale=T,scan=F)
+
+windows()
+plot(PCA$li[,"Axis1"],PCA$li[,"Axis2"],type="n")
+text(PCA$li[,"Axis1"],PCA$li[,"Axis2"],labels=rownames(PCA$li))
 
 
+P<-lapply(LivingStand_all,function(yr){if(any(names(yr)==pl)){return(yr[[which(names(yr)==pl)]])}})
+P<-P[which(!names(P)%in%Pby)]
+#lapply(P,nrow)
+
+pl<-7
+P<-lapply(LivingStand_all,function(yr){if(any(names(yr)==pl)){return(yr[[which(names(yr)==pl)]])}})
+P<-P[which(!names(P)%in%Pby)]
+Rao<-do.call(rbind,lapply(P,function(yr){
+  
+  yr<-Replacement(yr,Alpha=alphas_plot[[which(names(alphas_plot)==pl)]])
+  
+  #traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+  #Traits_filled<-aggregate(Traits_filled[,TraitsName],list(Traits_filled$name),median)
+  #rownames(Traits_filled)<-Traits_filled[,1];Traits_filled<-Traits_filled[,TraitsName]
+  tra<-Traits_filled[which(rownames(Traits_filled)%in%yr),];tra<-tra[order(rownames(tra)),]
+  
+  return(apply(tra,2,sd))
+  
+  #yr<-yr[which(yr%in%rownames(tra))]
+  #return(length(which(!yr%in%rownames(tra))))
+  
+  #dissim<-as.matrix(daisy(tra,metric="gower"))
+  #dissim <- 1 - dissim/max(dissim)
+  
+  #return(expq(Hqz(as.AbdVector(tapply(yr,yr,length)), q=2, Z=dissim,Correction="None"),q=2))
+}))
 

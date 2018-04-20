@@ -275,12 +275,13 @@ Only two T3 plots, plots 8 and 12, remained increasing 30 years after disturbanc
 
 For all undisturbed plots the Rao diversity remained comparable to the initial values, 5 years after disturbance (1989 inventories).
 The trajectories of all disturbed plots followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}$) (Figure \@ref(fig:DivFun)). 
+The plot 7 from treatment 1 was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial avule and to those of control plots.
 
 ```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes."}
-load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalTraj_ForGraphsnew")
 
-FunTraj(CompleteFun)
+FunTraj(CompleteFun,remove=T)
 
 ```
 
@@ -290,7 +291,7 @@ FunTraj(CompleteFun)
 
 The monitoring 30 years of disturbed forest communities confirmed the limited direct impact of low disturbance on species richness as it was found for impact survey of selective logging [@Cannon1998;@Baraloto2012a].
 Only the most disturbed plots had not fully achieved the ongoing recovery of genus richness, although all had already reached equivalent levels as those of some control plots.
-Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease [@deAvila2015;@Hu2018].
+Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease [@DeAvila2015;@Hu2018].
 
 The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth sharply increasing until 15 years after disturbance.
 Such increased evenness is explained by a much more homogeneous species distribution after disturbance.

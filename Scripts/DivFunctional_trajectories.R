@@ -86,4 +86,5 @@ CompleteFun<-lapply(1:4,function(t){
                dimnames=list(treat,dates,1:Nrep)))
 })
 
-save(CompleteFun,file="FunctionalTraj_ForGraphs")
+save(CompleteFun,file="DB/FunctionalTraj_ForGraphs")
+

@@ -5,6 +5,10 @@ treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
 names(treatments)<-c("Control","T1","T2","T3")
 ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
 
+smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
+  range<-max(1,step-larg):min(ncol(mat),step+larg)
+  rowSums(mat[,range])/length(range)})))}
+
 TaxoCompo<-function(Data_TaxoComp){
 par(mfrow=c(1,2))
 matT<-as.data.frame(Data_TaxoComp[[1]])
@@ -167,7 +171,17 @@ TaxoTraj<-function(CompTaxo){
 mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
 mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
 
-FunTraj<-function(CompFun){
+FunTraj<-function(CompFun,remove=TRUE){
+  if(remove){CompFun[[2]]<-CompFun[[2]][which(rownames(CompFun[[2]])!=7),,]}
+  
+  CompFun<-lapply(CompFun,function(tr){
+    ret<-tr[,which(colnames(tr)>=1989),]
+    #ret<-lapply(1:dim(ret)[3],function(rep){return(apply(ret[,,rep],2,function(col){col<-col-ret[,1,rep]}))})
+    #ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),1:length(ret)))
+    ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+    return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,c(0.025,0.5,0.975))))})
+  
   plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
        xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
   axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
@@ -176,15 +190,17 @@ FunTraj<-function(CompFun){
   mtext("Equivalent diversity",side=2,padj=1,line=3)
   
   invisible(lapply(1:length(CompFun),function(t){  
-    
     toplot<-CompFun[[t]]
-    
+    toplot05<-smooth(toplot[,,"0.5"],1)
+    toplot25<-smooth(toplot[,,"0.025"],1)
+    toplot75<-smooth(toplot[,,"0.975"],1)
     invisible(lapply(1:nrow(toplot),function(i){
-      lines(colnames(toplot),toplot[i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
-      polygon(c(colnames(toplot),rev(colnames(toplot))),c(toplot[i,,"0.975"],rev(toplot[i,,"0.025"])),
-              col=rgb(0,0,0,alpha=0.1),border=NA)
+      lines(colnames(toplot),toplot05[i,], col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(colnames(toplot),rev(colnames(toplot))),c(toplot75[i,],rev(toplot25[i,])),
+              col=rgb(0,0,0,alpha=0.05),border=NA)
     }))
-  }))}
+  }))
+}
 
 CWMdraw<-function(Cwm){
   par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
