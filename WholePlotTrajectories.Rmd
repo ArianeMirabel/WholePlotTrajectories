@@ -44,10 +44,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -226,7 +226,7 @@ FunCompo(MatrepFun)
 
 
 
-```{r NMDSdivergence, out.width = '100%', fig.asp = 1.2/2, echo=FALSE,fig.cap="Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of v taxonomic composition at genus level and (ref:Boldb) functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes. "}
+```{r NMDSdivergence, out.width = '80%', fig.asp = 1.2/2, echo=FALSE,fig.cap="Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of v taxonomic composition at genus level and (ref:Boldb) functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes.", fig.env="figure*"}
 
 TaxoDist(MatrepTaxo)
 FunDist(MatrepFun)
@@ -278,7 +278,7 @@ The trajectories of all disturbed plots followed a unimodal trajectory with a ma
 The plot 7 from treatment 1 was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial avule and to those of control plots.
 
-```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes."}
+```{r DivFun, out.width = '80%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}
 load("DB/FunctionalTraj_ForGraphsnew")
 
 FunTraj(CompleteFun,remove=T)
