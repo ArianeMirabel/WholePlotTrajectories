@@ -39,6 +39,32 @@ TimeMax<-unlist(lapply(1:12,function(pl){
   return(names(ret)[which(ret==max(ret))])}))
 mean(as.numeric(TimeMax))-1984
 
+###############
+## CWM distance
+
+load("DB/CWM")
+
+Max<-do.call(rbind,lapply(CWM,function(pl){ return(apply(pl[,,"0.5"],2,max))}))
+treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
+Max<-cbind(Max,rownames(Max),treats[order(treats[,1]),2])
+colnames(Max)<-c(colnames(CWM[[1]]),"Plot","treat")
+apply(Max[,colnames(CWM[[1]])],2,function(x){return(cor(as.numeric(x),as.numeric(Max[,"treat"]),method="spearman"))})
+
+load("DB/ReplacementTraj_ForGraphs")
+
+CompTaxo<-CompleteTaxo
+
+q<-2    
+  Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
+  Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+  Toplot<-lapply(Toplot,function(tr){
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
+    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+    ret<-apply(ret,c(1,2),median)
+    return(apply(ret,1,function(li){return(as.numeric(names(li)[which(li==max(li))[1]]))}))})
+  
+lapply(Toplot,mean)
 
 ##############################################################
 
