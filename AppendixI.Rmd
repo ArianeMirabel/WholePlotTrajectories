@@ -60,16 +60,17 @@ The following information are available for this article:
 
 **Figure A1**: Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing) \@ref(fig:FigBayesianScheme).
 
+**Figure A2**: Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of v taxonomic composition at genus level and (ref:Boldb) functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes.
 
-**Figure A2**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 \@ref(fig:FigSeedMassClasses).
+**Figure A3**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 \@ref(fig:FigSeedMassClasses).
 
 
-**Figure A3**: Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes. \@ref(fig:DivFunAppendix).
+**Figure A4**: Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes. \@ref(fig:DivFunAppendix).
 
 
 \newpage
 
-# Figure A1
+# **Figure A1**: Bayesian process sheme
 
 
 ```{r FigBayesianScheme,out.width='100%',fig.cap="Scheme of the Bayesian process propagating the taxonomic uncertainty",echo=F, fig.env="figure*"}
@@ -77,7 +78,19 @@ knitr::include_graphics("ExternalFig/BayesianSheme.png")
 ```
 
 
-# Figure A2
+# **Figure A2**: Dissimilarity to initial inventory of plots taxonomic and functional composition
+
+```{r NMDSdivergence, out.width = '80%', fig.asp = 1.2/2, echo=FALSE,fig.cap="Trajectories of the distance to initial condition of the 30 sampled years in the two-dimensional space from the NMDS of v taxonomic composition at genus level and (ref:Boldb) functional composition. Distance are abundance-based Bary-Curtis metric. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes.", fig.env="figure*"}
+load("DB/FunctionalComposition_forGraph")
+load("DB/TaxoComposition_forGraphs")
+
+TaxoDist(MatrepTaxo)
+FunDist(MatrepFun)
+
+```
+
+
+# **Figure A3**: Proportion of seed mass classes along time
 
 
 ```{r FigSeedMassClasses, echo=FALSE, out.width='80%', fig.asp=2/5,fig.cap="Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
@@ -88,7 +101,8 @@ SeedMassProp(Smass)
 ```
 
 
-# Figure A3
+
+# **Figure A4**: Rao diversity trajectories with all plots display
 
 
 ```{r DivFunAppendix, out.width = '60%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}

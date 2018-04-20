@@ -32,7 +32,7 @@ abstract: >   #Pour avoir plusieurs lignes qui suivent. Commencer à 2 caractèr
 keywords: [mot-clés, séparés par des virgules]
 journalinfo: Hal xxx
 archive: DOI xxxx
-date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "20 avril 2018"
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
@@ -71,21 +71,7 @@ output:
 
 (ref:capHmax) *Hmax*
 
-```{r Options, echo=FALSE, message=FALSE, warning=F}
-knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
-# Installation des packages si nécessaire et chargement
-Library <- function(Packages) {
-  InstallAndLoad <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
-    require(Package, character.only = TRUE)
-  }
-  invisible(sapply(Packages, InstallAndLoad))
-}
-# Ajouter les packages nécessaires ici
-Library("kableExtra")
-source("Scripts/DrawingTools.R")
-#source("Scripts/GithubPages.R")
-```
+
 
 # Introduction
 
@@ -128,27 +114,21 @@ Disturbance treatments were attributed according to a randomized plot design wit
 The disturbance corresponds to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
 Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Blanc2009]. 
 
-```{r Tab1, echo=FALSE}
-Intervention <- data.frame(
-  Treatment=c("Control", "T1", "T2", "T3"),
-  Timber=c("", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning=c("", 
-             "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood=c("", 
-             "", 
-             "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
-)
-names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
-```
+\begin{table}
+
+\caption{(\#tab:Tab1)Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\toprule
+Treatment & Timber & Thinning & Fuelwood & \%AGB lost\\
+\midrule
+Control &  &  &  & 0\\
+T1 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha &  &  & $[12\%-33\%]$\\
+T2 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 40 cm, non-valuable species, $\approx$ 30 trees/ha &  & $[33\%-56\%]$\\
+T3 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha & 40 cm $\leq$ DBH $\leq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha & $[35\%-56\%]$\\
+\bottomrule
+\end{tabu}
+\end{table}
 
 ## Inventories protocol and dataset collection
 
@@ -215,14 +195,14 @@ The maximum dissimilarity of plot strajectories was positively correlated to the
 The time at maximum dissimilarity for taxonomic composition was reached around 26 years after disturbance while it was 22 years for functional composition. 
 All trajectories returned towards the initial composition and translated cyclic compositional changes as visualized in figure (Figure \@ref(fig:NMDSplans)). 
 
-```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).", fig.env="figure*"}
-load("DB/FunctionalComposition_forGraph")
-load("DB/TaxoComposition_forGraphs")
- 
-TaxoCompo(MatrepTaxo)
-FunCompo(MatrepFun)
+\begin{figure*}
 
-```
+{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_files/figure-latex/NMDSplans-1} 
+
+}
+
+\caption{Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).}(\#fig:NMDSplans)
+\end{figure*}
 
 
 ### Traits community weighted means
@@ -234,13 +214,14 @@ All functional traits and seed mass proportions displayed a unimodal trajectorie
 The weighted means of communities specific maximum height at adult stage (*Hmax*), leaf toughness (*L_toughness*) and wood specific gravity (*WD*) remained significantly lower than their initial value and than these of the control plots (Figure \@ref(fig:CWM)).
 The weighted means of bark thickness (*Bark_thick*) similarly remained substantilly higher than initially for all disturbed plots while the specfic leaf area (*SLA*) had almost recovered its initial value and this of the undisturbed plots at the end of the experiment.
 
-```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
-load("DB/CWM")
+\begin{figure*}
 
-CWMdraw(CWM)
-legendCWM()
+{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_files/figure-latex/CWM-1} 
 
-```
+}
+
+\caption{Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.}(\#fig:CWM)
+\end{figure*}
 
 ## Disturbance impact on diversity
 
@@ -248,12 +229,14 @@ legendCWM()
 
 Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined at genus level in relation to the 1989 inventories (5 years after disturbance) (Figure \@ref(fig:DivTaxo)). 
 
-```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
-load("DB/ReplacementTraj_ForGraphs")
+\begin{figure*}
 
-TaxoTraj(CompleteTaxo)
+{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_files/figure-latex/DivTaxo-1} 
 
-```
+}
+
+\caption{Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.}(\#fig:DivTaxo)
+\end{figure*}
 
 For undisturbed plots the Richness, Shannon and Simpson diversity remained comparable to the initial values 5 years after disturbance.
 After disturbance, the richness increased after low disturbance intensity, with a maximum increase of 14 botanical genuses (for plot 3 after treatment 2), but followed a unimodal decrease with a return to initial values after intense disturbance.
@@ -268,12 +251,14 @@ The trajectories of all disturbed plots followed a unimodal trajectory with a ma
 The plot 7 from treatment 1 was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial avule and to those of control plots.
 
-```{r DivFun, out.width = '80%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}
-load("DB/FunctionalTraj_ForGraphsnew")
+\begin{figure*}
 
-FunTraj(CompleteFun,remove=T)
+{\centering \includegraphics[width=0.8\linewidth]{WholePlotTrajectories_files/figure-latex/DivFun-1} 
 
-```
+}
+
+\caption{Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.}(\#fig:DivFun)
+\end{figure*}
 
 # Discussion
 
@@ -324,4 +309,4 @@ The subsequent diversity trajectories confirmed the intermediate disturbance hyp
 Besides it revealed the contrasting response of taxonomic and functional characteristics, specifically the decoupling between communities taxonomic evenness and their functional diversity and dominant functional traits values.
 The long-term disturbance trajectories observed highlighted the unachieved but consistent recovery of communities assembly for the lowest disturbance intensity but questioned it after higher disturbance.
 
-`r if (knitr:::is_html_output()) '# References {-}'`
+

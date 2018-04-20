@@ -1,3 +1,47 @@
+load("DB/TaxoComposition_ForGraphs")
+
+Data_TaxoComp<-MatrepTaxo
+
+MatrepT<-lapply(Data_TaxoComp,function(Rep){
+  Rep<-as.data.frame(Rep)
+  Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
+  Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
+                   stop=nchar(rownames(Rep)))
+  return(Rep)
+})
+
+DistT<-as.data.frame(unlist(lapply(1:12,function(pl){
+  ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+  ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
+                              ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
+  ret<-do.call(rbind,lapply(ret,function(rep){
+    ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
+      return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
+    names(ret2)<-rep[,"year"]
+    return(ret2)}))
+  ret<-apply(ret,2,median)
+  return(names(ret)[which(ret==max(ret))])})))
+treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
+DistT<-cbind(DistT,rownames(DistT),treats[order(treats[,1]),2])
+colnames(DistT)<-c("Max","Plot","treat")
+cor(DistT[,"Max"],DistT[,"treat"],method="spearman")
+
+TimeMax<-unlist(lapply(1:12,function(pl){
+  ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+  ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
+                                                   ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
+  ret<-do.call(rbind,lapply(ret,function(rep){
+    ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
+      return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
+    names(ret2)<-rep[,"year"]
+    return(ret2)}))
+  ret<-apply(ret,2,median)
+  return(names(ret)[which(ret==max(ret))])}))
+mean(as.numeric(TimeMax))-1984
+
+
+##############################################################
+
 load("DB/ReplacementTraj_ForGraphs")
 
 CompTaxo<-CompleteTaxo
@@ -25,9 +69,9 @@ for(q in 1:3){
 colnames(Richness)<-c("plot","Max","treat")
 cor(Richness[,"Max"],Richness[,"treat"],method="spearman")
 colnames(Shannon)<-c("plot","Max","treat")
-cor(Shannon[which(!Shannon$plot%in%c(8:12)),"Max"],Shannon[which(!Shannon$plot%in%c(8:12)),"treat"],method="spearman")
+cor(Shannon[which(!Shannon$plot%in%c(8,12)),"Max"],Shannon[which(!Shannon$plot%in%c(8,12)),"treat"],method="spearman")
 colnames(Simpson)<-c("plot","Max","treat")
-cor(Simpson[which(!Simpson$plot%in%c(8:12)),"Max"],Simpson[which(!Simpson$plot%in%c(8:12)),"treat"],method="spearman")
+cor(Simpson[which(!Simpson$plot%in%c(8,12)),"Max"],Simpson[which(!Simpson$plot%in%c(8,12)),"treat"],method="spearman")
 
 
 ######
