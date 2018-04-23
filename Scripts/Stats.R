@@ -187,3 +187,21 @@ Rao<-do.call(rbind,lapply(P,function(yr){
   #return(expq(Hqz(as.AbdVector(tapply(yr,yr,length)), q=2, Z=dissim,Correction="None"),q=2))
 }))
 
+###### Functional spearman
+load("DB/FunctionalTraj_ForGraphs")
+
+CompFun<-CompleteFun
+
+#if(remove){CompFun[[2]]<-CompFun[[2]][which(rownames(CompFun[[2]])!=7),,]}
+
+CompFun<-do.call(c,lapply(CompFun,function(tr){
+  ret<-tr[,which(colnames(tr)>=1989),]
+  ret<-apply(ret,c(1,2),median)
+  return(apply(ret,1,max))}))
+
+CompFun<-cbind(CompFun,names(CompFun),rep(0:3,each=3))
+colnames(CompFun)<-c("Max","Plot","treat")
+cor(as.numeric(CompFun[,"Max"]),as.numeric(CompFun[,"treat"]),method="spearman")
+
+
+

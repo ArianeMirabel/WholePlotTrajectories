@@ -10,7 +10,7 @@ smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step
   rowSums(mat[,range])/length(range)})))}
 
 TaxoCompo<-function(Data_TaxoComp){
-par(mfrow=c(1,2))
+par(mfrow=c(1,2),mar=c(3,3,2,1))
 matT<-as.data.frame(Data_TaxoComp[[1]])
 matT$plot<-substr(rownames(matT),start=1,stop=regexpr("_",rownames(matT))-1)
 matT$year<-substr(rownames(matT),start=regexpr("_",rownames(matT))+1,
@@ -176,8 +176,8 @@ FunTraj<-function(CompFun,remove=TRUE){
   
   CompFun<-lapply(CompFun,function(tr){
     ret<-tr[,which(colnames(tr)>=1989),]
-    ret<-lapply(1:dim(ret)[3],function(rep){return(apply(ret[,,rep],2,function(col){col<-col-ret[,1,rep]}))})
-    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),1:length(ret)))
+    #ret<-lapply(1:dim(ret)[3],function(rep){return(apply(ret[,,rep],2,function(col){col<-col-ret[,1,rep]}))})
+    #ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),1:length(ret)))
     ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
     return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
                  dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,c(0.025,0.5,0.975))))})

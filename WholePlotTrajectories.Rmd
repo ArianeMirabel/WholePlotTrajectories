@@ -44,10 +44,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -191,8 +191,7 @@ The trajectories of the leaf and stem and life traits were also visualized with 
 To compensate the intrinsinc difference among plots the trajectories corresponded to the differences along time with the reference inventory in 1984 (5 year after disturbance).
 Species seed mass corresponded to 5 classes of increasing mass, seed mass trajectories were  therefore reported as the proportion of each class in the inventories.
 
-The taxonomic diversity was assessed through Richness and the Hill number translation of Shannon and Simpson indices [@Hill1973]. 
->>To tackle the unequal number of recruited trees among treatments the indices bias corrected estimator were used, following [@Chao2015;@Marcon2015b].
+The taxonomic diversity was assessed through Richness and the Hill number translation of Shannon and Simpson indices [@Hill1973].
 
 These three indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0, 1 and 2 order of diversity (q), which proved well suited for diversity studies [@Patil1982;@Tothmeresz1995]. 
 The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on all functional and life traits.
@@ -216,7 +215,7 @@ The maximum dissimilarity of plot strajectories was positively correlated to the
 The time at maximum dissimilarity for taxonomic composition was reached around 26 years after disturbance while it was 22 years for functional composition. 
 All trajectories returned towards the initial composition and translated cyclic compositional changes as visualized in figure (Figure \@ref(fig:NMDSplans)). 
 
-```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).", fig.env="figure*"}
+```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).", fig.env="figure"}
 load("DB/FunctionalComposition_forGraph")
 load("DB/TaxoComposition_forGraphs")
  
@@ -267,14 +266,14 @@ Only two T3 plots, plots 8 and 12, remained increasing 30 years after disturbanc
 
 The functional diversity trajectories of plots based on the 8 leaf, stem and life history traits was examined through the Rao diversity.
 For all undisturbed plots the functional diversity remained comparable to the reference values 5 years after disturbance (1989 inventories).
-For all disturbed plots the functional trajectories followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}=XX$) (Figure \@ref(fig:DivFun)). 
+For all disturbed plots the functional trajectories followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}=0.73$) (Figure \@ref(fig:DivFun)). 
 The plot 7 from treatment 1 that displayed a constantly outlying diversity was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial avule and to those of control plots.
 
-```{r DivFun, out.width = '80%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}
-load("DB/FunctionalTraj_ForGraphsnew")
+```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure"}
+load("DB/FunctionalTraj_ForGraphs")
 
-FunTraj(CompleteFun,remove=F)
+FunTraj(CompleteFun,remove=T)
 
 ```
 
