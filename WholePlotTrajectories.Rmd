@@ -232,7 +232,7 @@ The changes observed in plots functional composition went hand to hand with cons
 Except for leaf cholorphyll content, which continued to increase for some T3 and T2 plots 30 years after disturbance, all traits and seed mass proportions displayed a unimodal trajectories.
 The weighted means of communities specific maximum height at adult stage (*Hmax*), leaf toughness (*L_toughness*) and wood specific gravity (*WD*) remained significantly lower than their initial value and than these of the control plots (Figure \@ref(fig:CWM)).
 The weighted means of bark thickness (*Bark_thick*) similarly remained substantilly higher than initially for all disturbed plots while the specfic leaf area (*SLA*) had almost recovered its initial value and this of the undisturbed plots at the end of the experiment.
-Once again the maximum difference to initial state was correlated to the disturbance intensity ($\rho_{spearman}^{L_thickness}=0.67$,$\rho_{spearman}^{L_chloro}=0.45$,$\rho_{spearman}^{L_toughness}=-0.43$,$\rho_{spearman}^{SLA}=0.93$,$\rho_{spearman}^{WD}=-0.78$,$\rho_{spearman}^{Bark-thickness}=0.88$,$\rho_{spearman}^{Hmax}=-0.48$).
+Once again the maximum difference to initial state was correlated to the disturbance intensity ($\rho_{spearman}^{L_thickness}=0.67$, $\rho_{spearman}^{L_chloro}=0.45$, $\rho_{spearman}^{L_toughness}=-0.43$, $\rho_{spearman}^{SLA}=0.93$, $\rho_{spearman}^{WD}=-0.78$, $\rho_{spearman}^{Bark-thickness}=0.88$, $\rho_{spearman}^{Hmax}=-0.48$).
 
 ```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
 load("DB/CWM")
@@ -295,7 +295,7 @@ The trajectories of proportions among seed mass classes besides revealed the enh
 
 ## On the recovery of disturbed communities
 
-The functional diversity followed a hump-back trajectory which maximum was positively correlated to the disturbance intensity ($\rho_{spearman}=$) and after 30 years, all disturbed plots had recovered diversities close to their initial values. 
+The functional diversity followed a hump-back trajectory which maximum was positively correlated to the disturbance intensity and after 30 years, all disturbed plots had recovered diversities close to their initial values. 
 Similar hump-back trajectories were followed by all leaf and stem functional traits and life history traits, to the exception of leaf chlorophyll content.
 Although the return to initial values was still ongoing the recovery of functional diversity and average communities trait values was undeniable.
 This translated the recovery of ecosystems processes [@Guariguata2001], as functional traits are the most direct link between biodiversity and ecosystem functioning [@Diaz2005].
