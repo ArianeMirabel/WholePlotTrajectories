@@ -281,9 +281,9 @@ FunTraj(CompleteFun,remove=T)
 
 ## A validation of the intermediate disturbance hypothesis
 
-The monitoring 30 years of disturbed forest communities confirmed the limited direct impact of low disturbance on species richness as it was found for impact survey of selective logging [@Cannon1998;@Baraloto2012a].
-Only the most disturbed plots had not fully achieved the ongoing recovery of genus richness, although all had already reached equivalent levels as those of some control plots.
-Such long time richness recovery had already been observed in several logging experiments, which also highlighted the role of random disturbance damage in the richness decrease [@DeAvila2015;@Hu2018].
+The monitoring of disturbed forest communities confirmed a limited negative impact of disturbance on species richness, as observed on several post logging surveys [@Cannon1998;@Baraloto2012a].
+Thirty years after disturbance, the most disturbed plots had recovered their initial genus richness, similar to this of control plots.
+After low intensity plots the genus richness substantially increased for low intensity plots, reaching a gain of almost 12 genuses for some plots.
 
 The evenness of all disturbed plots and the richness of low disturbance plots on the other hand mainly followed an asymptotic growth sharply increasing until 15 years after disturbance.
 Such increased evenness is explained by a much more homogeneous species distribution after disturbance.
