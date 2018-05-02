@@ -44,10 +44,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -128,7 +128,7 @@ Disturbance treatments were attributed according to a randomized plot design wit
 The disturbance corresponds to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
 Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Blanc2009]. 
 
-```{r Tab1, echo=FALSE}
+```{r Tab1, echo=FALSE,is.as=T}
 Intervention <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
