@@ -311,10 +311,10 @@ Despite the recovery of pre-disturbance state there was a time lag between the t
 The trajectory of taxonomic composition and evenness had a longer time-path and remained altered while communities functional composition and diversity had already recovered.
 
 Such delay between functional and taxonomic dynamics was already observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
-According to the "vegetation quantity effect" [@Grime1998], the functional diversity of communities rely on the functional strategy of dominant species.
-Communities functional trajectories were then driven first by the increase of the diversity and evenness of dominant species restoring the pre-disturbance functional characteristics.
+According to the "vegetation quantity effect" [@Grime1998], the functional diversity of communities rely on the dominant species.
+Communities functional trajectories were then driven first by the increase in diversity and evenness of dominant species, which restored the pre-disturbance functional characteristics.
 Then, the functional trajectories were driven by the recruitment of species resembling the old pre-disturbance community, which reduced the overall diversity.
-At that time, the taxonomic composition and diversity remained altered: the initially infrequent, functionally redundant species, therefore remained missing.
+At that time, the taxonomic composition and diversity remained altered: the still missing species were then the initially infrequent and functionally redundant ones.
 The functional redundancy, the functional overlap between species that is typical of the huge biodiversity of tropical forests [@Bellwood2006], was then not restored 30 years after disturbance and this is major to consider as it defines forests' resilience [@Trenbath1999;@Elmqvist2003;@Diaz2005].
 
 Besides the long-term alteration of functional redundancy, there was probably persistent compositional changes favoring disturbance resistant species [@Haddad2008], lianas or epiphytes [@Martin2013] and environmental changes, like in the soils nutrient cycling and compaction [@Olander2005].
