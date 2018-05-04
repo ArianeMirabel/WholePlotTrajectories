@@ -143,7 +143,7 @@ Intervention <- data.frame(
              "", 
              "", 
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-66\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
 knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
@@ -268,10 +268,22 @@ For all disturbed plots the functional trajectories followed a unimodal trajecto
 The plot 7 from treatment 1 that displayed a constantly outlying diversity was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial value and to those of control plots.
 
-```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
-load("DB/FunctionalTraj_ForGraphs")
+```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Upper panels, Trajectories of the Simpson taxonomic diversity and Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial %AGB removed and the values of Simpson (c) and Rao (d) diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.", fig.env="figure"}
+load("DB/SimpsonDraw");load("DB/FunctionalTraj_ForGraphs")
+load("DB/SimpsonIDH");load("DB/RaoIDH")
 
-FunTraj(CompleteFun,remove=T)
+par(mfrow=c(2,2),mar=c(3,3,2,1),oma=c(2,1,2,3),no.readonly = T)
+plotDiv(SimpsonTaxo)
+mtext("Simpson diversity",side=3,adj=0,line=1)
+plotDiv(CompleteFun,remove=TRUE)
+mtext("Rao diversity",side=3,adj=0,line=1)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
+legend("right",inset=c(-0.28,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+
+plotIDH(Sim)
+plotIDH(Rao)
+mtext("initial %AGB lost",side=1,line=2.2,adj=1)
+legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 ```
 

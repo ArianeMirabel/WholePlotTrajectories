@@ -106,7 +106,7 @@ SeedMassProp(Smass)
 
 
 ```{r DivFunAppendix, out.width = '60%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}
-load("DB/FunctionalTraj_ForGraphsnew")
+load("DB/FunctionalTraj_ForGraphs")
 
 FunTraj(CompleteFun,remove=F)
 

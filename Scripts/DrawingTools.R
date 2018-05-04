@@ -4,6 +4,9 @@ Library(c("shape"))
 treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
 names(treatments)<-c("Control","T1","T2","T3")
 ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
+treatAGB<-c(0,18,45,50)
+colyear<-c("darkgoldenrod1","darkorange2","darkred")
+time<-c("1995","2005","2015")
 
 smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
   range<-max(1,step-larg):min(ncol(mat),step+larg)
@@ -138,6 +141,109 @@ FunDist<-function(Data_FunComp){
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
+plotIDH<-function(Data){
+  plot(treatAGB,treatAGB,type="n",xlab="",ylab="",
+       ylim=c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
+              max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])})))))
+  invisible(lapply(1:3,function(T){
+    toplot<-lapply(Data, function(tr){return(tr[,time[T],"0.5"])})
+    toplot<-do.call(rbind,lapply(1:length(toplot),function(tr){return(cbind(treatAGB[tr],toplot[[tr]]))}))
+    toplot<-apply(toplot,2,as.numeric)
+    points(toplot[,1],toplot[,2],col=colyear[T])
+    Lm<-lm(toplot[,2]~toplot[,1])
+    abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[T],lwd=2.5)
+  }))
+}
+
+plotDiv<-function(Data,remove=FALSE){
+  
+  if(remove){Data[[2]]<-Data[[2]][which(rownames(Data[[2]])!=7),,]}
+  
+  Toplot<-lapply(Data,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+  Toplot<-lapply(Toplot,function(tr){
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
+    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+    ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+    return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
+                 dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
+  
+  plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
+       xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+  axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+  
+  invisible(lapply(1:4,function(t){  
+    toplot<-Toplot[[t]]
+    
+    invisible(lapply(1:nrow(toplot),function(i){
+      absc<-colnames(Toplot[[t]])
+      lines(absc,Toplot[[t]][i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(absc,rev(absc)),c(Toplot[[t]][i,,"0.025"],rev(Toplot[[t]][i,,"0.975"])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
+  }))
+}
+
+CWMdraw<-function(Cwm){
+  par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
+invisible(lapply(colnames(Cwm[[1]]),function(trait){
+  Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
+  plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
+  #mtext(trait,3,cex=0.8,adj=0,line=0.5)
+  
+  invisible(lapply(1:4,function(tr){
+    toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
+    invisible(lapply(toplot,function(plo){
+      lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=1.5)
+      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
+              col=rgb(0,0,0,alpha=0.05),border=NA)
+      
+    }))
+  }))
+}))
+mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
+mtext("Years since disturbance",side=1,line=1.2,adj=0.65,cex=0.9,outer=TRUE)
+}
+
+legendCWM<-function(){
+  mtext("Leaf thickness\n",at=0.13,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste(mu, "m",sep = "")),at=0.08,line=-3,outer=TRUE,cex=0.9)
+  mtext("Leaf cholophyll content\n",at=0.4,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste("g.",mm^-2,sep = "")),at=0.34,line=-3,outer=TRUE,cex=0.9)
+  mtext("Leaf toughness\n",at=0.64,line=-2.5,outer=TRUE,cex=0.9)
+  mtext("N",at=0.56,line=-3,outer=TRUE,cex=0.9)
+  mtext("SLA\n",at=0.88,line=-2.5,outer=TRUE,cex=0.9)
+  mtext(expression(paste(mm^2,".",mg^-1,sep = "")),at=0.84,line=-3,outer=TRUE,cex=0.9)
+  
+  mtext("WD\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
+  mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-18,outer=TRUE,cex=0.9)
+  mtext("Bark thickness\n",at=0.4,line=-17.8,outer=TRUE,cex=0.9)
+  mtext("mm",at=0.32,line=-18,outer=TRUE,cex=0.9)
+  mtext("Hmax\n",at=0.64,line=-17.8,outer=TRUE,cex=0.9)
+  mtext("m",at=0.56,line=-18,outer=TRUE,cex=0.9)
+}
+
+SeedMassProp<-function(SeedMass){
+  par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)
+  invisible(lapply(1:5,function(clas){
+    Smass_class<-lapply(SeedMass,function(pl){return(t(pl[clas,,]))})
+    plot(colnames(Smass_class[[1]]),Smass_class[[1]]["0.5",], ylim=c(min(unlist(Smass_class)),max(unlist(Smass_class))),
+         type="n",xlab="years",ylab="")
+    mtext(paste("class",clas),3,cex=1,line=1)
+    invisible(lapply(1:4,function(tr){
+      invisible(lapply(treatments[[tr]],function(plo){
+        lines(colnames(Smass_class[[plo]]),Smass_class[[plo]]["0.5",],col=ColorsTr[tr],lwd=2)
+        polygon(c(colnames(Smass_class[[plo]]),rev(colnames(Smass_class[[plo]]))),
+                c(Smass_class[[plo]]["0.05",],rev(Smass_class[[plo]]["0.975",])),
+                col=rgb(0,0,0,alpha=0.1),border=NA)}))
+    }))
+  }))
+mtext("Proportion of seed mass classes",line=2,adj=0,outer=TRUE,cex=0.9)
+mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
+}
+
+
+### Previous graphs
 TaxoTraj<-function(CompTaxo){
   par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
   for(q in 1:3){     
@@ -200,63 +306,4 @@ FunTraj<-function(CompFun,remove=TRUE){
               col=rgb(0,0,0,alpha=0.05),border=NA)
     }))
   }))
-}
-
-CWMdraw<-function(Cwm){
-  par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
-invisible(lapply(colnames(Cwm[[1]]),function(trait){
-  Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
-  plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
-  #mtext(trait,3,cex=0.8,adj=0,line=0.5)
-  
-  invisible(lapply(1:4,function(tr){
-    toplot<-Toplot[which(names(Toplot)%in%treatments[[tr]])]
-    invisible(lapply(toplot,function(plo){
-      lines(colnames(plo),plo["0.5",],col=ColorsTr[tr],lwd=1.5)
-      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
-              col=rgb(0,0,0,alpha=0.05),border=NA)
-      
-    }))
-  }))
-}))
-mtext("Community Weighted Means",line=0.5,adj=0,outer=TRUE,cex=1.1)
-mtext("Years since disturbance",side=1,line=1.2,adj=0.65,cex=0.9,outer=TRUE)
-}
-
-legendCWM<-function(){
-  mtext("Leaf thickness\n",at=0.13,line=-2.5,outer=TRUE,cex=0.9)
-  mtext(expression(paste(mu, "m",sep = "")),at=0.08,line=-3,outer=TRUE,cex=0.9)
-  mtext("Leaf cholophyll content\n",at=0.4,line=-2.5,outer=TRUE,cex=0.9)
-  mtext(expression(paste("g.",mm^-2,sep = "")),at=0.34,line=-3,outer=TRUE,cex=0.9)
-  mtext("Leaf toughness\n",at=0.64,line=-2.5,outer=TRUE,cex=0.9)
-  mtext("N",at=0.56,line=-3,outer=TRUE,cex=0.9)
-  mtext("SLA\n",at=0.88,line=-2.5,outer=TRUE,cex=0.9)
-  mtext(expression(paste(mm^2,".",mg^-1,sep = "")),at=0.84,line=-3,outer=TRUE,cex=0.9)
-  
-  mtext("WD\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
-  mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-18,outer=TRUE,cex=0.9)
-  mtext("Bark thickness\n",at=0.4,line=-17.8,outer=TRUE,cex=0.9)
-  mtext("mm",at=0.32,line=-18,outer=TRUE,cex=0.9)
-  mtext("Hmax\n",at=0.64,line=-17.8,outer=TRUE,cex=0.9)
-  mtext("m",at=0.56,line=-18,outer=TRUE,cex=0.9)
-}
-
-
-SeedMassProp<-function(SeedMass){
-  par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)
-  invisible(lapply(1:5,function(clas){
-    Smass_class<-lapply(SeedMass,function(pl){return(t(pl[clas,,]))})
-    plot(colnames(Smass_class[[1]]),Smass_class[[1]]["0.5",], ylim=c(min(unlist(Smass_class)),max(unlist(Smass_class))),
-         type="n",xlab="years",ylab="")
-    mtext(paste("class",clas),3,cex=1,line=1)
-    invisible(lapply(1:4,function(tr){
-      invisible(lapply(treatments[[tr]],function(plo){
-        lines(colnames(Smass_class[[plo]]),Smass_class[[plo]]["0.5",],col=ColorsTr[tr],lwd=2)
-        polygon(c(colnames(Smass_class[[plo]]),rev(colnames(Smass_class[[plo]]))),
-                c(Smass_class[[plo]]["0.05",],rev(Smass_class[[plo]]["0.975",])),
-                col=rgb(0,0,0,alpha=0.1),border=NA)}))
-    }))
-  }))
-mtext("Proportion of seed mass classes",line=2,adj=0,outer=TRUE,cex=0.9)
-mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
 }

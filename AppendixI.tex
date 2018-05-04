@@ -118,7 +118,7 @@
 %----------------------------------------------------------------------------------------
 
 \JournalInfo{Hal 00679993} % Journal information
-\Archive{} % Additional notes (e.g. copyright, DOI, review/research article)
+\Archive{\ }
 
 \PaperTitle{Appendix I} % Article title
 
@@ -255,7 +255,13 @@ display}{Figure A4: Rao diversity trajectories with all plots display}}\label{fi
 %----------------------------------------------------------------------------------------
 
 \bibliographystyle{mee}
-\bibliography{}
+\makeatletter
+% The filename has .bib extension the must be eliminated
+\filename@parse{}
+% parse stores the file name in base. Extension starts at the first dot, so don't use dots in file names.
+\bibliography{\filename@base}
+\makeatother
+
 
 %----------------------------------------------------------------------------------------
 

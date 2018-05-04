@@ -1,3 +1,41 @@
+load("DB/ReplacementTraj_ForGraphs")
+load("DB/FunctionalTraj_ForGraphs")
+
+SimpsonTaxo<-lapply(CompleteTaxo,function(tr){return(tr[,,,"Simpson"])})
+save(SimpsonTaxo,file="DB/SimpsonDraw")
+
+Sim<-lapply(CompTaxo,function(tr){return(tr[,c("1995","2005","2015"),])})
+Sim<-lapply(Sim, function(tr){
+  Ret<-lapply(c(0.025,0.5,0.975),function(quant){
+  return(apply(tr,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+  Ret<-array(unlist(Ret),dim=c(nrow(Ret[[1]]),ncol(Ret[[1]]),3),
+             dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
+save(Sim,file="DB/SimpsonIDH")
+
+Rao<-lapply(CompFun, function(tr){
+  Ret<-lapply(c(0.025,0.5,0.975),function(quant){
+    return(apply(tr[,c("1995","2005","2015"),],c(1,2),function(x){return(quantile(x,probs=quant))}))})
+  Ret<-array(unlist(Ret),dim=c(nrow(Ret[[1]]),ncol(Ret[[1]]),3),
+             dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
+save(Rao,file="DB/RaoIDH")
+
+windows()
+par(mfrow=c(2,2),mar=c(3,3,2,1),oma=c(2,1,2,3),no.readonly = T)
+plotDiv(SimpsonTaxo)
+mtext("Simpson diversity",side=3,adj=0,line=1)
+plotDiv(CompleteFun,remove=TRUE)
+mtext("Rao diversity",side=3,adj=0,line=1)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
+legend("right",inset=c(-0.28,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+
+plotIDH(Sim)
+plotIDH(Rao)
+mtext("initial %AGB lost",side=1,line=2.2,adj=1)
+legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
+
+
+##########################################
+## Rho Spearman
 load("DB/TaxoComposition_ForGraphs")
 
 Data_TaxoComp<-MatrepTaxo
