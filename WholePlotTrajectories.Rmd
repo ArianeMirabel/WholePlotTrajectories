@@ -90,11 +90,10 @@ source("Scripts/DrawingTools.R")
 # Introduction
 
 The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
-They provide wood and multiple non-timber forest products, shelter for a diversified fauna, regulate the local climate, support the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
-The simultaneous increase of forests products demand and substantial climatic changes heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threatened the maintenance of communities structure, composition and functioning and their underlying dynamics [@Anderson-Teixeira2013;@Sist2015].
+They provide wood and multiple non-timber forest products, shelter for a diversified fauna, regulate the local and global climate, support the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
+The simultaneous increase of forests products demand and substantial climatic changes has heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threatened the maintenance of communities structure, composition and functioning and their underlying dynamics in space and time [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forests communities are shaped by a constant range of disturbance that changes the abiotic environment, as the light, the heat and water fluxes, and the biotic interaction and competitive pressure.
-The cornerstone of tropical forests ecology is then to understand their response to disturbance and its mechanisms [@White2001;@Chazdon2003a].
+In tropical forest, ecological communities are contantly re-shaped by the natural disturbance events that changes the abiotic environment, as the light, the heat and water fluxes, and the biotic interaction and competitive pressure *(Goulamoussene Biogeosciences)*. The cornerstone of tropical forests ecology is then to understand their response to disturbance and its mechanisms [@White2001;@Chazdon2003a].
 Forests response has been largely studied through structural parameters rapid and convenient to measure, as aboveground biomass, tree height or stem density.
 These structural parameters have then been sucessfully modeled and allowed to assess the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
 However the response of tree species diversity, which is determinant of ecosystems productivity, stability and functioning [@Tilman2014] and would be most probably impacted by post-disturbance environmental changes [@CazzollaGatti2014], remains unclear.
