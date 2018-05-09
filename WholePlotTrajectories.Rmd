@@ -274,7 +274,7 @@ Thirty years after disturbance all plots, whenever the initial disturbance inten
 
 ```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Upper panels, Trajectories of the Simpson taxonomic diversity and Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial %AGB removed and the values of Simpson (c) and Rao (d) diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.", fig.env="figure"}
 load("DB/SimpsonDraw");load("DB/FunctionalTraj_ForGraphs")
-load("DB/SimpsonIDH");load("DB/RaoIDH")
+load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
 
 par(mfrow=c(2,2),mar=c(3,3,2,1),oma=c(2,1,2,3),no.readonly = T)
 plotDiv(SimpsonTaxo)
@@ -284,12 +284,14 @@ mtext("Rao diversity",side=3,adj=0,line=1)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
-plotIDH(Sim)
-plotIDH(Rao)
+plotIDH(Data=Sim,AgbLoss=AGBloss)
+plotIDH(Data=Rao,AgbLoss=AGBloss)
 mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 ```
+
+
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
 load("DB/Redundancy")

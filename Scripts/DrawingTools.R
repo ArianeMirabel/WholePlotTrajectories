@@ -4,7 +4,6 @@ Library(c("shape"))
 treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
 names(treatments)<-c("Control","T1","T2","T3")
 ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
-treatAGB<-c(0,18,45,50)
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
 time<-c("1995","2005","2015")
 
@@ -141,16 +140,15 @@ FunDist<-function(Data_FunComp){
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
-plotIDH<-function(Data){
-  plot(treatAGB,treatAGB,type="n",xlab="",ylab="",
+plotIDH<-function(Data,AgbLoss){
+  plot(AgbLoss[,"AGB"],AgbLoss[,"AGB"],type="n",xlab="",ylab="",
        ylim=c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
               max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])})))))
   invisible(lapply(1:3,function(T){
-    toplot<-lapply(Data, function(tr){return(tr[,time[T],"0.5"])})
-    toplot<-do.call(rbind,lapply(1:length(toplot),function(tr){return(cbind(treatAGB[tr],toplot[[tr]]))}))
-    toplot<-apply(toplot,2,as.numeric)
-    points(toplot[,1],toplot[,2],col=colyear[T])
-    Lm<-lm(toplot[,2]~toplot[,1])
+    toplot<-unlist(lapply(Data, function(tr){return(tr[,time[T],"0.5"])}))
+    abs<-AgbLoss[which(AgbLoss[,"plot"]%in%names(toplot)),"AGB"]
+    points(abs,toplot,col=colyear[T])
+    Lm<-lm(toplot~abs)
     abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[T],lwd=2.5)
   }))
 }
