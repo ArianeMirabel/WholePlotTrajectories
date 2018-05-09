@@ -44,10 +44,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -284,6 +284,16 @@ plotIDH(Sim)
 plotIDH(Rao)
 mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
+
+```
+
+```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
+load("DB/Redundancy")
+
+RedundancyPlot(RedundancyTraj)
+mtext("Functional Redundancy",side=3,adj=0,line=1.5)
+mtext("Sum of abundance-weighted Trait Probability Density",side=3,adj=0,cex=0.8,line=0.5)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ```
 

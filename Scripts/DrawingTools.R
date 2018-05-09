@@ -179,7 +179,7 @@ plotDiv<-function(Data,remove=FALSE){
       absc<-colnames(Toplot[[t]])
       lines(absc,Toplot[[t]][i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
       polygon(c(absc,rev(absc)),c(Toplot[[t]][i,,"0.025"],rev(Toplot[[t]][i,,"0.975"])),
-              col=rgb(0,0,0,alpha=0.1),border=NA)
+              col=rgb(0,0,0,alpha=0.05),border=NA)
     }))
   }))
 }
@@ -241,6 +241,27 @@ SeedMassProp<-function(SeedMass){
 mtext("Proportion of seed mass classes",line=2,adj=0,outer=TRUE,cex=0.9)
 mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
 }
+
+RedundancyPlot<-function(Red){
+  abs<-as.numeric(colnames(Red[[1]]))-1984
+  Red<-lapply(Red,function(rep){return(smooth(rep,2))})
+  Red<-lapply(Red,function(rep){return(apply(rep,2,function(col){return(col-rep[,1])}))})
+  Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
+             dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
+  Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){return(quantile(rep,probs=quant))}))})
+  Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
+             dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
+  #Red<-Red[,which(colnames(Red)>=1989),]
+  
+  plot(abs,Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  invisible(lapply(1:4,function(tr){
+    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,"0.5"]
+    apply(toplot,1,function(li){
+      lines(abs,li,col=ColorsTr[tr],lwd=2)
+    })
+  }))
+}
+
 
 
 ### Previous graphs
