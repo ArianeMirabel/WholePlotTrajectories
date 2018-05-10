@@ -109,7 +109,8 @@
 
 % User-adder preamble
 \usepackage{textcomp} \DeclareUnicodeCharacter{B0}{\textdegree}
-\usepackage{tabu}
+\usepackage{tabu} \usepackage{caption}
+\captionsetup{justification = justified}
 \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
 \hyphenation{bio-di-ver-si-ty sap-lings}
 
@@ -173,6 +174,8 @@ Résumé de l'article.
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
+
+
 
 
 
@@ -555,24 +558,30 @@ for full graph. Thirty years after disturbance all plots, whenever the
 initial disturbance intensity, regained diversity values similar to
 their initial value and to those of control plots.
 
-\textbackslash{}begin\{figure\}
+\begin{figure*}
 
-\{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_files/figure-latex/DivFun-1}
+{\centering \includegraphics{WholePlotTrajectories_files/figure-latex/IDHplot-1} 
 
-\}
+}
 
-\textbackslash{}caption\{Upper panels, Trajectories of the Simpson
-taxonomic diversity and Rao functional diversity over 30 years after
-disturbance. Trajectories correspond to the median (solid line) and
-0.025 and 0.975 percentile (gray envelope) observed after 50 iteration
-of the taxonomic uncertainty propagation and the missing trait value
-filling processes. Initial treatments are represented by solid lines
-colors with green for control, blue for T1,orange for T2 and red for T3.
-Lower panels, Relationship between the initial \%AGB removed and the
-values of Simpson (c) and Rao (d) diversities at three times after
-disturbance. Solid lines colors represent the time, 10 years (yellow),
-20 years (orange) and 30 years (brown) after
-disturbance.\}\label{fig:DivFun} \textbackslash{}end\{figure\}
+\caption{Upper panels, Trajectories of the Simpson taxonomic diversity \textbf{(a)} and Rao functional diversity \textbf{(b)} over 30 years after disturbance, corresponding to the median and 0.025 and 0.975 percentile observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial \%AGB removed and the values of Simpson \textbf{(c)} and Rao \textbf{(d)} diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.}\label{fig:IDHplot}
+\end{figure*}
+
+The functional redundancy was measured as the sum of weighted overlap
+among species in the communities. Species functional space were defined
+in the main two-dimensional space of a PCA analysis based on all leaf
+and stem and maximum height traits (see appendix I for more details).
+Plots functoinal redundancy was followed in comparison to their initial
+value right after logging so that only communities dynamics are followed
+apart from the impact of logging itself. While the functional redundancy
+of control plots remained stable along the 30 years it systematically
+decreased after disturbance (\ref{fig:RedFun}). The decrease of
+functional redundancy was comparable between all disturbed plots but
+started later for the most disturbed plots. Plots recovery did not
+seemed correlated to the initial disturbance, for five out of nine
+disturbed plots the initial functional redundancy was had recovered
+while it was still decreasing or stabilized at lower values for the fou
+other plots.
 
 \begin{figure}
 

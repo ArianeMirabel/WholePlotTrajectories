@@ -37,6 +37,8 @@ preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
   \usepackage{tabu}
+  \usepackage{caption}
+  \captionsetup{justification = justified}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 bibliography: references.bib
@@ -56,6 +58,8 @@ output:
 (ref:Boldb) **(b)**
 
 (ref:Boldc) **(c)**
+
+(ref:Boldd) **(d)**
 
 (ref:capThickness) *L_thickness*
 
@@ -250,7 +254,7 @@ legendCWM()
 
 Trajectories of Richness, Shannon and Simpson taxonomic diversity were examined at genus level in relation to the 1989 inventories (5 years after disturbance) (Figure \@ref(fig:DivTaxo)). 
 
-```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE,fig.cap="Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
+```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE, fig.cap="Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
 load("DB/ReplacementTraj_ForGraphs")
 
 TaxoTraj(CompleteTaxo)
@@ -272,7 +276,9 @@ For all disturbed plots the functional trajectories followed a unimodal trajecto
 The plot 7 from treatment 1 that displayed a constantly outlying diversity was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial value and to those of control plots.
 
-```{r DivFun, out.width = '100%', echo=FALSE, fig.cap="Upper panels, Trajectories of the Simpson taxonomic diversity and Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial %AGB removed and the values of Simpson (c) and Rao (d) diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.", fig.env="figure"}
+
+```{r IDHplot,  echo=FALSE, fig.cap="Upper panels, Trajectories of the Simpson taxonomic diversity (ref:Bolda) and Rao functional diversity (ref:Boldb) over 30 years after disturbance, corresponding to the median and 0.025 and 0.975 percentile observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial \\%AGB removed and the values of Simpson (ref:Boldc) and Rao (ref:Boldd) diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.", fig.env="figure*"}
+
 load("DB/SimpsonDraw");load("DB/FunctionalTraj_ForGraphs")
 load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
 
@@ -291,17 +297,26 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 
 ```
 
+The functional redundancy was measured as the sum of weighted overlap among species in the communities.
+Species functional space were defined in the main two-dimensional space of a PCA analysis based on all leaf and stem and maximum height traits (see appendix I for more details). 
+Plots functoinal redundancy was followed in comparison to their initial value right after logging so that only communities dynamics are followed apart from the impact of logging itself.
+While the functional redundancy of control plots remained stable along the 30 years it systematically decreased after disturbance (\@ref(fig:RedFun)).
+The decrease of functional redundancy was comparable between all disturbed plots but started later for the most disturbed plots.
+Plots recovery did not seemed correlated to the initial disturbance, for five out of nine disturbed plots the initial functional redundancy was had recovered while it was still decreasing or stabilized at lower values for the fou other plots.
 
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
 load("DB/Redundancy")
 
+par(mar=c(5,4,5,2))
 RedundancyPlot(RedundancyTraj)
 mtext("Functional Redundancy",side=3,adj=0,line=1.5)
 mtext("Sum of abundance-weighted Trait Probability Density",side=3,adj=0,cex=0.8,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ```
+
+
 
 # Discussion
 
