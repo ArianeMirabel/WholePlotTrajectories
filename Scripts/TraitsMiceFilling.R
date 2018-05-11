@@ -68,8 +68,9 @@ traitsPartial_gen<-traitsPartial_gen[which(unlist(lapply(traitsPartial_gen,nrow)
 
 # gap filling à proporement parler, à chaque élément de la liste de sgenre, on applique la fonction mice
 traitsPartial_gen<-lapply(traitsPartial_gen,function(sub){
-  ret<-complete(mice(sub[,Seltraits],printFlag=F))
-  return(cbind(sub[,c("Family","Genus","name","bar_code")],ret))})
+  data<-rbind(traitsComp[which(traitsComp[,"Genus"]==unique(sub[,"Genus"])),],sub)
+  ret<-complete(mice(data[,Seltraits],printFlag=F))
+  return(cbind(sub[,c("Family","Genus","name","bar_code")],ret[(nrow(ret)-nrow(sub)+1):nrow(ret),]))})
 
 # J'avais de soucis avec les NA persistants pour la Wood Density, 
 #si le problème persiste je ramène ces espèces à la famille et je refais l'estimation
@@ -87,8 +88,9 @@ traitsPartial_fam<-traitsPartial_fam[which(unlist(lapply(traitsPartial_fam,nrow)
 
 # Gap filling des groupes par famille
 traitsPartial_fam<-lapply(traitsPartial_fam,function(sub){
-  ret<-complete(mice(sub[,Seltraits],printFlag=F))
-  return(cbind(sub[,c("Family","Genus","name","bar_code")],ret))})
+  data<-rbind(traitsComp[which(traitsComp[,"Family"]==unique(sub[,"Family"])),],sub)
+  ret<-complete(mice(data[,Seltraits],printFlag=F))
+  return(cbind(sub[,c("Family","Genus","name","bar_code")],ret[(nrow(ret)-nrow(sub)+1):nrow(ret),]))})
 
 # Pour les espèce squi n'avaient toujours pas assez d'individus dans leur famille pour permettre l'estimation
 idScarce<-as.character(traitsPartial_all[,"bar_code"],

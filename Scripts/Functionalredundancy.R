@@ -1,6 +1,6 @@
 library("MASS")
 source("Scripts/Vernacular_handle.R")           # Script for vernacular names replacement
-source("Scripts/TraitsMiceFilling.R")                                   # Traits Gap-filling
+source("Scripts/TraitsMiceFilling.R")            # Traits Gap-filling
 
 load("DB/Alpha_Plots")                  # Alpha vector for vernacular replacement
 load("DB/Paracou_R_Subdivided_ok")      # Paracou dataset, lists by inventoried year, sublists by plot, etc...
@@ -17,59 +17,6 @@ InventorySp<-do.call(rbind,lapply(LivingStand_all,function(yr){
   return(ret[which(!duplicated(ret)),])}))
 InventorySp<-InventorySp[which(!duplicated(InventorySp)),]
 
-traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
-
-### Whole community mapping, individuals: NMDS ou ACP?
-
-BigNmds<-as.matrix(daisy(scale(traits_filled[,TraitsName]),metric="gower"))
-BigNmds<-scores(metaMDS(BigNmds,distance="bray"),display="sites")
-BigNmds<-merge(BigNmds,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","NMDS1","NMDS2")]
-save(BigNmds,file="DB/BigNmds")
-
-ACP<-dudi.pca(scale(traits_filled[,TraitsName]))
-Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
-
-plot(Bigacp[,"Axis1"], Bigacp[,"Axis2"],type="n")
-text(Bigacp[,"Axis1"], Bigacp[,"Axis2"],labels=Bigacp[,"name"])
-
-### Species TPD
-
-xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))
-ygen<-c(min(Bigacp[,"Axis2"]),max(Bigacp[,"Axis2"]))
-  
-# For the species with one individual: reproduce a gaussian kernel,
-# centered in the individual location and with sd like the mean sd of all species
-MeanSd<-mean(unlist(lapply(unique(Bigacp[,"name"]),function(Sp){
-  acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
-  if(nrow(acp)!=1){
-    return(mean(apply(acp,2,sd)))
-}})))
-
-SpTdp<-lapply(unique(Bigacp[,"name"]),function(Sp){
-  acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
-  if(nrow(acp)!=1){
-  method1<-method2<-"ste"
-  if(tryCatch(width.SJ(acp[,"Axis1"]), error=function(e) "error")=="error")
-    {method1<-"dpi"}
-  if(tryCatch(width.SJ(acp[,"Axis2"]), error=function(e) "error")=="error")
-    {method2<-"dpi"}
-  f<-kde2d(acp[,"Axis1"], acp[,"Axis2"], n = 100,lims=c(xgen,ygen),
-               h = c(width.SJ(acp[,"Axis1"],method=method1),
-                     width.SJ(acp[,"Axis2"],method=method2)) )
-  z<-f$z
-  colnames(z)<-1:100;rownames(z)<-1:100
-  }
-  if(nrow(acp)==1){
-    z<-outer(seq(xgen[1],xgen[2],length=100),seq(ygen[1],ygen[2],length=100), 
-              function(x,y) dnorm(x,acp[,"Axis1"],MeanSd)*dnorm(y,acp[,"Axis2"],MeanSd))
-    colnames(z)<-1:100;rownames(z)<-1:100
-  }
-  return(z)
-})
-names(SpTdp)<-unique(Bigacp[,"name"])
-
-### Community TPD
-
 # Treatments definition
 T0<-c(1,6,11); T1<-c(2,7,9); T2<-c(3,5,10); T3<-c(4,8,12)
 treatments<-list(T0,T1,T2,T3)
@@ -81,10 +28,48 @@ smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step
   range<-max(1,step-larg):min(ncol(mat),step+larg)
   rowSums(mat[,range])/length(range)})))}
 
+# For the species with one individual: reproduce a gaussian kernel,
+# centered in the individual location and with sd like the mean sd of all species
+#MeanSd<-mean(unlist(lapply(unique(Bigacp[,"name"]),function(Sp){acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
+  #if(nrow(acp)!=1){return(mean(apply(acp,2,sd)))}})))
+MeanSd<-0.7
+
 ## Overall community redundancy
 
-Nrep<-5
+Nrep<-50
 RedundancyTraj<-lapply(1:Nrep,function(rep){
+  
+  traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+  
+  ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
+  Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
+  
+  xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))
+  ygen<-c(min(Bigacp[,"Axis2"]),max(Bigacp[,"Axis2"]))
+  
+  SpTdp<-lapply(unique(Bigacp[,"name"]),function(Sp){
+    acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
+    if(nrow(acp)!=1){
+      method1<-method2<-"ste"
+      if(tryCatch(width.SJ(acp[,"Axis1"]), error=function(e) "error")=="error")
+      {method1<-"dpi"}
+      if(tryCatch(width.SJ(acp[,"Axis2"]), error=function(e) "error")=="error")
+      {method2<-"dpi"}
+      f<-kde2d(acp[,"Axis1"], acp[,"Axis2"], n = 100,lims=c(xgen,ygen),
+               h = c(width.SJ(acp[,"Axis1"],method=method1),
+                     width.SJ(acp[,"Axis2"],method=method2)) )
+      z<-f$z
+      colnames(z)<-1:100;rownames(z)<-1:100
+    }
+    if(nrow(acp)==1){
+      z<-outer(seq(xgen[1],xgen[2],length=100),seq(ygen[1],ygen[2],length=100), 
+               function(x,y) dnorm(x,acp[,"Axis1"],MeanSd)*dnorm(y,acp[,"Axis2"],MeanSd))
+      colnames(z)<-1:100;rownames(z)<-1:100
+    }
+    return(z)
+  })
+  names(SpTdp)<-unique(Bigacp[,"name"])
+  
   Matrep<-lapply(1:12,function(p){
     
     Redun<-lapply(dates,function(y){
@@ -185,6 +170,10 @@ return(Matrep)
 })
 
 save(RedundancyTraj_restricted,file="DB/Redundancy_restricted")
+
+
+
+
 
 #####################################################
 load("DB/Redundancy")
