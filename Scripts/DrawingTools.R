@@ -241,26 +241,31 @@ mtext("Years since disturbance",side=1,line=1.2,adj=1,cex=0.9,outer=TRUE)
 }
 
 RedundancyPlot<-function(Red){
-  abs<-as.numeric(colnames(Red[[1]]))-1984
-  Red<-lapply(Red,function(rep){return(smooth(rep,2))})
-  Red<-lapply(Red,function(rep){return(apply(rep,2,function(col){return(col-rep[,1])}))})
+  Red<-lapply(Red,function(rep){
+    ret<-smooth(rep,2)
+   colnames(ret)<-colnames(rep)
+   ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})
+   colnames(ret)<-as.numeric(colnames(ret))-1984
+   return(ret)})
+  
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
              dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
-  Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){return(quantile(rep,probs=quant))}))})
+  Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){
+    return(quantile(rep,probs=quant))}))})
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
              dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
-  #Red<-Red[,which(colnames(Red)>=1989),]
   
-  plot(abs,Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  plot(colnames(Red),Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  
   invisible(lapply(1:4,function(tr){
-    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,"0.5"]
+    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,]
     apply(toplot,1,function(li){
-      lines(abs,li,col=ColorsTr[tr],lwd=2)
-    })
-  }))
+      lines(colnames(Red),li[,"0.5"],col=ColorsTr[tr],lwd=2)
+      polygon(c(colnames(Red),rev(colnames(Red))),
+              c(li[,"0.025"],rev(li[,"0.975"])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    })}))
 }
-
-
 
 ### Previous graphs
 TaxoTraj<-function(CompTaxo){

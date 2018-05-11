@@ -46,10 +46,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -98,12 +98,11 @@ They provide wood and multiple non-timber forest products, shelter a diversified
 The simultaneous increase of forests products demand and substantial climatic changes currently heighten the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015].
 It threatens the maintenance of communities structure, composition and functioning and the underlying dynamics  in space and time [@Anderson-Teixeira2013;@Sist2015].
 
-
 In tropical forest, ecological communities are contantly re-shaped by the natural disturbance events that changes the abiotic environment, through the fluxes of light, heat and water, and the biotic interaction and competitive pressure *(Goulamoussene Biogeosciences)*. 
 The cornerstone of tropical forests ecology is then to understand the underlyings of ecosystem response to disturbance, its mechanisms and drivers [@White2001;@Chazdon2003a]. 
 For now, this has been largely studied through structural parameters, rapid and convenient to measure, as aboveground biomass, tree height or stem density *(e.g. PiponiotElife, RutishauserBiotropica)*. 
 These structural parameters have then been sucessfully modeled and allowed to assess the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016]. 
-However the response of tree species diversity remains unclear, also it is determinant of ecosystems productivity, stability and functioning [@Tilman2014, Liang2016Science] and would be most probably impacted by post-disturbance environmental changes [@BaralotoJAE.
+However the response of tree species diversity remains unclear, also it is determinant of ecosystems productivity, stability and functioning [@Tilman2014, Liang2016Science] and would be most probably impacted by post-disturbance environmental changes [@BaralotoJAE].
 
 In the short-term disturbance demonstrated negligible or even positive impacts on communities diversity, which have been formalized by the intermediate disturbance hypothesis (IDH) stating a maximized species diversity at intermediate disturbance intensity [@Molino2001;@Kariuki2006a;@Berry2008a]. 
 Validations of the IDH in the long term, however, remain scarce and mainly rely on the analysis of the rough species richness that gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
@@ -274,7 +273,7 @@ Only two T3 plots, plots 8 and 12, remained increasing 30 years after disturbanc
 
 The functional diversity trajectories of plots based on the 8 leaf, stem and life history traits was examined through the Rao diversity.
 For all undisturbed plots the functional diversity remained comparable to the reference values 5 years after disturbance (1989 inventories).
-For all disturbed plots the functional trajectories followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}=0.73$) (Figure \@ref(fig:DivFun)). 
+For all disturbed plots the functional trajectories followed a unimodal trajectory with a maximum positively correlated to disturbance intensity ($\rho_{spearman}=0.73$) (Figure \@ref(fig:IDHplot)). 
 The plot 7 from treatment 1 that displayed a constantly outlying diversity was removed from the graphical representation for better readability, see appendix for full graph.
 Thirty years after disturbance all plots, whenever the initial disturbance intensity, regained diversity values similar to their initial value and to those of control plots.
 
@@ -301,19 +300,19 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 
 The functional redundancy was measured as the sum of weighted overlap among species in the communities.
 Species functional space were defined in the main two-dimensional space of a PCA analysis based on all leaf and stem and maximum height traits (see appendix I for more details). 
-Plots functoinal redundancy was followed in comparison to their initial value right after logging so that only communities dynamics are followed apart from the impact of logging itself.
-While the functional redundancy of control plots remained stable along the 30 years it systematically decreased after disturbance (\@ref(fig:RedFun)).
-The decrease of functional redundancy was comparable between all disturbed plots but started later for the most disturbed plots.
-Plots recovery did not seemed correlated to the initial disturbance, for five out of nine disturbed plots the initial functional redundancy was had recovered while it was still decreasing or stabilized at lower values for the fou other plots.
-
+Plots functional redundancy compared to the initial value after logging so that only communities dynamics are followed apart from the impact of logging itself.
+Communities functional redundancy remained stable in control plots but after disturbance the redundancy trajectories were quite variable (See appendix I).
+Globally after most intense disturbance (plots T2 and T3) communities redundancy decreased at first place and then increased to edge, recover or even exceed the initial value.
+Considering the functional redundancy restricted to the functional space of the initial inventory, though, all disturbed plots followed similar decreasing humped-shaped trajectories (\@ref(fig:RedFun)).
+The maximum redundancy loss observed was positively correlated with the disturbance intensity (XX spearman to be measured) and none of the disturbed plots had recovered the functional redundancy within their initial functional space.
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
-load("DB/Redundancy2")
+load("DB/Redundancy_restricted")
 
 par(mar=c(5,4,5,2))
-RedundancyPlot(RedundancyTraj)
+RedundancyPlot(RedundancyTraj_restricted)
 mtext("Functional Redundancy",side=3,adj=0,line=1.5)
-mtext("Sum of abundance-weighted Trait Probability Density",side=3,adj=0,cex=0.8,line=0.5)
+mtext("Restricted to initial functional space",side=3,adj=0,cex=0.8,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ```
@@ -363,7 +362,7 @@ At that time, the taxonomic composition and diversity remained altered: the stil
 The functional redundancy, the functional overlap between species that is typical of the huge biodiversity of tropical forests [@Bellwood2006], was then not restored 30 years after disturbance and this is major to consider as it defines forests' resilience [@Trenbath1999;@Elmqvist2003;@Diaz2005].
 
 Besides the long-term alteration of functional redundancy, there was probably persistent compositional changes favoring disturbance resistant species [@Haddad2008], lianas or epiphytes [@Martin2013] and environmental changes, like in the soils nutrient cycling and compaction [@Olander2005].
-These presistent changes highly question forest's resilience [@Chazdon2003a].
+These persistent changes highly question forest's resilience [@Chazdon2003a].
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
 Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Jones1994;@Diaz2005;@Gardner2007].
 
