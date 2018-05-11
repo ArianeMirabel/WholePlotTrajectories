@@ -94,17 +94,20 @@ source("Scripts/DrawingTools.R")
 # Introduction
 
 The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
-They provide wood and multiple non-timber forest products, shelter for a diversified fauna, regulate the local climate, support the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
-The simultaneous increase of forests products demand and substantial climatic changes heightened the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015] and threatened the maintenance of communities structure, composition and functioning and their underlying dynamics [@Anderson-Teixeira2013;@Sist2015].
+They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate the local climate, support the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
+The simultaneous increase of forests products demand and substantial climatic changes currently heighten the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015].
+It threatens the maintenance of communities structure, composition and functioning and the underlying dynamics [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forests communities are shaped by a constant range of disturbance that changes the abiotic environment, as the light, the heat and water fluxes, and the biotic interaction and competitive pressure.
-The cornerstone of tropical forests ecology is then to understand their response to disturbance and its mechanisms [@White2001;@Chazdon2003a].
-Forests response has been largely studied through structural parameters rapid and convenient to measure, as aboveground biomass, tree height or stem density.
-These structural parameters have then been sucessfully modeled and allowed to assess the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
-However the response of tree species diversity, which is determinant of ecosystems productivity, stability and functioning [@Tilman2014] and would be most probably impacted by post-disturbance environmental changes [@CazzollaGatti2014], remains unclear.
+In tropical forests communities are shaped by a constant range of disturbance changing the abiotic environment, through the fluxes of light, heat and water, and the bioticenvironment, through the interaction and competition among species.
+The cornerstone of tropical forests ecology is to understand their response to disturbance and its mechanisms [@White2001;@Chazdon2003a].
+Forests response has been largely studied through structural parameters, rapid and convenient to measure, as aboveground biomass, tree height or stem density.
+These structural parameters have then been sucessfully modeled which allowed to assess the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009;@Rutishauser2016].
+However the response of tree species diversity remains unclear.
+It is however crucial as it determines ecosystems productivity, stability and functioning [@Tilman2014] and would be most probably impacted by the environmental changes due to disturbance [@CazzollaGatti2014].
 
-In the short-term diversity dynamics demonstrated negligible or even positive impacts of disturbance on communities diversity, which have been formalized by the intermediate disturbance hypothesis (IDH) stating a maximized species diversity at intermediate disturbance intensity [@Molino2001;@Kariuki2006a;@Berry2008a]. 
-However, validations of the IDH in the long term remain scarce and mainly rely on the analysis of species richness that gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
+In the short-term disturbance demonstrated negligible or even positive impacts on communities diversity, which have been formalized by the intermediate disturbance hypothesis (IDH) stating a maximized species diversity at intermediate disturbance intensity [@Molino2001;@Kariuki2006a;@Berry2008a]. 
+In the long term however the application of the IDH has been scarcely tested.
+The analysis besides mainly relied on species richness that gives limited or even misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
 More releveant monitoring would encompass communities composition, that is crucial for conservation issues, and evenness, that reveals ecological rules underlying communities' structure [@Magurran1988;@Lavorel2002;@Bellwood2006].
 Furthermore, the functional approach accounting for species biological attributes would be insightful as it reveals species fitness and ecosystems functioning [@Violle2007b;@Moretti2009;@Baraloto2012a;@Scheiter2013].
 In that respect major functional traits related to species ecology and performance were largely adopted through a relevant framework [@Diaz2005;@Villeger2008a].
@@ -199,9 +202,11 @@ The functional diversity was reported using the Rao index of quadratic entropy w
 
 The functional redundancy was measured as the overlap among species in communities' functional space [@Carmona2016].
 The samples of the trait database were first located with a PCA analysis in a two-dimensional functional space summarizing the 8 functional traits considered.
+We choose to summarize species functional space through a PCA because functional traits considered were already somehow redundant and allows not to overweight the role of one trait.
 Then, multivariate kernel density estimator associated with individual trees were summed to give the distribution of traits probabilites of each species.
 For each community the trait probability distributions of corresponding species were combined and weighted by species abundance. 
 Eventually communities functional redundancy was measured as the sum of overlap between species weighted functional density.
+Communities functional redundancy is expressed as the average number of species that could be removed from the community without reducing the functional space.
 
 # Results
 
@@ -306,7 +311,7 @@ Plots recovery did not seemed correlated to the initial disturbance, for five ou
 
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
-load("DB/Redundancy")
+load("DB/Redundancy2")
 
 par(mar=c(5,4,5,2))
 RedundancyPlot(RedundancyTraj)

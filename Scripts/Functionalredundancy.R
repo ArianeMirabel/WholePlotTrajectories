@@ -1,4 +1,4 @@
-
+library("MASS")
 source("Scripts/Vernacular_handle.R")           # Script for vernacular names replacement
 source("Scripts/TraitsMiceFilling.R")                                   # Traits Gap-filling
 
@@ -10,9 +10,16 @@ Traits1<-read.csv("DB/BridgeOK.csv",sep=";",na.strings="")       # Brigde functi
 Traits2<-read.csv("DB/DataLifeTraits.csv",sep=";",na.strings="") # Paracou15 seed and Hmax dataset
 TraitsName<-c("L_thickness","L_chloro","L_toughness","L_DryMass","SLA","WD","Bark_thick","Hmax") # Considered traits list
 
-### Whole community mapping, individuals: NMDS ou ACP?
+InventorySp<-do.call(rbind,lapply(LivingStand_all,function(yr){
+  ret<-do.call(rbind,yr)[,c("Famille","Genre","name")]
+  ret<-ret[which(!grepl("Indet.",ret[,"name"])),]
+  return(ret[which(!duplicated(ret)),])}))
+InventorySp<-InventorySp[which(!duplicated(InventorySp)),]
 
 traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+
+### Whole community mapping, individuals: NMDS ou ACP?
+
 BigNmds<-as.matrix(daisy(scale(traits_filled[,TraitsName]),metric="gower"))
 BigNmds<-scores(metaMDS(BigNmds,distance="bray"),display="sites")
 BigNmds<-merge(BigNmds,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","NMDS1","NMDS2")]
@@ -73,10 +80,38 @@ smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step
   range<-max(1,step-larg):min(ncol(mat),step+larg)
   rowSums(mat[,range])/length(range)})))}
 
-Nrep<-10
-Mat<-lapply(1:Nrep,function(rep){
+RefSpaces<-lapply(1:12,function(p){   
+  temp<-LivingStand_all[[which(names(LivingStand_all)==1989)]]
+  temp<-temp[[which(names(temp)==p)]]
+  temp<-temp[!duplicated(temp),]
+  temp<-Replacement(temp,Alpha=alphas_plot[[which(names(alphas_plot)==p)]])
+  temp<-as.ProbaVector(tapply(temp,temp,length))
+  
+  Funref<-SpTdp[intersect(names(temp),names(SpTdp))]
+  
+  Funref<-lapply(names(Funref),function(sp){
+    return(Funref[[sp]]*temp[which(names(temp)==sp)])})
+  Funref<-array(unlist(Funref),dim=c(100,100,length(Funref)),
+                dimnames=list(1:100,1:100,intersect(names(temp),names(SpTdp))))
+  Funref<-apply(FunSpc,c(1,2),function(pix){return(sum(pix))})#-max(pix)
+  SpaceRef<-contourLines(1:100,1:100,Funref,levels=c(max(Funref),0.05))
+  SpaceRefx<-unlist(lapply(SpaceRef,function(lev){
+    return(c(min(lev$x),max(lev$x)))
+  }))
+  SpaceRefy<-unlist(lapply(SpaceRef,function(lev){
+    return(c(min(lev$y),max(lev$y)))
+  }))
+  SpaceRef<-rbind(c(min(SpaceRefy),max(SpaceRefy)),c(min(SpaceRefx),max(SpaceRefx)))
+  rownames(SpaceRef)<-c("y","x");colnames(SpaceRef)<-c("min","max")
+  return(SpaceRef)})
+names(RefSpaces)<-1:12
+  
+Nrep<-3
+RedundancyTraj<-lapply(1:Nrep,function(rep){
 Matrep<-lapply(1:12,function(p){
-    
+  
+
+  
   Redun<-lapply(dates,function(y){
     
 temp<-LivingStand_all[[which(names(LivingStand_all)==y)]]
@@ -94,8 +129,8 @@ FunSpc<-lapply(names(FunSpc),function(sp){
   return(FunSpc[[sp]]*temp[which(names(temp)==sp)])})
 FunSpc<-array(unlist(FunSpc),dim=c(100,100,length(FunSpc)),
               dimnames=list(1:100,1:100,intersect(names(temp),names(SpTdp))))
-FunSpc<-apply(FunSpc,c(1,2),function(pix){return(sum(pix)-max(pix))})
-return(sum(FunSpc))})
+FunSpc<-apply(FunSpc,c(1,2),function(pix){return(sum(pix))})#-max(pix)
+return(sum(FunSpc)-1)})
 Redun<-unlist(Redun)
 names(Redun)<-dates
 return(Redun)
@@ -106,32 +141,38 @@ rownames(Matrep)<-1:12
 return(Matrep)
 })
 
-save(RedundancyTraj,file="DB/Redundancy")
+save(RedundancyTraj,file="DB/Redundancy2")
 
 load("DB/Redundancy")
 
-Red<-RedundancyTraj
+
 RedundancyPlot<-function(Red){
+  
+  
+  Red<-RedundancyTraj
   abs<-as.numeric(colnames(Red[[1]]))-1984
   Red<-lapply(Red,function(rep){return(smooth(rep,2))})
-  Red<-lapply(Red,function(rep){return(apply(rep,2,function(col){return(col-rep[,1])}))})
+  Red<-lapply(Red,function(rep){return(apply(rep,2,function(col){return(col-rep[,5])}))})
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
              dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
   Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){return(quantile(rep,probs=quant))}))})
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
              dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
-  #Red<-Red[,which(colnames(Red)>=1989),]
+  Red<-Red[,5:ncol(Red),]
   
-  plot(abs,Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  plot(abs[abs>=5],Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
   invisible(lapply(1:4,function(tr){
     toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,"0.5"]
     apply(toplot,1,function(li){
-      lines(abs,li,col=ColorsTr[tr],lwd=2)
+      lines(abs[abs>=5],li,col=ColorsTr[tr],lwd=2)
     })
   }))
+
+  
+  
 }
 
-
+RedundancyPlot(Red)
 
 
 
