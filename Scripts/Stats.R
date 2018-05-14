@@ -34,6 +34,13 @@ mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 
+load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
+time<-c("1995","2005","2015")
+colyear<-c("darkgoldenrod1","darkorange2","darkred")
+Data<-Rao
+AgbLoss<-AGBloss
+#plotIDH...
+
 ##########################################
 ## Rho Spearman
 load("DB/TaxoComposition_ForGraphs")
@@ -161,7 +168,7 @@ MaxRich[order(MaxRich,decreasing = T)][1:2]
 
 
 ######################r
-### The plot 7 funcitonal diversity
+### The plot 7 functional diversity
 
 tab<-do.call(rbind,lapply(1:12,function(pl){
   P<-lapply(LivingStand_all,function(yr){if(any(names(yr)==pl)){return(yr[[which(names(yr)==pl)]])}})

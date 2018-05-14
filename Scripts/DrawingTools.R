@@ -141,16 +141,21 @@ FunDist<-function(Data_FunComp){
 }
 
 plotIDH<-function(Data,AgbLoss){
+  Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
+          max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))))
   plot(AgbLoss[,"AGB"],AgbLoss[,"AGB"],type="n",xlab="",ylab="",
-       ylim=c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
-              max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])})))))
-  invisible(lapply(1:3,function(T){
-    toplot<-unlist(lapply(Data, function(tr){return(tr[,time[T],"0.5"])}))
+       ylim=Ylim)
+  leg<-lapply(1:3,function(Ti){
+    toplot<-unlist(lapply(Data, function(tr){return(tr[,time[Ti],"0.5"])}))
     abs<-AgbLoss[which(AgbLoss[,"plot"]%in%names(toplot)),"AGB"]
-    points(abs,toplot,col=colyear[T])
+    points(abs,toplot,col=colyear[Ti],pch=20)
     Lm<-lm(toplot~abs)
-    abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[T],lwd=2.5)
-  }))
+    abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
+    return(round(summary(Lm)$adj.r.squared,2))
+   #legend(round(summary(Lm)$adj.r.squared,2),x=min(AgbLoss),y=seq(Ylim[2],Ylim[1],length.out=10)[Ti],
+    #       bty="n",lty=1,col=colyear[Ti],lwd=2.5,cex=0.8)
+  })
+  legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('R'^2,'adjusted')))
 }
 
 plotDiv<-function(Data,remove=FALSE){
