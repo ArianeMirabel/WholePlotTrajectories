@@ -46,10 +46,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -131,6 +131,8 @@ The experiment corresponds to a network of twelve 6.25ha plots that have undergo
 Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. 
 The disturbance corresponds to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
 Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Blanc2009]. 
+The disturbance intensity was measured as the percentage of aboveground biomass (%AGB) lost between the first inventory in 1984 and five years after disturbance (ref to be found).
+Biomass measurements were performed with the BIOMASS package R package [@Biomass2018].
 
 ```{r Tab1, echo=FALSE,is.as=T}
 Intervention <- data.frame(
@@ -271,16 +273,16 @@ After low disturbance intensity the richness increased, reaching a maximum gain 
 After intense disturbance however, the taxonomic richness followed a unimodal decrease with a return to pre-disturbance values.
 The taxonomic evenness (Shannon and Simpson diversities) increased after disturbance, whenever its intensity.
 The evenness followed a unimodal trajectory with a just beginning return towards initial values and a maximum value, reached around 20 years, positively correlated to the disturbance intensity ($\rho_{spearman}^{Shannon}=0.86$, and $\rho_{spearman}^{Simpson}=0.89$).
-Only two T3 plots (plots 8 and 12) were still increasing 30 years after disturbance \@ref(fig:DivTaxo)), suggesting a similar be much delayed unimodal trajectory.
+Only two T3 plots (plots 8 and 12) were still increasing 30 years after disturbance \@ref(fig:DivTaxo), suggesting a similar be much delayed unimodal trajectory.
 
 Communities functional diversity trajectories were examined through the Rao diversity based on the 7 leaf, stem and life history traits (the seed mass was excluded as a qualitative variable).
 The plot 7 from treatment 1 that displayed a constantly outlying diversity was removed from the graphical representation for better readability, see figure A3 in appendix for full graph.
 The functional diversity of all undisturbed communities remained stable along the 30 years monitored.
 For all disturbed communities the functional diversity followed unimodal trajectories with a marked return towards the initial state (5 years after disturbance) with values comparable to those of control plots.
 
-The impact of disturbance was examined specifically at 10, 20 and 30 years after disturbance through the linear correlation between the initial percentage of AGB removed and the value of communities Simpson and Rao diversities (both diversities of order 2).
-
-
+The impact of disturbance was examined specifically at three times after disturbance (10, 20 and 30 years) through the linear correlation between the disturbance intensity (intial %AGB removed) and the value of communities Simpson and Rao diversities (diversities of order 2) \@ref(fig:IDHplot).
+The Simpson diversity was only weakly related to the disturbance intensity ($R^2<0.25$) and only from 20 years after disturbance.
+The Rao diversity was more strongly correlated to the disturbance intensity ($0.55<R^2<0.75$) for the three times studied and the impact of disturbance was observed 20 years after disturbance.
 
 ```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1/1.5,fig.cap="Upper panels, Trajectories of the Simpson taxonomic diversity (ref:Bolda) and Rao functional diversity (ref:Boldb) over 30 years after disturbance, corresponding to the median and 0.025 and 0.975 percentile observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. Lower panels, Relationship between the initial \\%AGB removed and the median values of Simpson (ref:Boldc) and Rao (ref:Boldd) diversities at three times after disturbance. Solid lines colors represent the time, 10 years (yellow), 20 years (orange) and 30 years (brown) after disturbance.", fig.env="figure*"}
 load("DB/SimpsonDraw");load("DB/FunctionalTraj_ForGraphs")
@@ -296,7 +298,7 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsT
 
 plotIDH(Data=Sim,AgbLoss=AGBloss)
 plotIDH(Data=Rao,AgbLoss=AGBloss)
-mtext("initial %AGB lost",side=1,line=2.2,adj=1)
+mtext("initial AGB lost (%)",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 ```
@@ -319,7 +321,6 @@ mtext("Restricted to initial functional space",side=3,adj=0,cex=0.8,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ```
-
 
 
 # Discussion
