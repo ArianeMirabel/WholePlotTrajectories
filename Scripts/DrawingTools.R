@@ -1,5 +1,5 @@
 ### Manuscript drawing functions
-Library(c("shape"))
+Library(c("shape","plotrix"))
 
 treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
 names(treatments)<-c("Control","T1","T2","T3")
@@ -12,7 +12,7 @@ smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step
   rowSums(mat[,range])/length(range)})))}
 
 TaxoCompo<-function(Data_TaxoComp){
-par(mfrow=c(1,2),mar=c(3,3,2,1))
+par(mar=c(3,3,2,1))
 matT<-as.data.frame(Data_TaxoComp[[1]])
 matT$plot<-substr(rownames(matT),start=1,stop=regexpr("_",rownames(matT))-1)
 matT$year<-substr(rownames(matT),start=regexpr("_",rownames(matT))+1,
@@ -63,7 +63,7 @@ mtext("(b) Functional composition",side=3,adj=0,line=0.5)
 mtext("NMDS 1",side=1,line=2,cex=0.8)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)}
 
-TaxoDist<-function(Data_TaxoComp){par(mfrow=c(1,2))
+TaxoDist<-function(Data_TaxoComp){
 MatrepT<-lapply(Data_TaxoComp,function(Rep){
   Rep<-as.data.frame(Rep)
   Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
@@ -98,8 +98,8 @@ invisible(lapply(1:length(treatments),function(tr){
     polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
             col=rgb(0,0,0,alpha=0.1),border=NA)
   }))}))
-mtext("Euclidean distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
-mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
+mtext("Distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
+mtext("(c)",side=3,adj=0,line=0.5)
 }
 
 FunDist<-function(Data_FunComp){
@@ -136,7 +136,7 @@ FunDist<-function(Data_FunComp){
       polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
               col=rgb(0,0,0,alpha=0.1),border=NA)
     }))}))
-  mtext("(b) Functional composition",side=3,adj=0,line=0.5)
+  mtext("(d)",side=3,adj=0,line=0.5)
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
@@ -265,6 +265,40 @@ RedundancyPlot<-function(Red){
               c(li[,"0.025"],rev(li[,"0.975"])),
               col=rgb(0,0,0,alpha=0.1),border=NA)
     })}))
+}
+
+plotPCA<-function(DataAcp){ 
+  
+  DataAcp_indiv<-DataAcp[["Indiv"]]
+  DataAcp_traits<-DataAcp[["Traits"]]
+  
+  par(mfrow=c(2,3),mar=c(4,4,2,2))
+  layout(mat=matrix(c(1,1,2,1,1,3),2,3,byrow=T))
+  plot(DataAcp_indiv[,"Axis1"],DataAcp_indiv[,"Axis2"],type="n",xlab="",ylab="",frame.plot=F)
+  points(DataAcp_indiv[,"Axis1"],DataAcp_indiv[,"Axis2"],
+         col=terrain.colors(length(unique(DataAcp_indiv[,"name"])),alpha=0.4),pch=20)
+  abline(h=0,v=0)
+  mtext("Axis 1",1,at=0,line=2)
+  mtext(paste(round(DataAcp[["Eigen"]][1]),"% of variance",sep=""),1,at=0,line=3,cex=0.8)
+  mtext("Axis 2",2,at=0,las=1,line=2.5)
+  mtext(paste(round(DataAcp[["Eigen"]][2]),"% of variance",sep=""),2,at=-1.5,las=1,line=2.5,cex=0.8)
+  sp<-aggregate(DataAcp_indiv[,c("Axis1","Axis2")],list(DataAcp_indiv$name),median)
+  
+  outliers<-sp[which(sp[,"Axis1"]>=quantile(sp[,"Axis1"],0.995) |
+                       sp[,"Axis1"]<=quantile(sp[,"Axis1"],0.005) |
+                       sp[,"Axis2"]>=quantile(sp[,"Axis2"],0.995) | 
+                       sp[,"Axis2"]<=quantile(sp[,"Axis2"],0.005)),]
+  thigmophobe.labels(outliers[,"Axis1"],outliers[,"Axis2"],labels=outliers[,"Group.1"])
+  title(main="(a) Individuals in the main PCA plan",adj=0)
+  
+  barplot(DataAcp[["Eigen"]],col=c("black","black",rep("white",length(DataAcp[["Eigen"]])-2)))
+  title(main="(b) Explained variance (%)",adj=0,cex.main=0.9)
+  
+  plot(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],type="n",xlab="",ylab="",frame.plot=F,lwd=0)
+  text(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],labels=rownames(DataAcp_traits))
+  abline(h=0,v=0)
+  arrows(0,0,x1=DataAcp_traits[,"Comp1"], y1=DataAcp_traits[,"Comp2"], col="grey", length=0.1)
+  title(main="(c) Traits in the main PCA plan",adj=0,cex.main=0.9)
 }
 
 ### Previous graphs

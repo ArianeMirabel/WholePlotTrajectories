@@ -46,10 +46,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -223,12 +223,15 @@ The maximum dissimilarity of plot strajectories was positively correlated to the
 The time at maximum dissimilarity for taxonomic composition was reached around 26 years after disturbance while it was 22 years for functional composition. 
 All trajectories returned towards the initial composition and translated cyclic compositional changes as visualized in figure (Figure \@ref(fig:NMDSplans)). 
 
-```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of (ref:Bolda) flora composition and (ref:Boldb) functional composition regarding the 6 leaf and stem functional traits,the maximum allometric height and seed mass class in the two-dimensional space from the NMDS performed for the 30 years after disturbance. Distance matrix for NMDS were computed from the Bray-curtis dissimilarity between successive inventories. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3).", fig.env="figure"}
-load("DB/FunctionalComposition_forGraph")
-load("DB/TaxoComposition_forGraphs")
- 
+```{r NMDSplans, out.width = '100%', fig.asp = 1.2/2, echo=FALSE, fig.cap="Trajectories of the plots in terms of flora composition (left panels (ref:Bolda) and (ref:Boldc)) and functional composition (right panels (ref:Boldb) and (ref:Boldd)) regarding the 6 leaf and stem functional traits, the maximum allometric height and seed mass class. Plots trajectories are first represented in the two-dimensional space from the NMDS performed for the 30 years after disturbance based on Bray-Curtis dissimilarity measures between successive inventories (Upper panels (ref:Bolda) and (ref:Boldb)). Then the lower panels ((ref:Boldc) and (ref:Boldd)) represent the euclidean distance to initial condition along the 30 sampled years. Line colors represent the disturbance treatment (green for control, blue for T1,orange for T2 and red for T3). The 0.025 and 0.975 percentile correspond to the variance observed for 50 iteration of the taxonomic uncertainty propagation and functional trait filling processes.", fig.env="figure*"}
+load("DB/FunctionalComposition_forGraph");load("DB/TaxoComposition_forGraphs")
+load("DB/FunctionalComposition_forGraph");load("DB/TaxoComposition_forGraphs")
+
+par(mfrow=c(2,2))
 TaxoCompo(MatrepTaxo)
 FunCompo(MatrepFun)
+TaxoDist(MatrepTaxo)
+FunDist(MatrepFun)
 
 ```
 
@@ -296,18 +299,17 @@ plotIDH(Data=Sim,AgbLoss=AGBloss)
 plotIDH(Data=Rao,AgbLoss=AGBloss)
 mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
-
 ```
 
-The functional redundancy was measured as the sum of weighted overlap among species in the communities.
-Species functional space were defined in the main two-dimensional space of a PCA analysis based on all leaf and stem and maximum height traits (see appendix I for more details). 
+The functional redundancy was measured as the sum of weighted overlap among species in communities' functional space.
+Functional space were defined in the main two-dimensional space of a PCA analysis based on all leaf and stem and maximum height traits (see appendix I for PCA details). 
 Plots functional redundancy compared to the initial value after logging so that only communities dynamics are followed apart from the impact of logging itself.
 Communities functional redundancy remained stable in control plots but after disturbance the redundancy trajectories were quite variable (See appendix I).
 Globally after most intense disturbance (plots T2 and T3) communities redundancy decreased at first place and then increased to edge, recover or even exceed the initial value.
-Considering the functional redundancy restricted to the functional space of the initial inventory, though, all disturbed plots followed similar decreasing humped-shaped trajectories (\@ref(fig:RedFun)).
+Considering the functional redundancy restricted to the functional space of the initial inventory, though, all disturbed plots followed similar decreasing humped-shaped trajectories (\@ref(fig:RedFun_rest)).
 The maximum redundancy loss observed was positively correlated with the disturbance intensity (XX spearman to be measured) and none of the disturbed plots had recovered the functional redundancy within their initial functional space.
 
-```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes.Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
+```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial cpùùunities functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
 load("DB/Redundancy_restricted")
 
 par(mar=c(5,4,5,2))

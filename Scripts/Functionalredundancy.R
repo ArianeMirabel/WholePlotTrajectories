@@ -9,7 +9,7 @@ dates<-dates[which(!dates%in%c("1996","1998","2000","2002","2004","2006","2008",
 
 Traits1<-read.csv("DB/BridgeOK.csv",sep=";",na.strings="")       # Brigde functional traits dataset
 Traits2<-read.csv("DB/DataLifeTraits.csv",sep=";",na.strings="") # Paracou15 seed and Hmax dataset
-TraitsName<-c("L_thickness","L_chloro","L_toughness","L_DryMass","SLA","WD","Bark_thick","Hmax") # Considered traits list
+TraitsName<-c("L_thickness","L_chloro","L_toughness","SLA","WD","Bark_thick","Hmax") # Considered traits list
 
 InventorySp<-do.call(rbind,lapply(LivingStand_all,function(yr){
   ret<-do.call(rbind,yr)[,c("Famille","Genre","name")]
@@ -43,7 +43,7 @@ RedundancyTraj<-lapply(1:Nrep,function(rep){
   
   ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
   Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
-  
+
   xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))
   ygen<-c(min(Bigacp[,"Axis2"]),max(Bigacp[,"Axis2"]))
   
@@ -176,89 +176,29 @@ save(RedundancyTraj_restricted,file="DB/Redundancy_restricted")
 
 
 #####################################################
-load("DB/Redundancy")
+traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+
+ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
+ACP_Indiv<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
+ACP_traits<-ACP$co
+Eigen<-as.vector(ACP$eig*100/sum(ACP$eig))
+DataACP<-list(ACP_Indiv,ACP_traits,Eigen)
+names(DataACP)<-c("Indiv","Traits","Eigen")
+
+save(DataACP,file="DB/FunctionalPCA")
+#Bigacp<-aggregate(Bigacp[,c("Axis1","Axis2")],list(Bigacp$name),median) # Median values for species level data
+
+save(Bigacp,file="DB/FunctionalPCA")
+BigacpIndiv<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
 
 
-RedundancyPlot<-function(Red){
-  
-  
-  Red<-RedundancyTraj_restricted
-  abs<-as.numeric(colnames(Red[[1]]))-1984
-  Red<-lapply(Red,function(rep){return(smooth(rep,2))})
-  Red<-lapply(Red,function(rep){return(apply(rep,2,function(col){return(col-rep[,6])}))})#
-  Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
-             dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
-  Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){return(quantile(rep,probs=quant))}))})
-  Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
-             dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
-  Red<-Red[,6:ncol(Red),];abs<-abs[abs>=5]
-  
-  plot(abs,Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
-  invisible(lapply(1:4,function(tr){
-    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,"0.5"]
-    apply(toplot,1,function(li){
-      lines(abs,li,col=ColorsTr[tr],lwd=2)
-    })
-  }))
+plot(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],type="n",xlab="",ylab="",frame.plot=F,lwd=0)
+text(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],labels=rownames(DataAcp_traits))
+abline(h=0,v=0)
+mtext("Axis 1",1,at=0,line=2)
+mtext(paste(round(vp[1]),"% of variance",sep=""),1,at=0,line=3,cex=0.8)
+mtext("Axis 2",2,at=0,las=1,line=2.5)
+mtext(paste(round(vp[2]),"% of variance",sep=""),2,at=-1.5,las=1,line=2.5,cex=0.8)
+arrows(0,0,x1=DataAcp_traits[,"Comp1"], y1=DataAcp_traits[,"Comp2"], col="grey", length=0.1)
+title(main="Traits in the main PCA plan",adj=0,cex.main=0.9)
 
-  
-  
-}
-
-RedundancyPlot(Red)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-attach(geyser)
-plot(duration, waiting, xlim = c(0.5,6), ylim = c(40,100))
-f1 <- kde2d(duration, waiting, n = 50, lims = c(0.5, 6, 40, 100))
-image(f1, zlim = c(0, 0.05))
-f2 <- kde2d(duration, waiting, n = 50, lims = c(0.5, 6, 40, 100),
-            h = c(width.SJ(duration), width.SJ(waiting)) )
-image(f2, zlim = c(0, 0.05))
-persp(f2, phi = 30, theta = 20, d = 5)
-
-plot(duration[-272], duration[-1], xlim = c(0.5, 6),
-     ylim = c(1, 6),xlab = "previous duration", ylab = "duration")
-f1 <- kde2d(duration[-272], duration[-1],
-            h = rep(1.5, 2), n = 50, lims = c(0.5, 6, 0.5, 6))
-contour(f1, xlab = "previous duration",
-        ylab = "duration", levels  =  c(0.05, 0.1, 0.2, 0.4) )
-f1 <- kde2d(duration[-272], duration[-1],
-            h = rep(0.6, 2), n = 50, lims = c(0.5, 6, 0.5, 6))
-contour(f1, xlab = "previous duration",
-        ylab = "duration", levels  =  c(0.05, 0.1, 0.2, 0.4) )
-f1 <- kde2d(duration[-272], duration[-1],
-            h = rep(0.4, 2), n = 50, lims = c(0.5, 6, 0.5, 6))
-contour(f1, xlab = "previous duration",
-        ylab = "duration", levels  =  c(0.05, 0.1, 0.2, 0.4) )
-
-
-### other kernel
-
-RadSym <- function(u)
-  exp(-rowSums(u^2)/2) / (2*pi)^(ncol(u)/2)
-
-Scott <- function(data)
-  t(chol(cov(data))) * nrow(data) ^ (-1/(ncol(data)+4))
-
-mvkde <- function(x, data, bandwidth=Scott, kernel=RadSym) {
-  if(is.function(bandwidth))
-    bandwidth <- bandwidth(data)
-  u <- t(solve(bandwidth, t(data) - x))
-  mean(kernel(u))
-}
-
-smvkde <- function(x, ...) apply(x, 1, mvkde, ...)
