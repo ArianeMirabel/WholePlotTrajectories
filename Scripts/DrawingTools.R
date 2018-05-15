@@ -277,16 +277,16 @@ plotPCA<-function(DataAcp){
   DataAcp_indiv<-DataAcp[["Indiv"]]
   DataAcp_traits<-DataAcp[["Traits"]]
   
-  par(mfrow=c(2,3),mar=c(4,4,2,2))
+  par(mfrow=c(2,3),mar=c(5,8,3,3))
   layout(mat=matrix(c(1,1,2,1,1,3),2,3,byrow=T))
   plot(DataAcp_indiv[,"Axis1"],DataAcp_indiv[,"Axis2"],type="n",xlab="",ylab="",frame.plot=F)
   points(DataAcp_indiv[,"Axis1"],DataAcp_indiv[,"Axis2"],
          col=terrain.colors(length(unique(DataAcp_indiv[,"name"])),alpha=0.4),pch=20)
   abline(h=0,v=0)
-  mtext("Axis 1",1,at=0,line=2)
-  mtext(paste(round(DataAcp[["Eigen"]][1]),"% of variance",sep=""),1,at=0,line=3,cex=0.8)
+  mtext("Axis 1",1,at=0,line=2.4)
+  mtext(paste(round(DataAcp[["Eigen"]][1]),"% of variance",sep=""),1,at=0,line=3.5,cex=0.8)
   mtext("Axis 2",2,at=0,las=1,line=2.5)
-  mtext(paste(round(DataAcp[["Eigen"]][2]),"% of variance",sep=""),2,at=-1.5,las=1,line=2.5,cex=0.8)
+  mtext(paste(round(DataAcp[["Eigen"]][2]),"% of variance",sep=""),2,at=-1,las=1,line=0.5,cex=0.8)
   sp<-aggregate(DataAcp_indiv[,c("Axis1","Axis2")],list(DataAcp_indiv$name),median)
   
   outliers<-sp[which(sp[,"Axis1"]>=quantile(sp[,"Axis1"],0.995) |
@@ -296,10 +296,11 @@ plotPCA<-function(DataAcp){
   thigmophobe.labels(outliers[,"Axis1"],outliers[,"Axis2"],labels=outliers[,"Group.1"])
   title(main="(a) Individuals in the main PCA plan",adj=0)
   
+  par(mar=c(2,4,2,2))
   barplot(DataAcp[["Eigen"]],col=c("black","black",rep("white",length(DataAcp[["Eigen"]])-2)))
   title(main="(b) Explained variance (%)",adj=0,cex.main=0.9)
   
-  plot(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],type="n",xlab="",ylab="",frame.plot=F,lwd=0)
+  plot(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],type="n",xlab="",ylab="",frame.plot=F)
   text(DataAcp_traits[,"Comp1"],DataAcp_traits[,"Comp2"],labels=rownames(DataAcp_traits))
   abline(h=0,v=0)
   arrows(0,0,x1=DataAcp_traits[,"Comp1"], y1=DataAcp_traits[,"Comp2"], col="grey", length=0.1)
@@ -313,7 +314,7 @@ TaxoTraj<-function(CompTaxo){
     Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
     Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
     Toplot<-lapply(Toplot,function(tr){
-      ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
+      ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
       ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
                  dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
       ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})

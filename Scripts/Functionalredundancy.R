@@ -1,4 +1,4 @@
-library("MASS")
+library("MASS");library("plotrix")
 source("Scripts/Vernacular_handle.R")           # Script for vernacular names replacement
 source("Scripts/TraitsMiceFilling.R")            # Traits Gap-filling
 
@@ -180,6 +180,7 @@ traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
 
 ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
 ACP_Indiv<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
+ACP_Indiv[which(ACP_Indiv[,"name"]=="Lecythis_corrugata subsp. corrugata"),"name"]<-"Lecythis_corrugata"
 ACP_traits<-ACP$co
 Eigen<-as.vector(ACP$eig*100/sum(ACP$eig))
 DataACP<-list(ACP_Indiv,ACP_traits,Eigen)
