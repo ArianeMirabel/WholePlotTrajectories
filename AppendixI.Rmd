@@ -30,10 +30,10 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 lang: english
 output: 
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 

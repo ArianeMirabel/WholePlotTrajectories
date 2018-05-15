@@ -320,46 +320,41 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 # Discussion
 
+## Decoupled recovery of communities taxonomic and functional characteristics
+
+Both communities taxonomic and functional diversity and composition proved resilient, following similar humped-back trajectories with a return towards initial values.
+The resilience of communities functional characteristics, the most direct link between biodiversity and ecosystem functioning [@Diaz2005], meant a consistent recovery of ecosystem processes in the long term [@Guariguata2001].
+The resilience of communities taxonomic characteristics, in turn, meant the maintenance of their initial differences in composition and structure.
+It suggested that communities response to disturbance were somehow constraint to converge towards determined compositions [@Hubbell1999; @Molino2001; @Anderson2007; @Baraloto2012a].
+
+Although both communities taxonomic and functional characteristics proved resilient and followed similar humped-back trajectories, the taxonomic recovery systematically lagged behind the corresponding functional dynamics.
+Such delay between functional and taxonomic dynamics has already been observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
+According to the "vegetation quantity effect" [@Grime1998] functional trajectories rely on the pool of dominant species, which diversity and evenness were enhanced after disturbance, and which rapidly restored the functional diversity and composition.
+However, communities evenness remained high so infrequent species still missed to the taxonomic recovery that mechanically lagged behind, all the more so that unrecovered species would be functionally redundant and probably undergo competition processes.
+
 ## A validation of the intermediate disturbance hypothesis
 
-The monitoring of disturbed forest communities confirmed a limited negative impact of disturbance on species richness, as observed on several post logging surveys [@Cannon1998;@Baraloto2012a].
-Thirty years after disturbance, the genus richness was restored to initial plot values after high disturbance intensity while it substantially increased after low disturbance intensity, reaching a gain of almost 12 genera for some plots.
+Validating the IDH, communities trajectories confirmed the diversity increase after disturbance through an enhanced growth of otherwise less favored species.
+This was however completely clear regarding the functional diversity but much more blurry for communities taxonomic characteristics.
 
-Both richness and evenness followed asymptotic trajectories after disturbance, sharply increasing for 15 years before stabilizing at higher values than those of control plots.
-An increase of communities evenness stems from a higher homogeneity of species distribution.
-After disturbance, communities are made of the old, pre-disturbance survivors and the newly recruited trees: changes in composition and abundance distribution are to be found in the recruitment processes and in the pre-disturbance survivors mortality.
-Because the composition of old survivors proved to mirror the initial community [@Herault2018], a specific turnover was expected among recruited trees with enhanced growth and survival of previously infrequent species.
-Indeed, the increase in taxonomic diversity was accompanied by an increase of taxonomic dissimilarity with plots initial state and a functional shift towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998;@Wright2004;@Reich2014].
-Disturbance then causes a reorganization of the typical high dominance structure of hyperdiverse mature forests after disturbance, benefiting to pioneers and light demanding species. 
+The taxonomic richness was weakly or negatively impacted by intense disturbance, as observed on several post logging surveys [@Cannon1998; @Baraloto2012a], while it substantially increased after low intensity disturbance.
+Disturbance also enhanced taxonomic evenness, but its intensity was only weakly and lately correlated to communities eveness (*i.e.* Simpson diversity).
+Contrastingly, disturbance intensity consistently predicted the significant increase of communities functional diversity for 30 years.
+Disturbance impacts involve specific turnover within communities, either among pre-disturbance survivors or among newly recruited trees.
+As the composition of old-growth survivors proved to mirror initial communities [@Herault2018], disturbance would impact trees recruitment through the enhanced growth and survival of previously infrequent species and functional characteristics.
+Consistently, disturbance resulted in increasing taxonomic dissimilarity compared to pre-disturbance communities and functional shifts towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998;@Wright2004;@Reich2014].
+Disturbance then caused a reorganization of the typical high dominance structure of hyperdiverse mature forests after disturbance, benefiting to pioneers and light demanding species. 
 Likely, the changes in abiotic environment and competitive pressure favored pioneers which outcompete others in non limiting resources but are excluded in mature forests by long-lived, more resistant and shade tolerant species.
-
-As stated by the IDH, communities dynamics after disturbance relied on species functional strategy and corresponding ability to fill the environmental niches made available by disturbance.
+Therefore, consistently with communities dynamics after disturbance relied on species functional strategy and corresponding ability to fill the environmental niches made available by disturbance.
 Recruited species then mixed with pre-disturbance ones, from which they differed, and constituted a community all the more diversified that the disturbance was intense [@Molino2001].
 
-## On the recovery of disturbed communities
+## Functional redundancy of disturbed communities
 
-All diversity and composition trajectories followed similar hump-back trajectories returning towards their initial values.
-Communities trajectories therefore illustrated their taxonomic and function resilience.
+both the lag between taxonomic and functional recovery and the much better consistency of the IDH when the functional diversity is considered rely on the central role of functional redundancy.
+The functional redundancy that is the overlap between species, typical of the huge biodiversity of tropical forests [@Bellwood2006] and determinant for communities resilience [@Trenbath1999; @Elmqvist2003; @Diaz2005], was not recovered 30 years after disturbance.
 
-Because functional traits and functional diversity are the most direct link between biodiversity and ecosystem functioning [@Diaz2005], their resilience meant a consistent recovery of ecosystem processes in the long term [@Guariguata2001].
-The resilience of the taxonomic diversity and composition similarly translated  the recovery of communities such as before disturbance.
-This resilience meant the maintenance of communities initial differences in composition and supported the idea of their convergence towards a determined state [@Hubbell1999;@Molino2001;@Baraloto2012a].
-If all plots followed similar hump-back trajectories, though, some significant differences emerged.
-To name but one, the taxonomic evenness of one plot displayed an extensive increase until 30 years after disturbance.
-The differences trajectories maxima and time path, along with the fact intrinsinc communities differences are maintained, suggested that the trajectories depend on the initial plots composition or on some abiotic parameters [@Anderson2007].
-
-## Functional redundancy of disturbed ecosystems
-
-Despite the recovery of pre-disturbance state there was a time lag between the trajectories followed by communities taxonomic and functional characteristics.
-The trajectory of taxonomic composition and evenness had a longer time-path and remained altered while communities functional composition and diversity had already recovered.
-
-Such delay between functional and taxonomic dynamics was already observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015;@Guariguata2001].
-According to the "vegetation quantity effect" [@Grime1998], the functional diversity of communities rely on the dominant species.
-Communities functional trajectories were then driven first by the increase in diversity and evenness of dominant species, which restored the pre-disturbance functional characteristics.
-Then, the functional trajectories were driven by the recruitment of species resembling the old pre-disturbance community, which reduced the overall diversity.
-At that time, the taxonomic composition and diversity remained altered: the still missing species were then the initially infrequent and functionally redundant ones.
-The functional redundancy, the functional overlap between species that is typical of the huge biodiversity of tropical forests [@Bellwood2006], was then not restored 30 years after disturbance and this is major to consider as it defines forests' resilience [@Trenbath1999;@Elmqvist2003;@Diaz2005].
-
+Disturbance globally reduced the overall functional redundancy of communities but this restored rapidly without consistent rtajectories along time.
+The initial functional space corresponding to undistrubed 
 Besides the long-term alteration of functional redundancy, there was probably persistent compositional changes favoring disturbance resistant species [@Haddad2008], lianas or epiphytes [@Martin2013] and environmental changes, like in the soils nutrient cycling and compaction [@Olander2005].
 These persistent changes highly question forest's resilience [@Chazdon2003a].
 New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
