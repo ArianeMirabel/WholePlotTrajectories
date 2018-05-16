@@ -46,10 +46,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -350,14 +350,14 @@ Recruited species then mixed with pre-disturbance ones, from which they differed
 
 ## Functional redundancy of disturbed communities
 
-both the lag between taxonomic and functional recovery and the much better consistency of the IDH when the functional diversity is considered rely on the central role of functional redundancy.
-The functional redundancy that is the overlap between species, typical of the huge biodiversity of tropical forests [@Bellwood2006] and determinant for communities resilience [@Trenbath1999; @Elmqvist2003; @Diaz2005], was not recovered 30 years after disturbance.
+Both the lag between taxonomic and functional recovery and the middling consistency of the IDH regarding communities taxonomic diversity entail a central role of functional redundancy, *i.e.* the overlap between species functional spaces.
+Functional redundancy is typical of the huge biodiversity of tropical forests [@Bellwood2006] and is determinant of communities resilience [@Trenbath1999; @Elmqvist2003; @Diaz2005], and it seemed not to have recovered 30 years after disturbance. 
 
-Disturbance globally reduced the overall functional redundancy of communities but this restored rapidly without consistent rtajectories along time.
-The initial functional space corresponding to undistrubed 
-Besides the long-term alteration of functional redundancy, there was probably persistent compositional changes favoring disturbance resistant species [@Haddad2008], lianas or epiphytes [@Martin2013] and environmental changes, like in the soils nutrient cycling and compaction [@Olander2005].
-These persistent changes highly question forest's resilience [@Chazdon2003a].
-New conditions would not only be longer lasting but self-maintained as tied to disturbance regime [@Burslem2000].
+Although disturbance would be mitigated by communities functional redundancy, we expect the redundancy itself to be reduced or re-organized within the functional space.
+Globally, disturbed communities did not follow consistent trajectories after disturbance and 30 years after disturbance, irrespective of the intensity, disturbed communities displayed lower, similar or higher functional redundancy.
+The redundancy within the functional space of the initial community however clearly followed humped-back trajectories which decrease was determined by the disturbance intensity and which return to initial state was not observed for any disturbed community.
+Not only did the functional redundancy and hence the resilience of pre-disturbance community decrease, but also did the ones of disturbance-specific communities increase.
+It means higher chances to have long lasting or self-maintained compositional changes towards disturbance resistant species, lianas or epiphytes [@Haddad2008; @Burslem2000; @Martin2013] and thus highly question forest's resilience [@Chazdon2003a].
 Specificaly, this would impair species contingent to undisturbed forests, threatening their maintenance, and run the risk to loose cornerstone species and trigger unexpected ecological consequences [@Jones1994;@Diaz2005;@Gardner2007].
 
 # Conclusions
