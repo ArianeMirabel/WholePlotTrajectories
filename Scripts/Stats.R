@@ -42,7 +42,7 @@ AgbLoss<-AGBloss
 #plotIDH...
 
 ##########################################
-## Rho Spearman
+## Rho Spearman, Taxo
 load("DB/TaxoComposition_ForGraphs")
 
 Data_TaxoComp<-MatrepTaxo
@@ -83,6 +83,12 @@ TimeMax<-unlist(lapply(1:12,function(pl){
   ret<-apply(ret,2,median)
   return(names(ret)[which(ret==max(ret))])}))
 mean(as.numeric(TimeMax))-1984
+
+##########################################
+## Rho Spearman, redundancy
+load("DB/Redundancy_restricted")
+RedundancyTraj_restricted
+
 
 ###############
 ## CWM distance

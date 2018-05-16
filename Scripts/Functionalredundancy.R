@@ -104,6 +104,56 @@ save(RedundancyTraj,file="DB/Redundancy")
 
 
 ## Redundancy restricted to the initial community functional space
+
+Nrep<-2
+
+# Pb species, "Pouteria_sp.42CAY-ATDN", "Inga_nobilis"
+Sptdp<-lapply(1:Nrep,function(rep){
+  traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+  
+  ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
+  Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
+  
+  xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))
+  ygen<-c(min(Bigacp[,"Axis2"]),max(Bigacp[,"Axis2"]))
+  
+  sptdp<-lapply(unique(Bigacp[,"name"]),function(Sp){
+    #sptdp<-lapply(c("Pouteria_sp.42CAY-ATDN", "Inga_nobilis"),function(Sp){
+    
+    acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
+    if(nrow(acp)!=1){
+      method1<-method2<-"ste"
+      if(tryCatch(width.SJ(acp[,"Axis1"]), error=function(e) "error")=="error")
+      {method1<-"dpi"}
+      if(tryCatch(width.SJ(acp[,"Axis2"]), error=function(e) "error")=="error")
+      {method2<-"dpi"}
+      f<-kde2d(acp[,"Axis1"], acp[,"Axis2"], n = 100,lims=c(xgen,ygen),
+               h = c(width.SJ(acp[,"Axis1"],method=method1),
+                     width.SJ(acp[,"Axis2"],method=method2)) )
+      z<-f$z
+      colnames(z)<-1:100;rownames(z)<-1:100
+    }
+    if(nrow(acp)==1){
+      z<-outer(seq(xgen[1],xgen[2],length=100),seq(ygen[1],ygen[2],length=100), 
+               function(x,y) dnorm(x,acp[,"Axis1"],MeanSd)*dnorm(y,acp[,"Axis2"],MeanSd))
+      colnames(z)<-1:100;rownames(z)<-1:100
+    }
+    if(is.null(z)){print(Sp)}
+    return(z)
+  })
+  names(sptdp)<-unique(Bigacp[,"name"])
+  #names(sptdp)<-c("Pouteria_sp.42CAY-ATDN", "Inga_nobilis")
+  return(sptdp)
+})
+
+SpTdp<-lapply(names(Sptdp[[1]]),function(Sp){
+  ret<-lapply(Sptdp,function(rep){return(rep[[Sp]])})
+  if(any(lapply(ret,is.null))){print(Sp)}
+  ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+             dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),1:length(ret)))
+  return(apply(ret,c(1,2),median))})
+names(SpTdp)<-names(Sptdp[[1]])
+
 RefSpaces<-lapply(1:12,function(p){   
   temp<-LivingStand_all[[which(names(LivingStand_all)==1984)]]
   temp<-temp[[which(names(temp)==p)]]
@@ -136,7 +186,6 @@ RefSpaces<-lapply(1:12,function(p){
   return(SpaceRef)})
 names(RefSpaces)<-1:12
 
-Nrep<-2
 RedundancyTraj_restricted<-lapply(1:Nrep,function(rep){
 Matrep<-lapply(1:12,function(p){
   

@@ -139,12 +139,11 @@ plotPCA(DataACP)
 
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
-load("DB/Redundancy")
+load("DB/Redundancy_sd0.2")
 
 par(mar=c(5,4,5,2))
 RedundancyPlot(RedundancyTraj)
-mtext("Functional Redundancy",side=3,adj=0,line=1.5)
-mtext("Restricted to initial functional space",side=3,adj=0,cex=0.8,line=0.5)
+mtext("Functional Redundancy",side=3,adj=0,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ```
