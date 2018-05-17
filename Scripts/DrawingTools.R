@@ -249,7 +249,7 @@ RedundancyPlot<-function(Red){
   Red<-lapply(Red,function(rep){
     ret<-smooth(rep,2)
    colnames(ret)<-colnames(rep)
-   ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})
+   ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col)})#-ret[,"1989"]
    colnames(ret)<-as.numeric(colnames(ret))-1984
    return(ret)})
   

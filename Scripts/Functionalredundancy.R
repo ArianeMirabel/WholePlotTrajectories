@@ -133,9 +133,10 @@ Sptdp<-lapply(1:Nrep,function(rep){
       z<-f$z
       colnames(z)<-1:100;rownames(z)<-1:100
     }
+    
     if(nrow(acp)==1){
       z<-outer(seq(xgen[1],xgen[2],length=100),seq(ygen[1],ygen[2],length=100), 
-               function(x,y) dnorm(x,acp[,"Axis1"],MeanSd)*dnorm(y,acp[,"Axis2"],MeanSd))
+               function(x,y) dnorm(x,acp[1,"Axis1"],MeanSd)*dnorm(y,acp[1,"Axis2"],MeanSd))
       colnames(z)<-1:100;rownames(z)<-1:100
     }
     if(is.null(z)){print(Sp)}
@@ -252,3 +253,134 @@ mtext(paste(round(vp[2]),"% of variance",sep=""),2,at=-1.5,las=1,line=2.5,cex=0.
 arrows(0,0,x1=DataAcp_traits[,"Comp1"], y1=DataAcp_traits[,"Comp2"], col="grey", length=0.1)
 title(main="Traits in the main PCA plan",adj=0,cex.main=0.9)
 
+
+## Sd tests
+sptdp<-lapply(unique(Bigacp[,"name"]),function(Sp){
+  #sptdp<-lapply(c("Pouteria_sp.42CAY-ATDN", "Inga_nobilis"),function(Sp){
+  
+  acp<-Bigacp[which(Bigacp[,"name"]==Sp),4:5]
+
+  f<-kde2d(acp[,"Axis1"], acp[,"Axis2"], n = 100,lims=c(xgen,ygen),
+           h = c(width.SJ(acp[,"Axis1"],method=method1),
+                 width.SJ(acp[,"Axis2"],method=method2)) )
+  pz <- f$z
+  rownames(pz)<-f$x;colnames(pz)<-f$y
+  pz<-melt(pz)
+  pz$sample<-rep(0,nrow(pz))
+  pz[sample(rownames(pz),size=nrow(acp),replace=F,prob=pz$value),"sample"]<-1
+  zsample<-array(pz$sample,dim=c(length(f$x),length(f$y)),dimnames=list(f$x,f$y))
+  samples<-which(zsample==1,arr.ind=T)
+  samples<-cbind(as.numeric(colnames(zsample)[samples[,"col"]]),as.numeric(rownames(zsample)[samples[,"row"]]))
+  
+  rms<-sqrt((1/nrow(acp))*sum((samples-apply(samples,2,mean))^2))
+  
+  #plot(1:100,1:100,type="n",xlim=c(min(as.numeric(samples[,1]),acp[,"Axis1"]),max(as.numeric(samples[,1]),acp[,"Axis1"])),
+       #ylim=c(min(as.numeric(samples[,2]),acp[,"Axis2"]),max(as.numeric(samples[,2]),acp[,"Axis2"])))
+  #points(samples[,1],samples[,2])
+  #points(acp[,"Axis1"], acp[,"Axis2"],col="red")    
+
+  
+})
+
+traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
+  
+ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
+Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
+  
+xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))
+ygen<-c(min(Bigacp[,"Axis2"]),max(Bigacp[,"Axis2"]))
+  
+Nsamples<-lapply(unique(Bigacp[,"name"]),function(Sp){
+    return(length(which(Bigacp[,"name"]==Sp)))})
+names(Nsamples)<-unique(Bigacp[,"name"])
+Nsamples<-unlist(Nsamples)
+
+length(which(Nsamples==1))
+length(which(Nsamples>1))
+
+# Number of species used because registered in the trait dataset
+covered<-lapply(1:12,function(p){
+    
+  Redun<-lapply(dates,function(y){
+      
+      temp<-LivingStand_all[[which(names(LivingStand_all)==y)]]
+      if(!any(names(temp)==p)){return(NA)}
+      if(any(names(temp)==p)){
+        temp<-temp[[which(names(temp)==p)]]
+        temp<-temp[!duplicated(temp),]
+        temp<-Replacement(temp,Alpha=alphas_plot[[which(names(alphas_plot)==p)]])
+        temp<-as.ProbaVector(tapply(temp,temp,length))}
+      
+      return(length(intersect(names(temp),names(Nsamples))))
+  })
+  Redun<-unlist(Redun)
+  names(Redun)<-dates
+  return(Redun)
+})
+
+covered<-do.call(rbind,covered)
+rownames(covered)<-1:12
+
+Red<-covered
+plot(colnames(Red),Red[1,],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+
+invisible(lapply(1:4,function(tr){
+  toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),]
+  apply(toplot,1,function(li){
+    lines(colnames(Red),li,col=ColorsTr[tr],lwd=2)
+  })}))
+  
+# Number of species with only one observation
+covered<-lapply(1:12,function(p){
+  
+  Redun<-lapply(dates,function(y){
+    
+    temp<-LivingStand_all[[which(names(LivingStand_all)==y)]]
+    if(!any(names(temp)==p)){return(NA)}
+    if(any(names(temp)==p)){
+      temp<-temp[[which(names(temp)==p)]]
+      temp<-temp[!duplicated(temp),]
+      temp<-Replacement(temp,Alpha=alphas_plot[[which(names(alphas_plot)==p)]])
+      temp<-as.ProbaVector(tapply(temp,temp,length))}
+    
+    ret<-Nsamples[which(names(Nsamples)%in%intersect(names(temp),names(Nsamples)))]
+    return(length(which(ret==1)))
+  })
+  Redun<-unlist(Redun)
+  names(Redun)<-dates
+  return(Redun)
+})
+
+covered<-do.call(rbind,covered)
+rownames(covered)<-1:12
+
+Red<-covered
+plot(colnames(Red),Red[1,],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+
+invisible(lapply(1:4,function(tr){
+  toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),]
+  apply(toplot,1,function(li){
+    lines(colnames(Red),li,col=ColorsTr[tr],lwd=2)
+  })}))
+
+# 0.7 vs. 0.2 sd
+
+load("DB/Redundancy_sd0.2")
+
+windows()
+par(mar=c(5,4,5,2))
+RedundancyPlot(RedundancyTraj)
+mtext("Functional Redundancy 0.2",side=3,adj=0,line=0.5)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
+
+
+load("DB/Redundancy_restricted_sd0.2")
+
+windows()
+par(mar=c(5,4,5,2))
+RedundancyPlot(RedundancyTraj_restricted)
+mtext("Functional Redundancy 0.2",side=3,adj=0,line=1.5)
+mtext("Restricted to initial functional space",side=3,adj=0,cex=0.8,line=0.5)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
+  
+  
