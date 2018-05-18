@@ -134,7 +134,7 @@ Elevation ranges between 5 and 50 m and soils correspond to thin acrisols over a
 The experiment is a network of twelve 6.25ha plots that underwent a gradient of three logging, thinning and fuelwood cutting treatments (Table \@ref(tab:Tab1)).
 Disturbance treatments were attributed according to a randomized plot design with three replicate blocks of four plots. 
 The disturbance corresponds to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees above 40 cm DBH for treatment 3 (T3). 
-Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Blanc2009]. 
+Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Schmitt1989;@Blanc2009]. 
 The disturbance intensity was measured as the percentage of aboveground biomass (%AGB) lost between the first inventory in 1984 and five years after disturbance (ref to be found) measured with the BIOMASS R package [@Biomass2018].
 
 ```{r Tab1, echo=FALSE,is.as=T}
