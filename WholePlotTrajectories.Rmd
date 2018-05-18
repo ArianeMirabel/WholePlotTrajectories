@@ -93,35 +93,35 @@ source("Scripts/DrawingTools.R")
 
 # Introduction
 
-The large areas covered with tropical forests worldwide hold crucial economic, social and cultural value. 
+The large areas covered with tropical forests worldwide hold crucial economic, social and cultural values. 
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate the local climate, support the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
-The simultaneous increase of forests products demand and substantial climatic changes currently heighten the pressure on the remaining forests [@Gibson2011a; @Morales-Hidalgo2015].
-It threatens the maintenance of communities structure, composition and functioning and the underlying dynamics in space and time [@Anderson-Teixeira2013;@Sist2015].
+The simultaneous increase of forests products demand and the substantial climatic changes currently heighten the pressure on remaining forests [@Gibson2011a; @Morales-Hidalgo2015], threatening the maintenance of communities structure, composition and functioning and their dynamics in space and time [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forest, ecological communities are contantly re-shaped by the natural disturbance events changing both abiotic environment, through the fluxes of light, heat and water, and biotic interactions and competitive pressure [@Goulamoussene2017]. 
-The cornerstone of tropical forests ecology is to understand the underlyings of ecosystem response to disturbance, its mechanisms and drivers [@White2001;@Chazdon2003a]. 
+In tropical forest, ecological communities are constantly re-shaped by the natural disturbance events changing both abiotic environment, through the fluxes of light, heat and water, and biotic interactions and competitive pressure [@Goulamoussene2017]. 
+The cornerstone of tropical forests ecology is to understand the mechanisms and the determinants of ecosystems response to disturbance [@White2001;@Chazdon2003a]. 
 For now, this has been largely studied through structural parameters, rapid and convenient to measure, as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016]. 
-Consistent models assessed these structural parameters and highlighted the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009]. 
-The response of tree diversity, however, remains unclear albeit it determines ecosystems productivity, stability and functioning [@Tilman2014, @Liang2016] and would be most probably impacted by post-disturbance environmental changes [@Baraloto2012a].
+These structural parameters were thereafter consistently modeled and gave important insights into the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009]. 
+However the response of forests diversity in tree species remains unclear, albeit it determines the productivity, stability and functioning of ecosystems [@Tilman2014, @Liang2016] and would be most probably impacted by the changes following disturbance [@Baraloto2012a].
 
 In the short-term disturbance demonstrated negligible or even positive impacts on communities diversity, which have been formalized by the intermediate disturbance hypothesis (IDH) stating a maximized species diversity at intermediate disturbance intensity [@Molino2001;@Kariuki2006a;@Berry2008a]. 
-Validations of the IDH in the long term, however, remain scarce and mainly rely on the analysis of the rough species richness that gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
-More releveant monitoring would encompass communities composition, that is crucial for conservation issues, and diversity profiles, that reveals ecological rules underlying communities' structure [@Magurran1988;@Lavorel2002;@Bellwood2006].
-Furthermore, account for species biological attributes and role the ecosystem through a functional approach assesses communities functioning and corresponding mechanisms [@Violle2007b;@Moretti2009;@Baraloto2012a;@Scheiter2013].
-In that respect major functional traits related to species ecology and performance were largely adopted [@Diaz2005;@Villeger2008a] highlighting, for example, the environmental filters fostering disturbance resistant species with rapid growth and efficient resources acquisition in tropical rainforests [@Molino2001;@Haddad2008].
-In disturbed tropical rainforests, this framework translates into the fostering of disturbance resistant species with rapid growth and efficient resources acquisition [@Molino2001;@Haddad2008].
-It results in a shift from "conservative" slow-growing species dealing with scarce resources that dominate before disturbance, to "acquisitive" fast-growing species with rapid and efficient use of abundant resources [@TerSteege2001;@Reich2014;@Herault2011].
-It was mirrored by shifts in key functional traits related to resource acquisition (leaf area, density and chlorophyll content, and stem specific gravity and bark thickness), tree growth and reproduction life history traits (seed mass and maximum height) [@Wright2004;@Westoby2006a;@Chave2009b].
+Still, validations of the IDH remain scarce in the long term and mainly rely on species richness analyses that gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016].
+More releveant monitoring would encompass communities composition, crucial for conservation issues, and complete diversity profiles encompassing species evenness in addition to their richness, that reveals ecological rules shaping communities [@Magurran1988;@Lavorel2002;@Bellwood2006].
+Furthermore, account for species biological attributes and role in the ecosystem is essential to understand the correlations between ecosystems biodiversity, functioning and environmental constraints [@Violle2007b;@Moretti2009;@Baraloto2012a;@Scheiter2013].
+In that respect functional approaches based on major traits related to species ecology and performance was largely adopted [@Diaz2005;@Villeger2008a], for example highlighting in tropical rainforests the environmental filters fostering fast growing species with efficient resources acquisition after disturbance [@Molino2001;@Haddad2008].
+Post-disturbance trajectories then corresponded to a shift from "conservative" slow-growing species dealing with scarce resources dominating before disturbance, to "acquisitive" fast-growing species with rapid and efficient use of abundant resources [@TerSteege2001;@Reich2014;@Herault2011].
+This shift translated into consistent trajectories for key functional traits related to resource acquisition (leaf area, density and chlorophyll content, and stem specific gravity and bark thickness), tree growth and reproduction and life history traits (seed mass and maximum height) [@Wright2004;@Westoby2006a;@Chave2009b].
 
-Functional and taxonomic trajectories relate to distinct characteristics and community processes, and might therefore be decoupled as already observed in tropical forests [@Lohbeck2015; @Guariguata2001].
-The combination of taxonomic and functional characteristics is translated by the functional redundancy, measuring the amount of species sharing same trait values [@Carmona2016].
-Functional redundancy is a major determinant of communities resilience as high redundancy, like in highly diverse tropical forests [@Bellwood2006], mitigates the impacts of species removal on ecosystem functioning [@Trenbath1999; @Elmqvist2003; @Diaz2005]. 
-It is therefore a key element as a link between taxonomic and functional diversities and as a determinant of communities resilience.
+Functional and taxonomic trajectories are both essentiall to fully assess communities response to disturbance.
+Both relate to distinct ecological rules and processes and might then be decoupled as it was observed already in tropical forests [@Lohbeck2015; @Guariguata2001].
+Although taxonomic and functional diversity are complementary, they are combine into communities functional redundancy that measures the amount of species sharing same trait values [@Carmona2016].
+Functional redundancy then explicits the link between otherwise decoupled taxonomic and functional diversities and is central for communities description.
+Besides, functional redundancy determines communities resilience as high redundancy, like in highly diverse tropical forests [@Bellwood2006], mitigates the impacts of species removal on ecosystem functioning [@Trenbath1999; @Elmqvist2003; @Diaz2005]. 
 
-Grasping all facets of communities response to disturbance then requires to disentangle the taxonomic and functional trajectories in diversity and composition.
-These trajectories would highlight communities resilience and the drivers of their response to disturbance, clarifying the tenants of the IDH in the long term for tropical forests, that are as much insights for future adaptive conservation strategies [@Adler2007].
+Grasp all facets of communities response to disturbance amount to disentangle the taxonomic and functional trajectories in diversity and composition.
+These trajectories would highlight the ecological rules constraining, or not, communities dynamics towards a recovery of initial composition, diversity and functioning.
+They would therefore clarify the tenants in the long term of the debated Intermediate Disturbance Hypothesis for tropical forests, which would be as much insights for future adaptive conservation strategies [@Adler2007].
 Here we monitored over 30 years the response of 75 ha of forests plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem biomass removed.
-We made use of a large functional traits database browsing major leaf, stem and seed traits and species maximum height to draw the trajectories over time of communities taxonomic and functional composition and diversity. Specifically, we (i) highlighted the determinant of communities functoinal and taxonomic response to disturbance, (ii) tested the validity of the IDH in the long term for tropical forest and (iii) questioned the completeness of communities recovery regarding their functional redundancy.
+We made use of a large functional traits database browsing major leaf, stem and seed traits and species maximum height to draw the trajectories over time of communities taxonomic and functional composition and diversity. Specifically, we (i) questioned the coupling between taxonomic and functional response to disturbance and identified the underlying assembly processes, which allowed to (ii) clarify the validity of the IDH in the long term for tropical forest and (iii) question the completeness of communities recovery regarding their functional redundancy.
 
 # Material and Methods
 
