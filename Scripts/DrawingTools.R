@@ -39,7 +39,8 @@ mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
 mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
 }
 
-FunCompo<-function(Data_FunComp){mat<-as.data.frame(Data_FunComp[[3]])
+FunCompo<-function(Data_FunComp){
+  mat<-as.data.frame(Data_FunComp[[8]])
 mat$plot<-substr(rownames(mat),start=1,stop=regexpr("_",rownames(mat))-1)
 mat$year<-substr(rownames(mat),start=regexpr("_",rownames(mat))+1,
                  stop=nchar(rownames(mat)))
@@ -61,7 +62,8 @@ invisible(lapply(1:length(treatments),function(tr){
 }))
 mtext("(b) Functional composition",side=3,adj=0,line=0.5)
 mtext("NMDS 1",side=1,line=2,cex=0.8)
-mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)}
+mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)    
+}
 
 TaxoDist<-function(Data_TaxoComp){
 MatrepT<-lapply(Data_TaxoComp,function(Rep){
@@ -249,7 +251,7 @@ RedundancyPlot<-function(Red){
   Red<-lapply(Red,function(rep){
     ret<-smooth(rep,2)
    colnames(ret)<-colnames(rep)
-   ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col)})#-ret[,"1989"]
+   ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})#
    colnames(ret)<-as.numeric(colnames(ret))-1984
    return(ret)})
   
