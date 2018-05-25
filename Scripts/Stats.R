@@ -12,6 +12,8 @@ Sim<-lapply(Sim, function(tr){
              dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
 save(Sim,file="DB/SimpsonIDH")
 
+CompFun<-CompleteFun
+CompFun[[2]]<-CompFun[[2]][which(rownames(CompFun[[2]])!=7),,]
 Rao<-lapply(CompFun, function(tr){
   Ret<-lapply(c(0.025,0.5,0.975),function(quant){
     return(apply(tr[,c("1995","2005","2015"),],c(1,2),function(x){return(quantile(x,probs=quant))}))})
@@ -37,7 +39,7 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
 time<-c("1995","2005","2015")
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
-Data<-Sim
+Data<-Rao
 AgbLoss<-AGBloss
 
 Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),

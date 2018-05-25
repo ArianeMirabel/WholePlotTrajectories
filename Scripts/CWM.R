@@ -298,3 +298,7 @@ invisible(lapply(colnames(CWM[[1]]),function(trait){
   
 }))
 
+load("DB/CWMnew")
+
+
+
