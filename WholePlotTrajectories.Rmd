@@ -30,15 +30,14 @@ corrauthor:
 abstract: >   
     Understand the maintenance of forests biodiversity structure, functioning and dynamics is urgent to anticipate their fate in the global changing context.
     Communities diversity structure is assumed to rely on a constant regime of disturbance and peak at intermediate intensity.
-    For tropical forests this intermediate disturbance hypothesis (IDH) remain debated as well as the completeness of forests resilience in all taxonomic and functional facets.
+    For tropical forests this intermediate disturbance hypothesis (IDH) remain debated as well as the completeness of forests resilience in all taxonomic and functoinal facets.
     
-  To disentangle the ecological processes driving forests dynamics we examined the the trajectories over 30 years after a gradient of logging and thinning disturbance, focusing on communities taxonomic and functional composition and diversity.
-  Specifically we analysed the trajectories of communities taxonomic richness and evennes and functional composition, diversity and redundancy based on 7 key functional traits assessing species ecology.
-  
-  We highlighted a decoupling between functional and taxonomic trajectories, translating a fast recovery of communities functioning while their taxonomic recovery was slowed by the recruitment of infrequent species specific to mature forests.
-  The IDH consistently predicted communities functional trajectories but poorly reflected the taxonomic ones, blurried by changes in the functional redundancy entailing competitive exclusion.
-  Although communities consistently recovered their functioning after 30 years, initially infrequent species proved long to recover which impacted the taxonomic structure and functoinal redundancy over several decades.
-  Our results acknowledged the need of decades-long recovery cycles to restore the resilience of the community and prevent species loss in the long term.
+    To disentangle the ecological processes driving forests dynamics we examined the the trajectories over 30 years after a gradient of logging and thinning disturbance, focusing on communities taxonomic and functional composition and diversity.
+    Specifically we analysed the trajectories of communities taxonomic richness and evennes and functional composition, diversity and redundancy based on 7 key functional traits assessing species ecology.
+    We highlighted a decoupling between functional and taxonomic trajectories, translating a fast recovery of communities functioning while their taxonomic recovery was slowed by the recruitment of infrequent species specific to mature forests.
+    The IDH consistently predicted communities functional trajectories but poorly reflected the taxonomic ones, blurried by changes in the functional redundancy entailing competitive exclusion.
+    Although communities consistently recovered their functioning after 30 years, initially infrequent species proved long to recover which impacted the taxonomic structure and functoinal redundancy over several decades.
+    Our results acknowledged the need of decades-long recovery cycles to restore the resilience of the community and prevent species loss in the long term.
     
 keywords: [Taxonomic and Functional Biodiversity, Neotropical Forests, Disturbance Trajectories, Intermediate Disturbance Hypothesis, Long-term Resilience]
 journalinfo: Hal xxx
@@ -57,10 +56,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
