@@ -30,7 +30,7 @@ corrauthor:
 abstract: >   
     Understand the maintenance of forests biodiversity structure, functioning and dynamics is urgent to anticipate their fate in the global changing context.
     Communities diversity structure is assumed to rely on a constant regime of disturbance and peak at intermediate intensity.
-    For tropical forests this intermediate disturbance hypothesis (IDH) remain debated as well as the completeness of forests resilience in all taxonomic and functoinal facets.
+    For tropical forests this intermediate disturbance hypothesis (IDH) remain debated as well as the completeness of forests resilience in all taxonomic and functional facets.
     
   To disentangle the ecological processes driving forests dynamics we examined the the trajectories over 30 years after a gradient of logging and thinning disturbance, focusing on communities taxonomic and functional composition and diversity.
   Specifically we analysed the trajectories of communities taxonomic richness and evennes and functional composition, diversity and redundancy based on 7 key functional traits assessing species ecology.
