@@ -28,13 +28,11 @@ corrauthor:
     email: ariane.mirabel@ecofog.gf
     url: http://www.ecofog.gf/spip.php?article47
 abstract: >   
-    Currently the increasing threats on tropical forests and the global changing climate challenge the maintenance of forests biodiversity structure, functioning and dynamics.
-    Communities diversity structure is assumed to rely on a constant regime of disturbance and to peak at intermediate level of disturbance. 
-    In tropical forests however both this intermediate disturbance hypothesis (IDH) and the underlying processes remain debated.
-    The ecological processes driving trajectories after disturbance leave a signature on communities taxonomic or functional structure which differences give major insights to validate the IDH and identify the ecological processes involved.
-    The completeness of forests resilience regarding all taxonomic and functional facets besdides remain to be clarified.
+    Understand the maintenance of forests biodiversity structure, functioning and dynamics is urgent to anticipate their fate in the global changing context.
+    Communities diversity structure is assumed to rely on a constant regime of disturbance and peak at intermediate intensity.
+    For tropical forests this intermediate disturbance hypothesis (IDH) remain debated as well as the completeness of forests resilience in all taxonomic and functoinal facets.
     
-  Here we examined in a neotropical forest the trajectories over 30 years after a gradient of logging and thinning disturbance, focusing on communities taxonomic and functional composition and diversity.
+  To disentangle the ecological processes driving forests dynamics we examined the the trajectories over 30 years after a gradient of logging and thinning disturbance, focusing on communities taxonomic and functional composition and diversity.
   Specifically we analysed the trajectories of communities taxonomic richness and evennes and functional composition, diversity and redundancy based on 7 key functional traits assessing species ecology.
   
   We highlighted a decoupling between functional and taxonomic trajectories, translating a fast recovery of communities functioning while their taxonomic recovery was slowed by the recruitment of infrequent species specific to mature forests.
@@ -42,7 +40,6 @@ abstract: >
   Although communities consistently recovered their functioning after 30 years, initially infrequent species proved long to recover which impacted the taxonomic structure and functoinal redundancy over several decades.
   Our results acknowledged the need of decades-long recovery cycles to restore the resilience of the community and prevent species loss in the long term.
     
-
 keywords: [Taxonomic and Functional Biodiversity, Neotropical Forests, Disturbance Trajectories, Intermediate Disturbance Hypothesis, Long-term Resilience]
 journalinfo: Hal xxx
 archive: DOI xxxx
@@ -309,7 +306,7 @@ Communities functional redundancy was measured as the sum within communities the
 Communities functional redundancy remained stable in control plots but after disturbance the redundancy trajectories were quite variable (See appendix I) and apparently independently of the initial disturbance.
 Globally after most intense disturbance (plots T2 and T3) communities redundancy decreased at first place before increasing to edge, recover or exceed the initial value.
 
-Considering the functional redundancy restricted to the functional space of the initial inventory, all disturbed plots followed similar decreasing humped-shaped trajectories (\@ref(fig:RedFun_rest)).
+Considering the functional redundancy restricted to the functional space of the initial inventory, all disturbed plots followed similar decreasing humped shaped trajectories (\@ref(fig:RedFun_rest)).
 The maximum redundancy loss was positively correlated with the disturbance intensity (XX spearman to be measured) and the initial value had not recovered for any disturbed communities.
 
 ```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial cpùùunities functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
@@ -328,12 +325,12 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ## Decoupled taxonomic and functional trajectories
 
-Both communities taxonomic and functional diversity and composition proved resilient, following similar humped-back trajectories returning towards initial values.
+Both communities taxonomic and functional diversity and composition proved resilient, following similar humped shaped trajectories returning towards initial values.
 The resilience of communities functional structure, that is the most direct link between biodiversity and ecosystem functioning [@Diaz2005], meant a consistent recovery of ecosystem processes in the long term [@Guariguata2001].
 The resilience of communities taxonomy meant the maintenance of their initial differences in composition and diversity, suggesting the existence of multiple stable equilibria as assumed for highly diverse and productive ecosystems [@Chase2003].
-It besides suggested that recovery trajectories depend on the initial composition eventually restored that would the the asymptot of the humped-shaped dynamics [@Hubbell1999; @Molino2001; @Anderson2007; @Baraloto2012a].
+It besides suggested that recovery trajectories depend on the initial composition eventually restored that would the the asymptot of the humped shaped dynamics [@Hubbell1999; @Molino2001; @Anderson2007; @Baraloto2012a].
 
-Although both communities taxonomic and functional characteristics proved resilient and followed similar humped-back trajectories, the taxonomic recovery systematically lagged behind the functional one.
+Although both communities taxonomic and functional characteristics proved resilient and followed similar humped shaped trajectories, the taxonomic recovery systematically lagged behind the functional one.
 The decoupling between functional and taxonomic dynamics has already been observed for grasslands [@Tilman1997; @Mouillot2011] and more recently for tropical forests [@Lohbeck2015; @Guariguata2001].
 According to the "vegetation quantity effect" [@Grime1998] functional trajectories rely on the pool of dominant species, which diversity and evenness were enhanced after disturbance, and which rapidly recovered their initial functional structure.
 However, communities evenness remained high so infrequent species still missed to the taxonomic recovery that proved all the more longer to recover that unrecovered species would be functionally redundant and probably underwent competition processes.
@@ -361,10 +358,10 @@ Functional redundancy, determinant of communities resilience [@Trenbath1999; @El
 
 Communities with high functional redundancy are expected to be able to lose species with a limited impact on their functional structure [@Carmona2016].
 Functional redundancy therefore mitigates the impacts of disturbance, but we expect the redundancy itself to be reduced or re-organized within the functional space.
-Although the overall functional redundancy did not follow consistent trajectories after disturbance, the redundancy restricted to the functional space of the initial community clearly followed humped-back trajectories.
+Although the overall functional redundancy did not follow consistent trajectories after disturbance, the redundancy restricted to the functional space of the initial community clearly followed humped shaped trajectories.
 This restricted redundancy decreased according to the disturbance intensity before returning towards the initial value but had not recovered for any disturbed community after 30 years.
 The recovery of the redundancy within the initial functional space explained the hampered recovery of infrequent species specific to old-growth forests that would be functionally redundant and therefore underwent competitive pressures limiting species functional similarity [@Mayfield2010].
-The unachieved humped-shape redundancy trajectory meant a decrease of the resilience of pre-disturbance communities and an increase in the resilience of disturbance-specific communities (corresponding to lower richness and higher dominance of pioneer species).
+The unachieved humped shaped redundancy trajectory meant a decrease of the resilience of pre-disturbance communities and an increase in the resilience of disturbance-specific communities (corresponding to lower richness and higher dominance of pioneer species).
 After disturbance the chances were higher to have long lasting or self-maintained compositional changes in favor of disturbance resistant species, lianas or epiphytes [@Haddad2008; @Burslem2000; @Martin2013], which highly questioned the completeness of the resilience [@Chazdon2003a].
 Specificaly, species contingent to undisturbed forests might be impaired, threatening their maintenance, the risk to loose cornerstone species and trigger unexpected ecological consequences would be higher [@Jones1994;@Diaz2005;@Gardner2007].
 
