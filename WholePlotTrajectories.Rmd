@@ -124,7 +124,7 @@ Communities then shifted from a dominance of "conservative" slow-growing species
 This shift translated into consistent trajectories for key functional traits related to resource acquisition (leaf area, density and chlorophyll content, and stem specific gravity and bark thickness), tree growth and reproduction life history traits (seed mass and maximum height) [@Wright2004;@TerSteege2006;@Westoby2006a;@Chave2009b].
 
 A combination of taxonomic and functional approaches are essential to fully assess communities response to disturbance and differences in their respective trajectories are insightful of underlying mechanisms [@Lohbeck2015;@Guariguata2001].
-Although taxonomic and functional diversity are complementary and sometimes decouples, they are combined in the measure of communities functional redundancy that quantifies the amount of shared trait values among species [@Carmona2016].
+Although taxonomic and functional diversity are complementary and sometimes decoupled, they are combined in the measure of communities functional redundancy that quantifies the amount of shared trait values among species [@Carmona2016].
 Functional redundancy is determinant of communities resilience as high redundancy, like in highly diverse tropical forests [@Bellwood2006], mitigates the impacts of species removal on ecosystem functioning [@Trenbath1999; @Elmqvist2003; @Diaz2005]. 
 
 Grasp all facets of communities response to disturbance comes to examine the taxonomic and functional trajectories in diversity and composition.
@@ -344,7 +344,7 @@ The taxonomic evenness also increased after disturbance, but the correlation bet
 
 Contrastingly the functional diversity increase after disturbance was determined by the disturbance intensity all along the 30 years monitored.
 We already demonstrated that disturbance primarily entailed turnover of specific within communities, either among pre-disturbance survivors or among newly recruited trees.
-It wasdemonstrated that the composition of old-growth survivors proved to mirror initial communities [@Herault2018], so disturbance rather impacted trees recruitment with the enhanced growth and survival of previously infrequent species and functional types.
+It was demonstrated that the composition of old-growth survivors proved to mirror initial communities [@Herault2018], so disturbance rather impacted trees recruitment with the enhanced growth and survival of previously infrequent species and functional types.
 Consistently disturbance resulted in an increase of the taxonomic dissimilarity between communities and their pre-disturbance composition, and in significant functional shifts towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998; @Wright2004; @Reich2014].
 Disturbance entailed a reorganization of the typical high dominance structure of hyperdiverse mature forests benefiting to pioneers and light demanding species: the changes in abiotic environment and competitive pressure favored pioneers which outcompete other species in non limiting resources but were excluded in mature forests by long-lived, more resistant and shade tolerant species.
 Corroborating the IDH, the trajectories after disturbance relied on the environmental niches made available and filled by species from a restrictied functional range.
