@@ -133,7 +133,6 @@ Sptdp<-lapply(1:Nrep,function(rep){
       z<-f$z
       colnames(z)<-1:100;rownames(z)<-1:100
     }
-    
     if(nrow(acp)==1){
       z<-outer(seq(xgen[1],xgen[2],length=100),seq(ygen[1],ygen[2],length=100), 
                function(x,y) dnorm(x,acp[1,"Axis1"],MeanSd)*dnorm(y,acp[1,"Axis2"],MeanSd))
