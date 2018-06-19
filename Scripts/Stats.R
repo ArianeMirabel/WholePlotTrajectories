@@ -108,8 +108,49 @@ mean(as.numeric(TimeMax))-1984
 
 ##########################################
 ## Rho Spearman, redundancy
-load("DB/Redundancy_restricted")
-RedundancyTraj_restricted
+
+smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
+  range<-max(1,step-larg):min(ncol(mat),step+larg)
+  rowSums(mat[,range])/length(range)})))}
+treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
+names(treatments)<-c("Control","T1","T2","T3")
+ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
+colyear<-c("darkgoldenrod1","darkorange2","darkred")
+time<-c("1995","2005","2015")
+
+load("DB/Redundancy_sd0.7")
+RedundancyTraj_restricted->Red
+
+RedundancyPlot<-function(Red){
+  Red<-lapply(Red,function(rep){
+  ret<-smooth(rep,2)
+  #ret<-rep
+  colnames(ret)<-colnames(rep)
+  ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})#
+  colnames(ret)<-as.numeric(colnames(ret))-1984
+  return(ret)})
+
+Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
+           dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
+Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){
+  return(quantile(rep,probs=quant))}))})
+Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
+           dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
+
+
+plot(colnames(Red),Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  
+  invisible(lapply(1:4,function(tr){
+    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,]
+    apply(toplot,1,function(li){
+      lines(colnames(Red),li[,"0.5"],col=ColorsTr[tr],lwd=2)
+      polygon(c(colnames(Red),rev(colnames(Red))),
+              c(li[,"0.025"],rev(li[,"0.975"])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    })}))
+}
+
+RedundancyPlot(RedundancyTraj)
 
 
 ###############

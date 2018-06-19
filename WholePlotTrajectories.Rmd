@@ -289,7 +289,7 @@ Thirty years after disturbance the weighted means of communities specific maximu
 The weighted means of bark thickness (*Bark_thick*) similarly remained substantially higher than initially for all disturbed plots while the specfic leaf area (*SLA*) had almost recovered its initial value.
 For all traits the maximum difference to initial state was correlated to the disturbance intensity ($\rho_{spearman}^{L_{thickness}}=0.67$, $\rho_{spearman}^{L_{chloro}}=0.45$, $\rho_{spearman}^{L_{toughness}}=-0.43$, $\rho_{spearman}^{SLA}=0.93$, $\rho_{spearman}^{WD}=-0.78$, $\rho_{spearman}^{Bark-thickness}=0.88$, $\rho_{spearman}^{Hmax}=-0.48$).
 
-```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
+```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWD), and bark thickness, (ref:capBarkThick)) and one life history trait (Specific maximum height at adult stage, (ref:capHmax)). Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iterations of the taxonomic uncertainty propagation and the filling processes of missing trait values. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
 load("DB/CWM")
 
 CWMdraw(CWM)
@@ -299,14 +299,15 @@ legendCWM()
 
 ### Functional redundancy
 
-Communities functional redundancy was measured as the sum within communities the species weighted functional overlap based on the 7 leaf, stem, and maximum height traits (see appendix I for PCA details). 
+Communities functional redundancy was measured as the sum within communities of species functional overlap weighted by their abundance.
+The functional redundancy was measured in the functional space defined by  7 leaf, stem, and maximum height traits (see appendix I for PCA details). 
 Communities functional redundancy remained stable in control plots but after disturbance the redundancy trajectories were quite variable (See appendix I) and apparently independently of the initial disturbance.
 Globally after most intense disturbance (plots T2 and T3) communities redundancy decreased at first place before increasing to edge, recover or exceed the initial value.
 
 Considering the functional redundancy restricted to the functional space of the initial inventory, all disturbed plots followed similar decreasing humped shaped trajectories (\@ref(fig:RedFun_rest)).
 The maximum redundancy loss was positively correlated with the disturbance intensity (XX spearman to be measured) and the initial value had not recovered for any disturbed communities.
 
-```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial cpùùunities functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
+```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial communities functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iterations of the taxonomic uncertainty propagation and the filling processes of missing trait values. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
 load("DB/Redundancy_restricted")
 
 par(mar=c(5,4,5,2))
@@ -333,20 +334,21 @@ At the same time communities taxonomic evenness remained high, revealing the una
 
 ## The extent of the intermediate disturbance hypothesis
 
-The examination of taxonomic and functional trajectories suggested that communities functional structure and dominant species pool relied upon deterministic processes following the IDH while the pool of rare species relied upon more stochastic processes.
+The taxonomic and functional trajectories validated the IDH as determinant of communities functional structure and of the dominant species pool, while contrastingly the pool of rare species relied upon more stochastic processes.
 
-The disturbance intensity did not predict the taxonomic richness, as already observed in the Paracou station [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998], nor did it strongly correlate with the taxonomic evenness (*i.e.* Simpson diversity) although the it was enhanced after disturbance.
+The disturbance intensity poorly predicted the taxonomic richness, as already observed in the Paracou station [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998], was only weakly correlated with the increase in taxonomic evenness (*i.e.* Simpson diversity).
 
-Contrastingly, the disturbance intensity predicted the increase in functional diversity along the 30 years monitored after disturbance.
-The increase in functional diversity paralleled the important specific turnover and significant functional shifts towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998; @Wright2004; @Reich2014].
-As the old-growth, pre-disturbance survivor trees proved to mirror initial communities [@Herault2018] the functional trajectories and taxonomic turnover rather relied on the pool of newly recruited trees driven by the enhanced growth and survival of previously infrequent species and functional types.
-Disturbance entailed a reorganization of the typical high dominance structure of hyperdiverse mature forests benefiting to pioneers and light demanding species: the changes in abiotic environment and competitive pressure favored pioneers which outcompete other species in non limiting resources but were excluded in mature forests by long-lived, more resistant and shade tolerant species.
-Disturbance trajectories therefore relied on the environmental niches made available and filled by species from a restricted functional range that became dominant and structured the functionalcharacteristics of the community [@Grime1998].
-The intermediate disturbance hypothesis predicted communities functional diversity and pool of dominant species [@Molino2001], but rare species relied on different processes and disprove the IDh for the whole taxonomic community [@Hubbell2001;@Chave2004].
+Contrastingly, the disturbance intensity consistently predicted the increase in functional diversity after disturbance along the 30 years.
+The functional diversity increase paralleled the significant specific turnover and functional shifts towards resource-acquisitive strategies (sharp increase in the SLA, leaf thickness and bark thickness and decrease in wood density, leaf toughness and maximum height) [@Westoby1998; @Wright2004; @Reich2014].
+As the old-growth, pre-disturbance survivor trees proved mirroring the initial communities [@Herault2018] the functional trajectories and taxonomic turnover rather relied upon the pool of newly recruited trees driven by the enhanced growth and survival of previously infrequent species and functional types.
+Disturbance entailed a reorganization, benefiting to pioneers and light demanding species, of the typical high dominance structure of hyperdiverse mature forests.
+The changes in abiotic environment and competitive pressure favored pioneers which outcompeted other species in non limiting light resources but were excluded in mature forests by long-lived, more resistant and shade tolerant species.
+Disturbance trajectories therefore relied upon the environmental niches made available and filled by species from a restricted functional range that became dominant and structured the functional characteristics of the community [@Grime1998].
+The intermediate disturbance hypothesis was suitabe to predict communities functional diversity and pool of dominant species [@Molino2001], but it poorly represented the whole taxonomic structure that was hampered by the slow recovery of rare species [@Hubbell2001;@Chave2004].
 
 ## The functional redundancy, key of communities resilience
 
-The functional and taxonomic decoupling and the disprove of the IDH for communities taxonomic structure were explained by persisting rearranging of communities functional redundancy that implied an incomplete resilience of communities [@Trenbath1999;@Elmqvist2003;@Diaz2005]. 
+The functional and taxonomic decoupling and the rebuttal of the IDH for communities taxonomic structure were explained by a reorganization of the functional redundancy within the functional traits space that implied the incomplete resilience of communities [@Trenbath1999;@Elmqvist2003;@Diaz2005]. 
 
 Although the functional redundancy considered in the functional space of the whole communities did not display consistent trajectories after disturbance, the redundancy restricted to the functional space of the initial community clearly followed humped shaped trajectories.
 After disturbance communities differently occupied the functional space, following the observed shifts in traits trajectories and functional composition, and the redundancy in the initial functional space decreased according to the disturbance intensity.
