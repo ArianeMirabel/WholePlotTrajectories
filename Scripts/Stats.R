@@ -88,6 +88,7 @@ DistT<-as.data.frame(unlist(lapply(1:12,function(pl){
     return(ret2)}))
   ret<-apply(ret,2,median)
   return(names(ret)[which(ret==max(ret))])})))
+
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
 DistT<-cbind(DistT,rownames(DistT),treats[order(treats[,1]),2])
 colnames(DistT)<-c("Max","Plot","treat")
@@ -118,39 +119,18 @@ ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
 time<-c("1995","2005","2015")
 
-load("DB/Redundancy_sd0.7")
+load("DB/Redundancy_restricted_sd0.7")
 RedundancyTraj_restricted->Red
 
-RedundancyPlot<-function(Red){
-  Red<-lapply(Red,function(rep){
-  ret<-smooth(rep,2)
-  #ret<-rep
-  colnames(ret)<-colnames(rep)
-  ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})#
-  colnames(ret)<-as.numeric(colnames(ret))-1984
-  return(ret)})
+Maxred<-unlist(lapply(1:12,function(pl){
+  ret<-do.call(rbind,lapply(Red,function(iter){return(iter[pl,])}))
+  return(max(apply(ret,2,median)))
+}))
 
-Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
-           dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
-Red<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(Red,c(1,2),function(rep){
-  return(quantile(rep,probs=quant))}))})
-Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
-           dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
-
-
-plot(colnames(Red),Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
-  
-  invisible(lapply(1:4,function(tr){
-    toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,]
-    apply(toplot,1,function(li){
-      lines(colnames(Red),li[,"0.5"],col=ColorsTr[tr],lwd=2)
-      polygon(c(colnames(Red),rev(colnames(Red))),
-              c(li[,"0.025"],rev(li[,"0.975"])),
-              col=rgb(0,0,0,alpha=0.1),border=NA)
-    })}))
-}
-
-RedundancyPlot(RedundancyTraj)
+treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
+Maxred<-cbind(Maxred,1:12,treats[order(treats[,1]),2])
+colnames(Maxred)<-c("Max","Plot","treat")
+cor(Maxred[,"Max"],Maxred[,"treat"],method="spearman")
 
 
 ###############

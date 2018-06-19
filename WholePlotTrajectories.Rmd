@@ -50,16 +50,16 @@ preamble: >
   \usepackage{caption}
   \captionsetup{justification = justified}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
-  \hyphenation{bio-di-ver-si-ty sap-lings re-or-ga-ni-za-tion}
+  \hyphenation{bio-di-ver-si-ty sap-lings re-or-gan-i-za-tion}
 bibliography: references.bib
 lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -87,7 +87,7 @@ output:
 
 
 ```{r Options, echo=FALSE, message=FALSE, warning=F}
-knitr::opts_chunk$set(cache=T, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
+knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -141,7 +141,7 @@ Elevation ranges between 5 and 50 m and soils correspond to thin acrisols over a
 
 The experiment is a network of twelve 6.25ha plots that underwent a gradient of three logging, thinning and fuelwood cutting treatments (Table \@ref(tab:Tab1)) attributed according to a randomized plot design with three replicate blocks of four plots. 
 The disturbance corresponds to averages of 10 trees removed per hectare with a diameter at 1.3 m height (DBH) above 50 cm for treatment 1 (T1), 32 trees/ha above 40 cm DBH for treatment 2 (T2) and 40 trees/ha above 40 cm DBH for treatment 3 (T3). 
-Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Schmitt1989;@Blanc2009]. 
+Treatments T2 and T3 besides included the thinning of trees by poison girdling [@Schmitt1990;@Blanc2009]. 
 The disturbance intensity was measured as the percentage of aboveground biomass (%AGB) lost between the first inventory in 1984 and five years after disturbance (ref to be found) measured with the BIOMASS R package [@Biomass2018].
 
 ```{r Tab1, echo=FALSE,is.as=T}
@@ -177,7 +177,12 @@ From 2003 botanical campaigns were conducted every 5 to 6 years to identify all 
 This variability of protocols raised methodological issues as vernacular names usually correspond to different botanical species. 
 It resulted in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics.
 The uncertainty propagation was done through a Bayesian framework reconstituting complete inventories at genus level from real incomplete ones on the basis of vernacular/botanical names association. 
-Vernacular names were replaced through multinomial trials $M_v\Big(\big[s_1, s_2, …, s_N\big],\big[\alpha_1, \alpha_2,…, \alpha_3\big]\Big)$ based on the association probability $\big[\alpha_1, \alpha_2,…, \alpha_3\big]$ observed across all inventories between each vernacular name *v* and the species $\big[s_1, s_2, …, s_N\big]$. 
+Vernacular names were replaced through multinomial trials based on the association probability $\big[\alpha_1, \alpha_2,…, \alpha_3\big]$ observed across all inventories between each vernacular name *v* and the species $\big[s_1, s_2, …, s_N\big]$:
+
+\begin{align}
+M_v\Big(\big[s_1, s_2, …, s_N\big],\big[\alpha_1, \alpha_2,…, \alpha_3\big]\Big) \nonumber
+\end{align}
+
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
 The functional approach used a dataset of 6 functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area, the leaf area per unit dry mass) and wood economics (wood specific gravity and bark thickness), and life history traits (maximum specific height and seed mass).
@@ -255,7 +260,7 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 ```
 
  
-## Communities composition
+## Communities Composition
  
 ### Taxonomic and functional trajectories
 
@@ -305,9 +310,9 @@ Communities functional redundancy remained stable in control plots but after dis
 Globally after most intense disturbance (plots T2 and T3) communities redundancy decreased at first place before increasing to edge, recover or exceed the initial value.
 
 Considering the functional redundancy restricted to the functional space of the initial inventory, all disturbed plots followed similar decreasing humped shaped trajectories (\@ref(fig:RedFun_rest)).
-The maximum redundancy loss was positively correlated with the disturbance intensity (XX spearman to be measured) and the initial value had not recovered for any disturbed communities.
+The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{spearman}=0.50$) and the initial value had not recovered for any disturbed communities.
 
-```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial communities functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iterations of the taxonomic uncertainty propagation and the filling processes of missing trait values. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
+```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the difference from initial state of functional redundancy within the initial functional space over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iterations of the taxonomic uncertainty propagation and the filling processes of missing trait values. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure"}
 load("DB/Redundancy_restricted")
 
 par(mar=c(5,4,5,2))
