@@ -28,7 +28,7 @@ corrauthor:
     email: ariane.mirabel@ecofog.gf
     url: http://www.ecofog.gf/spip.php?article47
 abstract: >   
-    Understand the maintenance of forests biodiversity structure, functioning and dynamics is urgent to anticipate their fate in the global changing context.
+    Understand the ecological rules underlying the maintenance of tropical forests biodiversity, structure, functioning and dynamics is urgent to anticipate their fate in the global changing context.
     Communities diversity are assumed to be shaped by constant regime of disturbance yielding a diversity peak at intermediate intensity, but for tropical forests this intermediate disturbance hypothesis (IDH) remains debated as well as the completeness their resilience in all taxonomic and functional facets after disturbance.
     
     To disentangle the ecological processes driving communities response to disturbance we analysed the taxonomic and functional trajectories following a logging and thinning disturbance gradient.
