@@ -109,7 +109,7 @@ The large areas covered with tropical forests worldwide hold crucial environment
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate the local climate, and the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
 The growing demand in forests products together with current climatic changes increases the pressure on remaining forests [@Gibson2011a; @Morales-Hidalgo2015]and threatens the maintenance and dynamics in space and time of communities structure, composition and functioning [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forest, ecological communities are constantly re-shaped by natural disturbance events that change both the abiotic environment, through the fluxes of light, heat and water [@Goulamoussene2017], and the biotic interactions like competition among species [@Herault2018]. 
+In tropical forest, ecological communities are constantly re-shaped by natural disturbance events that change both the abiotic environment, through the fluxes of light, heat and water [@Goulamoussene2017], and the biotic interactions like competition among species [@Chesson2000;@Herault2018]. 
 The cornerstone of tropical forests ecology is to understand the processes and the determinants of ecosystems response to disturbance [@White2001;@Chazdon2003a]. 
 For now, this has been largely studied through structural parameters, rapid and convenient to measure, as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016]. 
 These structural parameters were thereafter sucessfully modeled, giving important insights into the maintenance of ecosystems processes and services [@Denslow2000;@Blanc2009]. 
