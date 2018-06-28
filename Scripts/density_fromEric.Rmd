@@ -1,0 +1,99 @@
+---
+title: "Comparaison de distributions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Données simulées
+
+Deux distributions D1 : normale centrée réduite et normale de moyenne 0.5 et écart-type 2. 100 valeurs pour chacune. Correspondent à la distribution des traits à deux dates.
+
+```{r distributions}
+D1 <- rnorm(100)
+D2 <- rnorm(100, mean = .5, sd = 2)
+```
+
+## Estimation de la densité de probabilité
+
+### Recherche de la bande passante optimale
+
+```{r bp}
+# Comparaison entre les bp de chaque distribution et de l'ensemble des données
+bw.SJ(D1)
+bw.SJ(D2)
+bw.SJ(c(D1, D2))
+# On retient la bp de la distribution de référence, ici D1
+OptimalBW <- bw.SJ(D1)
+```
+
+### Estimation des densités
+
+Avec la même bande passante
+
+```{r density}
+dD1 <- density(D1, bw=OptimalBW)
+dD2 <- density(D2, bw=OptimalBW)
+# figure
+plot(dD1)
+lines(dD2, col="red")
+```
+
+
+## Distance entre les distributions
+
+### Valeurs de x
+
+Les valeurs de x sont différentes entre les deux distributions de densité. On complète chaque distribution par les valeurs de x de l'autre.
+
+```{r approx}
+# Estimation de la distribution 1 aux x de la diostrbution 2
+adD1 <- approx(dD1$x, dD1$y, xout=dD2$x)
+# Les NA sont des zéros (au-delà des bornes d'origine)
+adD1$y[is.na(adD1$y)] <- 0
+# Estimation de la distribution 2 aux x de la diostrbution 1
+adD2 <- approx(dD2$x, dD2$y, xout=dD1$x)
+# Les NA sont des zéros (au-delà des bornes d'origine)
+adD2$y[is.na(adD2$y)] <- 0
+# Fusion. Toutes les valeurs de x
+x <- c(dD1$x, dD2$x)
+# y de la distribution 1
+y1 <- c(dD1$y, adD1$y)
+# y de la distribution 2. Attention à l'ordre
+y2 <- c(adD2$y, dD2$y)
+# Tri par x croissant.
+sortedXindex <- sort(x, index.return=TRUE)$ix
+y1 <- y1[sortedXindex]
+y2 <- y2[sortedXindex]
+x <- x[sortedXindex]
+# Figure: la même qu'avant mais avec toutes les valeurs de x et y
+plot(x, y1, type="l")
+lines(x, y2, col="red")
+```
+
+### Valeurs de x
+
+Calcul de la surface commune aux deux courbes.
+La distance entre les deux courbes, normalisé, est 1 - deux fois la surface commune / la surface totale.
+
+
+```{r distance}
+library(sfsmisc)
+# calculate intersection densities
+w <- pmin(y1, y2)
+# integrate areas under curves
+total <- integrate.xy(x, y1) + integrate.xy(x, y2)
+intersection <- integrate.xy(x, w)
+# compute non-overlap coefficient
+1 -  2*intersection/total
+# Figure : surface commune
+plot(x, y1, type="l")
+lines(x, y2, col="red")
+polygon(c(x, rev(x)), c(w, rep(0, length(x))), col = "orange")
+```
+
+
+
+

@@ -93,6 +93,7 @@ traitsPartial_fam<-lapply(traitsPartial_fam,function(sub){
   return(cbind(sub[,c("Family","Genus","name","bar_code")],ret[(nrow(ret)-nrow(sub)+1):nrow(ret),]))})
 
 # Pour les espèce squi n'avaient toujours pas assez d'individus dans leur famille pour permettre l'estimation
+if(any(unlist(lapply(traitsPartial_fam,function(sub){anyNA(sub[,"WD"])})))){
 idScarce<-as.character(traitsPartial_all[,"bar_code"],
    do.call(rbind,traitsPartial_fam[which(unlist(
      lapply(traitsPartial_fam,function(sub){anyNA(sub[,"WD"])})))])[,"bar_code"])
@@ -102,9 +103,13 @@ comScarce<-cbind(traits[,c("Family","Genus","name","bar_code")],
 comScarce<-comScarce[which(comScarce[,"bar_code"]%in%idScarce),]
 traitsPartial_fam<-do.call(rbind,
                     traitsPartial_fam[which(!unlist(lapply(traitsPartial_fam,function(sub){anyNA(sub[,"WD"])})))])
-
+traitsPartial_fam<-rbind(traitsPartial_fam,comScarce)
+}
+if(!any(unlist(lapply(traitsPartial_fam,function(sub){anyNA(sub[,"WD"])})))){
+traitsPartial_fam<-do.call(rbind,traitsPartial_fam[which(!unlist(lapply(traitsPartial_fam,function(sub){anyNA(sub[,"WD"])})))])
+}
 # On rassemble tout
-traitsPartial_filled<-rbind(traitsPartial_gen,traitsPartial_fam,comScarce)
+traitsPartial_filled<-rbind(traitsPartial_gen,traitsPartial_fam)
 
 # Pour les espèces dont on a aucune valeur de traits, 
 # on tire un ensemble de traits complet correspondant à l'une des espcèces de l'inventaire.

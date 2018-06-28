@@ -56,10 +56,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -179,8 +179,10 @@ All composition and diversity metrics were obtained after 50 iterations of the t
 To counter taxonomic uncertainties due to the variability of botanical identification levels (in space) and protocols (in time), the taxonomic composition and diversity analysis were conducted at the genus level, *i.e.* referring to the genus of observed or trialed botanical names.
 Trajectories of communities taxonomic and functional variations in composition after disturbance were followed in a two-dimensional NMDS ordination space of the 30 years monitored.
 Two NMDS were conducted to map either taxonomic flora inventories or communities functional composition based on the 7 leaf, stem and life history traits (without seed mass classes).
-In both cases the NMDS were performed using occurrence-based (Jaccard) and abundance-based (Bray-Curtis) dissimilarity measures. 
-Trajectories along time in the plan were reported through the euclidean distance of successive inventories to the reference inventories in 1989, *i.e.* 2-3 years after disturbance, when the uncertainty degree did not exceed 30% of undetermined trees. 
+In both cases the NMDS were performed using abundance-based (Bray-Curtis) dissimilarity measures. 
+Trajectories along time were reported through the distance between successive inventories and the reference inventories in 1989, *i.e.* 2-3 years after disturbance, when the uncertainty degree did not exceed 30% of undetermined trees. 
+Taxonomic trajectories were measured through the euclidean distance between inventories in the multivariate space of all inventories species.
+Functional trajectories were measured through the sum of euclidean distances among traits density distributions between inventories.
 To compensate the intrinsinc difference among plots, the trajectories corresponded to the euclidean differences along time with the reference inventory in 1989.
 Univariate trajectories of the leaf, stem and life-history traits were also visualized with the community weighted means (CWM) [@Diaz2007;@Garnier2004]. 
 Species seed mass corresponded to 5 classes of increasing mass, seed mass trajectories were therefore reported as the proportion of each class in the inventories.
@@ -247,13 +249,13 @@ The maximum dissimilarity with the initial state was positively correlated to th
 
 ```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of flora composition (left panels (ref:Bolda) and (ref:Boldc)) and functional composition (right panels (ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS space. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the euclidean distance to initial condition along the 30 sampled years. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals", fig.env="figure*"}
 load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
-load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
+load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
 
 par(mfrow=c(2,2))
 TaxoCompo(MatrepTaxo)
 FunCompo(MatrepFun)
-TaxoDist(MatrepTaxo)
-FunDist(MatrepFun)
+EuclidDist(TaxoEuclid)
+EuclidDist(FunEuclid)
 
 ```
 

@@ -65,81 +65,23 @@ mtext("NMDS 1",side=1,line=2,cex=0.8)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)    
 }
 
-TaxoDist<-function(Data_TaxoComp){
-MatrepT<-lapply(Data_TaxoComp,function(Rep){
-  Rep<-as.data.frame(Rep)
-  Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
-  Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
-                   stop=nchar(rownames(Rep)))
-  return(Rep)
-})
+EuclidDist<-function(Taxo_euclid){
+  ret<-lapply(c(0.025,0.5,0.975),function(quant){
+  return(apply(Taxo_euclid,c(1,2),function(col){return(quantile(col,probs=quant))}))})
+names(ret)<-c(0.025,0.5,0.975)
 
-DistT<-lapply(1:12,function(pl){
-  ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
-  ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
-                                                   ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
-  ret<-do.call(rbind,lapply(ret,function(rep){
-    ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
-      return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
-    names(ret2)<-rep[,"year"]
-    return(ret2)}))
-  ret<-do.call(rbind,lapply(c(0.025,0.5,0.975),function(quant){
-    return(apply(ret,2,function(col){return(quantile(col,probs=quant))}))}))
-  rownames(ret)<-c(0.025,0.5,0.975)
-  return(ret)})
-names(DistT)<-1:12
-DistT<-lapply(DistT,function(pl){
-  colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
-
-plot(colnames(DistT[[1]]),DistT[[1]][1,],type="n",xlab="",ylab="",
-     ylim=c(min(unlist(DistT)),max(unlist(DistT))),cex.axis=0.7)
+plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",
+     ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
 invisible(lapply(1:length(treatments),function(tr){
-  toplot<-DistT[treatments[[tr]]]
-  invisible(lapply(toplot,function(pl){
-    lines(colnames(pl),pl["0.5",],col=ColorsTr[[tr]],lwd=2)
-    polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
+  Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
+  invisible(lapply(Toplot,function(plo){
+    lines(colnames(plo),plo["0.5",],col=ColorsTr[[tr]],lwd=2)
+    polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
             col=rgb(0,0,0,alpha=0.1),border=NA)
-  }))}))
+  }))
+}))
 mtext("Distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
 mtext("(c)",side=3,adj=0,line=0.5)
-}
-
-FunDist<-function(Data_FunComp){
-  MatrepF<-lapply(Data_FunComp,function(Rep){
-    Rep<-as.data.frame(Rep)
-    Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
-    Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
-                     stop=nchar(rownames(Rep)))
-    return(Rep)
-  })
-  
-  Dist<-lapply(1:12,function(pl){
-    ret<-lapply(MatrepF,function(rep){return(rep[which(rep[,"plot"]==pl),])})
-    ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%ret[[1]][,"year"]),])})
-    ret<-do.call(rbind,lapply(ret,function(rep){
-      ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
-        return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
-      names(ret2)<-rep[,"year"]
-      return(ret2)}))
-    ret<-do.call(rbind,lapply(c(0.025,0.5,0.975),function(quant){
-      return(apply(ret,2,function(col){return(quantile(col,probs=quant))}))}))
-    rownames(ret)<-c(0.025,0.5,0.975)
-    return(ret)})
-  names(Dist)<-1:12
-  Dist<-lapply(Dist,function(pl){
-    colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
-  
-  plot(colnames(Dist[[1]]),Dist[[1]][1,],type="n",xlab="",ylab="",
-       ylim=c(min(unlist(Dist)),max(unlist(Dist))),cex.axis=0.7)
-  invisible(lapply(1:length(treatments),function(tr){
-    toplot<-Dist[treatments[[tr]]]
-    invisible(lapply(toplot,function(pl){
-      lines(colnames(pl),pl["0.5",],col=ColorsTr[[tr]],lwd=2)
-      polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
-              col=rgb(0,0,0,alpha=0.1),border=NA)
-    }))}))
-  mtext("(d)",side=3,adj=0,line=0.5)
-  mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
 
 plotIDH<-function(Data,AgbLoss){
@@ -373,3 +315,83 @@ FunTraj<-function(CompFun,remove=TRUE){
     }))
   }))
 }
+
+
+
+TaxoDist_old<-function(Data_TaxoComp){
+  MatrepT<-lapply(Data_TaxoComp,function(Rep){
+    Rep<-as.data.frame(Rep)
+    Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
+    Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
+                     stop=nchar(rownames(Rep)))
+    return(Rep)
+  })
+  
+  DistT<-lapply(1:12,function(pl){
+    ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+    ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
+                                                     ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
+    ret<-do.call(rbind,lapply(ret,function(rep){
+      ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
+        return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
+      names(ret2)<-rep[,"year"]
+      return(ret2)}))
+    ret<-do.call(rbind,lapply(c(0.025,0.5,0.975),function(quant){
+      return(apply(ret,2,function(col){return(quantile(col,probs=quant))}))}))
+    rownames(ret)<-c(0.025,0.5,0.975)
+    return(ret)})
+  names(DistT)<-1:12
+  DistT<-lapply(DistT,function(pl){
+    colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
+  
+  plot(colnames(DistT[[1]]),DistT[[1]][1,],type="n",xlab="",ylab="",
+       ylim=c(min(unlist(DistT)),max(unlist(DistT))),cex.axis=0.7)
+  invisible(lapply(1:length(treatments),function(tr){
+    toplot<-DistT[treatments[[tr]]]
+    invisible(lapply(toplot,function(pl){
+      lines(colnames(pl),pl["0.5",],col=ColorsTr[[tr]],lwd=2)
+      polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))}))
+  mtext("Distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
+  mtext("(c)",side=3,adj=0,line=0.5)
+}
+
+FunDist_old<-function(Data_FunComp){
+  MatrepF<-lapply(Data_FunComp,function(Rep){
+    Rep<-as.data.frame(Rep)
+    Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
+    Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
+                     stop=nchar(rownames(Rep)))
+    return(Rep)
+  })
+  
+  Dist<-lapply(1:12,function(pl){
+    ret<-lapply(MatrepF,function(rep){return(rep[which(rep[,"plot"]==pl),])})
+    ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%ret[[1]][,"year"]),])})
+    ret<-do.call(rbind,lapply(ret,function(rep){
+      ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
+        return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
+      names(ret2)<-rep[,"year"]
+      return(ret2)}))
+    ret<-do.call(rbind,lapply(c(0.025,0.5,0.975),function(quant){
+      return(apply(ret,2,function(col){return(quantile(col,probs=quant))}))}))
+    rownames(ret)<-c(0.025,0.5,0.975)
+    return(ret)})
+  names(Dist)<-1:12
+  Dist<-lapply(Dist,function(pl){
+    colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
+  
+  plot(colnames(Dist[[1]]),Dist[[1]][1,],type="n",xlab="",ylab="",
+       ylim=c(min(unlist(Dist)),max(unlist(Dist))),cex.axis=0.7)
+  invisible(lapply(1:length(treatments),function(tr){
+    toplot<-Dist[treatments[[tr]]]
+    invisible(lapply(toplot,function(pl){
+      lines(colnames(pl),pl["0.5",],col=ColorsTr[[tr]],lwd=2)
+      polygon(c(colnames(pl),rev(colnames(pl))),c(pl["0.025",],rev(pl["0.975",])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))}))
+  mtext("(d)",side=3,adj=0,line=0.5)
+  mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
+}
+
