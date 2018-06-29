@@ -65,9 +65,9 @@ mtext("NMDS 1",side=1,line=2,cex=0.8)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)    
 }
 
-EuclidDist<-function(Taxo_euclid){
+EuclidDist<-function(Distances){
   ret<-lapply(c(0.025,0.5,0.975),function(quant){
-  return(apply(Taxo_euclid,c(1,2),function(col){return(quantile(col,probs=quant))}))})
+  return(apply(Distances,c(1,2),function(col){return(quantile(col,probs=quant))}))})
 names(ret)<-c(0.025,0.5,0.975)
 
 plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",
