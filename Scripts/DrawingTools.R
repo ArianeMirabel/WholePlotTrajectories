@@ -110,7 +110,7 @@ plotDiv<-function(Data,remove=FALSE){
   Toplot<-lapply(Toplot,function(tr){
     ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
-               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
     ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
     return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
                  dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
@@ -194,7 +194,7 @@ RedundancyPlot<-function(Red){
     ret<-smooth(rep,2)
    colnames(ret)<-colnames(rep)
    ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})#
-   colnames(ret)<-as.numeric(colnames(ret))-1984
+   colnames(ret)<-as.numeric(colnames(ret))-1986
    return(ret)})
   
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
@@ -260,7 +260,7 @@ TaxoTraj<-function(CompTaxo){
     Toplot<-lapply(Toplot,function(tr){
       ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
       ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
-                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
       ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
       return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
                    dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
@@ -294,7 +294,7 @@ FunTraj<-function(CompFun,remove=TRUE){
     #ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),1:length(ret)))
     ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
     return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
-                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,c(0.025,0.5,0.975))))})
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,c(0.025,0.5,0.975))))})
   
   plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
        xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
@@ -342,7 +342,7 @@ TaxoDist_old<-function(Data_TaxoComp){
     return(ret)})
   names(DistT)<-1:12
   DistT<-lapply(DistT,function(pl){
-    colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
+    colnames(pl)<-as.numeric(colnames(pl))-1986;return(pl)})
   
   plot(colnames(DistT[[1]]),DistT[[1]][1,],type="n",xlab="",ylab="",
        ylim=c(min(unlist(DistT)),max(unlist(DistT))),cex.axis=0.7)
@@ -380,7 +380,7 @@ FunDist_old<-function(Data_FunComp){
     return(ret)})
   names(Dist)<-1:12
   Dist<-lapply(Dist,function(pl){
-    colnames(pl)<-as.numeric(colnames(pl))-1984;return(pl)})
+    colnames(pl)<-as.numeric(colnames(pl))-1986;return(pl)})
   
   plot(colnames(Dist[[1]]),Dist[[1]][1,],type="n",xlab="",ylab="",
        ylim=c(min(unlist(Dist)),max(unlist(Dist))),cex.axis=0.7)

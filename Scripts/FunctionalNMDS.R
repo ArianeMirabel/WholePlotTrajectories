@@ -123,7 +123,7 @@ rownames(traits_filled)<-traits_filled[,1];traits_filled<-traits_filled[,TraitsN
 
 Nrep<-3
 
-MatrepFun<-lapply(1:Nrep,function(rep){
+FunEuclid<-lapply(1:Nrep,function(rep){
   
 Mat<-do.call(rbind,lapply(1:12,function(p){
     
@@ -210,33 +210,5 @@ rownames(Mat)<-1:12
 return(Mat)
 })
 
-
-Matrep<-Mat
-
-
-Matrep<-array(unlist(Matrep),dim=c(nrow(Matrep[[1]]),ncol(Matrep[[1]]),length(Matrep)),
-                  dimnames=list(1:nrow(Matrep[[1]]),colnames(Matrep[[1]]),1:length(Matrep)))
-
-ret<-lapply(c(0.025,0.5,0.975),function(quant){
-    return(apply(Matrep,c(1,2),function(col){return(quantile(col,probs=quant))}))})
-  names(ret)<-c(0.025,0.5,0.975)
-  
-  plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",
-       ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
-  invisible(lapply(1:length(treatments),function(tr){
-    Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
-    invisible(lapply(Toplot,function(plo){
-      lines(colnames(plo),plo["0.5",],col=ColorsTr[[tr]],lwd=2)
-      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
-              col=rgb(0,0,0,alpha=0.1),border=NA)
-    }))
-  }))
-  mtext("Distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
-  mtext("(c)",side=3,adj=0,line=0.5)
-
-save(FunEuclid,file="DB/FunDistance_ForGraphs")
-windows()
-par(mfrow=c(1,2))
-EuclidDist(FunEuclid)
-EuclidDist(TaxoEuclid)
-
+FunEuclid<-array(unlist(FunEuclid),dim=c(nrow(FunEuclid[[1]]),ncol(FunEuclid[[1]]),length(FunEuclid)),
+                  dimnames=list(1:nrow(FunEuclid[[1]]),colnames(FunEuclid[[1]]),1:length(FunEuclid)))
