@@ -66,12 +66,15 @@ mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
 }
 
 EuclidDist<-function(Distances){
+  colnames(Distances)<-as.numeric(colnames(Distances))-1986
   ret<-lapply(c(0.025,0.5,0.975),function(quant){
-  return(apply(Distances,c(1,2),function(col){return(quantile(col,probs=quant))}))})
+  return(apply(Distances[,which(as.numeric(colnames(Distances))>=3),],c(1,2),function(col){
+    return(quantile(col,probs=quant))}))})
 names(ret)<-c(0.025,0.5,0.975)
 
-plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",
+plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",xaxt="n",
      ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
+axis(1,at=as.numeric(colnames(ret[[1]])),labels=TRUE)  
 invisible(lapply(1:length(treatments),function(tr){
   Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
   invisible(lapply(Toplot,function(plo){
@@ -80,7 +83,7 @@ invisible(lapply(1:length(treatments),function(tr){
             col=rgb(0,0,0,alpha=0.1),border=NA)
   }))
 }))
-mtext("Distance from 1989 inventory",side=2,padj=0,line=2,cex=0.8)
+mtext("Euclidean distance from 1985 inventory",side=2,padj=0,line=2,cex=0.8)
 mtext("(c)",side=3,adj=0,line=0.5)
 }
 
@@ -107,6 +110,7 @@ plotDiv<-function(Data,remove=FALSE){
   if(remove){Data[[2]]<-Data[[2]][which(rownames(Data[[2]])!=7),,]}
   
   Toplot<-lapply(Data,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+  absc<-as.numeric(colnames(Toplot[[1]]))-1986
   Toplot<-lapply(Toplot,function(tr){
     ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
@@ -117,7 +121,7 @@ plotDiv<-function(Data,remove=FALSE){
   
   plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
        xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
-  axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+  axis(1,at=absc,labels=TRUE)  
   
   invisible(lapply(1:4,function(t){  
     toplot<-Toplot[[t]]
@@ -135,7 +139,8 @@ CWMdraw<-function(Cwm){
   par(mfrow=c(2,4),mar=c(2,2,3,1),oma=c(2,1,2,1),no.readonly = T)
 invisible(lapply(colnames(Cwm[[1]]),function(trait){
   Toplot<-lapply(Cwm,function(pl){return(t(pl[,trait,]))})
-  plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),type="n",xlab="years",ylab="")
+  plot(colnames(Toplot[[1]]),Toplot[[1]]["0.5",], ylim=c(min(unlist(Toplot)),max(unlist(Toplot))),
+       type="n",xlab="years",ylab="")
   #mtext(trait,3,cex=0.8,adj=0,line=0.5)
   
   invisible(lapply(1:4,function(tr){
