@@ -73,13 +73,11 @@ The following information are available for this article:
 
 **Figure A3**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 \@ref(fig:FigSeedMassClasses).
 
-**Figure A4**: Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities **(a)** Richness, **(b)** Shannon and **(c)** Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 \@ref(fig:DivTaxo).
+**Figure A4**: Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes. \@ref(fig:DivFun).
 
-**Figure A5**: Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes. \@ref(fig:DivFun).
+**Figure A5**: Summarizing plots of the functional PCA analysis defining communities functional space. **(a)** Plot of the samples from the BRIDGE functional database in the two dimensional main plan. **(b)** bow plot of the PCA eignevalues in percentage. **(c)** Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height). \@ref(fig:PCA_graphs).
 
-**Figure A6**: Summarizing plots of the functional PCA analysis defining communities functional space. **(a)** Plot of the samples from the BRIDGE functional database in the two dimensional main plan. **(b)** bow plot of the PCA eignevalues in percentage. **(c)** Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height). \@ref(fig:PCA_graphs).
-
-**Figure A7**: Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. \@ref(fig:RedFun).
+**Figure A6**: Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3. \@ref(fig:RedFun).
 
 
 
@@ -112,19 +110,7 @@ SeedMassProp(Smass)
 ```
 
 
-
-# **Figure A4**: Richness, Shannon and Simpson taxonomic diversity trajectories
-
-
-```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE, fig.cap="Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
-load("DB/ReplacementTraj_ForGraphs")
-
-TaxoTraj(CompleteTaxo)
-
-```
-
-
-# **Figure A5**: Rao diversity trajectories with all plots display
+# **Figure A4**: Rao diversity trajectories with all plots display
 
 
 ```{r DivFun, out.width = '60%', echo=FALSE, fig.cap="Trajectories of the Rao functional diversity over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colorswith green for control, blue for T1,orange for T2 and red for T3.and the missing trait value filling processes.", fig.env="figure*"}
@@ -134,7 +120,7 @@ FunTraj(CompleteFun,remove=F)
 
 ```
 
-# **Figure A6**: Simpson and Rao Linera regrassion summary
+# **Figure A5**: Simpson and Rao Linera regrassion summary
 
 ```{r LinReg, echo=FALSE,is.as=T}
 LmSummary <- data.frame(
@@ -153,7 +139,7 @@ knitr::kable(LmSummary, "html", caption="Linear models information", longtable =
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
-# **Figure A7**: Functional PCA
+# **Figure A6**: Functional PCA
 
 
 ```{r PCA_graphs, out.width = '100%', echo=FALSE, fig.cap="Summarizing plots of the functional PCA analysis defining communities functional space. (ref:Bolda) Plot of the samples from the BRIDGE functional database in the two dimensional main plan. (ref:Boldb) bow plot of the PCA eignevalues in percentage. (ref:Boldc) Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).", fig.env="figure*"}
@@ -165,7 +151,7 @@ plotPCA(DataACP)
 ```
 
 
-# **Figure A8**: Overall functional redundancy
+# **Figure A7**: Overall functional redundancy
 
 
 ```{r RedFun, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy over 30 years after disturbance. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation and the missing trait value filling processes. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}

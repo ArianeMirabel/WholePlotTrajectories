@@ -87,6 +87,39 @@ mtext("Euclidean distance from 1985 inventory",side=2,padj=0,line=2,cex=0.8)
 mtext("(c)",side=3,adj=0,line=0.5)
 }
 
+TaxoTraj<-function(CompTaxo){
+  par(mfrow=c(1,2),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
+  for(q in c(1,3)){     
+    Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
+    Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+    Toplot<-lapply(Toplot,function(tr){
+      ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
+      ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
+      ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+      return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
+                   dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
+    
+    plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
+         xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+    axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+    mtext(paste("(",c("a","b","c")[q],") ",c("Richness","Shannon","Simpson")[q],sep=""),
+          line=1,side=3,adj=0)
+    
+    invisible(lapply(1:4,function(t){  
+      toplot<-Toplot[[t]]
+      
+      invisible(lapply(1:3,function(i){
+        absc<-colnames(Toplot[[t]])
+        lines(absc,Toplot[[t]][i,,"0.5"], col = ColorsTr[[t]],lty = 1,lwd=2)
+        polygon(c(absc,rev(absc)),c(Toplot[[t]][i,,"0.025"],rev(Toplot[[t]][i,,"0.975"])),
+                col=rgb(0,0,0,alpha=0.1),border=NA)
+      }))
+    }))
+  }
+  mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
+  mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
+
 plotIDH<-function(Data,AgbLoss){
   Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
           max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))))
@@ -257,7 +290,7 @@ plotPCA<-function(DataAcp){
 }
 
 ### Previous graphs
-TaxoTraj<-function(CompTaxo){
+TaxoTraj_old<-function(CompTaxo){
   par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
   for(q in 1:3){     
     Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
