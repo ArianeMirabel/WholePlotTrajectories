@@ -88,7 +88,6 @@ mtext("(c)",side=3,adj=0,line=0.5)
 }
 
 TaxoTraj<-function(CompTaxo){
-  par(mfrow=c(1,2),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
   for(q in c(1,3)){     
     Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
     Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
@@ -103,7 +102,7 @@ TaxoTraj<-function(CompTaxo){
     plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
          xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
     axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
-    mtext(paste("(",c("a","b","c")[q],") ",c("Richness","Shannon","Simpson")[q],sep=""),
+    mtext(paste("(",c("a","b","b")[q],") ",c("Taxonomic Richness","Shannon","Taxonomic Evenness")[q],sep=""),
           line=1,side=3,adj=0)
     
     invisible(lapply(1:4,function(t){  
@@ -117,7 +116,7 @@ TaxoTraj<-function(CompTaxo){
       }))
     }))
   }
-  mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
+  #mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
   mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
 
 plotIDH<-function(Data,AgbLoss){
@@ -136,7 +135,7 @@ plotIDH<-function(Data,AgbLoss){
     #       bty="n",lty=1,col=colyear[Ti],lwd=2.5,cex=0.8)
   })
   legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('R'^2,'adjusted')))
-}
+  }
 
 plotDiv<-function(Data,remove=FALSE){
   

@@ -12,6 +12,15 @@ Sim<-lapply(Sim, function(tr){
              dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
 save(Sim,file="DB/SimpsonIDH")
 
+RichTaxo<-lapply(CompleteTaxo,function(tr){return(tr[,,,"Richness"])})
+Rich<-lapply(RichTaxo,function(tr){return(tr[,c("1995","2005","2015"),])})
+Rich<-lapply(Rich, function(tr){
+  Ret<-lapply(c(0.025,0.5,0.975),function(quant){
+    return(apply(tr,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+  Ret<-array(unlist(Ret),dim=c(nrow(Ret[[1]]),ncol(Ret[[1]]),3),
+             dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
+save(Rich,file="DB/RichnessIDH")
+
 CompFun<-CompleteFun
 CompFun[[2]]<-CompFun[[2]][which(rownames(CompFun[[2]])!=7),,]
 Rao<-lapply(CompFun, function(tr){
