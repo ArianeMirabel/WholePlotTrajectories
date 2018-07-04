@@ -129,13 +129,17 @@ plotIDH<-function(Data,AgbLoss){
     abs<-AgbLoss[which(AgbLoss[,"plot"]%in%names(toplot)),"AGB"]
     points(abs,toplot,col=colyear[Ti],pch=20)
     Lm<-lm(toplot~abs)
-    abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
-    return(round(summary(Lm)$adj.r.squared,2))
-   #legend(round(summary(Lm)$adj.r.squared,2),x=min(AgbLoss),y=seq(Ylim[2],Ylim[1],length.out=10)[Ti],
-    #       bty="n",lty=1,col=colyear[Ti],lwd=2.5,cex=0.8)
+    Lm2<-lm(toplot~abs+I(abs^2))
+    if(abs(round(summary(Lm)$adj.r.squared,2))<abs(round(summary(Lm2)$adj.r.squared,2))){
+      abs_pred<-seq(min(abs),max(abs),length.out=100)
+      lines(sort(abs_pred),predict(Lm2,newdata=data.frame(abs=abs_pred)),col=colyear[Ti],lwd=2.5)
+      return(round(summary(Lm2)$adj.r.squared,2)) }
+    if(abs(round(summary(Lm)$adj.r.squared,2))>abs(round(summary(Lm2)$adj.r.squared,2))){
+      abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
+      return(round(summary(Lm)$adj.r.squared,2)) }
   })
   legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('R'^2,'adjusted')))
-  }
+}
 
 plotDiv<-function(Data,remove=FALSE){
   

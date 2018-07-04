@@ -5,11 +5,11 @@ author:
     authsuperscript: 1*
   - name: Eric Marcon
     authsuperscript: 1
-  - name: Bruno Hérault
+  - name: Bruno H??rault
     authsuperscript: 2 3
 affiliation:
   - affsuperscript: 1
-    dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles, Université de Guyane.
+    dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Universit?? des Antilles, Universit?? de Guyane.
     address: >
       Campus Agronomique,
       97310 Kourou,
@@ -20,7 +20,7 @@ affiliation:
       Montpellier,
       France.
   - affsuperscript: 3
-    dptuniv: INPHB, Institut National Polytechnique Félix Houphouet-Boigny
+    dptuniv: INPHB, Institut National Polytechnique F??lix Houphouet-Boigny
     address: >
       Yamoussoukro,
       Ivory Coast.
@@ -86,7 +86,7 @@ output:
 
 ```{r Options, echo=FALSE, message=FALSE, warning=F}
 knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
-# Installation des packages si nécessaire et chargement
+# Installation des packages si n??cessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
     if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
@@ -94,7 +94,7 @@ Library <- function(Packages) {
   }
   invisible(sapply(Packages, InstallAndLoad))
 }
-# Ajouter les packages nécessaires ici
+# Ajouter les packages n??cessaires ici
 Library("kableExtra")
 
 source("Scripts/DrawingTools.R")
@@ -107,29 +107,27 @@ The large areas covered with tropical forests worldwide hold crucial environment
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate the local and regional climates, the carbon, water and nutrient cycles, and ensure cultural and human well-being. 
 The growing demand in forests products together with current global changes increases the pressure on remaining natural forests [@Gibson2011a; @Morales-Hidalgo2015] and threatens the maintenance and dynamics in space and time of communities structure, composition and functioning [@Anderson-Teixeira2013;@Sist2015].
 
-In tropical forests, ecological communities are regularly re-shaped by natural disturbance events changing both the abiotic environment, through the fluxes of light, heat and water [@Goulamoussene2017], and the biotic interactions such as competition among species [@Chesson2000;@Herault2018]. 
+In tropical forests, ecological communities are regularly re-shaped by natural disturbance events that change both the abiotic environment, through the fluxes of light, heat and water [@Goulamoussene2017], and the biotic interactions such as competition among species [@Chesson2000;@Herault2018]. 
 One of the cornerstone of tropical forest ecology is to understand the processes and drivers of ecosystems response to disturbance [@White2001;@Chazdon2003a]. 
 For now, this has been largely studied through forest structural parameters such as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016] that are rapid and convenient to measure. 
 These structural parameters have been sucessfully modeled, giving important insights into the recovery of ecosystem processes and services [@Herault2018]. 
 However the response of forests diversity and composition is still unclear, albeit it determines the productivity, stability and functioning of ecosystems [@Tilman2014; @Liang2016].
 In the short-term, moderate disturbance may lead to positive impacts on communities diversity, an idea formalized by the intermediate disturbance hypothesis (IDH) stating a maximized species diversity when disturbance intensity is not too high [@Molino2001;@Kariuki2006a;@Berry2008a]. 
 
-Validations of the IDH though remain scarce in the long-term and mainly rely on the analysis of taxonomic richness [@Molino2001]. Taxonomic richness, alone, gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016]. More ecological-meaningful analysis would couple richness with (i) evenness that would reveal underlying ecological processes and (ii) composition that is crucial for conservation issues [@Magurran1988;@Lavorel2002;@Bellwood2006]. Furthermore, a functional approach accounting for species biological attributes would directly link communities diversity, composition and redundancy to ecosystem functioning and to its environmental constraints [@Violle2007b;@Moretti2009;@Baraloto2012a;@Scheiter2013].
-In that respect, the functional trait-based approach that focus on major traits related to species ecology and mediate species performance in a given environment was sucessfully adopted [@Diaz2005;@Villeger2008a].
+Validations of the IDH though remain scarce in the long-term and mainly rely on the analysis of taxonomic richness [@Molino2001]. Taxonomic richness, alone, gives limited or misleading information on forests recovery and functioning [@Martin2015;@Chaudhary2016]. More ecological-meaningful analysis would couple richness to (i) evenness to reveal the underlying ecological processes and (ii) composition that is crucial for conservation issues [@Magurran1988;@Lavorel2002;@Bellwood2006]. Furthermore, a functional approach accounting for species biological attributes would directly link communities diversity, composition and redundancy to ecosystem functioning and to its environmental constraints [@Violle2007b;@Moretti2009;@Baraloto2012a;@Scheiter2013].
+In that respect, the functional trait-based approach that focused on major traits related to species ecology and thta mediated species performance in a given environment was sucessfully adopted [@Diaz2005;@Villeger2008a].
 For instance, the functional approach revealed in tropical rainforests the deterministic processes entailing, after disturbance, a functional shift from a dominance of "conservative" slow-growing species dealing with scarce resources to "acquisitive" fast-growing species with rapid and efficient use of abundant resources [@TerSteege2001;@Reich2014;@Herault2011].
-This shift is translated into the trajectories of key functional traits related to resource acquisition (leaf and stem traits) and life-history traits (seed mass, maximum size) [@Wright2004;@TerSteege2006;@Westoby2006a;@Chave2009b].
+This shift is translated into consistent trajectories of key functional traits related to resource acquisition (leaf and stem traits) and life-history traits (seed mass, maximum size) [@Wright2004;@TerSteege2006;@Westoby2006a;@Chave2009b].
 Eventually a complete overview of communities response to disturbance would encompass the changes in functional redundancy, that quantifies the amount of shared trait values among species [@Carmona2016].
 The high functional redundancy of hyperdiverse tropical forests [@Bellwood2006] mitigates the impacts of species removal on ecosystem functioning and determines the resilience of communities after disturbance [@Trenbath1999; @Elmqvist2003; @Diaz2005].
 
-In this study, we monitored over 30 years the response of 75 ha of neotropical forest plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem above-ground biomass (AGB) removed. 
-We made use of a large functional traits database encompassing major leaf, stem and life-history traits in order to draw the taxonomic and functional trajectories in terms of richness, evenness, composition and redundancy [@Lohbeck2015;@Guariguata2001]. 
-Specifically, we (i) questioned the recovery of communities taxonomic and functional characteristics and identified the underlying assembly processes, (ii) clarified the validity of the IDH in the long term for tropical forest and elucidated its translation into different trajectories, and (iii) questioned community recovery time.
+In this study, we monitored over 30 years the response of 75 ha of neotropical forest plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem biomass removed. We made use of a large functional traits database encompassing major leaf, stem and life-history traits in order to draw the taxonomic and functional trajectories in terms of richness, evenness, composition and redundancy [@Lohbeck2015;@Guariguata2001]. Specifically, we (i) questioned the recovery of communities taxonomic and functional characteristics and identify the underlying assembly processes, (ii) clarified the validity of the IDH in the long term for tropical forest and elucidated its declination into different trajectories, and (iii) questioned the length of complete communities recovery.
 
 # Material and Methods
 
 ## Study site 
 
-Paracou station in French Guiana (5\textdegree 18'N and 52\textdegree 53'W) is located in a lowland tropical rain forest in a tropical wet climate with mean annual temperature of 26\textdegree C, mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) and a 3-month dry season (< 100 mm.month^-1^) from mid-August to mid-November, and a one-month dry season in March [@Wagner2011]. 
+Paracou station in French Guiana (5??18'N and 52??53'W) is located in a lowland tropical rain forest in a tropical wet climate with mean annual temperature of 26??C, mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) and a 3-month dry season (< 100 mm.month^-1^) from mid-August to mid-November, and a one-month dry season in March [@Wagner2011]. 
 Elevation ranges between 5 and 50 m and soils correspond to thin acrisols over a layer of transformed saprolite with low permeability generating lateral drainage during heavy rains.
 
 The experiment is a network of twelve 6.25ha plots that underwent a disturbance gradient of three logging, thinning and fuelwood cutting treatments (Table \@ref(tab:Tab1)) according to a randomized plot design with three replicate blocks of four plots. 
@@ -142,61 +140,60 @@ The disturbance intensity was measured as the percentage of aboveground biomass 
 The study site corresponds to a tropical rainforest typical of the Guiana Shield with a dominance of Fabaceae, Chrysobalanaceae, Lecythidaceae and Sapotaceae. 
 In the twelve experimental plots, all trees above 10 cm DBH have been mapped and measured annually since 1984. 
 Trees are first identified with a vernacular name assigned by the forest worker team, and afterward with a scientific name assigned by botanists during regular botanical campaigns. 
-In 1984, specific vernacular names were given to 62 commercial or common species whereas more infrequent ones were identified under general identifiers only distinguishing trees and palm trees. 
+In 1984, specific vernacular names are given to 62 commercial or common species whereas more infrequent ones were identified under general identifiers only distinguishing trees and palm trees. 
 From 2003, botanical campaigns have been conducted every 5 to 6 years to identify all trees at the species level but identification levels still varied among plots and campaigns. 
 
 This variability of protocols in time raised methodological issues as vernacular names usually correspond to different botanical species. 
 It resulted in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics.
 The uncertainty propagation was done through a Bayesian framework reconstituting complete inventories at genus level from real incomplete ones on the basis of vernacular/botanical names association. 
-Vernacular names were replaced through multinomial trials based on the association probability $\big[\alpha_1, \alpha_2,..., \alpha_3\big]$ observed across all inventories between each vernacular name *v* and all species $\big[s_1, s_2,..., s_N\big]$:
+Vernacular names were replaced through multinomial trials based on the association probability $\big[\alpha_1, \alpha_2,???, \alpha_3\big]$ observed across all inventories between each vernacular name *v* and the species $\big[s_1, s_2, ???, s_N\big]$:
 
 \begin{align}
-M_v\Big(\big[s_1, s_2,..., s_N\big],\big[\alpha_1, \alpha_2,..., \alpha_3\big]\Big) \nonumber
+M_v\Big(\big[s_1, s_2, ???, s_N\big],\big[\alpha_1, \alpha_2,???, \alpha_3\big]\Big) \nonumber
 \end{align}
 
 See appendix 1 and @Aubry-Kientz2013 for the detailed methodology.
 
 Six functional traits representing leaf economics (leaves thickness, toughness, total chlorophyll content and specific leaf area) and wood economics (wood specific gravity and bark thickness), and life-history traits (maximum specific height and seed mass) came from the BRIDGE project [^1]. Trait values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou, and comprised 294 species pertaining to 157 genera. 
-Missing trait values (10%) were filled using multivariate imputation by chained equation [@Mice2011].
-Imputations were restricted within genus or family when samples were too scarce, in order to account for the phylogenetic signal. 
-Whenever a species was not in the dataset, it was attributed a set of trait values randomly sampled among species of the next higher taxonomic level (same genus or family). 
+Missing trait values were filled using multivariate imputation by chained equation [@Mice2011].
+Imputations were restricted within genus, or family when samples were too scarce, in order to account for the phylogenetic signal. 
+Whenever a species was not in the dataset, it was attributed a set of traits values randomly sampled among species of the next higher taxonomic level (same genus or family). 
 As seed mass information was classified into classes, no data filling process was applied and analyses were restricted to the 414 botanical species recorded.
 
-All composition and diversity metrics were obtained after 50 iterations of the uncertainty propagation framework. 
+All composition and diversity metrics were obtained after 50 iterations of the taxonomic uncertainty propagation framework. 
 
 [^1]: http://www.ecofog.gf/Bridge/ 
 
 ## Composition and diversity metrics
 
-To counter taxonomic uncertainties due to the variability of botanical identification levels (in space) and protocols (in time), the taxonomic composition and diversity analysis were conducted at the genus level. 
-Taxonomic and functional trajectories of community composition were followed in a two-dimensional NMDS ordination space.
-Two NMDS using abundance-based (Bray-Curtis) dissimilarity measures were conducted to map either taxonomic or functional composition, the later based on the 7 leaf, stem and life history traits (without seed mass classes).
-Trajectories along time were reported through the euclidean distance between the target inventories and the reference inventories in 1989, *i.e.* 2 years after disturbance. 
+To counter taxonomic uncertainties due to the variability of botanical identification levels (in space) and protocols (in time), the taxonomic composition and diversity analysis were conducted at the genus level. Taxonomic and functional trajectories of community composition were followed in a two-dimensional NMDS ordination space.
+Two NMDS were conducted to map either taxonomic or functional composition, the later based on the 7 leaf, stem and life history traits (without seed mass classes). NMDS were performed using abundance-based (Bray-Curtis) dissimilarity measures. 
+Trajectories along time were reported through the euclidean distance between the target inventories and the reference inventories in 1989, *i.e.* 2-3 years after disturbance. 
 Univariate trajectories of the leaf, stem and life-history traits were also visualized with the community weighted means (CWM) [@Diaz2007;@Garnier2004]. 
 Species seed mass corresponded to 5 classes of increasing mass, seed mass trajectories were therefore reported as the proportion of each class in the inventories (Supp Mat XX).
 
-The taxonomic diversity was reported through species richness and evenness, *i.e* the Hill number translation of the Simpson index [@Hill1973].
-These indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0 and 2 order of diversity (q), recomended for diversity studies [@Patil1982;@Tothmeresz1995;@Marcon2015]. 
-The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on species functional traits.
+The taxonomic diversity was reported through species richness and the evenness, *i.e* the Hill number translation of the Simpson index [@Hill1973].
+These two indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0 and 2 order of diversity (q), recomended for diversity studies [@Patil1982;@Tothmeresz1995;@Marcon2015]. 
+The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on all functional traits.
 
-The impacts of initial disturbance were tested with the spearman rank correlation between the extrema of taxonomic and functional metrics reached over the 30 years and the initial %AGB removed. The were besides analysed through the linear correlations between (i) taxonomic and functional richness, evenness and diversity and (ii) the initial %AGB removed at 10, 20 and 30 years after disturbance.
+The impacts of initial disturbance were tested with the spearman rank correlation between the extrema of taxonomic and functional metrics reached over the 30 years and the initial %AGB removed. The were besides analysed through the linear correlations between Simpson and Rao diversities and the initial %AGB removed at 10, 20 and 30 years after disturbance.
 
 The functional redundancy was measured as the overlap among species in community functional space [@Carmona2016]. 
 The samples of the trait database were first mapped in a 2-dimensional plan with a PCA analysis. 
 Then, multivariate kernel density estimator associated with individual trees returned species traits probability distribution (TDP).
-Species TDP weighted by species abundance were eventually summed for each community.
-Community functional redundancy was the sum of TDPs overlap, expressed as the average number of species that could be removed from without reducing the functional space (see appendix I for a more comprehensive sheme).
+Species TDP weighted by species abundance were eventually summed for each community: the functional redundancy was the sum of TDPs overlap, expressed as the average number of species that could be removed from without reducing the functional space (see appendix I for a more comprehensive sheme).
 
 # Results
 
 
 ## Communities richness and evenness
 
+
 From 1989 (2 years after disturbance) to 2015 (28 years after disturbance), 828388 individual trees and 591 botanical species pertaining to 223 genus and 64 families were recorded. 
 For undisturbed plots, taxonomic Richness and Evenness remained stable over the 30 years monitored.
 In disturbed communities, after low disturbance intensity the taxonomic richness increased, reaching a maximum gain of 14 botanical genera (plot 3 from treatment 2). After intense disturbance the taxonomic richness followed a more complex trajectory, decreasing for ten years after disturbance before recovering to pre-disturbance values.
 In all disturbed plots the taxonomic evenness first increased until a maximum reached after around 20 years. This maximum was positively correlated to the disturbance intensity ($\rho_{spearman}^{Shannon}=0.86$, and $\rho_{spearman}^{Simpson}=0.89$).
-The evenness then stabilized except for two T3 plots (plots 8 and 12) for which evenness kept increasing.
+The evenness then stabilized except for two T3 plots (plots 8 and 12) for which evenness still increased.
 
 ```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE, fig.cap="Trajectories of the difference to the 1989 inventories (5 years after disturbance) over 30 years after disturbance of plots communities (ref:Bolda) Richness, (ref:Boldb) Shannon and (ref:Boldc) Simpson diversities. Trajectories correspond to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3.", fig.env="figure*"}
 load("DB/ReplacementTraj_ForGraphs")
@@ -281,10 +278,7 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1)
 
 ## A cyclic recovery of community composition
 
-Communities taxonomic and functional composition appeared resilient, following similar hump-shaped trajectories starting to return towards pre-disturbance composition after 30 years. 
-The taxonomic differences among communities, marked before disturbance by the distinct starting points on the NMDS axis 2, were maintained throughout recovery trajectories. 
-More than commonly thought, post-disturbance trajectories depended on community initial composition, that partly determined the pool of recruited species and constrained the trajectories towards the initial composition. 
-The high resilience of communities taxonomy revealed that species not belonging to the pre-disturbance community were hardly recruited because of the commonness of dispersal limitation among tropical tree species (Svenning, Wright JECOL 2005). 
+Communities taxonomic and functional composition appeared resilient, following similar hump-shaped trajectories starting to return towards pre-disturbance composition after 30 years. The taxonomic differences among communities, marked before disturbance by the distinct starting points on the NMDS axis 2, were maintained throughout recovery trajectories. More than commonly thought, post-disturbance trajectories depended on community initial composition, that partly determined the pool of recruited species and that constrained the trajectories towards the initial composition. The high resilience of communities taxonomy revealed that species not belonging to the pre-disturbance community were hardly recruited because of the commonness of dispersal limitation among tropical tree species (Svenning, Wright JECOL 2005). 
 
 Community functional composition followed similar trajectories that were not so distinct in the functional space.......
 Because the pre-disturbance survivor trees mirror the initial communities [@Herault2018], the functional changes relied upon recruited trees and the enhanced growth and survival of previously infrequent species and functional types.
@@ -295,43 +289,34 @@ significant functional shifts towards resource-acquisitive strategies (sharp inc
 
 ## Another perspective on the intermediate disturbance hypothesis
 
-1. IDH in Space (Disturbance gradient)
-The IDH consistently (predicted) the response of functional diversity to disturbance, but the theory was disproved regarding communities taxonomic richness and evenness.
-The functional range of species that could establish after disturbance was determined by the expanse of the environmental space made available by disturbance.
-
-In contrast the IDH translated in a decrease of the taxonomic richness above an intensity threshold while the taxonomic evenness was decoupled from disturbance intensity, as already observed in the Guiana Shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998].
-The taxonomic richness and evenness of recruited species was fixed and at community scale the post-disturbance taxonomic characterisitcs depended on the combination of these recruits and the remaining pre-disturbance community.
-
-The intensity of the disturbance determined the balance between trees recruited in the pre-disturbance community and those recruited in disturbance-specific community, functionally more diverse than undisturbed forests but with lower taxonomic richness and higher evenness.
+The IDH consistently predicted the response of taxonomic richness to disturbance. The IDH translated in first an increase of richness with diturbance intensity and then a decrease above an intensity threshold (20-25% of initial AGB lost). The taxonomic evenness was somewhat decoupled from disturbance intensity, as already observed in the Guiana Shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998]. In the Guiana Shield, the pool of true pioneer species that recruited after disturbance is restricted to a few common general (e.g. Cecropia spp., Vismia spp.) and the post-disturbance richness and evenness, in the taxonomic space, will only depend on the relative proportion of these recruits and the surviving species. -> explain what happens at low, intermediate, high intensity. 
+-> functionally diversity: pioneer specis are functionally highly different, we still do not how diverse they are. Their increase in abundance is enough to increase the overall FDiv.
 
 2. IDH in Time
-For the first years following disturbance community functional diversity increased through the filling of the vacated environmental space without competitive exclusion contraints.
-The maximum functional diversity was reached at the same time so the rate of space filling was similar among communities.
-The maximum was followed by the emergence of competitive exclusion processes bringing the functional diversity back to pre-disturbance levels and made the disturbance hypothesis intermediate in time.
+a. first the drop and then gain. quite similar drop, highly different species gain.
+b. short-lived pioneers versus long-lived pioneers dynamics linked to habitat diversity
+c. porbably, long-lived come after short-lived for high disturbance while they come together for intermediate disturbance.
+d. link to fuctional diversity, the decoupling in time between high and low disturbance intensity.
 
-For medium disturbance intensity enhancing the taxonomic richness and evennes, the taxonomic trajectories reached asymptots of high richness and high evenness decoupled from their functional trajectories.
-Species first established after disturbance remained in the community but became less dominant, replaced the abundant pre-disturbance species, but the recovery of rare species was hampered in the long-term [@Hubbell2001;@Chave2004].
 
-## The functional redundancy, key of the taxonomic resilience
+## The functional redundancy, key of the system resilience
 
-The recovery of the most infrequent species followed the lottery recruitment rules [@Busing2002] and was hampered by the increasing competition among species, implying long term recovery [@Trenbath1999;@Elmqvist2003;@Diaz2005]. 
+1. drop in functional redundancy due to random species loss and replacement by pioneer species ( high light, space and nutrient niches) that do not belong to the initial functional space. the highest the disturbance, the highest the loss and replacement, the deepest the drop in FR. - first 15 years
+2. 2nd step: the system started losing pioneer species (less competitive) and replaced them by not-pioneer (either long-lived or end-succesional sp, more competitive), FR increased.
+3. end of the process: all functionally different species are lost and replaced by individuals belonging to species from the pre-dicturbance community.
+-> long-process. hard to see how long it may last. The recovery of the most infrequent species followed the lottery recruitment rules [@Busing2002] mplying long term recovery [@Trenbath1999;@Elmqvist2003;@Diaz2005]. Although underway 30 years after disturbance the recovery remained unachieved and after 30 years the recovery it was underway but remained unachieved.
 
-Following disturbance the space and resources made available corresponded to a rapid decrease of the functional redundancy within the initial functional space.
-The high light, space and nutrient niches were rapidly filled by species, mainly the most dominant and frequent ones.
-Thereafter competitive exclusion emerged following the filling of the niches and limited the recruitment of infrequent species [@Busing2002].
-The recovery of communities taxonomic richness and evenness relied upon the recovery of the initial functional redudancy.
-Although underway 30 years after disturbance the recovery remained unachieved and after 30 years the recovery it was underway but remained unachieved.
-This alteration of the functional redundancy meant a lower resilience of pre-disturbance communities and higher chances to see the persistence of disturbance-specific communities, with less species and more pioneers [@Haddad2008; @Burslem2000; @Martin2013].
+This alteration of the functional redundancy likely meant a lower resilience of pre-disturbance communities and higher chances to see the persistence of disturbance-specific communities, with less functionzl redundancy and more pioneers [@Haddad2008; @Burslem2000; @Martin2013].
 Besides the slowed recovery of rare species increased the risks to loose cornerstone specie, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005;@Gardner2007].
-Apart from the functional characteristics considered here, infrequent species mighthave unique functions i nthe ecosystem or be a key for some fauna.
+Apart from the functional characteristics considered here, infrequent species might have unique functions i nthe ecosystem or be a key ressource or habitat for some fauna.
+
 
 # Conclusions
 
-Our study revealed communities cyclic recovery after disturbance allowing the resilience of their functioning and taxonomic composition with the maintenance of initial differences among communities.
+[Our study revealed communities cyclic recovery after disturbance allowing the resilience of their functioning and taxonomic composition with the maintenance of initial differences among communities.
 Communities functional evenness was enhanced for  20 years after disturbance through the enrichment of the communities with pioneers and light-demanding species,in accordance with the IDH.
-The IDH, though, poorly predicted the disturbance impact on communities taxonomic richness and evenness that were blurried by the emergence of competitive exclusion along time.
+The IDH, though, poorly predicted the disturbance impact on communities taxonomic richness and evenness that were blurried by the emergence of competitive exclusion along time.]
 The resilience of tropical forests proved consistent although spread over several decades. 
-Still, the disturbance impact on communities redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Gourlet-Fleury2005].
-As the trajectories highlighted the recruitment processes proved central for communities response to disturbance and closer focus on demographical drivers of communities response would clarify the fate of the future forests.
+Still, the disturbance impact on communities redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Gourlet-Fleury2005]. and we know that regularly disturbed communities are less efficient to recover after disturbance that undisturbed ones..
 
 `r if (knitr:::is_html_output()) '# References {-}'`

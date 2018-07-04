@@ -33,10 +33,10 @@ smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step
   rowSums(mat[,range])/length(range)})))}
 
 
-CompleteFun<-lapply(1:4,function(t){
+CompleteRichnessFun<-lapply(1:4,function(t){
   
   treat<-treatments[[t]]
-  Nrep<-50
+  Nrep<-5
   
    Mplot<-mclapply(1:Nrep,function(r){
       
@@ -62,7 +62,7 @@ CompleteFun<-lapply(1:4,function(t){
             dissim<-as.matrix(daisy(tra,metric="gower"))
             dissim <- 1 - dissim/max(dissim)
             
-            return(expq(Hqz(as.AbdVector(tapply(Mc,Mc,length)), q=2, Z=dissim,Correction="None"),q=2))
+            return(expq(Hqz(as.AbdVector(tapply(Mc,Mc,length)), q=0, Z=dissim,Correction="None"),q=0))
           })
       
           names(Mean)<-names(M)
@@ -86,5 +86,5 @@ CompleteFun<-lapply(1:4,function(t){
                dimnames=list(treat,dates,1:Nrep)))
 })
 
-save(CompleteFun,file="DB/FunctionalTraj_ForGraphs")
+save(CompleteRichnessFun,file="DB/FunctionalRichnessTraj_ForGraphs")
 

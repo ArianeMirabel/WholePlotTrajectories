@@ -45,13 +45,14 @@ mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 
-load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
+load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/RichnessIDH")
 time<-c("1995","2005","2015")
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
-Data<-Rao
+Data<-Rich
 AgbLoss<-AGBloss
 
-Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
+plotIDH<-function(Data,AgbLoss){
+  Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
           max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))))
 plot(AgbLoss[,"AGB"],AgbLoss[,"AGB"],type="n",xlab="",ylab="",
        ylim=Ylim)
@@ -60,17 +61,25 @@ leg<-lapply(1:3,function(Ti){
     abs<-AgbLoss[which(AgbLoss[,"plot"]%in%names(toplot)),"AGB"]
     points(abs,toplot,col=colyear[Ti],pch=20)
     Lm<-lm(toplot~abs)
+    Lm2<-lm(toplot~abs+I(abs^2))
     #summary(Lm)
     #anova(Lm)
     #par(mfrow=c(2,2));plot(Lm)
+    if(abs(round(summary(Lm)$adj.r.squared,2))<abs(round(summary(Lm2)$adj.r.squared,2))){
+    abs_pred<-seq(min(abs),max(abs),length.out=100)
+    lines(sort(abs_pred),predict(Lm2,newdata=data.frame(abs=abs_pred)),col=colyear[Ti],lwd=2.5)
+    return(round(summary(Lm2)$adj.r.squared,2)) }
+    if(abs(round(summary(Lm)$adj.r.squared,2))>abs(round(summary(Lm2)$adj.r.squared,2))){
     abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
-    return(round(summary(Lm)$adj.r.squared,2))
+    return(round(summary(Lm)$adj.r.squared,2)) }
+    
     #legend(round(summary(Lm)$adj.r.squared,2),x=min(AgbLoss),y=seq(Ylim[2],Ylim[1],length.out=10)[Ti],
     #       bty="n",lty=1,col=colyear[Ti],lwd=2.5,cex=0.8)
   })
   legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('R'^2,'adjusted')))
-
-
+}
+  
+plotIDH(Rao,AGBloss)
 
 ##########################################
 ## Rho Spearman, Taxo
