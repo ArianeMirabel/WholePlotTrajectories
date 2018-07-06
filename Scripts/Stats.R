@@ -83,35 +83,17 @@ plotIDH(Rao,AGBloss)
 
 ##########################################
 ## Rho Spearman, Taxo
-load("DB/TaxoComposition_ForGraphs")
+load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs");load("DB/LostAGB")
 
-Data_TaxoComp<-MatrepTaxo
+Dist<-TaxoEuclid
+ret<-apply(apply(Dist,c(1,2),median),1,function(li){return(max(abs(li)))})
+ret<-data.frame(cbind(ret,names(ret)))
+colnames(ret)<-c("Dist","plot")
+ret<-merge(ret,AGBloss,by="plot")
+ret<-apply(ret,2,as.numeric)
+cor(ret[,"Dist"],ret[,"AGB"],method="spearman")
 
-MatrepT<-lapply(Data_TaxoComp,function(Rep){
-  Rep<-as.data.frame(Rep)
-  Rep$plot<-substr(rownames(Rep),start=1,stop=regexpr("_",rownames(Rep))-1)
-  Rep$year<-substr(rownames(Rep),start=regexpr("_",rownames(Rep))+1,
-                   stop=nchar(rownames(Rep)))
-  return(Rep)
-})
-
-DistT<-as.data.frame(unlist(lapply(1:12,function(pl){
-  ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
-  ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
-                              ret[[which(unlist(lapply(ret,nrow))==min(unlist(lapply(ret,nrow))))[1]]][,"year"]),])})
-  ret<-do.call(rbind,lapply(ret,function(rep){
-    ret2<-apply(rep[,c("NMDS1","NMDS2")],1,function(li){
-      return(sqrt(sum((rep[1,c("NMDS1","NMDS2")]-li)^2)))})
-    names(ret2)<-rep[,"year"]
-    return(ret2)}))
-  ret<-apply(ret,2,median)
-  return(names(ret)[which(ret==max(ret))])})))
-
-treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
-DistT<-cbind(DistT,rownames(DistT),treats[order(treats[,1]),2])
-colnames(DistT)<-c("Max","Plot","treat")
-cor(DistT[,"Max"],DistT[,"treat"],method="spearman")
-
+#(old)
 TimeMax<-unlist(lapply(1:12,function(pl){
   ret<-lapply(MatrepT,function(rep){return(rep[which(rep[,"plot"]==pl),])})
   ret<-lapply(ret,function(rep){return(rep[which(rep[,"year"]%in%
@@ -137,7 +119,7 @@ ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
 time<-c("1995","2005","2015")
 
-load("DB/Redundancy_restricted_sd0.7")
+load("DB/Redundancy_restricted")
 RedundancyTraj_restricted->Red
 
 Maxred<-unlist(lapply(1:12,function(pl){
@@ -146,9 +128,10 @@ Maxred<-unlist(lapply(1:12,function(pl){
 }))
 
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
-Maxred<-cbind(Maxred,1:12,treats[order(treats[,1]),2])
-colnames(Maxred)<-c("Max","Plot","treat")
-cor(Maxred[,"Max"],Maxred[,"treat"],method="spearman")
+Maxred<-cbind(Maxred,1:12)
+colnames(Maxred)<-c("Max","plot")
+Maxred<-merge(Maxred,AGBloss,by="plot")
+cor(Maxred[,"Max"],Maxred[,"AGB"],method="spearman")
 
 
 ###############
@@ -158,9 +141,11 @@ load("DB/CWM")
 
 Max<-do.call(rbind,lapply(CWM,function(pl){ return(apply(pl[,,"0.5"],2,max))}))
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
-Max<-cbind(Max,rownames(Max),treats[order(treats[,1]),2])
-colnames(Max)<-c(colnames(CWM[[1]]),"Plot","treat")
-apply(Max[,colnames(CWM[[1]])],2,function(x){return(cor(as.numeric(x),as.numeric(Max[,"treat"]),method="spearman"))})
+Max<-apply(cbind(Max,rownames(Max)),2,as.numeric)#,treats[order(treats[,1]),2])
+colnames(Max)<-c(colnames(CWM[[1]]),"plot")
+Max<-merge(Max,AGBloss,by="plot")
+apply(Max[,colnames(CWM[[1]])],2,function(x){return(cor(x,Max[,"AGB"],method="spearman"))})
+
 
 load("DB/ReplacementTraj_ForGraphs")
 
@@ -181,6 +166,7 @@ lapply(Toplot,mean)
 ##############################################################
 
 load("DB/ReplacementTraj_ForGraphs")
+load("DB/LostAGB")
 
 CompTaxo<-CompleteTaxo
 
@@ -194,21 +180,23 @@ for(q in 1:3){
   Toplot<-lapply(Toplot,function(tr){
     ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
-               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
-    return(apply(apply(ret,c(1,2),median),1,max))
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1987,1:length(ret)))
+    return(apply(apply(ret,c(1,2),median),1,function(li){return(max(abs(li)))}))
     })
   Ret<-as.data.frame(unlist(Toplot))
   Ret$plot<-rownames(Ret)
-  Ret<-Ret[order(as.numeric(Ret$plot)),]
-  Ret<-merge(Ret,treats,by="plot")
+  #Ret<-Ret[order(as.numeric(Ret$plot)),]
+  Ret<-merge(Ret,AGBloss,by="plot")
   assign(c("Richness","Shannon","Simpson")[q],Ret)
 }
 
-colnames(Richness)<-c("plot","Max","treat")
-cor(Richness[,"Max"],Richness[,"treat"],method="spearman")
+colnames(Richness)<-c("plot","Max","AGB")
+cor(Richness[,"Max"],Richness[,"AGB"],method="spearman")
 colnames(Shannon)<-c("plot","Max","treat")
 cor(Shannon[which(!Shannon$plot%in%c(8,12)),"Max"],Shannon[which(!Shannon$plot%in%c(8,12)),"treat"],method="spearman")
-colnames(Simpson)<-c("plot","Max","treat")
+colnames(Simpson)<-c("plot","Max","AGB")
+cor(Simpson[,"Max"],Simpson[,"AGB"],method="spearman")
+
 cor(Simpson[which(!Simpson$plot%in%c(8,12)),"Max"],Simpson[which(!Simpson$plot%in%c(8,12)),"treat"],method="spearman")
 
 

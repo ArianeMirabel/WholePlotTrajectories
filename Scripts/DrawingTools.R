@@ -3,8 +3,8 @@ Library(c("shape","plotrix"))
 
 treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
 names(treatments)<-c("Control","T1","T2","T3")
-ColorsTr<-c("darkolivegreen2","deepskyblue2","darkorange1","red2")
-colyear<-c("darkgoldenrod1","darkorange2","darkred")
+ColorsTr<-c("darkolivegreen2","gold","orangered","darkred")
+colyear<-c("deepskyblue","cornflowerblue","darkslateblue")
 time<-c("1995","2005","2015")
 
 smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
@@ -203,7 +203,7 @@ legendCWM<-function(){
   mtext("SLA\n",at=0.88,line=-2.5,outer=TRUE,cex=0.9)
   mtext(expression(paste(mm^2,".",mg^-1,sep = "")),at=0.84,line=-3,outer=TRUE,cex=0.9)
   
-  mtext("WD\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
+  mtext("WSG\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
   mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-18,outer=TRUE,cex=0.9)
   mtext("Bark thickness\n",at=0.4,line=-17.8,outer=TRUE,cex=0.9)
   mtext("mm",at=0.32,line=-18,outer=TRUE,cex=0.9)
