@@ -54,10 +54,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -177,7 +177,7 @@ Species seed mass corresponded to 5 classes of increasing mass, seed mass trajec
 
 The taxonomic diversity was reported through species richness and evenness, *i.e* the Hill number translation of the Simpson index [@Hill1973].
 These indices belong to the set of HCDT or generalized entropy, respectively corresponding to the 0 and 2 order of diversity (q), recomended for diversity studies [@Patil1982;@Tothmeresz1995;@Marcon2015]. 
-The functional diversity was reported using the Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on species functional traits.
+The functional diversity was reported using the functional richness and evenness, *i.e* Rao index of quadratic entropy which combines species abundance distribution and average pairwise dissimilarity based on species functional traits.
 
 The impacts of initial disturbance were tested with the spearman rank correlation between the extrema of taxonomic and functional metrics reached over the 30 years and the initial %AGB loss. 
 They were besides analysed through polynomial regression between (i) taxonomic and functional richness, evenness and diversity and (ii) the initial %AGB loss at 10, 20 and 30 years after disturbance.
@@ -199,36 +199,43 @@ In disturbed communities, after low disturbance intensity the taxonomic richness
 In all disturbed plots the taxonomic evenness first increased until a maximum reached after around 20 years. This maximum was positively correlated to the disturbance intensity ($\rho_{spearman}^{Evenness}=0.77$).
 The evenness then stabilized except for two T3 plots (plots 8 and 12) for which evenness kept increasing.
 
-```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE, fig.cap="Trajectories over 30 years of the difference with the 1989 inventory (2 years after disturbance) of community taxonomic (ref:Bolda) richness, (ref:Boldb), taxonomic evenness and (ref:Boldc) functional diversity. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
+```{r DivTaxo, out.width = '100%', fig.asp = 1.5/3, echo=FALSE, fig.cap="Trajectories over 30 years of the difference with the 1989 inventory (2 years after disturbance) of community taxonomic (ref:Bolda) richness, (ref:Boldb), taxonomic evenness, (ref:Boldc) functional richness, and (ref:Boldd) functional evenness. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
 load("DB/ReplacementTraj_ForGraphs")
 load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalRichnessTraj_ForGraphs")
 
-par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
+par(mfrow=c(1,4),mar=c(5,2,4,2),oma=c(1,1.7,1,2),no.readonly=TRUE)
 TaxoTraj(CompleteTaxo)
+plotDiv(CompleteRichFun,remove=TRUE)
+mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.75)
 plotDiv(CompleteFun,remove=TRUE)
-mtext("(c) Functional diversity",side=3,adj=0,line=1)
+mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.75)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.34,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
 ```
 
-The plot 7 from treatment 1 displayed a constantly outlying functional diversity and was removed from the graphical representation for better readability (see appendix for full graphs).
-In undisturbed plots the functional diversity remained stable along the 30 years. In disturbed plots, trajectories depend on the disturbnace intensity with, for low intensity, a low but long-lasting increase up to amximum reached after 20-25 years and, for, high intensity, a fast but short increase followed, after 10 years, by a slow decrease towards the inital values.
+The plot 7 from treatment 1 displayed constantly outlying functional richness and evenness and was removed from the graphical representation for better readability.
+In undisturbed plots both functional richness and evenness remained stable along the 30 years. 
+In disturbed plots, richness and evenness trajectories depended on the disturbance intensity with their maximum positively correlated to %AGB loss $\rho_{spearman}^{Richness}=0.76$ and $\rho_{spearman}^{Evenness}=0.60$.
+Functional richness and evenness displayed for low disturbance intensity a low but long-lasting increase up to maximum reached after 20-25 years and, and for high intensity, a fast but short increase followed after 10 years by a slow decrease towards the inital values.
 
-The second-degree polynomial regressions between (i) the %AGB loss and (ii) taxonomic richness, evenness and functional diversity after 10, 20 and 30 years best predicted the hump-shaped curve of the disturbance impact along the disturbance intensity gradient \@ref(fig:IDHplot).
+The second-degree polynomial regressions between (i) the %AGB loss and (ii) taxonomic and functional richness and evenness after 10, 20 and 30 years best predicted the hump-shaped curve of the disturbance impact along the disturbance intensity gradient \@ref(fig:IDHplot).
 Along the disturbance intensity gradient the disturbance impact was more markedly hump-shaped for the taxonomic richness than for the taxonomic evenness and the functional diversity, the latest being almost linear.
-The regression model better predicted the functional diversity ($0.60<R^2_{Functional}<0.81$) than the taxonomic richness and evenness ($0.21<R^2_{Richness}<0.4$, and $-0.15<R^2_{Evenness}<0.43$ respectively)
+The regression model better predicted the functional richness and evenness ($0.55<R^2_{Functional Richness}<0.72$, and $0.60<R^2_{Functional Evenness}<0.81$) than the taxonomic richness and evenness ($0.21<R^2_{Taxonomic Richness}<0.4$, and $-0.15<R^2_{Taxonomic Evenness}<0.43$ respectively)
 
-```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/3,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb) and functional diversity (ref:Boldc) at 10, 20 and 30 years after disturbance. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
-load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB")
+```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/3,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
+load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
 
-par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
+par(mfrow=c(1,4),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
 plotIDH(Data=Rich,AgbLoss=AGBloss)
-mtext("(a) Taxonomic Richness",line=1,side=3,adj=0,cex=0.8)
+mtext("(a) Taxonomic Richness",line=1,side=3,adj=0,cex=0.75)
 plotIDH(Data=Sim,AgbLoss=AGBloss)
-mtext("(b) Taxonomic Evenness",line=1,side=3,adj=0,cex=0.8)
+mtext("(b) Taxonomic Evenness",line=1,side=3,adj=0,cex=0.75)
 plotIDH(Data=Rao,AgbLoss=AGBloss)
-mtext("(c) Functional diversity",line=1,side=3,adj=0,cex=0.8)
+mtext("(c) Functional richness",line=1,side=3,adj=0,cex=0.75)
+plotIDH(Data=FunRich,AgbLoss=AGBloss)
+mtext("(d) Functional evenness",line=1,side=3,adj=0,cex=0.75)
 mtext("initial AGB loss (%)",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.34,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
@@ -296,44 +303,45 @@ Later during the community recovery long-lived, more resistant and shade-toleran
 
 ## Another perspective on the intermediate disturbance hypothesis
 
-Disturbance clearly enhanced community taxonomic richness until an intensity threshold (20-25% of initial AGB loss), while the taxonomic evenness was somewhat decoupled from the disturbance intensity, as already observed in the Guiana Shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998].
-The IDH well predicted the response of taxonomic richness to disturbance, and to a lesser extent the taxonomic evenness.
-Post-disturbance communities combine pre-disturbance surviving trees and recruited trees, either from the remaining pre-disturbance community or from a disturbance-specific community.
-In the Guiana Shield, the pool of true pioneer species specifically recruited after disturbance is restricted to a few common genera (e.g. Cecropia spp., Vismia spp.) 
-Below the intensity threshold the taxonomic richness of the pre-disturbance community is maintained and the recruitment of pioneers, previously infrequent or absent, increases both taxonomic richness and evenness.
-The disturbance intensity determined the relative importance of pioneers recruited, so the taxonomic richness and evennes increase all the more so that disturbance is intense.
-However, disturbance in the same time decreases the taxonomic richness of the pre-disturbance community, and beyond the intensity threshold the decrease exceeds the taxonomic enrichment from pioneers.
-The taxonomic evenness for its part is less sensitive to the loss of rare species and the disturbance impact is mitigated as pioneers balance the hyper-dominance of undisturbed tropical forests.
-Conversely the IDH was disproved for the functional diversity.
-The pioneer species were functionally highly different from the pre-disturbance community composition, so their recruitment increased the community functional richness and eveness after disturbance whenever its intensity.
+Disturbance appeared to enhance community taxonomic richness until an intensity threshold (20-25% of initial AGB loss), while the taxonomic evenness was somewhat decoupled from the disturbance intensity as already observed in the Guiana Shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998].
+The IDH well predicted the disturbance impact on community taxonomic richness and to some extent on taxonomic evenness.
+The disturbance intensity determines the balance in the community between pre-disturbance surviving trees and the trees recruited afterward.
+In the Guiana Shield, the pool of true pioneer species specifically recruited after disturbance is restricted to a few common genera (e.g. Cecropia spp., Vismia spp.).
+Below the intensity threshold the size of the surviving community maintains its pre-disturbance taxonomic richness and the recruitment of pioneers, infrequent or absent before disturbance, increases both community taxonomic richness and evenness.
+Beyond the intensity threshold the taxonomic diversity of the surviving trees decreases and is not offset by the taxonomic enrichment of pioneers.
+The disturbance impact was similar but slighter for community taxonomic evenness, that is less sensitive to the loss of rare species and rather represents the increased dominance of pionneers that balanced the usual hyper-dominance of tropical forest.
+While below the intensity threshold pioneers species increase the diversity of dominant or common species, beyond the threshold they become in turn highly dominant.
 
-Community post-disturbance trajectories showed a first drop of the taxonomic richness, similar among communities, followed by a species gain determined by the disturbance intensity.
-Until an intensity threshold the gain in taxonomic richness increased with the disturbance intensity.
-This corresponded to the establishment of long-lived pioneers enhancing community taxonomic richness and evenness in the long term.
-Beyond the intensity threshold a few short-lived pioneers occupied the vacated environmental space, preventing the establishment of further species. 
-The establishment of short-lived pioneers, functionally very different from the pre-disturbance community, rapidly and significantly increased the functional diversity but it started decreasing after 10 years.
-Below the disturbance intensity threshold on the other hand the establishment of long-lived pionneers entailed a later and lower but long-lasting increase of the functional diversity.
-Likely the establishment of long-lasting pioneers will follow the decline of short-live pionneers and we expect the taxonomic and functoinal trajectories to catch up with those observed after intermediate disturbance.
+Conversely the IDH was disproved to predict the dsiturbance impact on community functional diversity.
+Pioneer species were functionally highly different from the pre-disturbance community composition, so their recruitment increased the community functional richness and eveness whenever its intensity.
+
+Along time, the post-disturbance taxonomic richness trajectories showed first a similar drop following the species loss during disturbance, and then a species gain determined by the disturbance intensity.
+Until an intensity threshold the gain in taxonomic richness increased with the disturbance intensity through the establishment of long-lived pioneers enhancing community taxonomic richness and evenness in the long term.
+These long-lived pionneers were functionally quite different from the functional composition and their establishment entailed a progressive and long-lasting increase of the functional diversity.
+Beyond the intensity threshold a few short-lived pioneers occupied the vacated environmental space and prevented further species establishment. 
+These short-lived pioneers were functionally very different from the pre-disturbance community and rapidly and significantly increased the functional diversity.
+Already after 10 years, though, they started to decline and the functional diversity started to decrease.
+Likely the establishment of long-lasting pioneers will follow and we expect the taxonomic and functional trajectories to catch up with those observed after intermediate disturbance.
 
 
-## The functional redundancy, key of the taxonomic resilience
+## The functional redundancy, key of the community resilience
 
-The functional redundancy within the pre-disturbance functional space decreased for 15 years because of the loss of species, and was not compensated by the functionally different pionneers.
-The depth of the redundancy decrease relied on the disturbance intensity that enhanced the initial decrease and the functional differences of pionneers from the pre-disturance composition.
-After 15 years the first established pioneers pionneers started to be replaced by more competitive long-lived pionneers or late-successional species resembling more the pre-disturbance functional composition and hence increasing the functional redundancy.
-This replacement though is stochastic and follows the lottery recruitment so because of increasing competition it is increasingly difficult recover pre-disturbance species,specifically the most infrequent ones, as the functional redundancy recovers [@Busing2002].
-The recovery time proved long as for some community it was just initiated after 30 years but it is thus difficult to estimate [@Trenbath1999;@Elmqvist2003;@Diaz2005].
+For 15 years the species loss during disturbance, determined by the disturbance intensity, commensurately decreased the functional redundancy within the pre-disturbance functional space.
+At first place the pioneers recruited, functionally different from the pre-disturbance functional composition did not compensate for the reundancy decrease.
+Progressively though, first establish species were replaced by more competitive long-lived pionneers or late-successional species resembling more the pre-disturbance functional composition and restoring the functional redundancy.
+This replacement was stochastic and followed the lottery recruitment rules, that ease the recovery for the first recruited species but then increasingly hamper it with the emergence of interspecific competition due to increasing functional redundancy [@Busing2002]. 
+Along time the recovery of infrequent species is increasingly difficult, and the recovery of the functional redundancy that was just initiated after 30 years in some communities is difficult to estimate [@Trenbath1999;@Elmqvist2003;@Diaz2005].
 
-The long-term impact of disturbance on community functional redundancy meant a lower resilience of pre-disturbance communities and higher chances to see the persistence of disturbance-specific communities, with lower taxonomic richness and more pioneers [@Haddad2008; @Burslem2000; @Martin2013].
-Besides the slowed recovery of rare species increased the risks to loose cornerstone specie, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005;@Gardner2007].
-Apart from the functional characteristics considered here, infrequent species mighthave unique functions i nthe ecosystem or be a key for some fauna.
+The long-term impact of disturbance on community functional redundancy meant a lower resilience of pre-disturbance communities and higher chances to see the persistence of disturbance-specific species at the expense of late-successional ones [@Haddad2008; @Burslem2000; @Martin2013].
+Besides the long-term recovery of infrequent species increases the risks to loose cornerstone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005;@Gardner2007].
+Apart from the functional characteristics considered here, infrequent species might indeed have unique functions in the ecosystem or be a key for some fauna.
 
 # Conclusions
 
-Our study revealed communities cyclic recovery after disturbance allowing the resilience of their functioning and taxonomic composition with the maintenance of initial differences among communities.
+[Our study revealed communities cyclic recovery after disturbance allowing the resilience of their functioning and taxonomic composition with the maintenance of initial differences among communities.
 Communities functional evenness was enhanced for  20 years after disturbance through the enrichment of the communities with pioneers and light-demanding species,in accordance with the IDH.
-The IDH, though, poorly predicted the disturbance impact on communities taxonomic richness and evenness that were blurried by the emergence of competitive exclusion along time.
-The resilience of tropical forests proved consistent although spread over several decades. 
+The IDH, though, poorly predicted the disturbance impact on communities taxonomic richness and evenness that were blurried by the emergence of competitive exclusion along time.]
+The resilience of tropical forests proved consistent although several decades-long. 
 Still, the disturbance impact on communities redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Gourlet-Fleury2005].
 As the trajectories highlighted the recruitment processes proved central for communities response to disturbance and closer focus on demographical drivers of communities response would clarify the fate of the future forests.
 

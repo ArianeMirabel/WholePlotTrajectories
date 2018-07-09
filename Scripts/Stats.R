@@ -1,5 +1,6 @@
 load("DB/ReplacementTraj_ForGraphs")
 load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalRichnessTraj_ForGraphs")
 
 SimpsonTaxo<-lapply(CompleteTaxo,function(tr){return(tr[,,,"Simpson"])})
 save(SimpsonTaxo,file="DB/SimpsonDraw")
@@ -21,14 +22,14 @@ Rich<-lapply(Rich, function(tr){
              dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
 save(Rich,file="DB/RichnessIDH")
 
-CompFun<-CompleteFun
+CompFun<-CompleteRichFun
 CompFun[[2]]<-CompFun[[2]][which(rownames(CompFun[[2]])!=7),,]
-Rao<-lapply(CompFun, function(tr){
+FunRich<-lapply(CompFun, function(tr){
   Ret<-lapply(c(0.025,0.5,0.975),function(quant){
     return(apply(tr[,c("1995","2005","2015"),],c(1,2),function(x){return(quantile(x,probs=quant))}))})
   Ret<-array(unlist(Ret),dim=c(nrow(Ret[[1]]),ncol(Ret[[1]]),3),
              dimnames=list(rownames(Ret[[1]]),colnames(Ret[[1]]),c(0.025,0.5,0.975)))})
-save(Rao,file="DB/RaoIDH")
+save(FunRich,file="DB/FunRichIDH")
 
 windows()
 par(mfrow=c(2,2),mar=c(3,3,2,1),oma=c(2,1,2,3),no.readonly = T)
@@ -40,7 +41,7 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
 plotIDH(Sim)
-plotIDH(Rao)
+plotIDH(FunRich)
 mtext("initial %AGB lost",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
@@ -48,7 +49,7 @@ legend("right",inset=c(-0.28,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/RichnessIDH")
 time<-c("1995","2005","2015")
 colyear<-c("darkgoldenrod1","darkorange2","darkred")
-Data<-Rich
+Data<-FunRich
 AgbLoss<-AGBloss
 
 plotIDH<-function(Data,AgbLoss){
@@ -79,7 +80,7 @@ leg<-lapply(1:3,function(Ti){
   legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('R'^2,'adjusted')))
 }
   
-plotIDH(Rao,AGBloss)
+plotIDH(FunRich,AGBloss)
 
 ##########################################
 ## Rho Spearman, Taxo
@@ -288,7 +289,7 @@ Rao<-do.call(rbind,lapply(P,function(yr){
 }))
 
 ###### Functional spearman
-load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalRichnessTraj_ForGraphs")
 
 CompFun<-CompleteFun
 

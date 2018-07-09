@@ -103,7 +103,7 @@ TaxoTraj<-function(CompTaxo){
          xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
     axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
     mtext(paste("(",c("a","b","b")[q],") ",c("Taxonomic Richness","Shannon","Taxonomic Evenness")[q],sep=""),
-          line=1,side=3,adj=0)
+          line=1,side=3,adj=0,cex=0.8)
     
     invisible(lapply(1:4,function(t){  
       toplot<-Toplot[[t]]
@@ -146,7 +146,6 @@ plotDiv<-function(Data,remove=FALSE){
   if(remove){Data[[2]]<-Data[[2]][which(rownames(Data[[2]])!=7),,]}
   
   Toplot<-lapply(Data,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
-  absc<-as.numeric(colnames(Toplot[[1]]))-1986
   Toplot<-lapply(Toplot,function(tr){
     ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
@@ -157,7 +156,7 @@ plotDiv<-function(Data,remove=FALSE){
   
   plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
        xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
-  axis(1,at=absc,labels=TRUE)  
+  axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
   
   invisible(lapply(1:4,function(t){  
     toplot<-Toplot[[t]]
