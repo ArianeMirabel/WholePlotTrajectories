@@ -36,7 +36,7 @@ invisible(lapply(1:length(treatments),function(tr){
 
 mtext("NMDS 1",side=1,line=2,cex=0.8)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
-mtext("(a) Taxonomic composition",side=3,adj=0,line=0.5)
+mtext("(a)",side=3,adj=0,line=0.5)
 }
 
 FunCompo<-function(Data_FunComp){
@@ -60,7 +60,7 @@ invisible(lapply(1:length(treatments),function(tr){
              col=ColorsTr[tr],code=1,lwd=2,arr.length=0.2,arr.type="simple")}))
   }))
 }))
-mtext("(b) Functional composition",side=3,adj=0,line=0.5)
+mtext("(b)",side=3,adj=0,line=0.5)
 mtext("NMDS 1",side=1,line=2,cex=0.8)
 mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)    
 }
@@ -83,8 +83,6 @@ invisible(lapply(1:length(treatments),function(tr){
             col=rgb(0,0,0,alpha=0.1),border=NA)
   }))
 }))
-mtext("Euclidean distance from 1985 inventory",side=2,padj=0,line=2,cex=0.8)
-mtext("(c)",side=3,adj=0,line=0.5)
 }
 
 TaxoTraj<-function(CompTaxo){
@@ -117,7 +115,7 @@ TaxoTraj<-function(CompTaxo){
     }))
   }
   #mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
-  mtext("Equivalent diversity",side=2,padj=1,cex=0.8,line=1.5,outer=TRUE)}
+  mtext("Equivalent diversity",side=2,padj=1,line=1.5,outer=TRUE)}
 
 plotIDH<-function(Data,AgbLoss){
   Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
