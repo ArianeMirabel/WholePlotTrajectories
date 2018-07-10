@@ -197,7 +197,7 @@ From 1989 (2 years after disturbance) to 2015 (28 years after disturbance), 828 
 While both taxonomic and functional composition remained stable in undisturbed communities (Figure \@ref(fig:NMDSplans)), they followed marked and consistent trajectories over post-disturbance time.
 In disturbed communities, these compositional changes corresponded to shifts towards species with more acquisitive functional strategies, from communities with high average WSG to high average SLA and chlorophyll content (see appendix I). For functional composition, this translated into cyclic compositional changes with an unachieved recovery of the initial composition (Figure \@ref(fig:NMDSplans)). The maximum dissimilarity with the initial state was positively correlated to the disturbance intensity for both taxonomic and functional composition ($\rho_{spearman}^{taxonomic}=0.87$ and $\rho_{spearman}^{functional}=0.90$ respectively). The maximum value was reached around 26 years after disturbance for taxonomic composition and 22 years for functional composition. 
 
-```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of flora composition (left panels (ref:Bolda) and (ref:Boldc)) and functional composition (right panels (ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS space. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the euclidean distance to initial condition along the 30 sampled years. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals", fig.env="figure*"}
+```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of flora composition (left panels (ref:Bolda) and (ref:Boldc)) and functional composition (right panels (ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS space. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the euclidean distance to initial condition along the 30 sampled years. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure*"}
 load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
 load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
 
@@ -220,7 +220,7 @@ Except for leaf chlorophyll content, which continued to increase for some T3 and
 
 Maximum height at adult stage (*Hmax*), leaf toughness (*L_toughness*) and wood specific gravity (*WSG*) first decreased and then slightly increased but remained significantly lower than their initial value (Figure \@ref(fig:CWM)). On the other side, Bark thickness (*Bark_thick*) and specific leaf area (*SLA*) increased and while *Bark_thick* remained substantially high after 30 years, *SLA* had almost recovered its initial value. For all traits, the maximum difference to initial value was correlated to the disturbance intensity ($\rho_{spearman}^{L_{thickness}}=0.76$, $\rho_{spearman}^{L_{chloro}}=0.60$, $\rho_{spearman}^{L_{toughness}}=-0.53$, $\rho_{spearman}^{SLA}=0.93$, $\rho_{spearman}^{WSG}=-0.75$, $\rho_{spearman}^{Bark-thickness}=0.71$, $\rho_{spearman}^{Hmax}=-0.40$).
 
-```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWSG), and bark thickness, (ref:capBarkThick)) and one life history trait (Specific maximum height at adult stage, (ref:capHmax)). Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure*"}
+```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the communities weighted means (CWM) over 30 years after disturbance of 4 leaf traits (Leaf thickness, (ref:capThickness), chlorophyll content, (ref:capChloro), toughness, (ref:capThoughness) and specific area, (ref:capSLA)), 2 stem traits (wood specific gravity, (ref:capWSG), and bark thickness, (ref:capBarkThick)) and one life history trait (Specific maximum height at adult stage, (ref:capHmax)). Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure*"}
 load("DB/CWM")
 
 CWMdraw(CWM)
@@ -235,7 +235,7 @@ In disturbed communities, after low disturbance intensity the taxonomic richness
 In all disturbed plots the taxonomic evenness first increased until a maximum reached after around 20 years. This maximum was positively correlated to the disturbance intensity ($\rho_{spearman}^{Evenness}=0.77$).
 The evenness then stabilized except for two T3 plots (plots 8 and 12) for which evenness kept increasing.
 
-```{r DivTaxo, out.width = '100%', echo=FALSE, fig.cap="Trajectories over 30 years of the difference with the 1989 inventory (2 years after disturbance) of community taxonomic (ref:Bolda) richness, (ref:Boldb), taxonomic evenness, (ref:Boldc) functional richness, and (ref:Boldd) functional evenness. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
+```{r DivTaxo, out.width = '100%', echo=FALSE, fig.cap="Trajectories over 30 years of the difference with the 1989 inventory (2 years after disturbance) of community taxonomic (ref:Bolda) richness, (ref:Boldb), taxonomic evenness, (ref:Boldc) functional richness, and (ref:Boldd) functional evenness. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
 load("DB/ReplacementTraj_ForGraphs")
 load("DB/FunctionalTraj_ForGraphs")
 load("DB/FunctionalRichnessTraj_ForGraphs")
@@ -260,7 +260,7 @@ The second-degree polynomial regressions between (i) the %AGB loss and (ii) taxo
 The relationship between the disturbance impact and its intensity was more markedly hump-shaped for the taxonomic richness than for the taxonomic evenness. For both functional richness and evenness the relationship was almost linear.
 The regression model better predicted the functional richness and evenness ($0.55<R^2_{Functional Richness}<0.72$, and $0.60<R^2_{Functional Evenness}<0.81$) than the taxonomic richness and evenness ($0.21<R^2_{Taxonomic Richness}<0.4$, and $-0.15<R^2_{Taxonomic Evenness}<0.43$ respectively)
 
-```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/3,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance. Colors are treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
+```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/3,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
 load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
 
 par(mfrow=c(1,4),mar=c(5,2,4,2),oma=c(1,1.5,1,2),no.readonly=TRUE)
@@ -282,7 +282,7 @@ legend("right",inset=c(-0.37,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=
 
 All disturbed plots had lower functional redundancy than control plots and followed similar hump-shaped trajectories (\@ref(fig:RedFun_rest)). The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{spearman}=0.47$) and the initial value had not recovered for any disturbed communities after 30 years.
 
-```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial functional space over 30 years after disturbance. Colors are disturbance treatments: green (control), blue (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure"}
+```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial functional space over 30 years after disturbance. Colors are disturbance treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure"}
 load("DB/Redundancy_restricted")
 
 par(mar=c(3,2,3,2))
