@@ -54,10 +54,10 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -85,7 +85,7 @@ output:
 
 
 ```{r Options, echo=FALSE, message=FALSE, warning=F}
-knitr::opts_chunk$set(cache=F, warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
+knitr::opts_chunk$set(cache=F, echo=F,warning=F, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40), fig.align="center")
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
@@ -236,7 +236,7 @@ mtext("(c)",side=3,adj=0,line=0.5)
 EuclidDist(FunEuclid)
 mtext("(d)",side=3,adj=0,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=0.8)
-legend("right",inset=c(-0.35,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",inset=c(-0.345,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
 ```
 
@@ -268,9 +268,9 @@ load("DB/FunctionalRichnessTraj_ForGraphs")
 par(mfrow=c(2,2),mar=c(2,2.5,2.5,1),oma=c(1,2,1,3),no.readonly = T)
 TaxoTraj(CompleteTaxo)
 plotDiv(CompleteRichFun,remove=TRUE)
-mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.75)
+mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.9)
 plotDiv(CompleteFun,remove=TRUE)
-mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.75)
+mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.9)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
 legend("right",inset=c(-0.3,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
@@ -285,36 +285,37 @@ The second-degree polynomial regressions between (i) the %AGB loss and (ii) taxo
 The relationship between the disturbance impact and its intensity was more markedly hump-shaped for the taxonomic richness than for the taxonomic evenness. For both functional richness and evenness the relationship was almost linear.
 The regression model better predicted the functional richness and evenness ($0.55<R^2_{Functional Richness}<0.72$, and $0.60<R^2_{Functional Evenness}<0.81$) than the taxonomic richness and evenness ($0.21<R^2_{Taxonomic Richness}<0.4$, and $-0.15<R^2_{Taxonomic Evenness}<0.43$ respectively)
 
-```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/3,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals ", fig.env="figure*"}
+```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/4,fig.cap="Relationship between the initial \\%AGB loss and community taxonmic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance", fig.env="figure*"}
 load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
 
-par(mfrow=c(1,4),mar=c(5,2,4,2),oma=c(1,1.5,1,2),no.readonly=TRUE)
+par(mfrow=c(1,4),mar=c(2,2.5,3,1),oma=c(1,1,1,2.5),no.readonly=TRUE)
 plotIDH(Data=Rich,AgbLoss=AGBloss)
-mtext("(a) Taxonomic Richness",line=1,side=3,adj=0,cex=0.75)
+mtext("(a) Taxonomic\nRichness",line=1,side=3,adj=0,cex=0.85)
+mtext("Equivalent diversity",side=2,line=2.2,adj=1,cex=0.8)
 plotIDH(Data=Sim,AgbLoss=AGBloss)
-mtext("(b) Taxonomic Evenness",line=1,side=3,adj=0,cex=0.75)
+mtext("(b) Taxonomic\nEvenness",line=1,side=3,adj=0,cex=0.85)
 plotIDH(Data=Rao,AgbLoss=AGBloss)
-mtext("(c) Functional richness",line=1,side=3,adj=0,cex=0.75)
+mtext("(c) Functional\nRichness",line=1,side=3,adj=0,cex=0.85)
 plotIDH(Data=FunRich,AgbLoss=AGBloss)
-mtext("(d) Functional evenness",line=1,side=3,adj=0,cex=0.75)
-mtext("initial AGB loss (%)",side=1,line=2.2,adj=1)
-legend("right",inset=c(-0.37,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
+mtext("(d) Functional\nEvenness",line=1,side=3,adj=0,cex=0.85)
+mtext("initial AGB loss (%)",side=1,line=2.2,adj=1,cex=0.8)
+legend("right",inset=c(-0.5,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 ```
 
 
 ## Functional redundancy
 
-All disturbed plots had lower functional redundancy than control plots and followed similar hump-shaped trajectories (\@ref(fig:RedFun_rest)). The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{spearman}=0.47$) and the initial value had not recovered for any disturbed communities after 30 years.
+All disturbed plots had lower functional redundancy than control plots and followed similar hump-shaped trajectories (\@ref(fig:RedFunRest)). The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{spearman}=0.47$) and the initial value had not recovered for any disturbed communities after 30 years.
 
-```{r RedFun_rest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial functional space over 30 years after disturbance. Colors are disturbance treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure"}
+```{r RedFunRest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial functional space over 30 years after disturbance. Colors are disturbance treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure"}
 load("DB/Redundancy_restricted")
 
 par(mar=c(3,2,3,2))
 RedundancyPlot(RedundancyTraj_restricted)
-mtext("Functional Redundancy",side=3,adj=0,line=1.5,cex=1.2)
-mtext("Restricted to initial functional space",side=3,adj=0,cex=0.9,line=0.5)
-mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=1.2)
+mtext("Functional Redundancy",side=3,adj=0,line=1.5,cex=1.5)
+mtext("Restricted to initial functional space",side=3,adj=0,cex=1.2,line=0.5)
+mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=1.5)
 
 ```
 

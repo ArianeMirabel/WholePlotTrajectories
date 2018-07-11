@@ -101,7 +101,7 @@ TaxoTraj<-function(CompTaxo){
          xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
     axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
     mtext(paste("(",c("a","b","b")[q],") ",c("Taxonomic Richness","Shannon","Taxonomic Evenness")[q],sep=""),
-          line=1,side=3,adj=0,cex=0.8)
+          line=1,side=3,adj=0,cex=0.9)
     
     invisible(lapply(1:4,function(t){  
       toplot<-Toplot[[t]]
