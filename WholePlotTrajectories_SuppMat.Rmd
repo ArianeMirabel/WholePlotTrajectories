@@ -61,26 +61,17 @@ Library("kableExtra")
 source("Scripts/DrawingTools.R")
 ```
 
-# Appendix figures
-
-
 The following information are available for this article:
 
 
 **Figure S1**: Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing) \@ref(fig:FigBayesianScheme).
 
-**Figure S2**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 \@ref(fig:FigSeedMassClasses).
-
-\newpage
-
-# **Figure S1**: Bayesian process sheme
-
+**Figure S2**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 .
 
 ```{r FigBayesianScheme,out.width='100%',fig.cap="Scheme of the Bayesian process propagating the taxonomic uncertainty",echo=F, fig.env="figure*"}
 knitr::include_graphics("ExternalFig/BayesianSheme.png")
 ```
 
-# **Figure S2**: Proportion of seed mass classes along time
 
 ```{r FigSeedMassClasses, echo=FALSE, out.width='80%', fig.asp=2/5,fig.cap="Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).", fig.env="figure*"}
 load("DB/Smass_ClassProp")
