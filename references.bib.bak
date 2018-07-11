@@ -21,6 +21,17 @@ volume = {12},
 year = {1980}
 }
 
+@article{Anderson2007,
+author = {Anderson, Kristina J},
+doi = {10.1086/516653},
+journal = {The American naturalist},
+number = {6},
+pages = {780--93},
+title = {{Temporal patterns in rates of community change during succession.}},
+volume = {169},
+year = {2007}
+}
+
 @article{Walker2009,
   title={Transition dynamics in succession: implications for rates, trajectories and restoration},
   author={Walker, Lawrence R and del Moral, Roger},
@@ -28,6 +39,17 @@ year = {1980}
   pages={33--49},
   year={2009},
   publisher={Island Press Washington, DC, US}
+}
+
+@article{Zalamea2012,
+  title={The genus Cecropia: a biological clock to estimate the age of recently disturbed areas in the Neotropics},
+  author={Zalamea, Paul-Camilo and Heuret, Patrick and Sarmiento, Carolina and Rodr{\'\i}guez, Manuel and Berthouly, Anne and Guitet, St{\'e}phane and Nicolini, Eric and Delnatte, C{\'e}sar and Barth{\'e}l{\'e}my, Daniel and Stevenson, Pablo R},
+  journal={PloS one},
+  volume={7},
+  number={8},
+  pages={e42643},
+  year={2012},
+  publisher={Public Library of Science}
 }
 
 @article{Guitet2018,
@@ -147,11 +169,12 @@ year = {1989}
 }
   
 @Manual{Biomass2018,
+    title = {BIOMASS: Estimating Aboveground Biomass and Its Uncertainty in Tropical
+Forests},
     author = {Maxime R{\'{e}}jou-M{\'{e}}chain and Ariane Tanguy and Camille Piponiot and J{\'{e}}r{\^{o}}me Chave and Bruno H{\'{e}}rault},
-  year = {2018},
-  title={BIOMASS: Estimating Aboveground Biomass and Its Uncertainty in Tropical Forests},
-  journal={R Package Version},
-  volume={1}
+    year = {2018},
+    note = {R package version 1.2},
+    url = {https://CRAN.R-project.org/package=BIOMASS},
 }
 
 @article{Goulamoussene2017,
@@ -277,6 +300,18 @@ volume = {30},
 year = {2014}
 }
 
+@article{Gibson2011a,
+author = {Gibson, Luke and Lee, Tien Ming and Koh, Lian Pin and Brook, Barry W. and Gardner, Toby A. and Barlow, Jos and Peres, Carlos A. and Bradshaw, Corey J. A. and Laurance, William F. and Lovejoy, Thomas E. and Sodhi, Navjot S.},
+doi = {10.1038/nature10425},
+journal = {Nature},
+number = {7369},
+pages = {378--381},
+publisher = {Nature Publishing Group},
+title = {{Primary forests are irreplaceable for sustaining tropical biodiversity}},
+volume = {478},
+year = {2011}
+}
+
 @article{Busing2002,
   title={Tree species diversity in temperate and tropical forest gaps: the role of lottery recruitment},
   author={Busing, Richard T and Brokaw, Nicholas},
@@ -332,6 +367,18 @@ volume = {151},
 year = {2011}
 }
 
+@article{Blanc2009,
+author = {Blanc, Lilian and Echard, Marion and H{\'{e}}rault, Bruno and Bonal, Damien and Marcon, Eric and Baraloto, Christopher and Chave, J{\'{e}}r{\^{o}}me},
+doi = {10.1890/08-1572.1},
+journal = {Ecological Applications},
+keywords = {aboveground},
+number = {6},
+pages = {1397--1404},
+title = {{carbon stocks Dynamics of aboveground in a selectively logged tropical forest}},
+volume = {19},
+year = {2009}
+}
+
 @article{Olander2005,
 author = {Olander, Lydia P and Bustamante, Mercedes M and Asner, Gregory P},
 journal = {Earth Interaction},
@@ -340,6 +387,19 @@ title = {{Surface Soil Changes Following Selective Logging in an Eastern Amazon 
 volume = {9},
 year = {2005}
 }
+
+@incollection{White2001,
+abstract = {Studies of disturbance have a long tradition in vegetation ecology (Cooper 1926; Raup 1941; White 1979) and have increased dramatically during the last 30 years (Dayton 1971; Heinselman 1973; Levin and Paine 1974; Borman and Likens 1979; 1979a,b, 1984; Pickett},
+author = {White, Peter S. and Jentsch, Anke},
+booktitle = {Progress in Botany},
+doi = {10.1007/978-3-642-56849-7_17},
+pages = {399--450},
+publisher = {Springer},
+title = {{The Search for Generality in Studies of Disturbance and Ecosystem Dynamics}},
+volume = {62},
+year = {2001}
+}
+
 
 @article{Reich2014,
 author = {Reich, Peter B.},
@@ -420,6 +480,16 @@ pmid = {17006512},
 title = {{Continental-scale patterns of canopy tree composition and function across Amazonia.}},
 volume = {443},
 year = {2006}
+}
+
+@article{TerSteege2001,
+author = {TerSteege, Hans and Hammond, David S},
+journal = {Ecology},
+number = {11},
+pages = {3197--3212},
+title = {{Character Convergence , Diversity , and Disturbance in Tropical Rain Forest in Guyana}},
+volume = {82},
+year = {2001}
 }
 
 @article{Sheil2003,
@@ -527,6 +597,47 @@ volume = {273},
 year = {2006}
 }
 
+@article{Burslem2000,
+author = {Burslem, D. F R P and Whitmore, T. C. and Brown, G. C.},
+doi = {10.1046/j.1365-2745.2000.00517.x},
+file = {:/roucou/Ariane.Mirabel{\$}/Private/Taff/These/Biblio/Exploitation{\&}Dynamics/2000-Burselm-Short-term{\_}effects{\_}of{\_}cyclone{\_}impact{\_}and{\_}long{\_}term{\_}recovery{\_}of{\_}tropical{\_}rain{\_}forest.pdf:pdf},
+isbn = {1365-2745},
+issn = {00220477},
+journal = {Journal of Ecology},
+keywords = {Cyclone,Demography,Disturbance,Human impact,Long-term measurement,Relative abundance,Solomon Islands,Tropical rain forest},
+number = {6},
+pages = {1063--1078},
+pmid = {5521856},
+title = {{Short-term effects of cyclone impact and long-term recovery of tropical rain forest on Kolombangara, Solomon Islands}},
+volume = {88},
+year = {2000}
+}
+
+@book{Magurran1988,
+address = {Princeton},
+author = {Magurran, Anne E},
+edition = {NJ, Prince},
+pages = {256},
+title = {{Ecological diversity and its measurement}},
+year = {1988},
+publisher={Springer}
+}
+
+@article{Lohbeck2015,
+author = {Lohbeck, Madelon and Lebrija-Trejos, Edwin and Mart{\'{i}}nez-Ramos, Miguel and Meave, Jorge A. and Poorter, Lourens and Bongers, Frans},
+doi = {10.1371/journal.pone.0123741},
+isbn = {1932-6203 (Electronic)$\backslash$r1932-6203 (Linking)},
+issn = {19326203},
+journal = {PLoS ONE},
+number = {4},
+pages = {1--15},
+pmid = {25919023},
+title = {{Functional trait strategies of trees in dry and wet tropical forests are similar but differ in their consequences for succession}},
+url = {http://dx.doi.org/10.1371/journal.pone.0123741},
+volume = {10},
+year = {2015}
+}
+
 @article{Westoby2006a,
 author = {Westoby, Mark and Wright, Ian J.},
 doi = {10.1016/j.tree.2006.02.004},
@@ -599,6 +710,23 @@ pmid = {3910},
 title = {{Local disturbance, forest structure and dispersal effects on sapling distribution of light-demanding and shade-tolerant species in a French Guianian forest}},
 volume = {29},
 year = {2006}
+}
+
+@article{Martin2013,
+author = {Martin, P. A. and Newton, A. C. and Bullock, J. M.},
+doi = {10.1098/rspb.2013.2236},
+file = {:P$\backslash$:/Private/Taff/These/Biblio/Exploitation{\&}Diversity/2013-Martin-Carbon{\_}pools{\_}recover{\_}more{\_}quickly{\_}than{\_}plant{\_}biodiversity{\_}in{\_}tropical{\_}secondary{\_}forests.pdf:pdf},
+isbn = {0962-8452$\backslash$r1471-2954},
+issn = {0962-8452},
+journal = {Proceedings of the Royal Society B: Biological Sciences},
+keywords = {ecology,environmental science},
+number = {1773},
+pages = {20132236--20132236},
+pmid = {24197410},
+title = {{Carbon pools recover more quickly than plant biodiversity in tropical secondary forests}},
+url = {http://rspb.royalsocietypublishing.org/cgi/doi/10.1098/rspb.2013.2236},
+volume = {280},
+year = {2013}
 }
 
 @article{Diaz2005,
@@ -674,6 +802,22 @@ volume = {152},
 year = {2001}
 }
 
+@article{Trenbath1999,
+author = {Trenbath, B R},
+doi = {10.1023/A:1006285319817},
+file = {:P$\backslash$:/Private/Taff/These/Biblio/Concepts/1999-Trenbath-Multispecies{\_}cropping{\_}systems{\_}in{\_}India.pdf:pdf},
+isbn = {0167-4366},
+issn = {0167-4366},
+journal = {Agroforestry Systems},
+keywords = {AREA,COLLAPSE,CROPPING SYSTEMS,CROPS,Cropping system,DIVERSITY,DYNAMICS,Disaster,ECOSYSTEM,ECOSYSTEMS,Ecological,Ecological sustainability,Ecological-sustainability,India,Intensification,LAND,LEVEL,Lead,Mixture,Natural ecosystem,PREDICTION,PREDICTIONS,Perturbation,RISK,SPREAD,STABILITY,STRESS,SYSTEM,SYSTEMS,Sustainability,TIME,YIELD,agriculture,crop,diet,growth,modelling,production,productivity,resilience,species,subsistence},
+number = {1-3},
+pages = {81--107},
+title = {{Multispecies cropping systems in India - Predictions of their productivity, stability, resilience and ecological sustainability}},
+url = {wos:000083412500006},
+volume = {45},
+year = {1999}
+}
+
 @article{Mouillot2011,
 author = {Mouillot, David and Vill{\'{e}}ger, S{\'{e}}bastien and Scherer-Lorenzen, Michael and Mason, Norman W.H.},
 journal = {PLoS ONE},
@@ -699,6 +843,17 @@ pages = {2001--2021},
 title = {{Altered dynamics of forest recovery under a changing climate}},
 volume = {19},
 year = {2013}
+}
+
+@techreport{Sist2015,
+author = {Sist, Plinio and Pacheco, Pablo and Nasi, Robert and Blaser, J{\"{u}}rgen},
+file = {:C$\backslash$:/Users/ariane.mirabel/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Sist et al. - 2015 - Management of natural tropical forests for the future.pdf:pdf},
+institution = {IUFRO WFSE},
+mendeley-groups = {These,These/Conservation},
+pages = {1--4},
+title = {{Management of natural tropical forests for the future}},
+volume = {32},
+year = {2015}
 }
 
 @article{Chazdon2003a,
@@ -765,6 +920,21 @@ volume = {236},
 year = {2006}
 }
 
+@article{Berry2008a,
+author = {Berry, Nicholas J. and Phillips, Oliver L. and Ong, Robert C. and Hamer, Keith C.},
+doi = {10.1007/s10980-008-9248-1},
+file = {:C$\backslash$:/Users/ariane.mirabel/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Berry et al. - 2008 - Impacts of selective logging on tree diversity across a rainforest landscape The importance of spatial scale.pdf:pdf},
+isbn = {0921-2973},
+issn = {09212973},
+journal = {Landscape Ecology},
+keywords = {Alpha-diversity,Beta-diversity,Borneo,Danum Valley,Disturbance,Gap dynamics,Tropical rain forest,Vegetation structure},
+mendeley-groups = {These/Exploitation{\&}Diversity},
+number = {8},
+pages = {915--929},
+title = {{Impacts of selective logging on tree diversity across a rainforest landscape: The importance of spatial scale}},
+volume = {23},
+year = {2008}
+}
 
 @article{Violle2007b,
 author = {Violle, Cyrille and Navas, Marie-Laure Laure and Vile, Denis and Kazakou, Elena and Fortunel, Claire and Hummel, Ir{\`{e}}ne and Garnier, Eric},
@@ -780,6 +950,47 @@ pmid = {245814500017},
 title = {{Let the concept of trait be functional!}},
 volume = {116},
 year = {2007}
+}
+
+@article{Scheiter2013,
+author = {Scheiter, Simon and Langan, Liam and Higgins, Steven I},
+doi = {10.1111/nph.12210},
+isbn = {1469-8137},
+issn = {1469-8137},
+journal = {The New phytologist},
+keywords = {Algorithms,Biological,Biota,Fires,Models,Multifactorial Inheritance,Plants,Principal Component Analysis},
+number = {3},
+pages = {957--69},
+pmid = {23496172},
+title = {{Next-generation dynamic global vegetation models: learning from community ecology}},
+volume = {198},
+year = {2013}
+}
+
+@article{Villeger2008a,
+author = {Vill{\'{e}}ger and Mason and Mouillot},
+doi = {10.1890/07-1206.1},
+isbn = {0012-9658},
+issn = {00129658},
+journal = {Ecology},
+keywords = {competitive filtering,environmental filtering,functional divergence,functional evenness,functional niche,functional richness,functional traits,null model},
+number = {8},
+pages = {2290--2301},
+pmid = {18724739},
+title = {{New multidimensional functional diversity indices for a multifaceted framwork in functional ecology}},
+volume = {89},
+year = {2008}
+}
+
+@article{Moretti2009,
+  title={Taxonomical vs. functional responses of bee communities to fire in two contrasting climatic regions},
+  author={Moretti, Marco and De Bello, Francesco and Roberts, Stuart PM and Potts, Simon G},
+  journal={Journal of Animal Ecology},
+  volume={78},
+  number={1},
+  pages={98--108},
+  year={2009},
+  publisher={Wiley Online Library}
 }
 
 @article{Chaudhary2016,
@@ -798,6 +1009,33 @@ volume = {6},
 year = {2016}
 }
 
+@article{Martin2015,
+author = {Martin, Philip A. and Newton, Adrian C. and Pfeifer, Marion and Khoo, MinSheng and Bullock, James M.},
+doi = {10.1016/j.foreco.2015.07.010},
+isbn = {03781127 (ISSN)},
+issn = {03781127},
+journal = {Forest Ecology and Management},
+keywords = {Biomass,Deforestation,Degradation,Land-use,REDD+,RIL,Selective logging},
+pages = {224--233},
+publisher = {Elsevier B.V.},
+title = {{Impacts of tropical selective logging on carbon storage and tree species richness: A meta-analysis}},
+url = {http://dx.doi.org/10.1016/j.foreco.2015.07.010},
+volume = {356},
+year = {2015}
+}
+
+@article{Guariguata2001,
+author = {Guariguata, Manuel R and Ostertag, Rebecca},
+file = {:P$\backslash$:/Private/Taff/These/Biblio/Exploitation{\&}Dynamics/2001-Guaraguata-Neotropical{\_}secondary{\_}forest{\_}succession{\_}changes{\_}in{\_}structural{\_}and{\_}functional{\_}characteristics.pdf:pdf},
+journal = {Forest Ecology and Management},
+keywords = {biomass,conversion,forest productivity,forest regeneration,forest succession,land use history,land use intensity,neotropics,pasture,tropical rainforest,tropical soils},
+number = {1},
+pages = {185--206},
+title = {{Neotropical secondary forest succession: changes in structural and functional characteristics}},
+volume = {148},
+year = {2001}
+}
+
 @article{Denslow2000,
 author = {Denslow, Julie S and Guzman, G Sandra},
 doi = {10.2307/3236800},
@@ -814,6 +1052,17 @@ volume = {11},
 year = {2000}
 }
 
+@article{Grime1998,
+  title={Benefits of plant diversity to ecosystems: immediate, filter and founder effects},
+  author={Grime, JP},
+  journal={Journal of Ecology},
+  volume={86},
+  number={6},
+  pages={902--910},
+  year={1998},
+  publisher={Wiley Online Library}
+}
+
 @article{Diaz2007,
   title={Incorporating plant functional diversity effects in ecosystem service assessments},
   author={D{\'\i}az, Sandra and Lavorel, Sandra and de Bello, Francesco and Qu{\'e}tier, Fabien and Grigulis, Karl and Robson, T Matthew},
@@ -823,6 +1072,17 @@ year = {2000}
   pages={20684--20689},
   year={2007},
   publisher={National Acad Sciences}
+}
+
+@article{Garnier2004,
+author = {Garnier, {\'{E}}ric and Cortez, Jacques and Bill{\`{e}}s, Georges and Navas, Marie-Laure and Roumet, Catherine and Debussche, Max and Laurent, G{\'{e}}rard and Blanchard, Alain and Aubry, David and Bellmann, Astrid and Neill, Cathy and Toussaint, BJean-Patrick},
+journal = {Ecology},
+keywords = {Biodiversity,ecosystem functioning,functional effect groups,functional leaf traits,litter decomposition,net primary productivity,secondary succession,soil carbon and nitrogen},
+number = {9},
+pages = {2630--2637},
+title = {{Plant functional markers capture ecosystem properties during secondary successsion}},
+volume = {85},
+year = {2004}
 }
 
 
@@ -847,6 +1107,35 @@ pages = {873--882},
 title = {{Estimating diversity and entropy profiles via discovery rates of new species}},
 volume = {6},
 year = {2015}
+}
+
+@article{Patil1982,
+title={Diversity as a concept and its measurement},
+author={Patil, GP and Taillie, Charles},
+journal={Journal of the American statistical Association},
+volume={77},
+number={379},
+pages={548--561},
+year={1982},
+publisher={Taylor \& Francis}
+}
+
+
+@article{Tothmeresz1995,
+author = {Tothmeresz, B{\'{e}}la and T{\'{o}}thm{\'{e}}r{\'{e}}sz, B{\'{e}}la},
+doi = {10.2307/3236223},
+file = {:C$\backslash$:/Users/ariane.mirabel/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/T{\'{o}}thm{\'{e}}r{\'{e}}sz - 1995 - Comparison of different methods for diversity ordering.pdf:pdf},
+isbn = {1100-9233},
+issn = {11009233},
+journal = {Journal of Vegetation Science},
+keywords = {compari-,diversity family,diversity profile,diversity profiles and their,eter diversity,introduction,one-param-,r{\'{e}}nyi,s diversity index},
+mendeley-groups = {These/Maths},
+number = {2},
+pages = {283--290},
+pmid = {471},
+title = {{Comparison of different methods for diversity ordering}},
+volume = {6},
+year = {1995}
 }
 
 
