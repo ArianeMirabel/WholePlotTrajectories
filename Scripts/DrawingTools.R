@@ -136,7 +136,7 @@ plotIDH<-function(Data,AgbLoss){
       abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
       return(round(summary(Lm)$adj.r.squared,2)) }
   })
-  legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('adjusted','R'^2)))
+  legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('Adjusted ','R'^2)))
 }
 
 plotDiv<-function(Data,remove=FALSE){

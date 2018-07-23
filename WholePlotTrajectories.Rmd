@@ -370,7 +370,7 @@ Along time the recovery of infrequent species was increasingly difficult, so tha
 
 The long-term impact of disturbance on community functional redundancy meant a lower resilience of the pre-disturbance communities, with higher chances to see the persistence of disturbance-specific species at the expense of late-successional ones [@Haddad2008].
 Besides, the long-term recovery of infrequent species increases the risks to loose cornerstone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
-Apart from the functional characteristics considered here, infrequent species might indeed have unique functions in the ecosystem or be a key for some fauna.
+Apart from the functional characteristics considered here, infrequent species might indeed have unique functions in the ecosystem or be a key for some fauna [@Schleuning2016].
 
 # Conclusions
 
