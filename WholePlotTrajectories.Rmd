@@ -172,10 +172,10 @@ From 2003, botanical campaigns have been conducted every 5 to 6 years to identif
 This variability of protocols in time raised methodological issues as vernacular names usually correspond to different botanical species. 
 It resulted in significant taxonomic uncertainties that had to be propagated to composition and diversity metrics.
 The uncertainty propagation was done through a Bayesian framework reconstituting complete inventories at genus level from real incomplete ones on the basis of vernacular/botanical names association. 
-Vernacular names were replaced through multinomial trials based on the association probability $\big[\alpha_1, \alpha_2,..., \alpha_3\big]$ observed across all inventories between each vernacular name *v* and all species $\big[s_1, s_2,..., s_N\big]$:
+Vernacular names were replaced through multinomial trials based on the association probability $\big[\alpha_1, \alpha_2,..., \alpha_V\big]$ observed across all inventories between each vernacular name *v* and all species $\big[s_1, s_2,..., s_N\big]$:
 
 \begin{align}
-M_v\Big(\big[s_1, s_2,..., s_N\big],\big[\alpha_1, \alpha_2,..., \alpha_3\big]\Big) \nonumber
+M_v\Big(\big[s_1, s_2,..., s_N\big],\big[\alpha_1, \alpha_2,..., \alpha_V\big]\Big) \nonumber
 \end{align}
 
 See Supplementary Materials -Figure S1 and @Aubry-Kientz2013 for the detailed methodology.
@@ -218,7 +218,7 @@ Community functional redundancy was the sum of TDPs overlap, expressed as the av
 
 From 1989 (2 years after disturbance) to 2015 (28 years after disturbance), 828 388 individual trees and 591 botanical species pertaining to 223 genus and 64 families were recorded. 
 
-While both taxonomic and functional composition remained stable in undisturbed communities (Figure \@ref(fig:NMDSplans)), they followed marked and consistent trajectories over post-disturbance time.
+While both taxonomic and functional composition remained stable in undisturbed communities (Figure \@ref(fig:NMDSplans)), they followed marked and consistent trajectories over post-\break disturbance time.
 In disturbed communities, these compositional changes corresponded to shifts towards species with more acquisitive functional strategies, from communities with high average WSG to high average SLA and chlorophyll content (see appendix I). For functional composition, this translated into cyclic compositional changes with an unachieved recovery of the initial composition (Figure \@ref(fig:NMDSplans)). The maximum dissimilarity with the initial state was positively correlated to the disturbance intensity for both taxonomic and functional composition ($\rho_{spearman}^{taxonomic}=0.87$ and $\rho_{spearman}^{functional}=0.90$ respectively). The maximum value was reached around 26 years after disturbance for taxonomic composition and 22 years for functional composition. 
 
 ```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of flora composition (left panels (ref:Bolda) and (ref:Boldc)) and functional composition (right panels (ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS space. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the euclidean distance to initial condition along the 30 sampled years. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3) with shaded areas the credibility intervals.", fig.env="figure*"}
@@ -369,7 +369,7 @@ This replacement was stochastic and followed the lottery recruitment rules, impl
 Along time the recovery of infrequent species was increasingly difficult, so that the time for the full recovery of the functional redundancy, in some communities just initiated after 30 years, was difficult to estimate [@Elmqvist2003;@Diaz2005].
 
 The long-term impact of disturbance on community functional redundancy meant a lower resilience of the pre-disturbance communities, with higher chances to see the persistence of disturbance-specific species at the expense of late-successional ones [@Haddad2008].
-Besides the long-term recovery of infrequent species increases the risks to loose cornerstone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
+Besides, the long-term recovery of infrequent species increases the risks to loose cornerstone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
 Apart from the functional characteristics considered here, infrequent species might indeed have unique functions in the ecosystem or be a key for some fauna.
 
 # Conclusions
@@ -379,7 +379,6 @@ The IDH was validated for community taxonomic richness and, to some extent, taxo
 The IDH was translated in time by the recruitment, beyond an intensity threshold, of short-lived pionneers that prevented in the first times the establishment of more diverse long-lived pionneers, recruited otherwise below the intensity threshold.
 The resilience of tropical forests proved consistent although several decades-long. 
 Still, the disturbance impact on communities redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Gourlet-Fleury2005].
-As the trajectories highlighted the recruitment processes proved central for communities response to disturbance and closer focus on demographical drivers of communities response would clarify the fate of the future forests.
 
 `r if (knitr:::is_html_output()) '# References {-}'`
 

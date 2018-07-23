@@ -30,10 +30,10 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 lang: english
 output: 
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
   bookdown::word_document2: default
 ---
 
@@ -71,6 +71,11 @@ The following information are available for this article:
 ```{r FigBayesianScheme,out.width='100%',fig.cap="Scheme of the Bayesian process propagating the taxonomic uncertainty",echo=F, fig.env="figure*"}
 knitr::include_graphics("ExternalFig/BayesianSheme.png")
 ```
+
+The biodiversity estimator is based on the association probability between vernacular names and botanical species. 
+The association probability is estimated by a Dirichlet trial based on the vernacular/botanical association frequency observed in the whole inventory.
+This association probability then allows generating theoretical inventories with complete botanical identification with the assignment of botanical species to trees with only a vernacular name.
+The repetition of the replacement process produces a set of theoretical inventories which diversities gives the probability distribution of the initial inventory diversity.
 
 
 ```{r FigSeedMassClasses, echo=FALSE, out.width='80%', fig.asp=2/5,fig.cap="Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).", fig.env="figure*"}
