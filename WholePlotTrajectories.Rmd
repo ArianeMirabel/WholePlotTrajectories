@@ -20,7 +20,7 @@ affiliation:
       Montpellier,
       France.
   - affsuperscript: 3
-    dptuniv: INPHB, Institut National Polytechnique Félix Houphouet-Boigny
+    dptuniv: INPHB, Institut National Polytechnique Félix Houphoüet-Boigny
     address: >
       Yamoussoukro,
       Ivory Coast.
