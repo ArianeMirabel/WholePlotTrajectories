@@ -117,7 +117,7 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\JournalInfo{Hal 00679993} % Journal information
+\JournalInfo{\ }
 \Archive{\ }
 
 \PaperTitle{Supplementary materials} % Article title
@@ -129,7 +129,7 @@ Ariane MIRABEL\textsuperscript{1*}\\ Eric MARCON\textsuperscript{1}\\ Bruno HERA
 \textsuperscript{1}UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles,
 Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\\\textsuperscript{2}INPHB (Institut National Ploytechnique Félix Houphoüet Boigny)\\ \hspace{1em} Yamoussoukro, Ivory Coast
 }
-\affiliation{*\textbf{}: ariane.mirabel@ecofog.gf, http://www.ecofog.gf/spip.php?article47} % Corresponding author
+\affiliation{*\textbf{}: ariane.mirabel@ecofog.gf, https://github.com/ArianeMirabel} % Corresponding author
 
 \Keywords{} % Keywords - if you don't want any simply remove all the text between the curly brackets
 \newcommand{\keywordname}{} % Defines the keywords heading name
@@ -169,6 +169,8 @@ Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\
 
 
 
+\onecolumn
+
 The following information are available for this article:
 
 \textbf{Figure S1}: Whenever the family or genus were recorded for a
@@ -178,6 +180,15 @@ level (i.e species of the same genus when the species is missing,
 species of the same family when the genus is missing)
 \ref{fig:FigBayesianScheme}.
 
+\begin{figure}[h]
+
+{\centering \includegraphics[width=1\linewidth]{ExternalFig/BayesianSheme} 
+
+}
+
+\caption{Scheme of the Bayesian process propagating the taxonomic uncertainty}\label{fig:FigBayesianScheme}
+\end{figure}
+
 \textbf{Figure S2}: Trajectories of seed mass classes proportions over
 30 years after disturbance, corresponding to the median (solid line) and
 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration
@@ -185,15 +196,6 @@ of the taxonomic uncertainty propagation. No gap filling process was
 applied in this case. Initial treatments are represented by solid lines
 colors with green for control, blue for T1,orange for T2 and red for T3
 .
-
-\begin{figure*}
-
-{\centering \includegraphics[width=1\linewidth]{ExternalFig/BayesianSheme} 
-
-}
-
-\caption{Scheme of the Bayesian process propagating the taxonomic uncertainty}\label{fig:FigBayesianScheme}
-\end{figure*}
 
 The biodiversity estimator is based on the association probability
 between vernacular names and botanical species. The association
@@ -206,14 +208,25 @@ The repetition of the replacement process produces a set of theoretical
 inventories which diversities gives the probability distribution of the
 initial inventory diversity.
 
-\begin{figure*}
+\begin{figure}[h]
 
 {\centering \includegraphics[width=0.8\linewidth]{WholePlotTrajectories_SuppMat_files/figure-latex/FigSeedMassClasses-1} 
 
 }
 
 \caption{Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).}\label{fig:FigSeedMassClasses}
-\end{figure*}
+\end{figure}
+
+\textbf{Figure S3}: Functional PCA
+
+\begin{figure}[h]
+
+{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_SuppMat_files/figure-latex/PCA_graphs-1} 
+
+}
+
+\caption{Summarizing plots of the functional PCA analysis defining communities functional space. \textbf{(a)} Plot of the samples from the BRIDGE functional database in the two dimensional main plan. \textbf{(b)} bow plot of the PCA eignevalues in percentage. \textbf{(c)} Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).}(\#fig:PCA_graphs)
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
