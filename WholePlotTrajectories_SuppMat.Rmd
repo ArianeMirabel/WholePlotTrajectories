@@ -92,7 +92,6 @@ load("DB/FunctionalPCA")
 
 plotPCA(DataACP)
 
-
 ```
 
 

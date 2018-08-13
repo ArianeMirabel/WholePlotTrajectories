@@ -3,10 +3,10 @@ title: "Post-Disturbance Tree Community Trajectories in a Neotropical Forest"
 author:
   - name: Ariane MIRABEL
     authsuperscript: 1*
+  - name: Bruno Hérault
+    authsuperscript: 2
   - name: Eric Marcon
     authsuperscript: 1
-  - name: Bruno Hérault
-    authsuperscript: 2 3
 affiliation:
   - affsuperscript: 1
     dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles, Université de Guyane.
@@ -15,11 +15,6 @@ affiliation:
       97310 Kourou,
       France.
   - affsuperscript: 2
-    dptuniv: Cirad, Univ montpellier, UR Forests & Societies.
-    address: >
-      Montpellier,
-      France.
-  - affsuperscript: 3
     dptuniv: INPHB, Institut National Polytechnique Félix Houphoüet-Boigny
     address: >
       Yamoussoukro,
@@ -46,11 +41,11 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
+  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::word_document2: default
-  bookdown::gitbook: default
 ---
 
 (ref:Bolda) **(a)**
@@ -134,19 +129,19 @@ The disturbance intensity was measured as the percentage of aboveground biomass 
 ```{r Tab1, echo=FALSE,as.is=T}
 Intervention <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
-  Timber=c("", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning=c("", 
-             "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood=c("", 
-             "", 
-             "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+  Timber=c("-", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10   $trees.ha^{-1}$", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10  $trees.ha^{-1}$",
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10  $trees.ha^{-1}$"),
+  Thinning=c("-", 
+             "-", 
+             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30   $trees.ha^{-1}$", 
+             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15  $trees.ha^{-1}$  "),
+  Fuelwood=c("-", 
+             "-", 
+             "-", 
+             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species,\\ $\\approx$ 15 $trees.ha^{-1}$"),
+  AGBLost=c(0, "$[12-33]$", "$[33-56]$", "$[35-56]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
 knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE,format="latex") %>%
@@ -228,7 +223,7 @@ mtext("(c)",side=3,adj=0,line=0.5)
 EuclidDist(FunEuclid)
 mtext("(d)",side=3,adj=0,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=0.8)
-legend("right",inset=c(-0.345,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",inset=c(-0.32,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
 ```
 
@@ -242,7 +237,7 @@ load("DB/CWM")
 
 CWMdraw(CWM)
 legendCWM()
-
+legend("right",inset=c(-1,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 ```
 
 ## Communities richness and evenness
@@ -257,14 +252,14 @@ load("DB/ReplacementTraj_ForGraphs")
 load("DB/FunctionalTraj_ForGraphs")
 load("DB/FunctionalRichnessTraj_ForGraphs")
 
-par(mfrow=c(2,2),mar=c(2,2.5,2.5,1),oma=c(1,2,1,3),no.readonly = T)
+par(mfrow=c(2,2),mar=c(2,2,2.5,5),oma=c(1,2,1,1),no.readonly = T)
 TaxoTraj(CompleteTaxo)
 plotDiv(CompleteRichFun,remove=TRUE)
 mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.9)
 plotDiv(CompleteFun,remove=TRUE)
 mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.9)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
-legend("right",inset=c(-0.3,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",xpd=NA,inset=-0.4,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 
 ```
 
@@ -280,7 +275,7 @@ The regression model better predicted the functional richness and evenness ($0.5
 ```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/4,fig.cap="Relationship between the initial \\%AGB loss and community taxonomic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance", fig.env="figure*"}
 load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
 
-par(mfrow=c(1,4),mar=c(2,2.5,3,1),oma=c(1,1,1,2.5),no.readonly=TRUE)
+par(mfrow=c(1,4),mar=c(2,2.5,3,0),oma=c(1,1,1,4),no.readonly=TRUE)
 plotIDH(Data=Rich,AgbLoss=AGBloss)
 mtext("(a) Taxonomic\nRichness",line=1,side=3,adj=0,cex=0.85)
 mtext("Equivalent diversity",side=2,line=2.2,adj=1,cex=0.8)
@@ -291,7 +286,7 @@ mtext("(c) Functional\nRichness",line=1,side=3,adj=0,cex=0.85)
 plotIDH(Data=FunRich,AgbLoss=AGBloss)
 mtext("(d) Functional\nEvenness",line=1,side=3,adj=0,cex=0.85)
 mtext("initial AGB loss (%)",side=1,line=2.2,adj=1,cex=0.8)
-legend("right",inset=c(-0.5,0),xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
+legend("right",inset=-0.5,xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
 
 ```
 

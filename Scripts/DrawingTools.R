@@ -242,7 +242,7 @@ RedundancyPlot<-function(Red){
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),3),
              dimnames=list(1:12,colnames(Red[[1]]),c(0.025,0.5,0.975)))
   
-  plot(colnames(Red),Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="")
+  plot(colnames(Red),Red[1,,1],type='n',ylim=c(min(Red),max(Red)),xlab="",ylab="",bty="n")
   
   invisible(lapply(1:4,function(tr){
     toplot<-Red[which(rownames(Red)%in%treatments[[tr]]),,]
