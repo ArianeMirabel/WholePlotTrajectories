@@ -305,4 +305,19 @@ colnames(CompFun)<-c("Max","Plot","treat")
 cor(as.numeric(CompFun[,"Max"]),as.numeric(CompFun[,"treat"]),method="spearman")
 
 
+### traits dataset coverage:
 
+splist<-lapply(LivingStand_all,function(yr){
+  return(unlist(lapply(yr,function(plo){
+    freq<-as.character(plo[which(plo[,"name"]%in%traits[,"name"]),"name"])
+    freq<-sum(tapply(freq,freq,length))
+    return(freq/sum(tapply(as.character(plo[,"name"]),as.character(plo[,"name"]),length)))
+  })))
+})
+splist<-lapply(splist,function(yr){return(as.numeric(yr[which(names(yr)%in%1:12)]))})
+splist<-splist[which(unlist(lapply(splist,function(yr){length(yr)!=0})))]
+
+Pby<-c("1996","1998","2000","2002","2004","2006","2008","2010","2012","2014","2016","2017")
+splist<-unlist(splist[which(!names(splist)%in%Pby)])
+min(splist)
+mean(splist)
