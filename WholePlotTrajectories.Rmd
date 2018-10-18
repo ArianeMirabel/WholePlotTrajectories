@@ -41,11 +41,11 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
-  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::word_document2: default
+  bookdown::gitbook: default
 ---
 
 (ref:Bolda) **(a)**
@@ -302,6 +302,7 @@ load("DB/Redundancy_restricted")
 
 par(mar=c(3,2,3,2))
 RedundancyPlot(RedundancyTraj_restricted)
+mtext("Number of Species",side=3,line=1,adj=0,cex=1.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=1.5)
 
 ```
