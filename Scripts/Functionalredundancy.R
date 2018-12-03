@@ -222,8 +222,6 @@ save(RedundancyTraj_restricted,file="DB/Redundancy_restricted")
 
 
 
-
-
 #####################################################
 traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
 

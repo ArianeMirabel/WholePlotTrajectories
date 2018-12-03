@@ -2,7 +2,7 @@
 Library(c("shape","plotrix"))
 
 treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
-names(treatments)<-c("Control","T1","T2","T3")
+names(treatments)<-c("Control","Low","Intermediate","High")
 ColorsTr<-c("darkolivegreen2","gold","orangered","darkred")
 colyear<-c("deepskyblue","cornflowerblue","darkslateblue")
 time<-c("1995","2005","2015")
@@ -145,7 +145,7 @@ plotDiv<-function(Data,remove=FALSE){
   
   Toplot<-lapply(Data,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
   Toplot<-lapply(Toplot,function(tr){
-    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col}))})#-tr[,1,rep]
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
                dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
     ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
