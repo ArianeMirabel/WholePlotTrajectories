@@ -92,14 +92,14 @@ source("Scripts/DrawingTools.R")
 
 # Introduction
 
-The large areas covered with tropical forests worldwide hold crucial environmental, economic and social values. 
+Tropical forests cover large areas worldwide and represent crucial environmental, economic and social values. 
 They provide wood and multiple non-timber forest products, shelter a diversified fauna, regulate the local and regional climates, determine the cycles of carbon, water and nutrient, and ensure cultural and human well-being. 
-The growing demand in forests products together with current global changes increases the pressure on remaining natural forests [@Morales-Hidalgo2015].
-In this context, the maintenance of tropical forest community structure, composition and functioning is increasingly threatened [@Anderson-Teixeira2013].
+However, the growing demand in forests products together with current global changes increases the pressure on remaining natural forests [@Morales-Hidalgo2015].
+This context specifically threatens the maintenance of community structure, composition and functioning [@Anderson-Teixeira2013].
+In tropical forests indeed, tree communities are shaped and maintained by a natural disturbance regime, specifically tree fall gaps[@Schnitzer2001].
+This disturbance regime is affected by the current changing context and anthropic activities [@Sist2015], so clarify community responses to disturbance and the underlying ecological processes is crucial to anticipate the fate of tropical forests [@Chazdon2003a].
 
-Tropical forests are subject to natural disturbance events, specifically tree fall gaps, determining and maintaining the characteristics of ecosystems [@Schnitzer2001]. 
-Disturbances change both the biotic and abiotic environment, through modifications of the fluxes of light, heat and water [@Goulamoussene2017], and of the interactions among species such as competition [@Chesson2000].
-Understand the drivers of community response to disturbance and the underlying ecological processes is then crucial to anticipate the fate of tropical forests in the changing context [@Chazdon2003a].
+Disturbances change both biotic and abiotic environment, through modifications in the fluxes of light, heat and water [@Goulamoussene2017], and of the interactions among species such as competition [@Chesson2000].
 Community response has been largely studied through forest structural parameters such as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016]. 
 Thereafter, models based on the observed trajectories after disturbance gave important insights into the recovery of ecosystem processes and services [@Herault2018]. 
 Regarding community diversity and composition, however, post-disturbance trajectories are not as thoroughly understood.
@@ -117,14 +117,14 @@ In that respect, the functional trait-based approach that focus on major traits 
 For instance, the functional approach revealed in tropical rainforests the deterministic processes entailing, after disturbance, a functional shift from a dominance of "conservative" slow-growing species dealing with scarce resources to "acquisitive" fast-growing species with rapid and efficient use of abundant resources [@Reich2014;@Herault2011].
 This shift is translated into the trajectories of key functional traits related to resource acquisition (leaf and stem traits) and life-history traits (seed mass, maximum size) [@Wright2004;@TerSteege2006;@Westoby2006a;@Chave2009b].
 Eventually, a complete overview of community response to disturbance would encompass the changes in functional redundancy, that quantifies the amount of shared trait values among species [@Carmona2016].
-The high functional redundancy of hyper-diverse tropical forests [@Bellwood2006] mitigates the impacts of species removal on ecosystem functioning and determines the resilience of communities after disturbance [@Elmqvist2003; @Diaz2005].
+The high functional redundancy of hyper-diverse tropical forests [@Bellwood2006] mitigates the impacts of species removal on ecosystem functioning and determines community resilience after disturbance [@Elmqvist2003; @Diaz2005].
 
 Improve the understanding of diversity and composition response to disturbance would then require to combine taxonomic and functional diversity and composition metrics that is not often provided [@Carreno-Rocabado2012,@Mouillot2013]. 
 Long term monitoring provided trajectories over several decades would allow to put in perspectives the existing studies that often correspond to chronosequence studies [@Chazdon2007] or cover 10 or 15 years after disturbance [@Carreno-Rocabado2012].
 
 In this study, we monitored over 30 years the response of 75 ha of Neotropical forest plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem above-ground biomass (AGB) loss. 
 We made use of a large functional traits database encompassing major leaf, stem and life-history traits in order to draw the taxonomic and functional trajectories in terms of richness, evenness, composition and redundancy. 
-Specifically, we (i) elucidated community taxonomic and functional recovery and the underlying ecological processes, (ii) clarified the validity of the IDH in the long term for tropical forest and its translation into different trajectories in time, and (iii) examined community recovery time.
+From post-disturbance trajectories (i) we determined the taxonomic and functional translation post-disturbance succession at community scale. (ii) we validated the importance of deterministic processes in community response to disturbance. We defined th interplay of deterministic and stochastic processes along time, which allowed discussing the IDH. (iii) examined community recovery time.
 
 # Material and Methods
 
