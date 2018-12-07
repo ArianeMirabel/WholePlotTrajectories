@@ -99,17 +99,18 @@ This context specifically threatens the maintenance of community structure, comp
 In tropical forests indeed, tree communities are shaped and maintained by a natural disturbance regime, specifically tree fall gaps[@Schnitzer2001].
 This disturbance regime is affected by the current changing context and anthropic activities [@Sist2015], so clarify community responses to disturbance and the underlying ecological processes is crucial to anticipate the fate of tropical forests [@Chazdon2003a].
 
-Disturbances change both biotic and abiotic environment, through modifications in the fluxes of light, heat and water [@Goulamoussene2017], and of the interactions among species such as competition [@Chesson2000].
+Disturbances change both biotic and abiotic environment, through modifications in the fluxes of light, heat and water [@Goulamoussene2017], and modifications in the interactions among species [@Chesson2000].
 Community response has been largely studied through forest structural parameters such as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016]. 
-Thereafter, models based on the observed trajectories after disturbance gave important insights into the recovery of ecosystem processes and services [@Herault2018]. 
+Thereafter, models based on the observed trajectories after disturbance gave important insights into community recovery and resilience [@Herault2018]. 
 Regarding community diversity and composition, however, post-disturbance trajectories are not as thoroughly understood.
-It is recognized that determined succession, mainly driven by the recruitment of pioneer and heliophilous species, shape post-disturbance trajectories [@Carreno-Rocabado2012;@Poorter2016].
-Community trajectories would then rely on deterministic processes and would be predictable according to the disturbance intensity and to the characteristics of the pre-disturbance community.
+It is recognized that a determined succession, mainly driven by the recruitment of pioneer and heliophilous species, shape community trajectories afte disturbance [@Carreno-Rocabado2012;@Poorter2016].
+Deterministic processes would then be major processes of community response to disturbance.
+This would make post-disturbance trajectories deterministic, and then predictable according to the disturbance intensity and to the characteristics of the pre-disturbance community.
 Yet, observed trajectories in diversity and composition often deviate from predictions.
-Besides, although the deterministic ecological processes at stake are identified, their relative importance compared to stochasticity remains debated [@Norden2015].
+Although the deterministic ecological processes at stake are identified, They interplay with stochastic processes and their relative importance remains debated [@Norden2015].
 This debate translates into the validation and the extent of the intermediate disturbance hypothesis (IDH).
 The IDH assumes the predominance of deterministic processes, and predicts a maximum species diversity after moderate disturbance intensity [@Molino2001;@Kariuki2006a].
-Validations of the IDH remain scarce in the long-term and often rely on the analysis of taxonomic richness [@Molino2001]. 
+VThe IDH has been scarcely validated in the long-term and often rely on the analysis of taxonomic richness [@Molino2001]. 
 Taxonomic richness alone, however, gives limited or misleading information on forests recovery and functioning [@Chaudhary2016]. 
 More ecological-meaningful analysis would couple richness with species evenness, which reveals the changes in the species abundance distribution, and (ii)species composition, which is crucial for conservation issues [@Lavorel2002;@Bellwood2006].
 Furthermore, a functional approach accounting for species biological attributes would directly link community diversity, composition and redundancy to ecosystem functioning and to its environmental constraints [@Violle2007b;@Baraloto2012a].
