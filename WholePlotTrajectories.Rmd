@@ -41,11 +41,11 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
+  bookdown::gitbook: default
+  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::word_document2: default
-  bookdown::gitbook: default
 ---
 
 (ref:Bolda) **(a)**
@@ -103,14 +103,14 @@ Disturbances change both biotic and abiotic environment, through modifications i
 Community response has been largely studied through forest structural parameters such as aboveground biomass, tree height or stem density [@Piponiot2016;@Rutishauser2016]. 
 Thereafter, models based on the observed trajectories after disturbance gave important insights into community recovery and resilience [@Herault2018]. 
 Regarding community diversity and composition, however, post-disturbance trajectories are not as thoroughly understood.
-It is recognized that a determined succession, mainly driven by the recruitment of pioneer and heliophilous species, shape community trajectories afte disturbance [@Carreno-Rocabado2012;@Poorter2016].
+It is recognized that a determined succession, mainly driven by the recruitment of pioneer and heliophilous species, shape community post-disturbance trajectories [@Carreno-Rocabado2012;@Poorter2016].
 Deterministic processes would then be major processes of community response to disturbance.
 This would make post-disturbance trajectories deterministic, and then predictable according to the disturbance intensity and to the characteristics of the pre-disturbance community.
 Yet, observed trajectories in diversity and composition often deviate from predictions.
-Although the deterministic ecological processes at stake are identified, They interplay with stochastic processes and their relative importance remains debated [@Norden2015].
+Although the deterministic ecological processes at stake are identified, their interplay with stochastic processes and their relative importance remains debated [@Norden2015].
 This debate translates into the validation and the extent of the intermediate disturbance hypothesis (IDH).
 The IDH assumes the predominance of deterministic processes, and predicts a maximum species diversity after moderate disturbance intensity [@Molino2001;@Kariuki2006a].
-VThe IDH has been scarcely validated in the long-term and often rely on the analysis of taxonomic richness [@Molino2001]. 
+The IDH has been scarcely validated in the long-term and often rely on the analysis of taxonomic richness [@Molino2001]. 
 Taxonomic richness alone, however, gives limited or misleading information on forests recovery and functioning [@Chaudhary2016]. 
 More ecological-meaningful analysis would couple richness with species evenness, which reveals the changes in the species abundance distribution, and (ii)species composition, which is crucial for conservation issues [@Lavorel2002;@Bellwood2006].
 Furthermore, a functional approach accounting for species biological attributes would directly link community diversity, composition and redundancy to ecosystem functioning and to its environmental constraints [@Violle2007b;@Baraloto2012a].
@@ -140,7 +140,7 @@ Disturbance intensity was measured as the percentage of aboveground biomass (%AG
 
 ```{r Tab1, echo=FALSE,as.is=T}
 Intervention <- data.frame(
-  Treatment=c("Control", "T1", "T2", "T3"),
+  Treatment=c("Control", "T1, low", "T2, intermediate", "T3, high"),
   Timber=c("-", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10   $trees.ha^{-1}$", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10  $trees.ha^{-1}$",
@@ -226,7 +226,7 @@ The maximum dissimilarity with the initial was reached for taxonomic composition
 load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
 load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
 
-par(mfrow=c(2,2),mar=c(2,2.5,2.5,1),oma=c(1,2,1,3),no.readonly = T)
+par(mfrow=c(2,2),mar=c(2,2.5,2.5,1),oma=c(1,2,1,4),no.readonly = T)
 TaxoCompo(MatrepTaxo)
 mtext("Taxonomic composition",side=3,line=1.8,cex=1.05)
 FunCompo(MatrepFun)
@@ -237,7 +237,7 @@ mtext("(c)",side=3,adj=0,line=0.5)
 EuclidDist(FunEuclid)
 mtext("(d)",side=3,adj=0,line=0.5)
 mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=0.8)
-legend("right",inset=c(-0.32,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",inset=-0.4,xpd=NA,legend=c("Control","Low","Interm.","High"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment", cex=0.85)
 
 ```
 
@@ -253,7 +253,7 @@ load("DB/CWM")
 
 CWMdraw(CWM)
 legendCWM()
-legend("right",inset=c(-1,0),xpd=NA,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",inset=c(-1,0),xpd=NA,legend=c("Control","Low","Intermediate","High"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
 ```
 
 ## Community taxonomic and functional diversity
@@ -275,7 +275,7 @@ mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.9)
 plotDiv(CompleteFun)
 mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.9)
 mtext("Years since disturbance",side=1,line=2.2,adj=1)
-legend("right",xpd=NA,inset=-0.4,legend=c("T0","T1","T2","T3"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment")
+legend("right",xpd=NA,legend=c("Control","Low","Intermediate","High"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment", cex=0.85,inset=-0.57)
 
 ```
 
@@ -326,59 +326,72 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=1.5)
 
 ## A cyclic recovery of community composition
 
-Community taxonomic and functional composition appeared resilient, following similar hump-shaped trajectories starting to return towards pre-disturbance composition after 30 years. 
+The hump-shaped trajectories of community composition returned towards pre-disturbance state after 30 years, highlighting community resilience in terms of taxonomic and functional composition. 
 
-The taxonomic differences among local communities were already apparent before disturbance, as revealed by the distinct starting points on the NMDS axis 2. 
-These differences were maintained throughout recovery trajectories.  
-More than commonly thought, post-disturbance trajectories depended on community initial composition, which partly determined the pool of recruited species and constrained the trajectories towards the initial composition. 
-The community taxonomy proved highly resilient, as it absorbed the disturbance and maintained commnity initial composition characteristics [@Folke2006].
-This high resilience suggested that species not belonging to the pre-disturbance community were rarely recruited because of the commonness of dispersal limitation among tropical tree species [@Svenning2005]. 
+Before disturbance, there were already taxonomic differences among local communities, as revealed by the distinct starting points on the NMDS axis 2.
+These initial differences were maintained throughout the trajectories following disturbance, so community initial state influenced the trajectories following disturbance more than commonly thought.
+The initial composition indeed partly determined the pool of species recruited, and hence shaped the composition trajectories and drove them towards the recovery of the initial composition.
+This taxonomic recovery, although it was not fully achieved after 30 years, suggested the resilience of community taxonomic composition and the maintenance of community initial differences [@Folke2006].
+Species not belonging to the pre-disturbance community were then rarely recruited, probably because of the common dispersal limitations among tropical tree species [@Svenning2005]. 
 
-Conversely, disturbed communities followed functional trajectories that are highly similar in terms of functional composition.
+Functional composition trajectories were, conversely, highly similar among disturbed communities.
 As the composition of pre-disturbance surviving trees is representative of the initial community [@Herault2018], changes in functional composition relied upon the recruitment of species or functional types that were infrequent or absent before disturbance.
-Competitive pioneers became dominant in filling the environmental niches of high availability of light, space and nutrients vacated by the disturbance.
-The recruitment of pioneers changed community functional composition in the same way for all disturbance intensity towards more resource-acquisitive strategies, moving community functional composition right along the first axis in Fig. \@ref(fig:NMDSplans) [@Westoby1998; @Wright2004; @Reich2014].
-Thereafter long-lived, more resistant and shade-tolerant species excluded the first established pioneers and started the recovery of pre-disturbance functional composition, moving similarly community functional composition left along the first axis and upward along the second axis in Fig. \@ref(fig:NMDSplans).
+Competitive pioneers became dominant in filling the environmental niches vacated by the disturbance, with a high availability of light, space and nutrients.
+This recruitment of pioneers similarly changed the functional composition of all communities, whenever the disturbance intensity.
+The functional composition went towards more resource-acquisitive strategies, translated in the functional plan (Fig. \@ref(fig:NMDSplans)) by a displacement on the right along the first axis [@Westoby1998; @Wright2004; @Reich2014].
+Thereafter, the pioneers first recruited were progressively excluded by long-lived, more resistant and shade-tolerant species.
+The commpunity functional composition then returned towards more resource-conservative strategies, suggesting the recovery of the initial community composition and translated in the functional plan by a displacement left along the first axis and upward along the second axis (Fig. \@ref(fig:NMDSplans)).
 
-These trajectories provided empirical support to the hypothesis that community assembly is both deterministic and historically convergent at different levels of community organization.
-Deterministic, trait-based processes drove community convergence in functional composition, while at the same time dispersal limitation maintained their divergence in taxonomic composition [@Fukami2005].
+In the light of these taxonomic and functional composition trajectories, community response to disturbance proved simultaneously deterministic and stochastic at different levels of community organization.
+Taxonomic trajectories were shaped by dispersal limitations maintaining the stochastic differences among communities due to historical contingency. 
+Functional trajectories were shaped by trait-based processes resulting the the convergence of community functional composition [@Fukami2005].
 
 ## A new perspective on the intermediate disturbance hypothesis
 
-Community taxonomic richness increased after disturbance until an intensity threshold (20-25% AGB loss) above which the taxonomic richness decreased. The increase of taxonomic evenness after disturbance also depended on the disturbance intensity, although the correlation was weaker than for the taxonomic richness as already observed in the Guiana Shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998].
-In accordance with the IDH, then, community taxonomic trajectories depended on the disturbance intensity. They markedly changed above an intensity threshold, with a decrease of the richness and a persistent increase of the evenness. Disturbance intensity determined the balance in the community between surviving trees from pre-disturbance communities and trees recruited afterward. The pool of true pioneer species specifically recruited after disturbance is, in the Guiana Shield, restricted to a few common genera (e.g. *Cecropia* spp., *Vismia* spp.)[@Guitet2018].
-Below the intensity threshold the surviving community trees remained  numerous enough to maintain the pre-disturbance high taxonomic richness while the pioneers recruited, infrequent or absent before disturbance, increased both community taxonomic richness and evenness. Beyond the intensity threshold, disturbance decreased the taxonomic richness of surviving trees, and this decrease was not offset by the recruitment of pioneers. The overall community taxonomic richness therefore decreased according to the disturbance intensity [@Molino2001].
-An intermediate disturbance was then detected, defined by an intensity for which post-disturbance trajectories markedly changed. Such disturbance increased the availability of resources and created opportunities for pioneers, without implying too important loss of shade-tolerant species or preventing their maintenance in the community [@Bongers2009].
-For community taxonomic evenness, the disturbance impact was similar but milder. Because the evenness is less sensitive to the loss of rare species, below the intensity threshold the trajectories of taxonomic evenness rather represented the increasing dominance of pioneers that balancing the usual hyper-dominance of a few species. Beyond the intensity threshold, however, pioneers became in turn highly dominant and decreased the overall evenness [@Baraloto2012a].
+Community taxonomic richness and evenness trajectories both proved to depend on the intensity of disturbance and to markedly change above an intensity threshold, thus supporting the IDH.
+The disturbance intensity determined the balance in the community between pre-disturbance surviving trees, and trees recruited afterward. 
+Below an intensity of 20%-25% AGB loss, the trees surviving after disturbance remained numerous enough to maintain the high taxonomic richness of the pre-disturbance community.
+The recruitment of pionners, infrequent or absent before disturbance, then increased the community taxonomic richness positively correlated with the disturbance intensity [@Martin2015; @Chaudhary2016].
+Besides, the pioneers became increasingly dominant and temporarily balanced the usual hyper-dominance of a few species [@Baraloto2012a]. 
+The taxonomic evenness then followed hump-shaped trajectoriesas already observed in the Guiana shield [@Baraloto2012a] and in Borenan tropical forests [@Cannon1998], with first an increase positively correlated to the disturbance intensity, and then an return towards initial values.
+Above the intensity threshold, the taxonomic richness of surviving trees was too low to be offset by the recruitment of pioneers. 
+In the Guiana shield indeed, the pool of true pioneers specifically recruited after disturbance is restricted to a few common genera (e.g. *Cecropia* spp., *Vismia* spp.) [@Guitet2018].
+The taxonomic richness trajectories following intense disturbance then decreased, all the more so that the disturbance intensity was high [@Molino2001].
+At the same time, pioneers became persistently dominant and prevented a return towards the initial evenness and the recovery of hyper-dominant shade-tolerant species.
+The intensity threshold then marked two distinct post-disturbance trajectories, and a change in community response to disturbance. 
+In accordance with the IDH, an intense disturbance below the intensity threshold would then maximise community richness and evenness.
+Such intermediate disturbance would increase the availability of resources, creating opportunities for pioneers, while allowing a high diversity among surviving trees and the maintenance of shade-tolerant species [@Bongers2009].
 
-Conversely the IDH was disproved regarding the disturbance impact on community functional richness and evenness.
-Irrespective of the disturbance intensity, both community functional richness and evenness increased following the recruitment of pioneers, functionally highly different from the composition of pre-disturbance community.
+Regarding community functional response in contrast, the IDH seemed disproved.
+Whenever the disturbance intensity, both community functional richness and evenness increased, with the recruitment of pioneers that were functionally highly different from the species of the pre-disturbance community [@Denslow1980;@Molino2001].
+Above the intensity threshold however, for the most intense disturbance, community functional richness and evenness started to decrease after 15 to 20 years. 
+The vacated environmental space was then occupied by short-lived species which prevented the establishment of other species. 
+The decline of these short-lived pioneers decreased the functional richness and evenness, but we suggest that the establishment of long-lasting pioneers will follow and the taxonomic and functional trajectories will catch up with those observed for intermediate disturbance [@Walker2009].
 
-Along time, taxonomic richness trajectories of all disturbed communities similarly dropped at first place, following the species loss due to disturbance, and then displayed a species gain depending on the disturbance intensity.
-Up to an intensity threshold, the species gain was all the more significant that the disturbance intensity increased, with the establishment of long-lived pioneers enhancing community taxonomic richness and evenness in the long term.
-These long-lived pioneers, functionally quite different from the functional composition, entailed as well a progressive and long-lasting increase of the functional richness and evenness [@Denslow1980;@Molino2001].
-Beyond an intensity threshold, though, a few short-lived pioneers occupied the vacated environmental space and prevented the establishment of other species. 
-These short-lived pioneers were functionally very different from the pre-disturbance community and entailed a rapid and significant increase of functional richness and evenness.
-Already after 10 years, though, short-lived pioneers started to decline and the functional richness and evenness decreased.
-Likely this decrease will be followed by the establishment of long-lasting pioneers, and by the time they recruit we expect the taxonomic and functional trajectories to catch up with those observed after intermediate disturbance [@Walker2009].
+The IDH then translated into community post-disturbance taxonomic trajectories, with marked differences below and above an intensity threshold. 
+It was however not tangible regarding the functional trajectories, because of their decoupling with taxonomic trajectories.
 
 ## The functional redundancy, key of community resilience
 
-For 15 years the species loss during disturbance, determined by the disturbance intensity, significantly decreased the functional redundancy within the pre-disturbance functional space.
-The redundancy decrease was not compensated for in the first place as the first recruited pioneers were functionally different from the pre-disturbance functional composition.
-Progressively though, first established species were replaced by more competitive long-lived pioneers or late-successional species resembling more the pre-disturbance functional composition and restoring the functional redundancy.
-This replacement was stochastic and followed the lottery recruitment rules, implying a recruitment eased for the first recruited species but then increasingly hampered by the emergence of interspecific competition [@Busing2002]. 
-Along time the recovery of infrequent species was increasingly slow, so that the time to full recovery of the functional redundancy, in some communities just initiated after 30 years, was extremely difficult to estimate [@Elmqvist2003;@Diaz2005].
+The decoupling between taxonomic and functional trajectories was explained by a decrease in the functional redundancy within the pre-disturbance functional space, due to the loss of species following disturbance.
+The recruitment of pioneers, functionally different from the pre-disturbance functional composition, did not compensate the decrease of functional redundancy in the first place.
+Progressively though, the functional redundancy was restored through the replacement of the first established species by more competitive, long-lived pioneers or late-successional species that were functionally closer to the pre-disturbance community.
+This replacement followed the lottery recruitment rules, implying a recruitment easy for the first recruited species but increasingly hampered by the emergence of interspecific competition [@Busing2002]. 
+The functional redundancy then relied upon stochastic processes and its recovery, depending on the recruitment of infrequent species constrained by the increasing competition, was increasingly slow and difficult to anticipate [@Elmqvist2003;@Diaz2005].
 
-The mid-term impact of disturbance on community functional redundancy meant a lower resilience of the pre-disturbance communities, with higher chances to see the persistence of disturbance-specific species at the expense of late-successional ones [@Haddad2008].
-Besides, the mid-term recovery of infrequent species increases the risks to loose keystone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
+The impact of disturbance on community functional redundancy meant a lower resilience of the pre-disturbance communities, with higher chances to see the persistence of disturbance-specific species at the expense of late-successional ones [@Haddad2008].
+Besides, the stochastic recovery of infrequent species increases the risks to lose keystone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
 Apart from the functional characteristics considered here, infrequent species might indeed have unique functions in the ecosystem or be a key for some fauna [@Schleuning2016].
 
 # Conclusions
 
-Our study revealed community recovery through the combination of deterministic processes driving their convergence in functional composition, and dispersal limitation maintaining their divergence in taxonomic composition.
-The IDH was validated for community taxonomic richness and, to some extent, taxonomic evenness but disproved regarding community functional richness and evenness which were enhanced for any disturbance intensity by the high functional differences of pioneers compared to late-successional functional composition.
-The IDH was translated in time by the recruitment, beyond an intensity threshold, of short-lived pioneers that prevented in the first years after disturbance the establishment of more diverse long-lived pioneers, recruited otherwise below the intensity threshold. The resilience of tropical forests, defined in terms of recovery to pre-disturbance state, proved tangible but requiring several decades. Still, the disturbance impact on community redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities  [@Herault2018].
+Our study highlighted the combination of deterministic and stochastic processes determining the succession of recruited species and shaping community response to disturbance. 
+The deterministic recruitment of pioneers shaped functional trajectories convergent in the functional space, while dispersal limitations shaped stochastic taxonomic trajectories maintaining community divergence in taxonomic composition.
+In accordance with the IDH, community taxonomic diversity was maximise for intermediate disturbance intensity, before reaching an intensity threshold beyond which the taxonomic richness decreased and the taxonomic evenness remained persistently higher.
+Conversely, functional trajectories proved decoupled from the taxonomic ones and did not follow the hypothesis of the IDH as no distinct trajectories emerged with increasing disturbance intensity. 
+The decoupling between taxonomic and functional disturbance was explained by a decrease of community functional redundancy mitigating the functoinal impact of disturbance.
+The resilience of tropical forests, defined in terms of recovery to pre-disturbance state, proved tangible but requiring several decades. 
+Still, the disturbance impact on community redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities  [@Herault2018].
 
 # Acknowledgement
 
