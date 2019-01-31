@@ -41,11 +41,11 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
-  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::word_document2: default
+  bookdown::gitbook: default
 ---
 
 (ref:Bolda) **(a)**
@@ -108,7 +108,7 @@ The IDH assumes biodiversity changes in relation to disturbance intensity and fr
 At intermediate level of disturbance, the fluctuation of environmental conditions entails deterministic processes favoring both competitively superior species and fast colonizers, hence preventing competitive exclusion [@Shea2004;@Pulsford2016].
 
 The IDH then assumes both predictable trajectories depending on the disturbance intensity, and, without additional disturbance, the recovery of pre-disturbance state defined by the dominance of late-successional species [@Rees2001;@Sheil2003;@Willig2018].
-In highly diverse tropical forests, however, the validation of the IDH remains controversial [@Fox2013;@Sheil2013] and observed post-disturbance trajectories are often blurry compared to theoretical expectations [@Hugues2007].
+In highly diverse tropical forests, however, the validation of the IDH remains controversial [@Fox2013;@Sheil2013] and observed post-disturbance trajectories are often blurry compared to theoretical expectations [@Hubbel2001;@Hugues2007;@Norden2015;@Norden2017].
 Empirical evidence generally rely on the analysis of a single diversity metric, often the taxonomic richness [@Molino2001], which might give limited or misleading information on community disturbance response. 
 The IDH pattern of diversity peak under an intermediate disturbance regime can indeed result from various ecological processes [@Sheil2003].
 To disentangle these various processes and grasp the different facets of community response to disturbance it is crucial to combine a suitable range of approaches [@Shea2004].
@@ -120,13 +120,7 @@ Specifically in tropical forests, the functional approach revealed the post-dist
 This shift is translated into the trajectories of average community value of key functional traits related to resource acquisition (leaf and stem traits) and life-history strategy (seed mass, maximum size)  [@Wright2004;@Diaz2005;@TerSteege2006;@Westoby2006a;@Chave2009b]. 
 The functional approach would eventually be completed with the analysis of functional redundancy that quantifies the amount of shared trait values among species [@Carmona2016]. The high functional redundancy of hyper-diverse tropical forests [@Bellwood2006] mitigates the impacts of species removal on ecosystem functioning and determines the resilience of communities after disturbance [@Elmqvist2003; @Diaz2005].
 
-In this study, we monitored over 30 years the response of 75 ha of Neotropical forest plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem above-ground biomass (AGB) loss. We made use of a large functional traits database encompassing major leaf, stem and life-history traits in order to draw the taxonomic and functional trajectories in terms of richness, evenness, composition and redundancy. Specifically, we (i) elucidated community taxonomic and functional recovery and the underlying ecological processes, (ii) clarified the validity of the IDH in the long term for tropical forest and its translation into different trajectories in time, and (iii) examined community recovery time.
-
-@Rees2001].
-Yet, observed trajectories proved to often deviate from predictions and from the recovery of initial state and thus evidenced the interplay of stochastic processes [@Hubbel2001;@Norden2015; @Norden2017].
-The debate underlying the study of community response to disturbance is now on the relative importance of stochastic and deterministic processes, and on the nature of ecological rules and mechanisms they generate.
-
-Specifically, the determinism of post-disturbance trajectories is the base of the intermediate disturbance hypothesis (IDH) which is assumed to be a determinant of tropical forest biodiversity [@Connell1978].
+In this study, we monitored over 30 years the response of 75 ha of Neotropical forest plots set up on a gradient of disturbance intensity, from 10 to 60% of ecosystem above-ground biomass (AGB) loss. We made use of a large functional traits database encompassing major leaf, stem and life-history traits in order to draw the taxonomic and functional trajectories in terms of richness, evenness, composition and redundancy. Specifically, we elucidateed (i) the community taxonomic and functional recovery and (ii) the ecological processes underlying community post-disturbance trajectories and discussed the validity and the extent of the IDH in the long term for tropical forest, and (iii) examined community recovery time.
 
 # Material and Methods
 
@@ -391,11 +385,11 @@ Apart from the functional characteristics considered here, infrequent species mi
 
 Our study highlighted the combination of deterministic and stochastic processes determining the succession of recruited species and shaping community response to disturbance. 
 The deterministic recruitment of pioneers shaped functional trajectories convergent in the functional space, while dispersal limitations shaped stochastic taxonomic trajectories maintaining community divergence in taxonomic composition.
-In accordance with the IDH, community taxonomic diversity was maximise for intermediate disturbance intensity, before reaching an intensity threshold beyond which the taxonomic richness decreased and the taxonomic evenness remained persistently higher.
+In accordance with the IDH, community taxonomic diversity was maximised for intermediate disturbance intensity, before reaching an intensity threshold beyond which the taxonomic richness decreased and the taxonomic evenness remained persistently higher.
 Conversely, functional trajectories proved decoupled from the taxonomic ones and did not follow the hypothesis of the IDH as no distinct trajectories emerged with increasing disturbance intensity. 
 The decoupling between taxonomic and functional disturbance was explained by a decrease of community functional redundancy mitigating the functoinal impact of disturbance.
 The resilience of tropical forests, defined in terms of recovery to pre-disturbance state, proved tangible but requiring several decades. 
-Still, the disturbance impact on community redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities  [@Herault2018].
+Still, the disturbance impact on community redundancy cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Herault2018].
 
 # Acknowledgement
 
