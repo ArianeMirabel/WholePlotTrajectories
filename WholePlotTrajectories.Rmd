@@ -110,10 +110,11 @@ An early conceptual basis of the linkage between biodiversity and disturbance is
 The IDH assumes a relationship between community diversity and the intensity and frequency of disturbance events [@Connell1978].
 The theory and states that community diversity peaks at intermediate level of disturbance.
 The fluctuations of environmental conditions after disturbance are assumed to prevent competitive exclusion in fostering both competitively superior species and fast colonizers [@Shea2004;@Pulsford2016].
-In highly diverse tropical forests, however, observations of the IDH are often blurry compared to theoretical expectations [@Hugues2007;@Sheil2003;@Norden2017], and the validation of the theory remains controversial [@Hubbell2001;@Fox2013;@Sheil2013].
-Given the huge diversity of tropical forests and the variety of ecological processes that may underlie the IDH The scope of the IDH need be clarified regarding the different facets of community richness, abundance distribution and functioning.
-The underlying processes of the IDH are besides part of the post-disturbance succession and the question is on the time after disturbance validating the hypothesis.
-In this study we aimed as well to clarify the scope of the IDH and discuss its implication for the fate of tropical forests [@Sheil2003;@Shea2004].
+In tropical forests, however, observations of the IDH are often blurry compared to theoretical expectations [@Hugues2007;@Sheil2003;@Norden2017], and the validation of the theory remains controversial [@Hubbell2001;@Fox2013;@Sheil2013].
+The link between biodiversity and disturbance might be complicated by the huge diversity of tropical communities and by the variety of ecological processes that may underlie the IDH (colonisation, facilitation, coexistence,etc)[@Lindenmayer2012;@Garcia_florez2017].
+The scope of the IDH need be clarified regarding the different facets of community diversity, like taxonomic richness, abundance distribution and functioning.
+Besides, the question is highlighting the moment when emerge the conditions for the IDH, which would be an intermediate time after disturbance. 
+In this study we then aimed to clarify the scope of the IDH in time and regarding the different facets of community diversity [@Sheil2003;@Shea2004].
 
 The analyse of community response to disturbance requires a set of metrics, to grasp all aspects of community changes [@Sheil2003;@Shea2004;@Mayfield2010].
 The analysis should first consider community composition, which is crucial for conservation issues [@Lavorel2002;@Bellwood2006] and assesses the different species fostered by the disturbance.
