@@ -24,10 +24,10 @@ corrauthor:
     url: https://github.com/ArianeMirabel
 abstract: 
  Understand biodiversity trajectories of tropical forests following disturbance and clarify the link between biodiversity and disturbance is urgent to anticipate the impact of the global change context.
- It is urgent to understand the taxonomic and functional facets of tree community trajectories and the underlying processes, and to clarify the link between biodiversity and disturbance, specifically the scope of the Intermediate Disturbance Hypothesis (IDH) that is debated tropical forests.
+ This calls to highlight the taxonomic and functional facets of tree community trajectories and the underlying processes, and to clarify the link between biodiversity and disturbance, specifically the scope of the Intermediate Disturbance Hypothesis (IDH) that is debated tropical forests.
  In this study, we analyzed tree community response to a disturbance gradient in a Neotropical forest through diversity, composition and redundancy post-disturbance trajectories over 30 years. We considered taxonomic trajectories and functional trajectories based on 7 leaf, stem and life-history traits. While taxonomic trajectories differed among communities, functional trajectories remained similar and convergent, and this decoupling was explained by the variations in community functional redundancy mitigating the functional impact of disturbance. We validated the IDH, based on an intensity threshold of 20-25% of AGB removed, and we clarified its scope, showing that it applied to taxonomic but not functional diversity, and applied around 20 years after disturbance when the recruitment of pioneers and late-successionals were balanced. 
  Although consistent, the recovery of community composition, diversity and redundancy remained unachieved after 30 years. This acknowledged the need of decades-long cycles without disturbance to ensure a complete recovery, and questioned tropical forest community resilience after repeated disturbances.
-keywords: [Community Ecology, Community Diversity Determinants, Disturbance Trajectories, Intermediate Disturbance Hypothesis, Mid-term Resilience, Neotropical Forests, Taxonomic and Functional Biodiversity]
+keywords: [Community Ecology, Disturbance Trajectories, Intermediate Disturbance Hypothesis, Mid-term Resilience, Neotropical Forests, Taxonomic and Functional Biodiversity]
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
@@ -41,11 +41,11 @@ lang: english
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
 output:
-  bookdown::gitbook: default
-  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+  bookdown::word_document2: default
+  bookdown::gitbook: default
 ---
 
 (ref:Bolda) **(a)**
