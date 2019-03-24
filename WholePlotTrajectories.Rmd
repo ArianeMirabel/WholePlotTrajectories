@@ -191,7 +191,7 @@ All composition and diversity metrics were obtained after 50 iterations of the u
 ## Composition and diversity metrics
 
 Because of the variability in the precision of botanical identification efforts, we were constrained to conduct the taxonomic composition and diversity analysis at the genus level. 
-Taxonomic and functional trajectories of community composition were followed in a two-dimensional NMDS ordination plan.
+Taxonomic and functional trajectories of community composition were followed in a two-dimensional NMDS ordination plane.
 Two NMDS using abundance-based (Bray-Curtis) dissimilarity measures were conducted to map either taxonomic or functional composition, the latter based on the seven leaf, stem and life history traits (without seed mass classes).
 Trajectories along time were reported through the Euclidean distance between the target inventories and the reference inventories in 1989, *i.e.* 2 years after disturbance. 
 Univariate trajectories of the leaf, stem and life-history traits were also visualized with the community weighted means (CWM) [@Diaz2007]. 
@@ -208,7 +208,11 @@ The impacts of initial disturbance were tested with the Spearman rank correlatio
 They were besides analyzed through polynomial regression between (i) taxonomic and functional richness and evenness and (ii) the initial %AGB loss at 10, 20 and 30 years after disturbance.
 
 Functional redundancy was measured as the overlap among species in community functional space [@Carmona2016]. 
-First, the individuals of the trait database were mapped in the plane of the two first axes from a PCA analysis. Then, for each species, the traits probability density (TPD) were computed through two-dimension kernel density estimators. Second, for each community, the TDB weigthed by species abundance were summed accross the functional space. Third, the functional space was divided into a 100 x 100 grid and the number of species with a positive TDP was counted in each cell. The average count across cells minus 1 returned the Community Functional Redundancy, which was the average number of species in the community that share the same trait values.
+First, the individuals of the trait database were mapped in the plane of the first two axes from a PCA analysis. 
+Then, for each species, the traits probability density (TPD) were computed through two-dimension kernel density estimators. 
+Second, for each community, the TPD weigthed by species abundance were summed accross the functional space. 
+Third, the functional space was divided into a 100 x 100 grid and the number of species with a positive TPD was counted in each cell. 
+The average count across cells minus 1 returned the Community Functional Redundancy, which was the average number of species in the community that share the same trait values.
 
 # Results
 
@@ -221,7 +225,7 @@ In disturbed communities, these compositional changes corresponded to shifts tow
 For functional composition, this translated into cyclic compositional changes with an incomplete recovery of the initial composition (Fig. \@ref(fig:NMDSplans)). The maximum dissimilarity with the initial state was positively correlated with the disturbance intensity for both taxonomic and functional composition ($\rho_{Spearman}^{Taxonomic}=0.87$ and $\rho_{Spearman}^{Functional}=0.90$ respectively). 
 The maximum dissimilarity with the initial was reached for taxonomic composition between 15 to 25 years, for most of the plots, and around 22 years for functional composition.
 
-```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of taxonomic composition ((ref:Bolda) and (ref:Boldc)) and functional composition ((ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS plan. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the Euclidean distance to initial condition along the 30 sampled years. Shaded areas are the credibility intervals.", fig.env="figure*"}
+```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of taxonomic composition ((ref:Bolda) and (ref:Boldc)) and functional composition ((ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS plane. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the Euclidean distance to initial condition along the 30 sampled years. Shaded areas are the credibility intervals.", fig.env="figure*"}
 load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
 load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
 
@@ -338,9 +342,9 @@ Following disturbance, the functional composition of pre-disturbance surviving t
 Post-disturbance changes in functional composition then relied upon the recruitment of species or functional types previously infrequent or absent.
 These species were probably competitive pioneers becoming dominant as the most efficient to benefit from the light, space and nutrients made available by disturbance.
 This recruitment of pioneers drove functional composition trajectories similar for all plots and disturbance intensity.
-The composition first went towards more resource-acquisitive strategies, which was translated by a displacement to the right along the first axis in the functional plan [@Westoby1998; @Wright2004; @Reich2014].
+The composition first went towards more resource-acquisitive strategies, which was translated by a displacement to the right along the first axis in the functional plane [@Westoby1998; @Wright2004; @Reich2014].
 Thereafter, the pioneers recruited primarily were progressively excluded by long-lived, more resistant and shade-tolerant species.
-The community functional composition then returned towards more resource-conservative strategies, suggesting the recovery of the initial community composition and translated in the functional plan by a displacement left along the first axis and upward along the second axis (Fig. \@ref(fig:NMDSplans)).
+The community functional composition then returned towards more resource-conservative strategies, suggesting the recovery of the initial community composition and translated in the functional plane by a displacement left along the first axis and upward along the second axis (Fig. \@ref(fig:NMDSplans)).
 
 Both taxonomic and functional composition trajectories initiated a return towards pre-disturbance state after 30 years, which highlighted the taxonomic and functional resilience of communities. 
 There was however a decoupling between taxonomic and functional composition trajectories: while as taxonomic trajectories maintained the initial differences among communities, the functional trajectories where similar and convergent in the functional space [@Fukami2005].
