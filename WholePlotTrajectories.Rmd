@@ -131,10 +131,12 @@ In this study, we monitored over 30 years the response of 75 ha of Neotropical f
 ## Study site 
 
 Paracou station in French Guiana (5\textdegree 18'N and 52\textdegree 53'W) is located in a lowland tropical rain forest in a tropical wet climate with mean annual temperature of 26\textdegree C, mean annual precipitation averaging 2980 mm.y^-1^ (30-y period) and a 3-month dry season (< 100 mm.month^-1^) from mid-August to mid-November, and a one-month dry season in March [@Wagner2011]. 
-Elevation ranges between 5 and 50 m and soils correspond to thin acrisols over a layer of transformed saprolite with low permeability which produces lateral drainage during heavy rains.
+Elevation ranges from 5 to 50 m and mean annual temperature is 26°C. 
+Soils are thin ferralitic acrisols over a layer of transformed saprolite. The ferralitic surface is thin in the whole area, with low permeability and lateral drainage, except in the highest hilltops where it is thick and with a free vertical drainage [@Gourlet-Fleury2004].
 
 The experiment is a network of 12 6.25 ha plots that underwent a disturbance gradient of three logging, thinning and fuelwood cutting treatments (Table \@ref(tab:Tab1)) according to a randomized plot design with three replicate blocks of four plots. 
-The disturbance corresponds to an intensity gradient. For treatment 1 (T1) 10 trees of commercial species (of a diameter at 1.3 m height (DBH) equal or above 50 cm) were felled per hectare. For treatment 2 (T2) 10 trees/ha of commercial species (DBH  $\geq$ 50 cm) were felled and 30 trees/ha of non-valuable species (DBH $\geq$ 40 cm) were removed by poison girdling. For treatment 3 (T3) 10 trees/ha of commercial species (DBH $\geq$ 50 cm) were felled and 30 trees/ha of non-valuable species (15 with DBH $\geq$ 50 cm and 15 with DBH $\geq$ 40 cm) were removed by poison girdling [@Schmitt1990]. 
+The disturbance corresponds to an intensity gradient. For treatment 1 (T1) 10 trees of commercial species (of a diameter at 1.3 m height (DBH) equal or above 50 cm) were felled per hectare. For treatment 2 (T2) 10 trees/ha of commercial species (DBH  $\geq$ 50 cm) were felled and 30 trees/ha of non-valuable species (DBH $\geq$ 40 cm) were removed by poison girdling. 
+For treatment 3 (T3) 10 trees/ha of commercial species (DBH $\geq$ 50 cm) were felled and 30 trees/ha of non-valuable species (15 with DBH $\geq$ 50 cm and 15 with DBH $\geq$ 40 cm) were removed by poison girdling [@Schmitt1990]. 
 Disturbance intensity was measured as the percentage of aboveground biomass (%AGB) lost between the first inventory in 1984 and five years after disturbance [@Piponiot2016] estimated with the BIOMASS R package [@Biomass2018].
 
 ```{r Tab1, echo=FALSE,as.is=T}
