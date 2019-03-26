@@ -84,8 +84,6 @@ Library <- function(Packages) {
 # Ajouter les packages nécessaires ici
 Library("kableExtra")
 
-## abstract: 204 words / text without legends : 3659 words / references: 68
-
 source("Scripts/DrawingTools.R")
 #source("Scripts/GithubPages.R")
 ```
@@ -229,10 +227,12 @@ The average count across cells minus 1 returned the Community Functional Redunda
 From 1989 (2 years after disturbance) to 2015 (28 years after disturbance), 828 388 individual trees and 591 botanical species pertaining to 223 genera and 64 families were recorded. 
 
 While both taxonomic and functional composition remained stable in undisturbed communities (Fig. \@ref(fig:NMDSplans)), they followed marked and consistent trajectories over post-\break disturbance time.
-In disturbed communities, these compositional changes corresponded to shifts towards species with more acquisitive functional strategies, from communities with high mean WSG to high mean SLA and chlorophyll content (see appendix I). 
-For functional composition, this translated into cyclic compositional changes with an incomplete recovery of the initial composition (Fig. \@ref(fig:NMDSplans)). 
+In disturbed communities the taxonomic composition changed towards more species with acquisitive functional strategies.
+This translated into a switch from high mean WSG in the community to high mean SLA and chlorophyll content (see appendix I). 
+The functional composition of disturbed communities corresponded to cyclic compositional changes with an incomplete recovery of the initial composition (Fig. \@ref(fig:NMDSplans)). 
+
 The maximum dissimilarity with the initial state was positively correlated with the disturbance intensity for both taxonomic and functional composition ($\rho_{Spearman}^{Taxonomic}=0.87$ and $\rho_{Spearman}^{Functional}=0.90$ respectively). 
-The maximum dissimilarity with the initial was reached for taxonomic composition between 15 to 25 years, for most of the plots, and around 22 years for functional composition.
+The maximum dissimilarity with the initial state was reached for taxonomic composition between 15 to 25 years, for most of the plots, and around 22 years for functional composition.
 
 ```{r NMDSplans, out.width = '100%', echo=FALSE, fig.cap="Plot trajectories in terms of taxonomic composition ((ref:Bolda) and (ref:Boldc)) and functional composition ((ref:Boldb) and (ref:Boldd)) in a two-dimensional NMDS plane. Lower panels ((ref:Boldc) and (ref:Boldd)) represent the Euclidean distance to initial condition along the 30 sampled years. Shaded areas are the credibility intervals.", fig.env="figure*"}
 load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
@@ -255,13 +255,14 @@ legend("right",inset=-0.4,xpd=NA,legend=c("Control","Low","Interm.","High"),col=
 
 Community CWM average value of all traits and seed mass proportions followed unimodal trajectories, either stabilizing or returning towards their initial values, to the exception of leaf chlorophyll content, which continued to increase for some T3 and T2 plots 30 years after disturbance.
 
-Community CWM average value of Maximum height at adult stage (*Hmax*), leaf toughness and wood specific gravity (*WSG*) first decreased and then slightly increased but remained significantly lower than their initial value (Fig. \@ref(fig:CWM)). 
-On the other side, bark thickness and specific leaf area (*SLA*) increased and while bark thickness remained substantially high after 30 years, *SLA* had almost recovered to its initial value. 
+Community CWM average value of Maximum height at adult stage (*Hmax*), leaf toughness and wood specific gravity (*WSG*) decreased and then slightly increased, but remained significantly lower than their initial value (Fig. \@ref(fig:CWM)). 
+On the other side, bark thickness and specific leaf area (*SLA*) both increased.
+Bark thickness remained substantially high after 30 years, and *SLA* had almost recovered to its initial value. 
 For all traits, the maximum difference to initial value was correlated to the disturbance intensity.
 Positive correlations were observed for Leaf thickness, chlorophyll content, SLA and bark thickness ($\rho_{Spearman}^{Leaf thickness}=0.76$, $\rho_{Spearman}^{Chlorophyll content}=0.60$, $\rho_{Spearman}^{SLA}=0.93$, $\rho_{Spearman}^{Bark thickness}=0.71$).
 Negative correlation was observed for Leaf toughness, WSG and Hmax ($\rho_{Spearman}^{Leaf toughness}=-0.53$, $\rho_{Spearman}^{WSG}=-0.75$, $\rho_{Spearman}^{Hmax}=-0.40$)
 The proportions of the three lightest seed mass classes increased in all disturbed plots.
-After 30 years the proportion of lightest seed mass class decreased while it stabilized for the two other (Supp. Mat. - Fig. S2).
+After 30 years the proportion of lightest seed mass class decreased while it stabilized for the two other lightest seed mass classes (Supp. Mat. - Fig. S2).
 
 ```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of community weighted means over 30 years after disturbance of four leaf traits (Leaf thickness, chlorophyll content, toughness, and specific area), two stem traits (wood specific gravity, and bark thickness) and one life history trait (Specific maximum height at adult stage). ", fig.env="figure*"}
 load("DB/CWM")
@@ -277,6 +278,7 @@ For undisturbed plots, taxonomic richness and Simpson diversity remained stable 
 In disturbed communities, after low disturbance intensity the taxonomic richness increased, reaching a maximum gain of 14 botanical genera (plot 3 from treatment 2). 
 After intense disturbance the taxonomic richness followed a more complex trajectory, decreasing for ten years after disturbance before recovering to pre-disturbance values. 
 The maximum richness loss or gain after disturbance was positively correlated with the disturbance intensity ($\rho_{Spearman}^{Richness}=0.50$).
+
 In all disturbed plots the Simpson diversity first increased until a maximum reached after around 20 years. 
 This maximum was positively correlated with the disturbance intensity ($\rho_{Spearman}^{Simpson}=0.77$).
 The Simpson diversity then stabilized except for two T3 plots (plots 8 and 12) for which it kept increasing (Fig. \@ref(fig:DivTaxo)).
@@ -300,10 +302,12 @@ legend("right",xpd=NA,legend=c("Control","Low","Intermediate","High"),col=Colors
 The plot 7 from treatment 1 displayed constantly outlying functional richness and Rao diversity and was removed from the graphical representation for better readability.
 In undisturbed plots both functional richness and Rao diversity remained stable along the 30 years. 
 In disturbed plots, both trajectories depended on the disturbance intensity, with their maximum being positively correlated to %AGB loss $\rho_{Spearman}^{Richness}=0.76$ and $\rho_{Spearman}^{Rao}=0.60$.
-Functional richness and Rao diversity displayed for low disturbance intensity a low but long-lasting increase up to a maximum reached after 20-25 years, and for high intensity, a fast but short increase followed after 10 years by a slow decrease towards the initial values.
+Functional richness and Rao diversity displayed for low disturbance intensity a low but long-lasting increase up to a maximum reached after 20-25 years.
+Following high intensity, they displayed a fast but short increase followed after 10 years by a slow decrease towards the initial values.
 
 The second-degree polynomial regressions between (i) the percentage AGB loss and (ii) taxonomic and functional diversity after 10, 20 and 30 years best predicted the hump-shaped curve of the disturbance impact along the disturbance intensity gradient (Fig. \@ref(fig:IDHplot)).
-The relationship between the disturbance impact and its intensity was more markedly hump-shaped for the taxonomic richness than for the Simpson diversity. For both functional richness and Rao diversity the relationship was almost linear.
+The relationship between the disturbance impact and its intensity was more markedly hump-shaped for the taxonomic richness than for the Simpson diversity. 
+For both functional richness and Rao diversity the relationship was almost linear.
 The regression model better predicted the functional richness and Rao diversity ($0.55<R^2_{Functional Richness}<0.72$, and $0.60<R^2_{Functional Rao}<0.81$) than the taxonomic richness and evenness ($0.21<R^2_{Taxonomic Richness}<0.4$, and $-0.15<R^2_{Taxonomic Simpson}<0.43$ respectively).
 
 ```{r IDHplot, out.width = '100%', echo=FALSE, fig.asp = 1.5/4,fig.cap="Relationship between the initial \\%AGB loss and community taxonomic richness (ref:Bolda), taxonomic evenness (ref:Boldb), functional richness (ref:Boldc),and functional evenness (ref:Boldd) at 10, 20 and 30 years after disturbance", fig.env="figure*"}
@@ -327,7 +331,8 @@ legend("right",inset=-0.5,xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bt
 
 ## Functional redundancy
 
-All disturbed plots had lower functional redundancy than control plots and followed similar hump-shaped trajectories (\@ref(fig:RedFunRest)). The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{Spearman}=0.47$) and the recovery had not attained initial values for any disturbed communities after 30 years.
+All disturbed plots had lower functional redundancy than control plots and followed similar hump-shaped trajectories (\@ref(fig:RedFunRest)). 
+The maximum redundancy loss was positively correlated with the disturbance intensity ($\rho_{Spearman}=0.47$) and the recovery had not attained initial values for any disturbed communities after 30 years.
 
 ```{r RedFunRest, out.width = '100%', echo=FALSE, fig.cap="Trajectories of the functional redundancy within the initial functional space over 30 years after disturbance. Shaded areas are the credibility intervals.", fig.env="figure"}
 load("DB/Redundancy_restricted")
@@ -345,32 +350,33 @@ mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=1.5)
 ## Decoupled taxonomic and functional trajectories
 
 Before disturbance, the different communities had different taxonomic compositions, visualized by their distinct starting points on the NMDS axis 2.
-These initial differences were maintained all along the 30 years following disturbance, with post-disturbance trajectories corresponding to a displacement on the NMDS axis 1.
-The taxonomic compositional changes following disturbance were similar among communities, which may correspond to the recruitment of a group of pioneers common to all communities whenever their initial differences and the disturbance intensity [@Denslow2000;@Bongers2009].
-Taxonomic trajectories continued with a recovery of the initial composition which, althought not fully achieved after 30 years, suggested the community taxonomic resilience and the maintenance of community initial differences [@Folke2006].
+These initial differences were maintained all along the 30 years following disturbance, with the disturbance leading a displacement on the NMDS axis 1.
+The taxonomic compositional changes following disturbance were similar among communities, which may correspond to the recruitment of a group of pioneers common to all communities whenever their initial differences and the intensity of disturbance [@Denslow2000;@Bongers2009].
+Taxonomic trajectories continued with a recovery of the initial composition which, althought not fully achieved after 30 years, suggested the resilience of the taxonomic composition resilience and the maintenance of the initial differences among communities [@Folke2006].
 The  return towards initial taxonomic composition showed that species not belonging to the pre-disturbance community were rarely recruited, probably because of the common dispersal limitations among tropical tree species [@Svenning2005]. 
 
 Regarding functional composition, initial communities were similar and trajectories were confounded in the functional space.
 Following disturbance, the functional composition of pre-disturbance surviving trees is believed to be the same as this of the initial community [@Herault2018].
-Post-disturbance changes in functional composition then relied upon the recruitment of species or functional types previously infrequent or absent.
-These species were probably competitive pioneers becoming dominant as the most efficient to benefit from the light, space and nutrients made available by disturbance.
-This recruitment of pioneers drove functional composition trajectories similar for all plots and disturbance intensity.
+The changes in functional composition following disturbance then relied upon the recruitment of species or functional types previously infrequent or absent.
+These species were probably competitive pioneers becoming dominant as the most efficient to benefit from the light, space and nutrients made available by the disturbance.
+This recruitment of pioneers led similar functional composition trajectories for all plots, whenever the disturbance intensity.
 The composition first went towards more resource-acquisitive strategies, which was translated by a displacement to the right along the first axis in the functional plane [@Westoby1998; @Wright2004; @Reich2014].
 Thereafter, the pioneers recruited primarily were progressively excluded by long-lived, more resistant and shade-tolerant species.
-The community functional composition then returned towards more resource-conservative strategies, suggesting the recovery of the initial community composition and translated in the functional plane by a displacement left along the first axis and upward along the second axis (Fig. \@ref(fig:NMDSplans)).
+The community functional composition then returned towards more resource-conservative strategies, suggesting the recovery of the initial functional composition.
+This recovery translated in the functional plane by a displacement left along the first axis and upward along the second axis (Fig. \@ref(fig:NMDSplans)).
 
 Both taxonomic and functional composition trajectories initiated a return towards pre-disturbance state after 30 years, which highlighted the taxonomic and functional resilience of communities. 
-There was however a decoupling between taxonomic and functional composition trajectories: while as taxonomic trajectories maintained the initial differences among communities, the functional trajectories where similar and convergent in the functional space [@Fukami2005].
+Taxonomicand functional trajectories however appeared decoupled: while taxonomic trajectories maintained the initial differences among communities, the functional trajectories where similar and convergent in the functional space [@Fukami2005].
 
 ## The scope of the intermediate disturbance hypothesis
 
 Community taxonomic richness and evenness trajectories were determined by the disturbance intensity, ranging from a limited and temporary impact to significant and persistant alterations of community diversity.
-The taxonomic trajectories markedly changed above an intensity threshold for which the taxonomic richness was maximized and the taxonomic evenness remained resilient. 
-The disturbance intensity determined the balance in the community between pre-disturbance surviving trees, and trees recruited afterward. 
-Below a 20%-25% AGB loss, the trees surviving after disturbance remained numerous enough to maintain the high taxonomic richness of the pre-disturbance community [@Bongers2009].
+The taxonomic trajectories markedly changed above an intensity threshold at which the taxonomic richness was maximized and the taxonomic evenness remained resilient. 
+The disturbance intensity impacted the balance in the community between pre-disturbance surviving trees, and trees recruited afterward. 
+On the one hand, below a 20%-25% AGB loss, the trees surviving after disturbance remained numerous enough to maintain the high taxonomic richness of the pre-disturbance community [@Bongers2009].
 The recruitment of pioneers, infrequent or absent before disturbance, then increased the taxonomic richness all the more so that the disturbance was intense [@Martin2015; @Chaudhary2016].
 As these pioneers became more dominant they balanced the usual hyper-dominance of tropical forests, hence temporarily increasing the taxonomic evenness [@Baraloto2012a].
-Above the intensity threshold, the taxonomic richness of surviving trees was too low to be offset by the recruitment of pioneers. 
+On the other hand, above the intensity threshold, the taxonomic richness of surviving trees was too low to be offset by the recruitment of pioneers. 
 In the Guiana shield indeed, the pool of true pioneers specifically recruited after disturbance is restricted to a few common genera (e.g. *Cecropia* spp., *Vismia* spp.) [@Guitet2018].
 The taxonomic richness then decreased following intense disturbance, all the more so that the disturbance intensity was high [@Molino2001]. 
 At the same time, pioneers became persistently dominant and prevented a return towards the initial evenness and the recovery of hyper-dominant shade-tolerant species.
@@ -378,15 +384,15 @@ At the same time, pioneers became persistently dominant and prevented a return t
 Taxonomic trajectories following disturbance of intermediate intensity besides highlighted an intermediate time after disturbance, around 15-20 years, for which the taxonomic evenness was maximized.
 As already observed in the Guiana shield [@Baraloto2012a] and in Bornean tropical forests [@Cannon1998],
 taxonomic evenness followed hump-shaped trajectories with a peak when the recruitment was balanced between pioneers and late-successional species. 
-This intermediate time corresponded to the match between the generation time of pionneers, first to dominate the post-disturbance recruitment, and the time for competitive exclusion to emerge, which leads to the dominance of late-successional species.
+This intermediate time corresponded to the match between the generation time of pionneers, dominating first the post-disturbance recruitment, and the time for competitive exclusion to emerge, leading afterwards to the dominance of late-successional species.
 
 Regarding community functional trajectories in contrast, there was neither intermediate disturbance intensity nor intermediate time after disturbance, which dismissed the IDH.
 Neither functional richness nor functional evenness displayed a humped-shaped pattern, but both rather increased with the recruitment of pioneers that were functionally highly different from the pre-disturbance community [@Denslow1980;@Molino2001].
 Above the intensity threshold however, for the most intense disturbance, community functional richness and evenness started to decrease after 15 to 20 years. 
-The right after disturbance, short-lived species benefited from the resources made available and prevented the establishment of other species. 
+Right after disturbance, short-lived species benefited from the resources made available and prevented the establishment of other species. 
 The decline of these short-lived pioneers decreased the functional richness and evenness, but we suggest that the establishment of long-lasting pioneers will follow and that the trajectories will catch up with those observed for intermediate disturbance [@Walker2009].
 
-The IDH then translated into community taxonomic response, with post-disturbance trajectories markedly different below and above an intensity threshold.
+The IDH then translated into community taxonomic response, with post-disturbance trajectories changing markedly below and above an intensity threshold of 25 % AGB loss.
 The IDH was also valid at an intermediate time after disturbance, when the recruitment of early- and late-successional species were balanced. 
 Functional trajectories, however, remained decoupled from taxonomic ones and dismissed the IDH.
 
@@ -396,7 +402,7 @@ The decoupling between taxonomic and functional trajectories was explained by a 
 The recruitment of pioneers, functionally different from the pre-disturbance functional composition, did not compensate the decrease of functional redundancy in the first place.
 Progressively though, the functional redundancy was restored through the replacement of the first established species by more competitive, long-lived pioneers or late-successional species that were functionally closer to the pre-disturbance community.
 This replacement followed the lottery recruitment rules, implying an easy recruitment for the first species but becoming increasingly hampered by the emergence of interspecific competition [@Busing2002]. 
-The recovery of the functional redundancy then relied upon the random processe of species recruitment and was increasingly slow and difficult to anticipate [@Elmqvist2003;@Diaz2005].
+The recovery of the functional redundancy then relied upon the random process of species recruitment and was increasingly slow and difficult to anticipate [@Elmqvist2003;@Diaz2005].
 
 The impact of disturbance on community functional redundancy meant a lower resilience of the disturbed communities, with higher chances to see the settltement of pioneers and early-successional species at the expense of late-successional ones [@Haddad2008].
 Besides, the random recovery of infrequent species increases the risks to lose keystone species, with unexpected ecological consequences [@Jones1994;@Chazdon2003a;@Diaz2005].
@@ -405,13 +411,14 @@ Infrequent species might indeed have unique functional characteristics, apart fr
 # Conclusion
 
 Community post-disturbance trajectories in compositon and diversity were shaped by the recruitment of a determined pool of pioneers identical among communities and disturbance intensity.
-Nevertheless, taxonomic and functional composition trajectories were decoupled: while functional trajectories remained similar in the functional space and converged towards the recovery of a comparable initial state, taxonomic trajectories shiwed initial differences in community composition that were maintained along time.
-This decoupling was explained by a decrease of the functional redundancy which mitigated the functional impact of disturbance.
+Nevertheless, taxonomic and functional composition trajectories appeared decoupled.
+While functional trajectories remained similar in the functional space and converged towards the recovery of a comparable initial state, taxonomic trajectories showed initial differences in community composition that were maintained along time.
+This decoupling was explained by a decrease of the functional redundancy that mitigated the functional impact of disturbance.
 Community functional and taxonomic diversity response to disturbance was contrasted as well.
 While the functional trajectories remained similar whenever the disturbance intensity, taxonomic trajectories were markedly different above a threshold of 20-25% AGB removed for which taxonomic richness was maximized and taxonomic eveness remained resilient.
 The Intermediate Disturbance Hypothesis applied to the linkage of disturbance with the taxonomic diversity, but not with the functional diversity.
 Taxonomic diversity was maximized following a disturbance of intermediate intensity, that was the threshold of 25% AGB removed, and at an intermediate time after disturbance, that was around 25 years after disturbance when the recruitment of early- and late-successional species were balanced.
-Whenever the disturbance intensity, community resilience (in terms of recovery of the pre-disturbance state) was tangible but required several decades and relied upon the random, lottery recruitment of rare species. 
+Whenever the disturbance intensity, community resilience (in terms of recovery of the pre-disturbance state) was tangible but required several decades and relied upon the random lottery recruitment of rare species. 
 Although resilient, the functional redundancy was lower for more than 30 years after disturbance which cautioned against the risks of infrequent species loss and the persistence of disturbance-specific communities [@Herault2018].
 
 # Acknowledgement
