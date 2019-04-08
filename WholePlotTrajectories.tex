@@ -130,7 +130,7 @@ Ariane MIRABEL\textsuperscript{1*}\\ Bruno Herault\textsuperscript{2}\\ Eric Mar
 \textsuperscript{1}UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles,
 Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\\\textsuperscript{2}INPHB, Institut National Polytechnique Félix Houphoüet-Boigny\\ \hspace{1em} Yamoussoukro, Ivory Coast.
 }
-\affiliation{*\textbf{Corresponding author}: ariane.mirabel@ecofog.gf, https://github.com/ArianeMirabel} % Corresponding author
+\affiliation{*\textbf{Corresponding author}: ariane.mirabel@gmail.com, https://github.com/ArianeMirabel} % Corresponding author
 
 \Keywords{Community Ecology, Disturbance Trajectories, Intermediate Disturbance Hypothesis, Mid-term Resilience, Neotropical Forests, Taxonomic and Functional Biodiversity} % Keywords - if you don't want any simply remove all the text between the curly brackets
 \newcommand{\keywordname}{Keywords} % Defines the keywords heading name
@@ -348,13 +348,13 @@ silvicultural treatments and the following damage, disturbance intensity
 was measured as the percentage of aboveground biomass (\%AGB) lost
 between the first inventory in 1984 and five years after disturbance
 \citep{Piponiot2016} estimated with the BIOMASS R package
-\citep{Biomass2018}. The three treatments constituted a disturbance
+\citep{Rejou2017}. The three treatments constituted a disturbance
 intensity gradient with increasing of above-ground biomass (AGB) lost
 and surface disturbed.
 
 \begin{table}
 
-\caption{\label{tab:Tab1}Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.}
+\caption{\label{tab:Tab1}Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou. Treatment intensities are defined by the minimum logging DBH (Diameter at Breast Height), the type of logged species (commercial or not), the density of logged trees, and the total AGB (Above Ground Biomass) lost after treatment.}
 \centering
 \begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
 \toprule
@@ -406,20 +406,25 @@ the detailed methodology.
 
 Six functional traits representing leaf economics (leaf thickness,
 toughness, total chlorophyll content and specific leaf area) and stem
-economics (wood specific gravity and bark thickness), and life-history
-traits (maximum specific height and seed mass) came from the BRIDGE
-project \footnote{http://www.ecofog.gf/Bridge/}. Trait values were
-assessed from a selection of individuals located in nine permanent plots
-in French Guiana, including two in Paracou, and comprised 294 species
-pertaining to 157 genera. Missing trait values (10\%) were filled using
-multivariate imputation by chained equation \citep{Mice2011}.
-Imputations were restricted within genus or family when samples were too
-scarce, in order to account for the phylogenetic signal. Whenever a
-species was not in the dataset, it was attributed a set of trait values
-randomly sampled among species of the next higher taxonomic level (same
-genus or family). As seed mass information was classified into classes,
-no data filling process was applied and analyses were restricted to the
-414 botanical species recorded.
+economics (wood specific gravity and bark thickness) came from the
+BRIDGE project \footnote{http://www.ecofog.gf/Bridge/}. Trait values
+were assessed from a selection of individuals located in nine permanent
+plots in French Guiana, including two in Paracou, and comprised 294
+species pertaining to 157 genera. Whenever a species was in the dataset
+but missed some trait values (10\% of the species), missing values were
+filled using multivariate imputation by chained equation
+\citep{Mice2011}. To account for the phylogenetic signal in the filling
+process, imputations based on samples from the same genus or from the
+same family. Whenever a species was not in the dataset, it was
+attributed a set of trait values randomly sampled among species of the
+next higher taxonomic level (same genus or family). Two life-history
+traits (maximum specific height and seed mass) came from the Mariwenn
+database \footnote{https://www.ecofog.gf/mariwenn/}. The database
+compiles information from a vast literature on the flora of French
+Guiana \citep{Ollivier2007} and comprises 362 species pertaining to 188
+genera. As seed mass information was classified into classes, no data
+filling process was applied and analyses were restricted to the
+botanical species recorded.
 
 All composition and diversity metrics were obtained after 50 iterations
 of the uncertainty propagation framework.
@@ -436,25 +441,27 @@ dissimilarity measures were conducted to map either taxonomic or
 functional composition, the latter based on the seven leaf, stem and
 life history traits (without seed mass classes). Trajectories along time
 were reported through the Euclidean distance between the target
-inventories and the reference inventories in 1989, \emph{i.e.} 2 years
-after disturbance. Univariate trajectories of the leaf, stem and
-life-history traits were also visualized with the community weighted
-means (CWM) \citep{Diaz2007}. Species seed mass were given in 5 mass
-classes, and seed mass trajectories were reported as the proportion of
-each class in the inventories (Supplementary materials).
+inventories and the reference pre-disturbance inventories of 1984.
+Univariate trajectories of the leaf, stem and life-history traits were
+also visualized with the community weighted means (CWM)
+\citep{Diaz2007}. Species seed mass were given in 5 mass classes, and
+seed mass trajectories were reported as the proportion of each class in
+the inventories (Supplementary materials).
 
-The taxonomic diversity was reported through species richness and the
-Hill number translation of the Simpson index \citep{Hill1973}. These
-metrics allowed assessing the taxonomic richness as well as evenness,
-through the comparison between these two metrics.: results will be
-discussed directly in terms of taxonomic richness and evenness. Both
-indices belong to the set of HCDT or generalized entropy, respectively
-corresponding to the 0 and 2 order of diversity (q), recommended for
-diversity studies \citep{Marcon2015b}. The functional diversity was
-reported using the functional richness and functional evenness,
-\emph{i.e} the Rao index of quadratic entropy. The Rao index combines
-species abundance distribution, and the average pairwise functional
-dissimilarity between species computed by the gower distance.
+The taxonomic and functional trajectories were analysed from the
+reference pre-disturbance inventories of 1984. The taxonomic diversity
+was reported through species richness and the Hill number translation of
+the Simpson index \citep{Hill1973}. These metrics allowed assessing the
+taxonomic richness as well as evenness, through the comparison between
+these two metrics: results will be discussed directly in terms of
+taxonomic richness and evenness. Both indices belong to the set of HCDT
+or generalized entropy, respectively corresponding to the 0 and 2 order
+of diversity (q), recommended for diversity studies \citep{Marcon2015}.
+The functional diversity was reported using the functional richness and
+functional evenness, \emph{i.e} the Rao index of quadratic entropy. The
+Rao index combines species abundance distribution, and the average
+pairwise functional dissimilarity between species computed by the gower
+distance.
 
 The impacts of initial disturbance were tested with the Spearman rank
 correlation between the extremes of taxonomic and functional metrics
@@ -482,7 +489,7 @@ trait values.
 
 \subsection{Community Composition}\label{community-composition}
 
-From 1989 (2 years after disturbance) to 2015 (28 years after
+From 1984, the first pre-disturbance inventory, to 2015 (28 years after
 disturbance), 828 388 individual trees and 591 botanical species
 pertaining to 223 genera and 64 families were recorded.
 
@@ -577,7 +584,7 @@ increasing (Fig. \ref{fig:DivTaxo}).
 
 }
 
-\caption{Trajectories over 30 years of the difference with the 1989 inventory (2 years after disturbance) of community taxonomic richness \textbf{(a)}, Simpson diversity \textbf{(b)}, functional richness \textbf{(c)}, and Rao diversity \textbf{(d)}. Shaded areas are the credibility intervals }\label{fig:DivTaxo}
+\caption{Trajectories of community taxonomic richness \textbf{(a)}, Simpson diversity \textbf{(b)}, functional richness \textbf{(c)}, and Rao diversity \textbf{(d)}. Values correspond to the difference over 30 years of community diversity with the values of reference 1984 pre-disturbance inventories. Shaded areas are the credibility intervals }\label{fig:DivTaxo}
 \end{figure*}
 
 The plot 7 from treatment 1 displayed constantly outlying functional
@@ -636,6 +643,16 @@ years.
 
 \section{Discussion}\label{discussion}
 
+Our analysis highlighted the decoupling between functional and taxonomic
+trajectories. While initial differences in community taxonomic
+composition were maintained after disturbance, their trajectories in
+functional composition were similar. In parallel, while the different
+taxonomic diversity trajectories displayed marked differences according
+to the disturbance intensity, the functional diversity trajectories were
+homogeneous whenever the disturbance intensity. This decoupling was
+accompanied by a decrease in community functional redundancy which
+appeared to be the key element of community post-disturbance recovery.
+
 \subsection{Decoupled taxonomic and functional
 trajectories}\label{decoupled-taxonomic-and-functional-trajectories}
 
@@ -645,8 +662,9 @@ axis 2. These initial differences were maintained all along the 30 years
 following disturbance, with the disturbance leading a displacement on
 the NMDS axis 1. The taxonomic compositional changes following
 disturbance were similar among communities, which may correspond to the
-recruitment of a group of pioneers common to all communities whenever
-their initial differences and the intensity of disturbance
+recruitment of a group of pioneers, as \emph{Cecropia} spp.,
+\emph{Vismia} spp., common to all communities whenever their initial
+differences and the intensity of disturbance
 \citep{Denslow2000, Bongers2009}. Taxonomic trajectories continued with
 a recovery of the initial composition which, althought not fully
 achieved after 30 years, suggested the resilience of the taxonomic
@@ -690,16 +708,24 @@ space \citep{Fukami2005}.
 \subsection{The scope of the intermediate disturbance
 hypothesis}\label{the-scope-of-the-intermediate-disturbance-hypothesis}
 
-Community taxonomic richness and evenness trajectories were determined
-by the disturbance intensity, ranging from a limited and temporary
-impact to significant and persistant alterations of community diversity.
-The taxonomic trajectories markedly changed above an intensity threshold
-at which the taxonomic richness was maximized and the taxonomic evenness
-remained resilient. The disturbance intensity impacted the balance in
-the community between pre-disturbance surviving trees, and trees
-recruited afterward. On the one hand, below a 20\%-25\% AGB loss, the
-trees surviving after disturbance remained numerous enough to maintain
-the high taxonomic richness of the pre-disturbance community
+Comparing community diversity along time after disturbance revealed
+constrasting trajectories according to the distrubance intensity. Below
+a disturbance intensity threshold, in the case of treatments 1 and 2,
+the community taxonomic richness increased. In parallell, after a first
+increase, the taxonomic eveness stabilized or strated to decrease after
+30 years. Below the intensity threshold Contrastingly, above an
+intensity threshold, in the case of treatment 3, the taxonomic richness
+did not exceeded the initial value and the taxonomic evenness
+continiously increased for 30 years without sign of return towards the
+initial value. Below and above a threshold, corresponding to a
+disturbance intensity between treatments 2 and 3, community taxonomic
+richness and evenness changed markedly. A the disturbance intensity
+threshold, the taxonomic richness was maximized and the taxonomic
+evenness remained resilient. The disturbance intensity impacted the
+balance in the community between pre-disturbance surviving trees, and
+trees recruited afterward. On the one hand, below a 20\%-25\% AGB loss,
+the trees surviving after disturbance remained numerous enough to
+maintain the high taxonomic richness of the pre-disturbance community
 \citep{Bongers2009}. The recruitment of pioneers, infrequent or absent
 before disturbance, then increased the taxonomic richness all the more
 so that the disturbance was intense \citep{Martin2015, Chaudhary2016}.
@@ -756,20 +782,21 @@ however, remained decoupled from taxonomic ones and dismissed the IDH.
 resilience}\label{the-functional-redundancy-key-of-community-resilience}
 
 The decoupling between taxonomic and functional trajectories was
-explained by a decrease in the functional redundancy within the
-pre-disturbance functional space, due to the loss of species following
-disturbance. The recruitment of pioneers, functionally different from
-the pre-disturbance functional composition, did not compensate the
-decrease of functional redundancy in the first place. Progressively
-though, the functional redundancy was restored through the replacement
-of the first established species by more competitive, long-lived
-pioneers or late-successional species that were functionally closer to
-the pre-disturbance community. This replacement followed the lottery
-recruitment rules, implying an easy recruitment for the first species
-but becoming increasingly hampered by the emergence of interspecific
-competition \citep{Busing2002}. The recovery of the functional
-redundancy then relied upon the random process of species recruitment
-and was increasingly slow and difficult to anticipate
+accompanied by a decrease in the functional redundancy within the
+pre-disturbance functional space. This decrease was explained by a loss
+of species following disturbance and then a lower redundancy of their
+functional characteristics. This decrease of the functional redundancy
+was not compensated by the recruitment of pioneers, as those were
+functionally different from the pre-disturbance community. Progressively
+though, more competitive,long-lived pioneers or late-successional
+species functionally closer to the pre-disturbance community
+progressively replaced the first established species and restored the
+functional redundancy. This replacement followed the lottery recruitment
+rules, implying an easy recruitment for the first species but becoming
+increasingly hampered by the emergence of interspecific competition
+\citep{Busing2002}. The recovery of the functional redundancy then
+relied upon the random process of species recruitment and was
+increasingly slow and difficult to anticipate
 \citep{Elmqvist2003, Diaz2005}.
 
 The impact of disturbance on community functional redundancy meant a
@@ -792,10 +819,12 @@ functional composition trajectories appeared decoupled. While functional
 trajectories remained similar in the functional space and converged
 towards the recovery of a comparable initial state, taxonomic
 trajectories showed initial differences in community composition that
-were maintained along time. This decoupling was explained by a decrease
-of the functional redundancy that mitigated the functional impact of
+were maintained along time. Community high functional redundancy could
+explain this decoupling as the loss of a species does not necessarily
+the loss of its functional charactristics in the community. In this
+sense, the functional redundancy would mitigate the functional impact of
 disturbance. Community functional and taxonomic diversity response to
-disturbance was contrasted as well. While the functional trajectories
+disturbance were contrasted as well. While the functional trajectories
 remained similar whenever the disturbance intensity, taxonomic
 trajectories were markedly different above a threshold of 20-25\% AGB
 removed for which taxonomic richness was maximized and taxonomic eveness
@@ -812,7 +841,13 @@ relied upon the random lottery recruitment of rare species. Although
 resilient, the functional redundancy was lower for more than 30 years
 after disturbance which cautioned against the risks of infrequent
 species loss and the persistence of disturbance-specific communities
-\citep{Herault2018}.
+\citep{Herault2018}. Our conclusions first highlighted risks to lose
+rare species with visible impacts only in the long term, and led us to
+advice paying particular attention to rare and undangered species and to
+conduct regular inventories during exploitation times. Second,
+post-disturbance trajectories seemed to greatly rely on post-disturbance
+recruitment dynamics that would be key to model post-disturbance
+trajectories.
 
 \section{Acknowledgement}\label{acknowledgement}
 
