@@ -1,50 +1,3 @@
-<!DOCTYPE html>
-<html  lang="english">
-
-<head>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Post-Disturbance Tree Community Trajectories in a Neotropical Forest</title>
-  <meta name="description" content="Post-Disturbance Tree Community Trajectories in a Neotropical Forest">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
-
-  <meta property="og:title" content="Post-Disturbance Tree Community Trajectories in a Neotropical Forest" />
-  <meta property="og:type" content="book" />
-  
-  
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Post-Disturbance Tree Community Trajectories in a Neotropical Forest" />
-  
-  
-  
-
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  
-
-
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-
-
-
-
-
-
-
 % ---------------------------------------------------------------------
 % SelfArx : Conference proceedings and article templates for
 % personal open-archiving activities
@@ -72,6 +25,9 @@
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{booktabs}
+
+% Double linespacing
+\renewcommand{\baselinestretch}{2}
 % ---------------------------------------------------------------------
 
 
@@ -188,13 +144,31 @@
 \newcommand{\PaperTitle}[1]{\def\@PaperTitle{#1}}
 \newcommand{\Archive}[1]{\def\@Archive{#1}}
 \newcommand{\Authors}[1]{\def\@Authors{#1}}
+\newcommand{\JournalInfo}[1]{\def\@JournalInfo{#1}}
+\newcommand{\Abstract}[1]{\def\@Abstract{#1}}
+\newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 % ---------------------------------------------------------------------
 \renewcommand{\@maketitle}{%
-\twocolumn[{%
+\onecolumn%[{%
 \thispagestyle{empty}%
 \vskip-36pt%
+%{\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
+%\vskip20pt%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{25}\selectfont\@PaperTitle\par}%
+\vskip10pt
 {\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont\@Authors\par}
 \vskip18pt%
+\fcolorbox{color1}{white}{%
+\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
+\colorbox{color2!10}{%
+\parbox{\textwidth-3.5\fboxsep-3.5\fboxrule}{%
+\ifx\@Keywords\@empty
+\sffamily\small\textbf{\abstractname}\\\@Abstract
+\else
+\sffamily\small\textbf{\abstractname}\\\@Abstract\\[5pt]%
+\textbf{\keywordname}\\\@Keywords%
+\fi
+}%
 }%
 \vskip5pt%
 \begingroup%
@@ -203,13 +177,13 @@
 \endgroup%%
 }%
 }%
-\vskip25pt%
+%\vskip25pt%
 }]%
 }%
 % ---------------------------------------------------------------------
 
 % -------------- Personnalisation EcofoG
-\setlength{\columnsep}{0.80cm}      % Distance between the two columns of text
+\setlength{\columnsep}{0.85cm}      % Distance between the two columns of text
 \setlength{\fboxrule}{0.75pt}       % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections
@@ -239,96 +213,3 @@
 
 \RequirePackage[french, english]{babel}
   \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
-
-
-
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="" data-path=""><a href="#references"><i class="fa fa-check"></i>References</a></li>
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Post-Disturbance Tree Community Trajectories in a Neotropical Forest</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Post-Disturbance Tree Community Trajectories in a Neotropical Forest</h1>
-<h4 class="author"><em>Ariane MIRABEL</em></h4>
-<h4 class="author"><em>Bruno Herault</em></h4>
-<h4 class="author"><em>Eric Marcon</em></h4>
-</div>
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-},
-"search": false
-});
-});
-</script>
-
-</body>
-
-</html>

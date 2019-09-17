@@ -25,6 +25,9 @@
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{booktabs}
+
+\renewcommand{\baselinestretch}{1.5} % Double linespacing
+
 % ---------------------------------------------------------------------
 
 
@@ -146,11 +149,11 @@
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
 % ---------------------------------------------------------------------
 \renewcommand{\@maketitle}{%
-\twocolumn[{%
+\onecolumn{%
 \thispagestyle{empty}%
-\vskip-36pt%
-{\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
-\vskip20pt%
+%\vskip-36pt%
+%{\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
+%\vskip20pt%
 {\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{25}\selectfont\@PaperTitle\par}%
 \vskip10pt
 {\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont\@Authors\par}
@@ -175,12 +178,12 @@
 }%
 }%
 \vskip25pt%
-}]%
+}%
 }%
 % ---------------------------------------------------------------------
 
 % -------------- Personnalisation EcofoG
-\setlength{\columnsep}{0.55cm}      % Distance between the two columns of text
+\setlength{\columnsep}{0.80cm}      % Distance between the two columns of text
 \setlength{\fboxrule}{0.75pt}       % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections

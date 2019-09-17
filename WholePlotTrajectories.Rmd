@@ -42,6 +42,8 @@ preamble: >
   \captionsetup{justification = justified}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings re-or-gan-i-za-tion post-dis-tur-bance dis-tur-bance}
+  \usepackage[left]{lineno}
+  \linenumbers
 bibliography: references.bib
 lang: english
 keywordlabel: Keywords
@@ -150,7 +152,7 @@ The three treatments were then transformed into a continuous disturbance intensi
 Intervention <- data.frame(
   Treatment=c("Control", "T1, low", "T2, intermediate", "T3, high"),
   Timber=c("-", 
-           "DBH $\\geq$ 50 cm, commercially exploited species, $\\approx$ 10   $trees.ha^{-1}$", 
+           "DBH $\\geq$ 50 cm, commercially exploited species, <br/> $\\approx$ 10   $trees.ha^{-1}$", 
            "DBH $\\geq$ 50 cm, commercially exploited species, $\\approx$ 10  $trees.ha^{-1}$",
            "DBH $\\geq$ 50 cm, commercially exploited species, $\\approx$ 10  $trees.ha^{-1}$"),
   Thinning=c("-", 
@@ -187,7 +189,7 @@ Vernacular names were replaced through multinomial trials based on the associati
 M_v\Big(\big[s_1, s_2,..., s_N\big],\big[\alpha_1, \alpha_2,..., \alpha_V\big]\Big) \nonumber
 \end{align}
 
-See Supplementary Materials -Fig. S1 and @Aubry-Kientz2013 for the detailed methodology.
+See Supplementary Materials -Fig. A.1 and @Aubry-Kientz2013 for the detailed methodology.
 
 Six functional traits representing the leaf economics (*i.e.* leaf thickness, toughness, total chlorophyll content, and specific leaf area), and the stem economics (*i.e.* wood specific gravity and bark thickness) were obtained from the BRIDGE project [^1]. 
 Trait values were assessed from a selection of individuals located in nine permanent plots in French Guiana, including two in Paracou, and comprised 294 species belonging to 157 genera. 
@@ -274,7 +276,7 @@ $\rho_{Spearman}^{SLA}=0.93$, $\rho_{Spearman}^{Bark thickness}=0.71$).
 Negative correlation was observed for leaf toughness, WSG, and Hmax ($\rho_{Spearman}^{Leaf toughness}=-0.53$,
 $\rho_{Spearman}^{WSG}=-0.75$, $\rho_{Spearman}^{Hmax}=-0.40$)
 The proportions of the three lightest seed mass classes increased in all disturbed plots. 
-After 30 years the proportion of lightest seed mass class decreased while it stabilized for the two other lightest seed mass classes (Supp. Mat. - Fig. S2).
+After 30 years the proportion of lightest seed mass class decreased while it stabilized for the two other lightest seed mass classes (Supp. Mat. - Fig. A.2).
 
 ```{r CWM, out.width = '100%', echo=FALSE, fig.cap="Trajectories of community weighted means over 30 years after disturbance of four leaf traits (leaf thickness, chlorophyll content, toughness, and specific area), two stem traits (wood specific gravity and bark thickness), and one life history trait (species maximum height at adult stage). ", fig.env="figure*"}
 load("DB/CWM")
@@ -445,5 +447,6 @@ All authors gave final approval for publication.
 
 This article is based upon the dataset of the Paracou station, which is part of the Guyafor permanent plot network in French Guiana (Cirad-CNRS-ONF). 
 The dataset is available upon request to the scientific director (https://paracou.cirad.fr).
+
 
 `r if (knitr:::is_html_output()) '# References {-}'`

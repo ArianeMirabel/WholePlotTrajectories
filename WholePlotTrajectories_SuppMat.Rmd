@@ -15,7 +15,7 @@ affiliation:
       97310 Kourou,
       France.
   - affsuperscript: 2
-    dptuniv: INPHB (Institut National Ploytechnique Félix Houphoüet Boigny) 
+    dptuniv: INPHB (Institut National Polytechnique Félix Houphoüet Boigny) 
     address: Yamoussoukro, Ivory Coast
 corrauthor:
     email: ariane.mirabel@ecofog.gf
