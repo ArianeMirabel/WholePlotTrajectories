@@ -159,7 +159,8 @@
 {\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont\@Authors\par}
 \vskip18pt%
 \fcolorbox{color1}{white}{%
-\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
+\parbox{\textwidth-2\fboxsep-2\fboxrule}{
+\internallinenumbers\centering%
 \colorbox{color2!10}{%
 \parbox{\textwidth-3.5\fboxsep-3.5\fboxrule}{%
 \ifx\@Keywords\@empty
