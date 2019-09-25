@@ -112,6 +112,7 @@
 \usepackage{tabu}
 \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
 \hyphenation{bio-di-ver-si-ty sap-lings}
+\captionsetup{labelformat=empty}
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
@@ -127,7 +128,7 @@ Ariane MIRABEL\textsuperscript{1*}\\ Eric MARCON\textsuperscript{1}\\ Bruno HERA
 } % Authors
 \affiliation{
 \textsuperscript{1}UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles,
-Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\\\textsuperscript{2}INPHB (Institut National Ploytechnique Félix Houphoüet Boigny)\\ \hspace{1em} Yamoussoukro, Ivory Coast
+Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\\\textsuperscript{2}INPHB (Institut National Polytechnique Félix Houphoüet Boigny)\\ \hspace{1em} Yamoussoukro, Ivory Coast
 }
 \affiliation{*\textbf{}: ariane.mirabel@ecofog.gf, https://github.com/ArianeMirabel} % Corresponding author
 
@@ -171,6 +172,11 @@ Université de Guyane.\\ \hspace{1em} Campus Agronomique, 97310 Kourou, France.\
 
 \onecolumn
 
+\section*{Supplementary Material}\label{supplementary-material}
+\addcontentsline{toc}{section}{Supplementary Material}
+
+\pagenumbering{arabic}
+
 \textbf{Figure S1}: Whenever the family or genus were recorded for a
 vernacular name, the pool of species sampled to replace the vernacular
 name was restricted to those pertaining to the same higher taxonomic
@@ -184,8 +190,10 @@ species of the same family when the genus is missing)
 
 }
 
-\caption{Scheme of the Bayesian process propagating the taxonomic uncertainty}\label{fig:FigBayesianScheme}
+\caption{Figure S1: Scheme of the Bayesian process propagating the taxonomic uncertainty}\label{fig:FigBayesianScheme}
 \end{figure}
+
+\pagebreak
 
 \textbf{Figure S2}: Trajectories of seed mass classes proportions over
 30 years after disturbance, corresponding to the median (solid line) and
@@ -212,18 +220,20 @@ initial inventory diversity.
 
 }
 
-\caption{Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).}\label{fig:FigSeedMassClasses}
+\caption{Figure S2: Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).}\label{fig:FigSeedMassClasses}
 \end{figure}
+
+\pagebreak
 
 \textbf{Figure S3}: Functional PCA
 
 \begin{figure}[h]
 
-{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_SuppMat_files/figure-latex/PCA_graphs-1} 
+{\centering \includegraphics[width=1\linewidth]{WholePlotTrajectories_SuppMat_files/figure-latex/PCAgraphs-1} 
 
 }
 
-\caption{Summarizing plots of the functional PCA analysis defining communities functional space. \textbf{(a)} Plot of the samples from the BRIDGE functional database in the two dimensional main plan. \textbf{(b)} bow plot of the PCA eignevalues in percentage. \textbf{(c)} Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).}(\#fig:PCA_graphs)
+\caption{Figure S3: Summarizing plots of the functional PCA analysis defining communities functional space. \textbf{(a)} Plot of the samples from the BRIDGE functional database in the two dimensional main plan. \textbf{(b)} bow plot of the PCA eignevalues in percentage. \textbf{(c)} Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).}\label{fig:PCAgraphs}
 \end{figure}
 
 %----------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@
 \RequirePackage{graphicx,xcolor}
 \RequirePackage{booktabs}
 
-\renewcommand{\baselinestretch}{1.5} % Double linespacing
+\renewcommand{\baselinestretch}{2} % Double linespacing
 
 % ---------------------------------------------------------------------
 
@@ -159,8 +159,8 @@
 {\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont\@Authors\par}
 \vskip18pt%
 \fcolorbox{color1}{white}{%
-\parbox{\textwidth-2\fboxsep-2\fboxrule}{
-\internallinenumbers\centering%
+\parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering
+%\internallinenumbers
 \colorbox{color2!10}{%
 \parbox{\textwidth-3.5\fboxsep-3.5\fboxrule}{%
 \ifx\@Keywords\@empty

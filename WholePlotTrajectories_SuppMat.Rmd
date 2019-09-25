@@ -26,6 +26,7 @@ preamble: >
   \usepackage{tabu}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
+  \captionsetup{labelformat=empty}
 lang: english
 output: 
   bookdown::pdf_book:
@@ -59,14 +60,28 @@ Library("kableExtra")
 source("Scripts/DrawingTools.R")
 ```
 
+```{r, include=F}
+library(captioner)
+figures <- captioner(prefix = "Figure S", auto_space = FALSE)
+
+figures("FigBayesianScheme", "Scheme of the Bayesian process propagating the taxonomic uncertainty", display=FALSE)
+figures("FigSeedMassClasses", "Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).", display=FALSE)
+figures("PCAgraphs", "Summarizing plots of the functional PCA analysis defining communities functional space. (ref:Bolda) Plot of the samples from the BRIDGE functional database in the two dimensional main plan. (ref:Boldb) bow plot of the PCA eignevalues in percentage. (ref:Boldc) Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).", display=FALSE)
+```
+
 \onecolumn
+
+#Supplementary Material {-}
+
+\pagenumbering{arabic}
 
 **Figure S1**: Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing) \@ref(fig:FigBayesianScheme).
 
-```{r FigBayesianScheme,out.width='100%',fig.cap="Scheme of the Bayesian process propagating the taxonomic uncertainty",echo=F, fig.env='figure',fig.pos='h'}
+```{r FigBayesianScheme,out.width='100%',fig.cap=figures("FigBayesianScheme"),echo=F, fig.env='figure',fig.pos='h'}
 knitr::include_graphics("ExternalFig/BayesianSheme.png")
 ```
 
+\pagebreak
 
 **Figure S2**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 .
 
@@ -76,18 +91,18 @@ This association probability then allows generating theoretical inventories with
 The repetition of the replacement process produces a set of theoretical inventories which diversities gives the probability distribution of the initial inventory diversity.
 
 
-```{r FigSeedMassClasses, echo=FALSE, out.width='80%', fig.asp=2/5,fig.cap="Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).", fig.env='figure',fig.pos='h'}
+```{r FigSeedMassClasses, echo=FALSE, out.width='80%', fig.asp=2/5,fig.cap=figures("FigSeedMassClasses"), fig.env='figure',fig.pos='h'}
 load("DB/Smass_ClassProp")
 
 SeedMassProp(Smass)
 
 ```
 
-
+\pagebreak
 
 **Figure S3**: Functional PCA
 
-```{r PCA_graphs, out.width = '100%', echo=FALSE, fig.cap="Summarizing plots of the functional PCA analysis defining communities functional space. (ref:Bolda) Plot of the samples from the BRIDGE functional database in the two dimensional main plan. (ref:Boldb) bow plot of the PCA eignevalues in percentage. (ref:Boldc) Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).", fig.env='figure',fig.pos='h'}
+```{r PCAgraphs, echo=FALSE, out.width = '100%', fig.cap=figures("PCAgraphs"), fig.env='figure',fig.pos='h'}
 load("DB/FunctionalPCA")
 
 plotPCA(DataACP)
