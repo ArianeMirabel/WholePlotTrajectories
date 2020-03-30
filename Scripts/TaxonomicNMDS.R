@@ -69,7 +69,9 @@ save(MatrepTaxo,file="DB/TaxoComposition_ForGraphs")
 #####################################################
 ### Taxonomic Euclidean distance
 
-Nrep<-10
+dates<-dates[which(as.numeric(dates)>=1989)]
+
+Nrep<-50
 
 TaxoEuclid<-lapply(1:Nrep,function(rep){
   Mat<-lapply(1:12,function(p){
@@ -90,7 +92,7 @@ TaxoEuclid<-lapply(1:Nrep,function(rep){
     Ok<-names(which(unlist(lapply(2:length(Trajnmds),function(step){return(Ntrees[step]-Ntrees[step-1])}))<=-90))
     Trajnmds<-Trajnmds[which(!names(Trajnmds)%in%Ok)]
     namesOk<-names(Trajnmds)
-    ref<-as.data.frame(Trajnmds[["1985"]])
+    ref<-as.data.frame(Trajnmds[["1989"]])
     Trajnmds<-do.call(cbind,lapply(Trajnmds,function(yr){
       All<-as.data.frame(AllInv[, "Genre"]);colnames(All)<-"Genre"
       ret<-merge(All,yr,by.x="Genre",by.y="row.names",all.x=TRUE)
@@ -106,6 +108,6 @@ TaxoEuclid<-lapply(1:Nrep,function(rep){
 TaxoEuclid<-array(unlist(Matrep),dim=c(nrow(Matrep[[1]]),ncol(Matrep[[1]]),length(Matrep)),
            dimnames=list(1:nrow(Matrep[[1]]),colnames(Matrep[[1]]),1:length(Matrep)))
 
-save(TaxoEuclid,file="DB/TaxoDistance_ForGraphs")
+save(TaxoEuclid,file="DB/TaxoDistance_ForGraphs_rect")
 
 

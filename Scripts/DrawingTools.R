@@ -18,6 +18,7 @@ matT$plot<-substr(rownames(matT),start=1,stop=regexpr("_",rownames(matT))-1)
 matT$year<-substr(rownames(matT),start=regexpr("_",rownames(matT))+1,
                   stop=nchar(rownames(matT)))
 colnames(matT)<-c("X","Y","plot","year")
+matT<-subset(matT, as.numeric(matT$year) >= 1989 )
 plot(matT$X,matT$Y,type="n",xlab="",ylab="",cex.axis=0.7)
 invisible(lapply(1:length(treatments),function(tr){
   plots<-treatments[[tr]]
@@ -26,7 +27,7 @@ invisible(lapply(1:length(treatments),function(tr){
     points(toplot[1,"X"],toplot[1,"Y"],col=ColorsTr[[tr]],pch=16,cex=1.7)
     points(toplot[nrow(toplot),"X"],toplot[nrow(toplot),"Y"],col=ColorsTr[[tr]],pch=1,cex=1.7,lwd=2)
     
-    lines(toplot$X,toplot$Y,col=ColorsTr[[tr]],lty=2)
+    lines(toplot$X,toplot$Y,col=ColorsTr[[tr]])#,lty=2)
     invisible(lapply(round(seq(2,nrow(toplot),length.out=5)),function(step){
       Arrows(x0=toplot[step,"X"],y0=toplot[step,"Y"],
              x1=toplot[step-1,"X"],y1=toplot[step-1,"Y"],
@@ -53,7 +54,7 @@ invisible(lapply(1:length(treatments),function(tr){
     points(toplot[1,"X"],toplot[1,"Y"],col=ColorsTr[[tr]],pch=16,cex=1.7)
     points(toplot[nrow(toplot),"X"],toplot[nrow(toplot),"Y"],col=ColorsTr[[tr]],pch=1,cex=1.7,lwd=2)
     
-    lines(toplot$X,toplot$Y,col=ColorsTr[[tr]],lty=2)
+    lines(toplot$X,toplot$Y,col=ColorsTr[[tr]])#,lty=2)
     invisible(lapply(round(seq(2,nrow(toplot),length.out=5)),function(step){
       Arrows(x0=toplot[step,"X"],y0=toplot[step,"Y"],
              x1=toplot[step-1,"X"],y1=toplot[step-1,"Y"],
@@ -66,23 +67,23 @@ mtext("NMDS 2",side=2,padj=0,line=2,cex=0.8)
 }
 
 EuclidDist<-function(Distances){
-  colnames(Distances)<-as.numeric(colnames(Distances))-1986
+  colnames(Distances)<-as.numeric(colnames(Distances))-1985
   ret<-lapply(c(0.025,0.5,0.975),function(quant){
-  return(apply(Distances[,which(as.numeric(colnames(Distances))>=3),],c(1,2),function(col){
-    return(quantile(col,probs=quant))}))})
-names(ret)<-c(0.025,0.5,0.975)
-
-plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",xaxt="n",
-     ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
-axis(1,at=as.numeric(colnames(ret[[1]])),labels=TRUE)  
-invisible(lapply(1:length(treatments),function(tr){
-  Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
-  invisible(lapply(Toplot,function(plo){
-    lines(colnames(plo),plo["0.5",],col=ColorsTr[[tr]],lwd=2)
-    polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
-            col=rgb(0,0,0,alpha=0.1),border=NA)
+    return(apply(Distances,c(1,2),function(col){
+      return(quantile(col,probs=quant))}))})
+  names(ret)<-c(0.025,0.5,0.975)
+  
+  plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",xaxt="n",
+       ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
+  axis(1,at=seq(0,30,by=5),labels=TRUE)  
+  invisible(lapply(1:length(treatments),function(tr){
+    Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
+    invisible(lapply(Toplot,function(plo){
+      lines(colnames(plo),plo["0.5",],col=ColorsTr[[tr]],lwd=2)
+      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
   }))
-}))
 }
 
 TaxoTraj<-function(CompTaxo){
@@ -92,7 +93,7 @@ TaxoTraj<-function(CompTaxo){
     Toplot<-lapply(Toplot,function(tr){
       ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
       ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
-                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
       ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
       return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
                    dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
@@ -128,16 +129,26 @@ plotIDH<-function(Data,AgbLoss){
     points(abs,toplot,col=colyear[Ti],pch=20)
     Lm<-lm(toplot~abs)
     Lm2<-lm(toplot~abs+I(abs^2))
-    if(abs(round(summary(Lm)$adj.r.squared,2))<abs(round(summary(Lm2)$adj.r.squared,2))){
+    if(AIC(Lm2)<AIC(Lm)){
       abs_pred<-seq(min(abs),max(abs),length.out=100)
       lines(sort(abs_pred),predict(Lm2,newdata=data.frame(abs=abs_pred)),col=colyear[Ti],lwd=2.5)
-      return(round(summary(Lm2)$adj.r.squared,2)) }
-    if(abs(round(summary(Lm)$adj.r.squared,2))>abs(round(summary(Lm2)$adj.r.squared,2))){
+      ano <- anova(Lm)$`Pr(>F)`[1]
+      if(ano <= 0.001){sign <- "***"} else if (ano > 0.001 && ano <= 0.01) {sign <- "**"
+      } else if (ano > 0.01 && ano <= 0.05) {sign <- "*"}  else if (ano > 0.05 && ano <= 0.1) {sign <- "."} else {sign <- "-"}
+      return(c(round(summary(Lm2)$adj.r.squared,2),sign,round(AIC(Lm2),2))) }
+    if(AIC(Lm2)>AIC(Lm)){
       abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
-      return(round(summary(Lm)$adj.r.squared,2)) }
+      ano <- anova(Lm2)$`Pr(>F)`[1]
+      if(ano <= 0.001){sign <- "***"} else if (ano > 0.001 && ano <= 0.01) {sign <- "**"
+      } else if (ano > 0.01 && ano <= 0.05) {sign <- "*"}  else if (ano > 0.05 && ano <= 0.1) {sign <- "."} else {sign <- "-"}
+      return(c(round(summary(Lm)$adj.r.squared,2),sign,round(AIC(Lm),2))) }
   })
-  legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('Adjusted ','R'^2)))
+  leg<-do.call(rbind,leg)
+  legend("topleft",legend=paste(leg[,1],leg[,2]),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.7,title=expression(paste('Adjusted ','R'^2)))
+  #legend("topright",legend=leg[,3],bty="n",lty=1,col=colyear,lwd=2.5,cex=0.6,title="AIC")
+  
 }
+
 
 plotDiv<-function(Data,remove=FALSE){
   
@@ -147,7 +158,7 @@ plotDiv<-function(Data,remove=FALSE){
   Toplot<-lapply(Toplot,function(tr){
     ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
     ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
-               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1986,1:length(ret)))
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
     ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
     return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
                  dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
@@ -200,13 +211,14 @@ legendCWM<-function(){
   mtext("SLA\n",at=0.88,line=-2.5,outer=TRUE,cex=0.9)
   mtext(expression(paste(mm^2,".",mg^-1,sep = "")),at=0.84,line=-3,outer=TRUE,cex=0.9)
   
-  mtext("WSG\n",at=0.13,line=-17.8,outer=TRUE,cex=0.9)
-  mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-18,outer=TRUE,cex=0.9)
-  mtext("Bark thickness\n",at=0.4,line=-17.8,outer=TRUE,cex=0.9)
-  mtext("mm",at=0.32,line=-18,outer=TRUE,cex=0.9)
-  mtext("Hmax\n",at=0.64,line=-17.8,outer=TRUE,cex=0.9)
-  mtext("m",at=0.56,line=-18,outer=TRUE,cex=0.9)
+  mtext("WSG\n",at=0.13,line=-21.2,outer=TRUE,cex=0.9)
+  mtext(expression(paste("g.",cm^-3,sep = "")),at=0.08,line=-21.5,outer=TRUE,cex=0.9)
+  mtext("Bark thickness\n",at=0.4,line=-21.2,outer=TRUE,cex=0.9)
+  mtext("mm",at=0.32,line=-21.2,outer=TRUE,cex=0.9)
+  mtext("Hmax\n",at=0.64,line=-21.2,outer=TRUE,cex=0.9)
+  mtext("m",at=0.56,line=-21.2,outer=TRUE,cex=0.9)
 }
+
 
 SeedMassProp<-function(SeedMass){
   par(mfrow=c(1,5),mar=c(1,1,2,1),oma=c(2,1,4,1),no.readonly = T)
@@ -232,7 +244,7 @@ RedundancyPlot<-function(Red){
     ret<-smooth(rep,2)
    colnames(ret)<-colnames(rep)
    ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return(col-ret[,"1989"])})#
-   colnames(ret)<-as.numeric(colnames(ret))-1986
+   colnames(ret)<-as.numeric(colnames(ret))-1984
    return(ret)})
   
   Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
@@ -289,6 +301,51 @@ plotPCA<-function(DataAcp){
   title(main="(c) Traits in the main PCA plan",adj=0,cex.main=0.9)
 }
 
+
+ChangesDraw<-function(Tab){
+  par(mfrow=c(2,2),mar=c(4,4,3,2))
+  matplot(x=Tab[,"AGB"], y=Tab[,c("Taxonomic Richness","Taxonomic evenness")],
+          xlab="",ylab="",type="n")
+  mtext("Maximum\nIndex change (%)",2,line=2,cex=0.8)
+  
+  apply(Tab[,c("Taxonomic Richness","Taxonomic evenness")],2,
+        function(col) {points(x=Tab[,"AGB"], y=col, pch=c(20,0), col="darkgoldenrod2")})
+  mtext(paste("(a) Taxonomic","\n", "changes"),side=3,adj=0,line=0.5)
+  mtext("AGB lost (%)",side=1,adj=1,line=2.5,cex=0.8)
+  legend("topright",xpd=TRUE,inset=c(0,-0.35),col="darkgoldenrod2",pch=c(20,0),bty="n",cex=0.85,
+         legend=c(expression(paste("Richness  ",rho," = 0.73")),expression(paste("Evenness  ",rho," = 0.82"))))
+  
+  matplot(x=Tab[,"AGB"], y=Tab[,c("Functional Richness" , "Rao Index")],
+          xlab="",ylab="",type="n")
+  mtext("Maximum\nIndex change (%)",2,line=2,cex=0.8)
+  apply(Tab[,c("Functional Richness" , "Rao Index")],2,
+        function(col) {points(x=Tab[,"AGB"], y=col, pch=c(20,0), col="mediumorchid4")})
+  mtext(paste("(b) Functional","\n"," changes"),side=3,adj=0,line=0.5)
+  mtext("AGB lost (%)",side=1,adj=1,line=2.5,cex=0.8)
+  legend("topright",legend=c(expression(paste("Richness  ",rho," = 0.76")),expression(paste("Evenness  ",rho," = 0.60"))),
+         xpd=TRUE,inset=c(0,-0.35),col="mediumorchid4",pch=c(20,0),bty="n",cex=0.85)
+  
+  matplot(x=Tab[,"AGB"], y=Tab[,c("Taxonomic composition distance", "Functional composition distance")],
+          xlab="",ylab="",type="n")
+  mtext("Maximum\nEuclidean distance",2,line=2,cex=0.8)
+  apply(Tab[,c("Taxonomic composition distance", "Functional composition distance")],2,
+        function(col) {points(x=Tab[,"AGB"], y=col, pch=20, col=c("darkgoldenrod2","mediumorchid4"))})
+  mtext(paste("(c) Compositional","\n"," changes"),side=3,adj=0,line=0.5)
+  mtext("AGB lost (%)",side=1,adj=1,line=2.5,cex=0.8)
+  legend("topright",xpd=TRUE,inset=c(0,-0.35),col=c("darkgoldenrod2","mediumorchid4"),pch=20,bty="n",cex=0.85,
+         legend=c(expression(paste("Taxonomic  ",rho," = 0.94")),expression(paste("Functional  ",rho," = 0.90"))))
+  
+  matplot(x=Tab[,"AGB"], y=Tab[,"Functional Redundancy"],
+          xlab="",ylab="",type="n")
+  mtext("Maximum\nNumber of species",2,line=2,cex=0.8)
+  points(x=Tab[,"AGB"], y=Tab[,"Functional Redundancy"], pch=20, col="cornflowerblue")
+  mtext(paste("(d) Functional","\n", "Redundancy"),side=3,adj=0,line=0.5)
+  mtext("AGB lost (%)",side=1,adj=1,line=2.5,cex=0.8)
+  legend("topright",legend=expression(paste(rho," = 0.31")),
+         xpd=TRUE,inset=c(0,-0.2),bty="n",cex=0.85)
+}
+
+
 ### Previous graphs
 TaxoTraj_old<-function(CompTaxo){
   par(mfrow=c(1,3),mar=c(5,2,4,2),oma=c(1,1.5,1,1),no.readonly=TRUE)
@@ -337,7 +394,7 @@ FunTraj<-function(CompFun,remove=TRUE){
   plot(as.numeric(colnames(CompFun[[1]])),CompFun[[1]][1,,"0.5"],type="n",xaxt="n",
        xlab="",ylab="",ylim=c(min(unlist(CompFun),na.rm=T),max(unlist(CompFun),na.rm=T)),cex.axis=0.7)
   axis(1,at=as.character(seq(5,33,5)),labels=TRUE,cex.axis=0.7)  
-  mtext("Rao diversity",3,adj=0,line=1,cex=1.5) 
+  mtext("Functional evenness",3,adj=0,line=1,cex=1.5) 
   mtext("Years since disturbance",side=1,adj=1,line=2)
   mtext("Equivalent diversity",side=2,padj=1,line=3)
   
@@ -432,4 +489,14 @@ FunDist_old<-function(Data_FunComp){
   mtext("(d)",side=3,adj=0,line=0.5)
   mtext("Years since disturbance",side=1,adj=1,line=2,cex=0.8)
 }
+
+
+
+
+
+
+
+
+
+
 

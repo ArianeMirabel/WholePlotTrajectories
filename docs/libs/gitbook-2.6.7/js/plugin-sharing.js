@@ -15,7 +15,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-facebook',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]="+encodeURIComponent(location.href));
+                window.open("http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href));
             }
         },
         'twitter': {
@@ -23,15 +23,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-twitter',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://twitter.com/home?status="+encodeURIComponent(document.title+" "+location.href));
-            }
-        },
-        'google': {
-            'label': 'Google+',
-            'icon': 'fa fa-google-plus',
-            'onClick': function(e) {
-                e.preventDefault();
-                window.open("https://plus.google.com/share?url="+encodeURIComponent(location.href));
+                window.open("http://twitter.com/intent/tweet?text="+document.title+"&url="+encodeURIComponent(location.href)+"&hashtags=rmarkdown,bookdown");
             }
         },
         'linkedin': {
@@ -52,7 +44,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         },
         'instapaper': {
             'label': 'Instapaper',
-            'icon': 'fa fa-instapaper',
+            'icon': 'fa fa-italic',
             'onClick': function(e) {
                 e.preventDefault();
                 window.open("http://www.instapaper.com/text?u="+encodeURIComponent(location.href));
@@ -78,7 +70,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         var menu = _.chain(opts.all)
             .map(function(id) {
                 var site = SITES[id];
-
+                if (!site) return;
                 return {
                     text: site.label,
                     onClick: site.onClick
@@ -103,7 +95,8 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
 
             gitbook.toolbar.createButton({
                 icon: site.icon,
-                label: site.text,
+                label: site.label,
+                title: site.label,
                 position: 'right',
                 onClick: site.onClick
             });
@@ -127,7 +120,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-facebook',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]="+encodeURIComponent(location.href));
+                window.open("http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href));
             }
         },
         'twitter': {
@@ -135,15 +128,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-twitter',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://twitter.com/home?status="+encodeURIComponent(document.title+" "+location.href));
-            }
-        },
-        'google': {
-            'label': 'Google+',
-            'icon': 'fa fa-google-plus',
-            'onClick': function(e) {
-                e.preventDefault();
-                window.open("https://plus.google.com/share?url="+encodeURIComponent(location.href));
+                window.open("http://twitter.com/intent/tweet?text="+document.title+"&url="+encodeURIComponent(location.href)+"&hashtags=rmarkdown,bookdown");
             }
         },
         'linkedin': {
@@ -164,7 +149,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         },
         'instapaper': {
             'label': 'Instapaper',
-            'icon': 'fa fa-instapaper',
+            'icon': 'fa fa-italic',
             'onClick': function(e) {
                 e.preventDefault();
                 window.open("http://www.instapaper.com/text?u="+encodeURIComponent(location.href));
@@ -190,7 +175,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         var menu = _.chain(opts.all)
             .map(function(id) {
                 var site = SITES[id];
-
+                if (!site) return;
                 return {
                     text: site.label,
                     onClick: site.onClick
@@ -215,7 +200,8 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
 
             gitbook.toolbar.createButton({
                 icon: site.icon,
-                label: site.text,
+                label: site.label,
+                title: site.label,
                 position: 'right',
                 onClick: site.onClick
             });
@@ -239,7 +225,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-facebook',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://www.facebook.com/sharer/sharer.php?s=100&p[url]="+encodeURIComponent(location.href));
+                window.open("http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(location.href));
             }
         },
         'twitter': {
@@ -247,15 +233,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
             'icon': 'fa fa-twitter',
             'onClick': function(e) {
                 e.preventDefault();
-                window.open("http://twitter.com/home?status="+encodeURIComponent(document.title+" "+location.href));
-            }
-        },
-        'google': {
-            'label': 'Google+',
-            'icon': 'fa fa-google-plus',
-            'onClick': function(e) {
-                e.preventDefault();
-                window.open("https://plus.google.com/share?url="+encodeURIComponent(location.href));
+                window.open("http://twitter.com/intent/tweet?text="+document.title+"&url="+encodeURIComponent(location.href)+"&hashtags=rmarkdown,bookdown");
             }
         },
         'linkedin': {
@@ -276,7 +254,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         },
         'instapaper': {
             'label': 'Instapaper',
-            'icon': 'fa fa-instapaper',
+            'icon': 'fa fa-italic',
             'onClick': function(e) {
                 e.preventDefault();
                 window.open("http://www.instapaper.com/text?u="+encodeURIComponent(location.href));
@@ -302,7 +280,7 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         var menu = _.chain(opts.all)
             .map(function(id) {
                 var site = SITES[id];
-
+                if (!site) return;
                 return {
                     text: site.label,
                     onClick: site.onClick
@@ -327,7 +305,8 @@ gitbook.require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
 
             gitbook.toolbar.createButton({
                 icon: site.icon,
-                label: site.text,
+                label: site.label,
+                title: site.label,
                 position: 'right',
                 onClick: site.onClick
             });

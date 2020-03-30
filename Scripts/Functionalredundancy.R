@@ -41,7 +41,7 @@ RedundancyTraj<-lapply(1:Nrep,function(rep){
   
   traits_filled<-Traits_filling(Traits1,Traits2,InventorySp)
   
-  ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=FALSE,nf=2)
+  ACP<-dudi.pca(scale(traits_filled[,TraitsName]),scannf=T,nf=2)
   Bigacp<-merge(ACP$li,traits_filled[,c("Family","Genus","name" )],by="row.names")[,c("Family","Genus","name","Axis1","Axis2")]
 
   xgen<-c(min(Bigacp[,"Axis1"]),max(Bigacp[,"Axis1"]))

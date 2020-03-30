@@ -31,6 +31,11 @@ names(Carr)<-paste(plo,unique(Plo[,"n_carre"]),sep=".")
 return(Carr)
 }))
 
+AGBi<-unlist(lapply(1:12,function(plo){
+  Plo<-init[which(init[,"n_parcelle"]==plo),]
+    return(sum(computeAGB(D=Plo[,"circonf"],WD=rep(wd,nrow(Plo)),coord=c(mean(Plo[,"Lon"]),mean(Plo[,"Lat"])))))
+  }))
+
 AGBp<-unlist(lapply(1:12,function(plo){
   Plo<-logg[which(logg[,"n_parcelle"]==plo),]
   Carr<-unlist(lapply(unique(Plo[,"n_carre"]),function(car){
@@ -48,5 +53,13 @@ c(1,6,11,2,7,9,3,5,10,4,8,12)
 AGBloss<-cbind(rep(1:12,rep(4,12)),rep(1:4,12),AGBloss)
 colnames(AGBloss)<-c("plot","carre","AGBloss")
 
-save(AGBloss,file="DB/LostAGBcarre")
+save(AGBloss,file="DB/LostAGB")
+
+load("DB/LostAGB")
+AGBloss_cor<-cbind(c(AGBloss[1:3,"AGB"],24.9,18.6,20.8,52.8,41,47.8,51,58.8,48.4),AGBloss[,"plot"])
+colnames(AGBloss_cor)<-c("AGB","plot")
+save(AGBloss_cor,file="DB/LostAGB")
+
+
+
 

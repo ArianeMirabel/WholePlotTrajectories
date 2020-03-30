@@ -29,11 +29,11 @@ preamble: >
   \captionsetup{labelformat=empty}
 lang: english
 output: 
+  bookdown::word_document2: default
+  bookdown::gitbook: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
-  bookdown::word_document2: default
 ---
 
 (ref:Bolda) **(a)**
@@ -67,6 +67,7 @@ figures <- captioner(prefix = "Figure S", auto_space = FALSE)
 figures("FigBayesianScheme", "Scheme of the Bayesian process propagating the taxonomic uncertainty", display=FALSE)
 figures("FigSeedMassClasses", "Trajectories of seed mass classes proportions over 30 years after disturbance. Colors are treatments: green (control), yellow (T1), orange (T2), red (T3).", display=FALSE)
 figures("PCAgraphs", "Summarizing plots of the functional PCA analysis defining communities functional space. (ref:Bolda) Plot of the samples from the BRIDGE functional database in the two dimensional main plan. (ref:Boldb) bow plot of the PCA eignevalues in percentage. (ref:Boldc) Plot of the 7 functional traits sed in the PCA analysis (Leaf and stem traits, and maximum species height).", display=FALSE)
+figures("ParacouMap","Map of the Paracou experimental site with the 12 studied plots. Square colors indicate the silvicultural treatment applied in 1984.")
 ```
 
 \onecolumn
@@ -75,7 +76,14 @@ figures("PCAgraphs", "Summarizing plots of the functional PCA analysis defining 
 
 \pagenumbering{arabic}
 
-**Figure S1**: Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing) \@ref(fig:FigBayesianScheme).
+
+**Figure S1**: Map of the experimental design
+
+```{r ParacouMap,out.width='100%',fig.cap=figures("ParacouMap"),echo=F, fig.env='figure',fig.pos='h'}
+knitr::include_graphics("ExternalFig/ParacouMap.png")
+```
+
+**Figure S2**: Whenever the family or genus were recorded for a vernacular name, the pool of species sampled to replace the vernacular name was restricted to those pertaining to the same higher taxonomic level (i.e species of the same genus when the species is missing, species of the same family when the genus is missing) \@ref(fig:FigBayesianScheme).
 
 ```{r FigBayesianScheme,out.width='100%',fig.cap=figures("FigBayesianScheme"),echo=F, fig.env='figure',fig.pos='h'}
 knitr::include_graphics("ExternalFig/BayesianSheme.png")
@@ -83,7 +91,7 @@ knitr::include_graphics("ExternalFig/BayesianSheme.png")
 
 \pagebreak
 
-**Figure S2**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 .
+**Figure S3**: Trajectories of seed mass classes proportions over 30 years after disturbance, corresponding to the median (solid line) and 0.025 and 0.975 percentile (gray envelope) observed after 50 iteration of the taxonomic uncertainty propagation. No gap filling process was applied in this case. Initial treatments are represented by solid lines colors with green for control, blue for T1,orange for T2 and red for T3 .
 
 The biodiversity estimator is based on the association probability between vernacular names and botanical species. 
 The association probability is estimated by a Dirichlet trial based on the vernacular/botanical association frequency observed in the whole inventory.
@@ -100,7 +108,7 @@ SeedMassProp(Smass)
 
 \pagebreak
 
-**Figure S3**: Functional PCA
+**Figure S4**: Functional PCA
 
 ```{r PCAgraphs, echo=FALSE, out.width = '100%', fig.cap=figures("PCAgraphs"), fig.env='figure',fig.pos='h'}
 load("DB/FunctionalPCA")

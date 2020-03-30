@@ -60,6 +60,8 @@ jQuery.fn.highlight = function (words, options) {
 
     if (words.constructor === String) {
         words = [words];
+        // also match 'foo-bar' if search for 'foo bar'
+        if (/\s/.test(words[0])) words.push(words[0].replace(/\s+/, '-'));
     }
     words = jQuery.grep(words, function(word, i){
       return word !== '';
@@ -144,6 +146,8 @@ jQuery.fn.highlight = function (words, options) {
 
     if (words.constructor === String) {
         words = [words];
+        // also match 'foo-bar' if search for 'foo bar'
+        if (/\s/.test(words[0])) words.push(words[0].replace(/\s+/, '-'));
     }
     words = jQuery.grep(words, function(word, i){
       return word !== '';
@@ -228,6 +232,8 @@ jQuery.fn.highlight = function (words, options) {
 
     if (words.constructor === String) {
         words = [words];
+        // also match 'foo-bar' if search for 'foo bar'
+        if (/\s/.test(words[0])) words.push(words[0].replace(/\s+/, '-'));
     }
     words = jQuery.grep(words, function(word, i){
       return word !== '';

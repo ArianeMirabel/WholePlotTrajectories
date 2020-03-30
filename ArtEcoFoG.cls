@@ -160,7 +160,7 @@
 \vskip18pt%
 \fcolorbox{color1}{white}{%
 \parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering
-%\internallinenumbers
+\internallinenumbers
 \colorbox{color2!10}{%
 \parbox{\textwidth-3.5\fboxsep-3.5\fboxrule}{%
 \ifx\@Keywords\@empty

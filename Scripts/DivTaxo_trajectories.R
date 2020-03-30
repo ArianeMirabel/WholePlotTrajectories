@@ -82,3 +82,43 @@ CompleteTaxo<-lapply(1:4,function(t){
 
 save(CompleteTaxo,file = "DB/ReplacementTraj_ForGraphs")
 
+
+
+
+EuclidDist<-function(Distances){
+  colnames(Distances)<-as.numeric(colnames(Distances))-1986
+  ret<-lapply(c(0.025,0.5,0.975),function(quant){
+    return(apply(Distances,c(1,2),function(col){
+      return(quantile(col,probs=quant))}))})
+  names(ret)<-c(0.025,0.5,0.975)
+  
+  plot(colnames(ret[[2]]),ret[[2]][1,],type="n",xlab="",ylab="",xaxt="n",
+       ylim=c(min(unlist(ret)),max(unlist(ret))),cex.axis=0.7)
+  axis(1,at=as.numeric(colnames(ret[[1]])),labels=TRUE)  
+  invisible(lapply(1:length(treatments),function(tr){
+    Toplot<-lapply(treatments[[tr]],function(plo){return(do.call(rbind,lapply(ret,function(quant){return(quant[plo,])})))})
+    invisible(lapply(Toplot,function(plo){
+      lines(colnames(plo),plo["0.5",],col=ColorsTr[[tr]],lwd=2)
+      polygon(c(colnames(plo),rev(colnames(plo))),c(plo["0.025",],rev(plo["0.975",])),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
+  }))
+}
+
+load("DB/FunctionalComposition_forGraphs");load("DB/TaxoComposition_forGraphs")
+load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
+
+windows()
+par(mfrow=c(2,2),mar=c(2,2.5,2.5,1),oma=c(1,2,1,4),no.readonly = T)
+TaxoCompo(MatrepTaxo)
+mtext("Taxonomic composition",side=3,line=1.8,cex=1.05)
+FunCompo(MatrepFun)
+mtext("Functional composition",side=3,line=1.8,cex=1.05)
+EuclidDist(TaxoEuclid)
+mtext("Euclidean distance\nfrom 1984 inventory",side=2,padj=0,line=2,cex=0.8)
+mtext("(c)",side=3,adj=0,line=0.5)
+EuclidDist(FunEuclid)
+mtext("(d)",side=3,adj=0,line=0.5)
+mtext("Years since disturbance",side=1,line=2.2,adj=1,cex=0.8)
+legend("right",inset=-0.4,xpd=NA,legend=c("Control","Low","Interm.","High"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment", cex=0.85)
+

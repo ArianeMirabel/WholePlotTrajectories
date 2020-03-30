@@ -1,3 +1,5 @@
+library(dplyr)
+
 load("DB/ReplacementTraj_ForGraphs")
 load("DB/FunctionalTraj_ForGraphs")
 load("DB/FunctionalRichnessTraj_ForGraphs")
@@ -86,11 +88,11 @@ plotIDH(FunRich,AGBloss)
 ## Rho Spearman, Taxo
 load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs");load("DB/LostAGB")
 
-Dist<-TaxoEuclid
+Dist<-FunEuclid
 ret<-apply(apply(Dist,c(1,2),median),1,function(li){return(max(abs(li)))})
 ret<-data.frame(cbind(ret,names(ret)))
 colnames(ret)<-c("Dist","plot")
-ret<-merge(ret,AGBloss,by="plot")
+ret<-merge(ret,AGBloss_cor,by="plot")
 ret<-apply(ret,2,as.numeric)
 cor(ret[,"Dist"],ret[,"AGB"],method="spearman")
 
@@ -131,7 +133,7 @@ Maxred<-unlist(lapply(1:12,function(pl){
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
 Maxred<-cbind(Maxred,1:12)
 colnames(Maxred)<-c("Max","plot")
-Maxred<-merge(Maxred,AGBloss,by="plot")
+Maxred<-merge(Maxred,AGBloss_cor,by="plot")
 cor(Maxred[,"Max"],Maxred[,"AGB"],method="spearman")
 
 
@@ -144,7 +146,7 @@ Max<-do.call(rbind,lapply(CWM,function(pl){ return(apply(pl[,,"0.5"],2,max))}))
 treats<-cbind(c(1,6,11,2,7,9,3,5,10,4,8,12),rep(0:3,each=3))
 Max<-apply(cbind(Max,rownames(Max)),2,as.numeric)#,treats[order(treats[,1]),2])
 colnames(Max)<-c(colnames(CWM[[1]]),"plot")
-Max<-merge(Max,AGBloss,by="plot")
+Max<-merge(Max,AGBloss_cor,by="plot")
 apply(Max[,colnames(CWM[[1]])],2,function(x){return(cor(x,Max[,"AGB"],method="spearman"))})
 
 
@@ -187,7 +189,7 @@ for(q in 1:3){
   Ret<-as.data.frame(unlist(Toplot))
   Ret$plot<-rownames(Ret)
   #Ret<-Ret[order(as.numeric(Ret$plot)),]
-  Ret<-merge(Ret,AGBloss,by="plot")
+  Ret<-merge(Ret,AGBloss_cor,by="plot")
   assign(c("Richness","Shannon","Simpson")[q],Ret)
 }
 
@@ -289,7 +291,7 @@ Rao<-do.call(rbind,lapply(P,function(yr){
 }))
 
 ###### Functional spearman
-load("DB/FunctionalRichnessTraj_ForGraphs")
+load("DB/FunctionalTraj_ForGraphs")
 
 CompFun<-CompleteFun
 
@@ -500,4 +502,234 @@ TaxoTraj<-function(CompTaxo){
   #mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
   mtext("Equivalent diversity",side=2,padj=1,line=1.5,outer=TRUE)}
 TaxoTraj(CompleteTaxo)
+
+
+## IDH regression, AIC test
+
+treatments<-list(c(1,6,11),c(2,7,9),c(3,5,10),c(4,8,12))
+names(treatments)<-c("Control","Low","Intermediate","High")
+ColorsTr<-c("darkolivegreen2","gold","orangered","darkred")
+colyear<-c("deepskyblue","cornflowerblue","darkslateblue")
+time<-c("1995","2005","2015")
+
+load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
+
+Data=Rich
+AgbLoss=AGBloss
+
+plotIDH<-function(Data,AgbLoss){
+Ylim<-c(min(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))),
+          max(unlist(lapply(Data, function(tr){return(tr[,,"0.5"])}))))
+plot(AgbLoss[,"AGB"],AgbLoss[,"AGB"],type="n",xlab="",ylab="",
+       ylim=Ylim)
+leg<-lapply(1:3,function(Ti){
+    toplot<-unlist(lapply(Data, function(tr){return(tr[,time[Ti],"0.5"])}))
+    abs<-AgbLoss[which(AgbLoss[,"plot"]%in%names(toplot)),"AGB"]
+    points(abs,toplot,col=colyear[Ti],pch=20)
+    Lm<-lm(toplot~abs)
+    Lm2<-lm(toplot~abs+I(abs^2))
+    if(AIC(Lm2)<AIC(Lm)){
+      abs_pred<-seq(min(abs),max(abs),length.out=100)
+      lines(sort(abs_pred),predict(Lm2,newdata=data.frame(abs=abs_pred)),col=colyear[Ti],lwd=2.5)
+      return(round(summary(Lm2)$adj.r.squared,2)) }
+    if(AIC(Lm2)>AIC(Lm)){
+      abline(a=Lm$coefficients[1],b=Lm$coefficients[2],col=colyear[Ti],lwd=2.5)
+      return(round(summary(Lm)$adj.r.squared,2)) }
+  })
+  legend("topleft",legend=unlist(leg),bty="n",lty=1,col=colyear,lwd=2.5,cex=0.8,title=expression(paste('Adjusted ','R'^2)))
+}
+
+load("DB/RichnessIDH");load("DB/SimpsonIDH");load("DB/RaoIDH");load("DB/LostAGB");load("DB/FunRichIDH")
+
+windows()
+par(mfrow=c(1,4),mar=c(2,2.5,3,0),oma=c(1,1,1,4),no.readonly=TRUE)
+plotIDH(Data=Rich,AgbLoss=AGBloss)
+mtext("(a) Taxonomic\nRichness",line=1,side=3,adj=0,cex=0.85)
+mtext("Equivalent diversity",side=2,line=2.2,adj=1,cex=0.8)
+plotIDH(Data=Sim,AgbLoss=AGBloss)
+mtext("(b) Taxonomic\nEvenness",line=1,side=3,adj=0,cex=0.85)
+plotIDH(Data=Rao,AgbLoss=AGBloss)
+mtext("(c) Functional\nRichness",line=1,side=3,adj=0,cex=0.85)
+plotIDH(Data=FunRich,AgbLoss=AGBloss)
+mtext("(d) Functional\nEvenness",line=1,side=3,adj=0,cex=0.85)
+mtext("initial AGB loss (%)",side=1,line=2.2,adj=1,cex=0.8)
+legend("right",inset=-0.5,xpd=NA,legend=c("10","20","30"),col=colyear,lwd=2.5,bty="n",title="Years")
+
+AICmod<-function(Data){
+  lapply(1:3,function(Ti){
+    toplot<-unlist(lapply(Data, function(tr){return(tr[,time[Ti],"0.5"])}))
+    abs<-AGBloss_cor[which(AGBloss_cor[,"plot"]%in%names(toplot)),"AGB"]
+    Lm<-lm(toplot~abs)
+    Lm2<-lm(toplot~abs+I(abs^2))
+    if(AIC(Lm2)<AIC(Lm)){
+      return(c("quadratic",AIC(Lm2))) }
+    if(AIC(Lm2)>AIC(Lm)){
+      return(c("linear",AIC(Lm))) }
+  })
+}
+
+AicRich<-cbind(c(10,20,30),rep("Richness",3),do.call(rbind,AICmod(Rich)))
+AicSim<-cbind(c(10,20,30),rep("Evenness",3),do.call(rbind,AICmod(Sim)))
+AicRao<-cbind(c(10,20,30),rep("Rao",3),do.call(rbind,AICmod(Rao)))
+AicFunRich<-cbind(c(10,20,30),rep("RichFun",3),do.call(rbind,AICmod(FunRich)))
+
+Aics<-rbind(AicRich,AicSim,AicRao,AicFunRich)
+
+##Table Max change / intensity correlation
+load("DB/LostAGB")
+
+load("DB/ReplacementTraj_ForGraphs")
+load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalRichnessTraj_ForGraphs")
+load("DB/FunDistance_ForGraphs");load("DB/TaxoDistance_ForGraphs")
+load("DB/Redundancy_restricted")
+
+
+TaxoRich<-lapply(CompleteTaxo,function(tr){return(tr[,,,"Richness"])})
+    TaxoRich<-lapply(TaxoRich,function(TaxoRich){return(TaxoRich[,which(colnames(TaxoRich)>=1989),])})
+    TaxoRich<-unlist(lapply(TaxoRich,function(tr){
+      ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-(col-tr[,1,rep])/tr[,1,rep]*100}))})#
+      ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+      ret<-apply(ret,c(1,2),function(x){return(abs(quantile(x,probs=0.5)))})
+      
+return(apply(ret,1,function(li){return(max(abs(li)))}))
+}))
+TaxoRich<-TaxoRich[order(as.numeric(names(TaxoRich)))]
+
+TaxoSim<-lapply(CompleteTaxo,function(tr){return(tr[,,,"Simpson"])})
+TaxoSim<-lapply(TaxoSim,function(TaxoSim){return(TaxoSim[,which(colnames(TaxoSim)>=1989),])})
+TaxoSim<-unlist(lapply(TaxoSim,function(tr){
+  ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-(col-tr[,1,rep])/tr[,1,rep]*100}))})#
+  ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+             dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+  ret<-apply(ret,c(1,2),function(x){return(abs(quantile(x,probs=0.5)))})
+  
+  return(apply(ret,1,function(li){return(max(abs(li)))}))
+}))
+TaxoSim<-TaxoSim[order(as.numeric(names(TaxoSim)))]
+
+    
+Fun<-lapply(CompleteFun,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+Fun<-unlist(lapply(Fun,function(tr){
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-(col-tr[,1,rep])/tr[,1,rep]*100}))})#
+    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+    ret<-apply(ret,c(1,2),function(x){return(abs(quantile(x,probs=0.5)))})
+    
+    return(apply(ret,1,function(li){return(max(abs(li)))}))
+}))
+Fun<-Fun[order(as.numeric(names(Fun)))]
+
+FunRich<-lapply(CompleteRichFun,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+FunRich<-unlist(lapply(FunRich,function(tr){
+  ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-(col-tr[,1,rep])/tr[,1,rep]*100}))})#
+  ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+             dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+  ret<-apply(ret,c(1,2),function(x){return(abs(quantile(x,probs=0.5)))})
+  
+  return(apply(ret,1,function(li){return(max(abs(li)))}))
+}))
+FunRich<-FunRich[order(as.numeric(names(FunRich)))]
+
+NmdsTaxo<-apply(TaxoEuclid,c(1,2),function(col){return(quantile(col,probs=0.5))})
+NmdsTaxo<-apply(NmdsTaxo,1,function(li){return(max(abs(li)))})
+
+NmdsFun<-apply(FunEuclid,c(1,2),function(col){return(quantile(col,probs=0.5))})
+NmdsFun<-apply(NmdsFun,1,function(li){return(max(abs(li)))})
+
+smooth<-function(mat,larg){return(do.call(cbind,lapply(1:ncol(mat),function(step){
+  range<-max(1,step-larg):min(ncol(mat),step+larg)
+  rowSums(mat[,range])/length(range)})))}
+
+Red<-lapply(RedundancyTraj_restricted,function(rep){
+    ret<-smooth(rep,2)
+    colnames(ret)<-colnames(rep)
+    ret<-apply(ret[,which(as.numeric(colnames(ret))>="1989")],2,function(col){return((col-ret[,"1989"])/ret[,"1989"]*100)})
+    return(ret)})
+Red<-array(unlist(Red),dim=c(12,ncol(Red[[1]]),length(Red)),
+             dimnames=list(1:12,colnames(Red[[1]]),1:length(Red)))
+Red<-apply(Red,c(1,2),function(rep){return(quantile(rep,probs=0.5))})
+
+RedFun<-apply(Red,1,function(li){return(max(abs(li)))})
+
+Tbl<-cbind(TaxoRich,TaxoSim,FunRich,Fun,NmdsTaxo,NmdsFun,RedFun,1:12)
+colnames(Tbl)<-c("Taxonomic Richness","Taxonomic evenness", "Functional Richness",
+                 "Rao Index", "Taxonomic composition distance", "Functional composition distance", "Functional Redundancy", "plot")
+Tbl<-merge(AGBloss_cor, Tbl,by="plot")
+
+save(Tbl,file="E:/These/Taff/These/Redaction/2_WholePlotTrajectories/DB/IndexChanges")
+
+# Average of diversity trajectories
+load("DB/ReplacementTraj_ForGraphs")
+load("DB/FunctionalTraj_ForGraphs")
+load("DB/FunctionalRichnessTraj_ForGraphs")
+
+windows()
+par(mfrow=c(2,2),mar=c(2,2,2.5,5),oma=c(1,2,1,1),no.readonly = T)
+TaxoTraj(CompleteTaxo)
+plotDiv(CompleteRichFun)
+mtext("(c) Functional Richness",side=3,adj=0,line=1,cex=0.9)
+plotDiv(CompleteFun)
+mtext("(d) Functional Evenness",side=3,adj=0,line=1,cex=0.9)
+mtext("Years since disturbance",side=1,line=2.2,adj=1)
+legend("right",xpd=NA,legend=c("Control","Low","Intermediate","High"),col=ColorsTr,lwd=2.5,bty="n",title="Treatment", cex=0.85,inset=-0.57)
+
+
+plotDiv<-function(Data,remove=FALSE){
+  
+  if(remove){Data[[2]]<-Data[[2]][which(rownames(Data[[2]])!=7),,]}
+  
+  Toplot<-lapply(Data,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+  Toplot<-lapply(Toplot,function(tr){
+    ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
+    ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+               dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+    ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+    return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
+                 dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
+  
+  plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
+       xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+  axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+  
+  invisible(lapply(1:4,function(t){  
+    toplot<-apply(Toplot[[t]][,,"0.5"],2,mean)
+    
+    absc<-colnames(Toplot[[t]])
+    lines(absc,toplot, col = ColorsTr[[t]],lty = 1,lwd=2)
+    polygon(c(absc,rev(absc)),c(apply(Toplot[[t]][,,"0.025"],2,mean),rev(apply(Toplot[[t]][,,"0.975"],2,mean))),
+            col=rgb(0,0,0,alpha=0.05),border=NA)
+  }))
+}
+
+TaxoTraj<-function(CompTaxo){
+  for(q in c(1,3)){     
+    Toplot<-lapply(CompTaxo,function(tr){return(tr[,,,q])})
+    Toplot<-lapply(Toplot,function(toplot){return(toplot[,which(colnames(toplot)>=1989),])})
+    Toplot<-lapply(Toplot,function(tr){
+      ret<-lapply(1:dim(tr)[3],function(rep){return(apply(tr[,,rep],2,function(col){col<-col-tr[,1,rep]}))})#
+      ret<-array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),length(ret)),
+                 dimnames=list(rownames(ret[[1]]),as.numeric(colnames(ret[[1]]))-1984,1:length(ret)))
+      ret<-lapply(c(0.025,0.5,0.975),function(quant){return(apply(ret,c(1,2),function(x){return(quantile(x,probs=quant))}))})
+      return(array(unlist(ret),dim=c(nrow(ret[[1]]),ncol(ret[[1]]),3),
+                   dimnames=list(rownames(ret[[1]]),colnames(ret[[1]]),c(0.025,0.5,0.975))))})
+    
+    plot(colnames(Toplot[[1]]),Toplot[[1]][1,,1],type="n",xaxt="n",
+         xlab="",ylab="",ylim=c(min(unlist(Toplot),na.rm=T),max(unlist(Toplot),na.rm=T)))
+    axis(1,at=as.character(seq(5,33,5)),labels=TRUE)  
+    mtext(paste("(",c("a","b","b")[q],") ",c("Taxonomic Richness","Shannon","Taxonomic Evenness")[q],sep=""),
+          line=1,side=3,adj=0,cex=0.9)
+    
+    invisible(lapply(1:4,function(t){  
+      toplot<-apply(Toplot[[t]][,,"0.5"],2,mean)
+      
+      absc<-colnames(Toplot[[t]])
+      lines(absc,apply(Toplot[[t]][,,"0.5"],2,mean), col = ColorsTr[[t]],lty = 1,lwd=2)
+      polygon(c(absc,rev(absc)),c(apply(Toplot[[t]][,,"0.025"],2,mean),rev(apply(Toplot[[t]][,,"0.975"],2,mean))),
+              col=rgb(0,0,0,alpha=0.1),border=NA)
+    }))
+  }
+  #mtext("Years since disturbance",side=1,adj=1,cex=0.8,line=-2,outer=TRUE)
+  mtext("Equivalent diversity",side=2,padj=1,line=1.5,outer=TRUE)}
 
