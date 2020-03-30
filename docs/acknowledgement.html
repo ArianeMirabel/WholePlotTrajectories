@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Acknowledgement | Diverging taxonomic and functional trajectories following disturbance in a Neotropical forest</title>
   <meta name="description" content="6 Acknowledgement | Diverging taxonomic and functional trajectories following disturbance in a Neotropical forest" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Acknowledgement | Diverging taxonomic and functional trajectories following disturbance in a Neotropical forest" />
   <meta property="og:type" content="book" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conclusion.html"/>
-<link rel="next" href="authors-contributions.html"/>
+<link rel="prev" href="conclusion.html">
+<link rel="next" href="authors-contributions.html">
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -48,9 +48,6 @@ div.abstract{
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
 
 
 
@@ -113,7 +110,11 @@ div.abstract{
             <section class="normal" id="section-">
 <div id="acknowledgement" class="section level1">
 <h1><span class="header-section-number">6</span> Acknowledgement</h1>
-<p>We are in debt with all Paracou station technicians and colleagues who helped setting up the plots and collecting data over years. Without their precious work, this study would have not been possible and they may be warmly thanked here. Our work benefited from an “Investissement d’Avenir” grant managed by the Agence Nationale de la Recherche (LABEX CEBA, ref ANR-10-LBX-25). We thank Niklas Tysklind for the usefull help with english proofing.</p>
+<p>We are in debt with all Paracou station technicians and colleagues who helped setting up the plots and collecting data over years.
+Without their precious work, this study would have not been possible and they may be warmly thanked here.
+Our work benefited from an “Investissement d’Avenir” grant managed by the Agence
+Nationale de la Recherche (LABEX CEBA, ref ANR-10-LBX-25).
+We thank Niklas Tysklind for the usefull help with english proofing.</p>
 </div>
             </section>
 
@@ -126,13 +127,11 @@ div.abstract{
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -140,11 +139,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -156,10 +156,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
@@ -177,11 +173,10 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
